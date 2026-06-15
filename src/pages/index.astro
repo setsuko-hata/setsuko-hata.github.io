@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StatCards from '../components/StatCards.astro';
+import ExploreCards from '../components/ExploreCards.astro';
+import SignupForm from '../components/SignupForm.astro';
+---
+
+<Layout
+  title="秦 節子 | Setsuko Hata — ジャズシンガー・作曲家・ハタヨガ講師"
+  description="秦節子（Setsuko Hata）公式サイト。ジャズシンガー・作曲家・編曲家、サドグル公認ハタヨガ講師。音楽とヨガを通して、より健康で幸せな人生を。Jazz singer, composer & Sadhguru-certified Hatha Yoga teacher."
+  active="home"
+  footer="home"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Setsuko Hata',
+    alternateName: ['秦 節子', '秦節子'],
+    url: 'https://setsukohata.com/',
+    image: 'https://setsukohata.com/assets/setsuko-portrait.jpg',
+    jobTitle: ['Jazz Singer', 'Composer', 'Arranger', 'Hatha Yoga Teacher'],
+    email: 'mailto:info@setsukohata.com',
+    sameAs: [
+      'https://www.instagram.com/setsuko_hata/',
+      'https://www.youtube.com/@setsukohata',
+      'https://www.youtube.com/@SetsukoHataFlows',
+      'https://www.youtube.com/@SetsukoHataJapanse',
+    ],
+  }}
+>
+  <section class="hero">
+    <div class="hero__frame">
+      <img
+        fetchpriority="high"
+        decoding="async"
+        src="/assets/hero-stream.jpg"
+        alt="Setsuko Hata beside a mountain stream"
+        class="hero__img"
+      />
+    </div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__copy-wrap">
+      <div class="hero__copy">
+        <h1 class="hero__title">Setsuko Hata</h1>
+
+        <p class="hero__roles" lang="ja">
+          ジャズ歌手<span class="dot">・</span>作曲家<span class="dot">・</span>ハタヨガ講師
+        </p>
+
+        <p class="hero__kicker">Yoga · Music · Conscious Living</p>
+
+        <div class="hero__ctas">
+          <a href="#paths" class="btn-primary" lang="ja">ヨガと音楽を見る <span class="arrow">→</span></a>
+          <a href="/about" class="btn-text" lang="ja">節子について <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero-stats" aria-label="At a glance">
+    <div class="hero-stats__inner">
+      <StatCards float />
+    </div>
+  </section>
+
+  <section class="connect">
+    <div class="connect__inner">
+      <div class="connect__label-row">
+        <span class="connect__label">Connect &amp; join the community</span>
+      </div>
+      <div class="connect__row">
+        <div class="connect__grid">
+          <a href="https://www.instagram.com/setsuko_hata/" target="_blank" rel="noopener" class="connect__link">
+            <span class="connect__icon">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5zM17.5 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"></path></svg>
+            </span>
+            <span class="connect__title">Instagram</span>
+            <span class="connect__caption">Daily inspiration</span>
+          </a>
+          <a href="https://www.youtube.com/@setsukohata" target="_blank" rel="noopener" class="connect__link">
+            <span class="connect__icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C18.1 5 12 5 12 5s-6.1 0-7.8.5c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.9 19 12 19 12 19s6.1 0 7.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7zM10 15.2V8.8L15.5 12 10 15.2z"></path></svg>
+            </span>
+            <span class="connect__title">Music</span>
+            <span class="connect__caption">Songs &amp; performances</span>
+          </a>
+          <a href="https://www.youtube.com/@SetsukoHataJapanse" target="_blank" rel="noopener" class="connect__link">
+            <span class="connect__icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C18.1 5 12 5 12 5s-6.1 0-7.8.5c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.9 19 12 19 12 19s6.1 0 7.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7zM10 15.2V8.8L15.5 12 10 15.2z"></path></svg>
+            </span>
+            <span class="connect__title">Yoga 日本語</span>
+            <span class="connect__caption">Practices in Japanese</span>
+          </a>
+          <a href="https://www.youtube.com/@SetsukoHataFlows" target="_blank" rel="noopener" class="connect__link">
+            <span class="connect__icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C18.1 5 12 5 12 5s-6.1 0-7.8.5c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.9 19 12 19 12 19s6.1 0 7.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7zM10 15.2V8.8L15.5 12 10 15.2z"></path></svg>
+            </span>
+            <span class="connect__title">Yoga English</span>
+            <span class="connect__caption">Practices in English</span>
+          </a>
+        </div>
+        <a href="https://lin.ee/tIN07iZ" target="_blank" rel="noopener" class="line-card">
+          <span class="line-badge">LINE</span>
+          <span class="line-card__body">
+            <span class="line-card__title">LINE Registration</span>
+            <span class="line-card__caption">Join my community</span>
+          </span>
+          <span class="line-card__arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <SignupForm />
+
+  <section class="intro">
+    <div class="intro__media" data-reveal>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/setsuko-portrait.jpg"
+        alt="Setsuko Hata"
+        class="intro__img"
+      />
+    </div>
+    <div class="intro__body" data-reveal>
+      <div class="eyebrow intro__eyebrow">Music and Yoga</div>
+      <h2 class="intro__heading" lang="ja">音楽とヨガ</h2>
+      <div class="divider">
+        <span class="divider__rule"></span>
+        <span class="divider__diamond"></span>
+        <span class="divider__hairline"></span>
+      </div>
+      <p class="intro__text" lang="ja">
+        私にとってこの二つは、人生を変えてくれたかけがえのない贈り物です。<br />
+        音楽は心を開き、ヨガは生命の可能性を開いてくれました。<br />
+        苦しみの中にいた私自身が、この二つを通して生きる喜びを取り戻すことができたように、一人でも多くの人が、自分の内なる豊かさと可能性に気づき、より意識的で幸せな人生を歩んでほしいと願っています。<br />
+        音楽とヨガを通して、人々がより健康に、より幸せに、そして自分らしく輝ける社会へ。<br />
+        そんな未来の実現に向けて、活動を続けています。
+      </p>
+      <div class="chips">
+        <span class="chip" lang="ja">ジャズシンガー</span>
+        <span class="chip" lang="ja">作曲家</span>
+        <span class="chip" lang="ja">編曲家</span>
+        <span class="chip" lang="ja">ハタヨガ講師</span>
+      </div>
+      <a href="/about" class="text-link">
+        <span lang="en">About Setsuko</span> — <span lang="ja">節子について</span> <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <ExploreCards reveal />
+</Layout>

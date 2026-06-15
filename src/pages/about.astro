@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StatCards from '../components/StatCards.astro';
+import ExploreCards from '../components/ExploreCards.astro';
+
+const galleryImages = [
+  { src: '/assets/g-a-headshot.jpg', alt: 'Setsuko Hata singing', position: 'center 28%' },
+  { src: '/assets/g-b-meditation.jpg', alt: 'Setsuko Hata meditating', position: 'center 34%' },
+  { src: '/assets/g-e-crane.jpg', alt: 'Setsuko Hata with crane painting', position: '38% center' },
+  { src: '/assets/g-f-kimono.jpg', alt: 'Setsuko Hata in kimono', position: 'center 26%' },
+  { src: '/assets/g-c-garden.jpg', alt: 'Setsuko Hata in a garden', position: '30% center' },
+  { src: '/assets/g-d-stage.jpg', alt: 'Setsuko Hata on stage with piano', position: '74% center' },
+  { src: '/assets/g-g-india.jpg', alt: 'Setsuko Hata performing in India', position: 'center 32%' },
+  { src: '/assets/g-h-street.jpg', alt: 'Setsuko Hata walking in Kobe', position: 'center 40%' },
+];
+---
+
+<Layout
+  title="プロフィール | 秦 節子 Setsuko Hata — About"
+  description="秦節子（Setsuko Hata）のプロフィール。大阪出身。ニューヨーク・コロラド・ロサンゼルスで13年間ジャズシンガー・作曲家として活動し、インドのIsha Foundationでサドグル公認ハタヨガ講師資格を取得。2026年より日本を拠点に活動。"
+  active="about"
+  footer="about"
+>
+  <section class="about-hero">
+    <div class="about-hero__stripes" aria-hidden="true"></div>
+    <div class="about-hero__sun" aria-hidden="true">
+      <img src="/assets/celestial-sun-moon.jpg" alt="" />
+    </div>
+    <div class="about-hero__inner">
+      <h1 class="about-hero__title">
+        Setsuko Hata<span class="about-hero__jp-name" lang="ja">秦 節子</span>
+      </h1>
+      <p class="about-hero__tagline">
+        Jazz Singer. <em>Composer.</em><br />
+        Hatha Yoga Teacher.
+      </p>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats-section__inner">
+      <div class="stats-label-row">
+        <span class="stats-label-row__rule"></span>
+        <span class="eyebrow">At a Glance</span>
+        <span class="stats-label-row__rule"></span>
+      </div>
+      <StatCards reveal />
+    </div>
+  </section>
+
+  <section class="origin-section">
+    <figure class="origin__figure">
+      <svg class="origin__leaf origin__leaf--a" viewBox="-14 -17 60 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0 0C10-13 30-16 44 0 30 16 10 13 0 0Z" fill="#7FB13A"></path><path d="M2 0C14 1 30 0 42 0" stroke="rgba(255,255,255,0.42)" stroke-width="1.3" fill="none"></path><path d="M0 0C-5 1-9 3-12 6" stroke="#6B5B43" stroke-width="2" stroke-linecap="round" fill="none"></path></svg>
+      <svg class="origin__leaf origin__leaf--b" viewBox="-14 -17 60 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0 0C10-13 30-16 44 0 30 16 10 13 0 0Z" fill="#A3C65A"></path><path d="M2 0C14 1 30 0 42 0" stroke="rgba(255,255,255,0.42)" stroke-width="1.3" fill="none"></path><path d="M0 0C-5 1-9 3-12 6" stroke="#6B5B43" stroke-width="2" stroke-linecap="round" fill="none"></path></svg>
+      <svg class="origin__leaf origin__leaf--c" viewBox="-14 -17 60 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0 0C10-13 30-16 44 0 30 16 10 13 0 0Z" fill="#5E9130"></path><path d="M2 0C14 1 30 0 42 0" stroke="rgba(255,255,255,0.42)" stroke-width="1.3" fill="none"></path><path d="M0 0C-5 1-9 3-12 6" stroke="#6B5B43" stroke-width="2" stroke-linecap="round" fill="none"></path></svg>
+      <svg class="origin__leaf origin__leaf--d" viewBox="-14 -17 60 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0 0C10-13 30-16 44 0 30 16 10 13 0 0Z" fill="#8CC24A"></path><path d="M2 0C14 1 30 0 42 0" stroke="rgba(255,255,255,0.42)" stroke-width="1.3" fill="none"></path><path d="M0 0C-5 1-9 3-12 6" stroke="#6B5B43" stroke-width="2" stroke-linecap="round" fill="none"></path></svg>
+      <div class="origin__frame" data-reveal-soft>
+        <img decoding="async" src="/assets/about-main.jpg" alt="Setsuko Hata beside a mountain stream" />
+      </div>
+    </figure>
+    <div class="origin__body" data-reveal>
+      <div class="section-label">
+        <span class="section-label__rule"></span>
+        <span class="eyebrow">Origin</span>
+      </div>
+      <p class="jp-body" lang="ja">
+        大阪出身。ジャズシンガー、作曲家、編曲家、ハタヨガ講師。幼い頃から歌うことが大好きで、音楽はいつも私の人生の中心にありました。しかし、21歳の時にうつ病・双極性障害を経験し、人生の大きな転機を迎えます。
+      </p>
+      <p class="jp-body" lang="ja">
+        その経験をきっかけに、「人はどうすれば心身ともに健康に生きられるのか」「本当の幸せとは何か」という問いを深く探求するようになりました。
+      </p>
+    </div>
+  </section>
+
+  <section class="study-section">
+    <div class="study__body" data-reveal>
+      <div class="section-label">
+        <span class="section-label__rule"></span>
+        <span class="eyebrow">Study &amp; Performance</span>
+      </div>
+      <p class="jp-body" lang="ja">
+        3年間の休学を経て、大阪市立大学生活科学部食品栄養科学科を卒業し、栄養士資格を取得。その後、夢だった音楽の道を本格的に歩むため、2011年にアメリカへ渡りました。
+      </p>
+      <p class="jp-body" lang="ja">
+        その後13年間、ニューヨーク、コロラド、ロサンゼルスを拠点に、プロのジャズシンガー・作曲家として活動。City College of New York（CUNY）でジャズボーカルを学んだ後、University of Northern Colorado大学院へ進学。ジャズボーカルに加え、作曲、編曲、ビッグバンド、オーケストラ、映画音楽など幅広い音楽表現を研究し、同大学では日本人初となる教授アシスタントを務めました。
+      </p>
+      <p class="jp-body" lang="ja">
+        全米各地で数多くの演奏活動を重ねながら、ロサンゼルスの名門ジャズクラブ Catalina Jazz Club にてソロコンサートを開催するなど、多数の自主企画公演をプロデュース。2024年には グッと！読売テレビのグッと地球便に出演し、アメリカで活動するジャズシンガーとして特集されました。
+      </p>
+    </div>
+    <div class="study__polaroids">
+      <figure class="polaroid polaroid--back" data-reveal-soft>
+        <div class="polaroid__frame">
+          <img src="/assets/about-portrait-navy.jpg" alt="Setsuko Hata portrait" style="object-position: center 25%;" />
+        </div>
+      </figure>
+      <figure class="polaroid polaroid--front" data-reveal-soft>
+        <div class="polaroid__frame">
+          <img src="/assets/about-portrait-denim.jpg" alt="Setsuko Hata portrait" style="object-position: center 20%;" />
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="catalina-section">
+    <figure class="catalina__figure">
+      <img
+        data-reveal-soft
+        loading="lazy"
+        decoding="async"
+        src="/assets/about-catalina.jpg"
+        alt="Setsuko Hata performing at Catalina Jazz Club, Los Angeles"
+        class="catalina__img"
+      />
+      <a
+        href="https://www.youtube.com/@setsukohata"
+        target="_blank"
+        rel="noopener"
+        class="catalina__play"
+        aria-label="Watch Setsuko's music on YouTube (opens in a new tab)"
+      >
+        <span class="catalina__play-btn">
+          <svg viewBox="0 0 68 48" aria-hidden="true">
+            <path class="catalina__play-bg" d="M66.5 7.7c-.8-2.9-3.1-5.2-6-6C55.3.3 34 .3 34 .3S12.7.3 7.5 1.7c-2.9.8-5.2 3.1-6 6C.1 12.9.1 24 .1 24s0 11.1 1.4 16.3c.8 2.9 3.1 5.2 6 6C12.7 47.7 34 47.7 34 47.7s21.3 0 26.5-1.4c2.9-.8 5.2-3.1 6-6C67.9 35.1 67.9 24 67.9 24s0-11.1-1.4-16.3z"></path>
+            <path fill="#FFFFFF" d="M27 34V14l18 10z"></path>
+          </svg>
+        </span>
+      </a>
+    </figure>
+    <div class="catalina__quote-wrap">
+      <blockquote class="quote-block" data-reveal-soft>
+        <p class="quote-block__en" lang="en">
+          My music is rooted in jazz, but its subject is the search itself — inner growth, and the thread that ties us to nature.
+        </p>
+        <p class="quote-block__jp" lang="ja">
+          私の音楽は、ジャズの伝統に根ざしながらも、「人生の探求」「内なる成長」「自然とのつながり」をテーマに、聴く人の心に深く響く世界観を表現しています。
+        </p>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="yoga-section">
+    <div class="yoga-section__inner">
+      <figure class="yoga__figure" data-reveal-soft>
+        <img loading="lazy" decoding="async" src="/assets/about-meditation.jpg" alt="Setsuko Hata meditating in a garden" />
+      </figure>
+      <div class="yoga__body" data-reveal>
+        <div class="section-label">
+          <span class="section-label__rule"></span>
+          <span class="eyebrow">Yoga</span>
+        </div>
+        <p class="jp-body" lang="ja">
+          2024年にはインドの Isha Foundation にて約1年半にわたりヨガと瞑想を探求。1,750時間を超える厳格なトレーニングを修了し、Sadhguru公認ハタヨガ講師資格を取得しました。
+        </p>
+        <p class="jp-body" lang="ja">
+          2026年より活動拠点を日本へ移し、「ストレスやうつに苦しむ人を一人でも減らし、一人ひとりが本来持つ可能性を開花できる社会をつくる」というビジョンのもと活動を展開。音楽を通して人々の心に希望と感動を届けるとともに、ハタヨガ講師として人生を変革するための実践的なツールを伝えています。
+        </p>
+        <div class="yoga__channels">
+          <a href="https://www.youtube.com/@SetsukoHataFlows" target="_blank" rel="noopener" class="channel-link">
+            <span class="channel-link__icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C18.1 5 12 5 12 5s-6.1 0-7.8.5c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.9 19 12 19 12 19s6.1 0 7.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7zM10 15.2V8.8L15.5 12 10 15.2z"></path></svg>
+            </span>
+            <span class="channel-link__body">
+              <span class="channel-link__title">Yoga English</span>
+              <span class="channel-link__caption">Practices in English</span>
+            </span>
+            <span class="channel-link__arrow">→</span>
+          </a>
+          <a href="https://www.youtube.com/@SetsukoHataJapanse" target="_blank" rel="noopener" class="channel-link">
+            <span class="channel-link__icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C18.1 5 12 5 12 5s-6.1 0-7.8.5c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.9 19 12 19 12 19s6.1 0 7.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7zM10 15.2V8.8L15.5 12 10 15.2z"></path></svg>
+            </span>
+            <span class="channel-link__body">
+              <span class="channel-link__title" lang="ja">Yoga 日本語</span>
+              <span class="channel-link__caption">Practices in Japanese</span>
+            </span>
+            <span class="channel-link__arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="gallery__header">
+      <div>
+        <div class="section-label">
+          <span class="section-label__rule"></span>
+          <span class="eyebrow">Moments</span>
+        </div>
+        <h2 class="gallery__heading">A Life in <em>Motion</em></h2>
+      </div>
+      <p class="gallery__caption" lang="ja">舞台、瞑想、旅、そして日々の練習。ホバーで一時停止します。</p>
+    </div>
+    <div class="gallery__mask">
+      <div class="gallery__track" data-gallery-track>
+        {galleryImages.map((img) => (
+          <div class="gallery__item">
+            <img loading="lazy" decoding="async" src={img.src} alt={img.alt} style={`object-position: ${img.position};`} />
+          </div>
+        ))}
+        {galleryImages.map((img) => (
+          <div class="gallery__item">
+            <img loading="lazy" decoding="async" src={img.src} alt="" style={`object-position: ${img.position};`} />
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="gallery__controls">
+      <button type="button" class="gallery__toggle" data-gallery-toggle aria-pressed="false">
+        <span data-gallery-toggle-label>Pause</span> gallery motion
+      </button>
+    </div>
+  </section>
+
+  <ExploreCards />
+</Layout>
+
+<script>
+  const track = document.querySelector<HTMLElement>('[data-gallery-track]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-gallery-toggle]');
+  const label = toggle?.querySelector<HTMLElement>('[data-gallery-toggle-label]');
+
+  toggle?.addEventListener('click', () => {
+    const paused = track?.classList.toggle('is-paused');
+    toggle.setAttribute('aria-pressed', String(!!paused));
+    if (label) label.textContent = paused ? 'Play' : 'Pause';
+  });
+</script>

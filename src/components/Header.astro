@@ -1,0 +1,34 @@
+---
+interface Props {
+  active: 'home' | 'about' | 'music';
+}
+
+const { active } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" aria-label="Setsuko Hata — home" class="wordmark">
+      <span>Setsuko Hata</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-list">
+        <li>
+          <a href="/" class="nav-link" aria-current={active === 'home' ? 'page' : undefined}>Home</a>
+        </li>
+        <li>
+          <a href="/about" class="nav-link" aria-current={active === 'about' ? 'page' : undefined}>About</a>
+        </li>
+        <li>
+          <a href="/satorin/" class="nav-link">SATORIN Membership</a>
+        </li>
+        <li>
+          <a href="/hatha-yoga/" class="nav-link nav-link--jp" lang="ja">ハタヨガ</a>
+        </li>
+        <li>
+          <a href="/music" class="nav-link nav-link--jp" lang="ja" aria-current={active === 'music' ? 'page' : undefined}>音楽</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

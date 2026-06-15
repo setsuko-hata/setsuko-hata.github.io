@@ -1,0 +1,778 @@
+/* ja-warm.css — warm/cozy palette + layout refinements for the Japanese pages.
+ * Loaded only by /ja/*.html, after styles-Q1zC6xcO.css. Nothing here touches /en. */
+
+:root {
+  /* Warm re-cast of the brand ramp (was olive/grey-heavy) */
+    --color-brand-espresso: #3A3228; /* warm charcoal — text */
+    --color-brand-moss: #8A6043;     /* warm brown — small accents only */
+    --color-brand-tan: #D9C4A3;      /* sand */
+    --color-brand-cream: #E8D9C2;    /* warm beige */
+    --color-brand-clay: #C98B67;     /* terracotta hairline */
+
+  --ja-page: #F5EFDF;   /* page ground */
+  --ja-page-2: #E8D9C2; /* alternating band */
+  --ja-sage: #DDE1CE; --ja-sage-mid: #AEB39A; --ja-sage-deep: #7E8764; --ja-olive: #596044;   /* one cool-but-warm green for variety */
+  --ja-ink: #3e3227;
+  --ja-ink-70: #6b5744;
+}
+
+/* ── Grounds ─────────────────────────────────────────────────────────── */
+html,
+body {
+  background: var(--ja-page);
+  color: var(--ja-ink);
+}
+/* the hard-coded #F5EFDF sections become the warmer cream */
+[class*="f5efe6"] {
+  background-color: var(--ja-page) !important;
+}
+/* alternating cream bands: give them a solid warm tone instead of a 60% tint */
+main .bg-brand-cream\/60,
+main .bg-brand-cream\/70 {
+  background-color: var(--ja-page-2) !important;
+}
+/* the "trial" band was dull olive — make it a soft sage so the deck isn't
+   all terracotta, but keep it light and warm */
+main .bg-brand-moss {
+  background-color: var(--ja-sage) !important;
+}
+main .bg-brand-moss.brand-dark .bg-brand-moss {
+  background-color: transparent !important;
+}
+main .bg-brand-espresso {
+  background-color: #E8D9C2 !important;
+}
+footer.bg-brand-espresso {
+  background-color: #E8D9C2 !important;
+}
+/* the olive footer ground is lighter than the old espresso — lift the muted text */
+footer .opacity-60 {
+  opacity: 0.8 !important;
+}
+footer .opacity-70 {
+  opacity: 0.88 !important;
+}
+footer .opacity-80 {
+  opacity: 0.92 !important;
+}
+footer .text-brand-tan {
+  color: #8A6043 !important;
+}
+footer .border-t {
+  border-color: rgba(245, 239, 223, 0.22) !important;
+}
+
+/* ── Typography ──────────────────────────────────────────────────────── */
+body {
+  font-family: "Zen Kaku Gothic New", var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, blockquote {
+  font-family: "Shippori Mincho", "Newsreader", ui-serif, serif;
+  font-weight: 400;
+}
+
+/* Section eyebrows (講師紹介 / 体験 / 効果 / プログラム …) — opt-in via
+   .ja-eyebrow, added to the genuine section labels in the /ja HTML only.
+   Were 13px mono uppercase at 0.24em tracking: far too small and too cramped
+   for Japanese. Now a readable serif label with a trailing rule. */
+main p.ja-eyebrow {
+  font-family: "Shippori Mincho", "Newsreader", serif !important;
+  font-size: 20px !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: none !important;
+  color: var(--color-brand-moss) !important;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  opacity: 1 !important;
+}
+main p.ja-eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(138, 96, 67, 0.5);
+}
+/* Sub-labels that sit under a heading (credentials, plan names, inline
+   sub-headers): bigger and warmer, but no rule and no eyebrow weight. */
+main p.ja-sublabel {
+  font-family: "Shippori Mincho", "Newsreader", serif !important;
+  font-size: 17.5px !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: none !important;
+  color: var(--color-brand-moss) !important;
+  opacity: 1 !important;
+}
+/* Latin kickers (Contact / Classes / Surya Shakti …) and footnotes keep the
+   small mono voice, just warmed and un-cramped. */
+main p.font-mono:not(.ja-eyebrow):not(.ja-sublabel) {
+  letter-spacing: 0.18em;
+  font-size: 13px;
+}
+/* hero scroll cue keeps its original small light voice */
+main > section:first-child p.font-mono:not(.ja-eyebrow):not(.ja-sublabel) {
+  letter-spacing: 0.32em;
+  font-size: 12px;
+}
+/* labels sitting on a dark band */
+.brand-dark p.ja-eyebrow,
+.brand-dark p.ja-sublabel {
+  color: #E8D9C2 !important;
+}
+.brand-dark p.ja-eyebrow::after {
+  background: rgba(245, 239, 223, 0.3);
+}
+
+/* Japanese should not be letter-spaced like a Latin caps label */
+header nav a,
+a.inline-flex,
+a[class*="tracking-"],
+p.font-mono.text-brand-espresso\/70 {
+  text-transform: none !important;
+}
+header nav a {
+  font-size: 15px !important;
+  letter-spacing: 0.04em !important;
+  white-space: nowrap;
+  color: var(--ja-ink-70);
+}
+header nav a.active,
+header nav a[aria-current="page"] {
+  color: var(--ja-ink);
+  border-bottom: 1px solid var(--color-brand-moss);
+  padding-bottom: 2px;
+}
+header nav {
+  gap: 1.375rem !important;
+  flex-shrink: 0;
+}
+header {
+  background: rgba(245, 239, 223, 0.94) !important;
+  border-bottom-color: rgba(138, 96, 67, 0.32) !important;
+}
+
+/* Buttons: no all-caps wide tracking on Japanese, and never break mid-word */
+a.inline-flex,
+header a[href*="docs.google.com"] {
+  letter-spacing: 0.08em !important;
+  white-space: nowrap;
+  border-radius: 2px;
+}
+/* Outline buttons run filled by default and invert on hover */
+main a.inline-flex[class*="border-brand-espresso"] {
+  background-color: var(--color-brand-espresso);
+  border-color: var(--color-brand-espresso);
+  color: #F5EFDF;
+}
+main a.inline-flex[class*="border-brand-espresso"]:hover {
+  background-color: #F5EFDF;
+  color: var(--color-brand-espresso);
+}
+
+/* Primary CTA (header + mobile panel): one warm brown, always white text */
+header a[href*="docs.google.com"],
+#ja-mobile-nav a[data-cta] {
+  background-color: #8A6043 !important;
+  color: #ffffff !important;
+}
+header a[href*="docs.google.com"]:hover,
+#ja-mobile-nav a[data-cta]:hover {
+  background-color: #6F4B33 !important;
+}
+.bg-brand-espresso.text-white:hover {
+  background-color: var(--color-brand-moss) !important;
+}
+
+/* Body copy: warmer ink, slightly larger, looser lines for kana */
+/* ja-warm.css is unlayered, so it outranks every layered Tailwind utility no
+   matter the specificity — the ink rule must therefore exclude the two colour
+   utility families this site uses, and the dark-band rule must be decisive. */
+/* Exclusion is deliberately a substring match so it covers the whole family
+   (text-white, text-white/90, hover:text-white). The warming rules below use
+   [class~=] so they never paint a hover-variant class at rest. */
+main p:not([class*="text-white"]):not([class*="text-brand"]),
+main li:not([class*="text-white"]):not([class*="text-brand"]) {
+  color: var(--ja-ink-70);
+}
+main .brand-dark p,
+main .brand-dark li,
+main .brand-dark blockquote {
+  color: #F5EFDF !important;
+}
+/* [class~=] matches the exact class token, so variant-prefixed utilities like
+   hover:text-white are not caught (a [class*=] substring match was). */
+main [class~="text-white"] {
+  color: #F5EFDF;
+}
+main [class~="text-white/70"] {
+  color: rgba(245, 239, 223, 0.72);
+}
+main [class~="text-white/85"],
+main [class~="text-white/90"] {
+  color: rgba(245, 239, 223, 0.9);
+}
+main .text-sm {
+  font-size: 15px !important;
+  line-height: 1.85 !important;
+}
+main .text-base {
+  font-size: 16.5px !important;
+}
+main p.leading-loose {
+  line-height: 2.05 !important;
+}
+.brand-dark p,
+.brand-dark li,
+.brand-dark blockquote {
+  color: #F5EFDF;
+}
+.brand-dark .opacity-80,
+.brand-dark .text-white\/85,
+.brand-dark .text-white\/90 {
+  color: rgba(245, 239, 223, 0.88) !important;
+}
+
+/* ── Rhythm: one consistent section step, no orphan gaps ─────────────── */
+main > section {
+  padding-top: 96px !important;
+  padding-bottom: 96px !important;
+}
+/* index.html only: the full-bleed photo hero is sized by its own min-height
+   and owns its internal spacing. Identified by that min-h-* class, so the
+   coloured page-hero bands on the inner pages don't match. */
+main > section:first-child[class*="min-h-"] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+/* inner pages: coloured page-hero band — extra top for the fixed header,
+   and a real bottom allowance so the h1 never sits flush on the edge */
+main > section:first-child:not([class*="min-h-"]) {
+  padding-top: 152px !important;
+  padding-bottom: 96px !important;
+}
+main > section > div {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+/* tighten the oversized vertical jumps inside sections */
+main .mt-16 {
+  margin-top: 3rem !important;
+}
+main .mt-14 {
+  margin-top: 2.75rem !important;
+}
+main .mt-10 {
+  margin-top: 2rem !important;
+}
+main .space-y-7 > * + * {
+  margin-top: 1.5rem !important;
+}
+/* the pull-quote block on the home page read as an empty slab */
+main .bg-brand-cream\/70 {
+  padding: 2.5rem 2.75rem !important;
+  border-radius: 3px;
+}
+@media (min-width: 768px) {
+  main .bg-brand-cream\/70 {
+    padding: 3rem 3.5rem !important;
+  }
+}
+
+/* Cards: warm surfaces with a hairline instead of a bare top border */
+main .border-t.border-brand-espresso\/20 {
+  border-top: none !important;
+  background: var(--ja-page);
+  border-radius: 3px;
+  padding: 2rem 2rem 2.25rem !important;
+}
+main .border-t.border-brand-espresso\/20 h3 {
+  margin-bottom: 0.25rem;
+}
+main .border-t.border-brand-espresso\/20 h3::after {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 1px;
+  background: var(--color-brand-clay);
+  margin: 1.125rem 0 0.25rem;
+}
+main .grid.gap-px {
+  gap: 1.25rem !important;
+  background: transparent !important;
+}
+/* translucent card surfaces only make sense on a dark band */
+main .brand-dark .grid.gap-px > div {
+  background: rgba(245, 239, 223, 0.14) !important;
+  border: 1px solid rgba(245, 239, 223, 0.24);
+  border-radius: 3px;
+}
+/* on a light band the same markup needs an opaque warm surface */
+main .grid.gap-px > div {
+  background: #F5EFDF !important;
+  border: 1px solid rgba(138, 96, 67, 0.34);
+  border-radius: 3px;
+}
+
+/* Emoji glyphs in the programme cards are off-brand — drop them */
+main p[aria-hidden="true"].text-3xl {
+  display: none;
+}
+main p[aria-hidden="true"].text-3xl + h3 {
+  margin-top: 0 !important;
+}
+
+/* Images: soften the hard corners */
+main picture img,
+main .overflow-hidden {
+  border-radius: 3px;
+}
+
+/* Hero: warm the scrim so the photo doesn't go grey-black */
+main > section:first-child .bg-gradient-to-r {
+  background-image: linear-gradient(
+    100deg,
+    rgba(44, 38, 22, 0.74) 0%,
+    rgba(90, 106, 60, 0.46) 46%,
+    rgba(208, 138, 94, 0.28) 100%
+  ) !important;
+}
+main > section:first-child .bg-gradient-to-t {
+  background-image: linear-gradient(
+    to top,
+    rgba(44, 38, 22, 0.26),
+    transparent 55%
+  ) !important;
+}
+
+/* Divider rules */
+.bg-brand-clay {
+  background-color: var(--color-brand-clay) !important;
+}
+.border-brand-espresso\/15,
+.border-brand-espresso\/20 {
+  border-color: rgba(138, 96, 67, 0.4) !important;
+}
+
+/* Links inherit, but hover warms */
+a:hover {
+  color: inherit;
+}
+main a.opacity-80:hover,
+footer a:hover {
+  opacity: 1;
+}
+
+/* Header must never break Japanese labels mid-word */
+header > div {
+  flex-wrap: wrap;
+  height: auto !important;
+  min-height: 80px;
+  gap: 12px 24px;
+  row-gap: 10px;
+}
+header > div > a:first-child {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+header > div > a:first-child span {
+  white-space: nowrap;
+}
+header > div > div:last-of-type,
+header > div > .items-center {
+  flex-shrink: 0;
+}
+header > div > div:last-of-type {
+  margin-left: auto;
+}
+@media (min-width: 768px) and (max-width: 1180px) {
+  header nav {
+    gap: 0.875rem !important;
+  }
+  header nav a {
+    font-size: 13.5px !important;
+    letter-spacing: 0 !important;
+  }
+  header > div > a:first-child span:last-child {
+    font-size: 17px !important;
+  }
+  header > div > div:last-of-type {
+    gap: 0.875rem !important;
+  }
+  header a[href*="docs.google.com"] {
+    padding: 9px 13px !important;
+    font-size: 11.5px !important;
+    letter-spacing: 0.02em !important;
+  }
+  header > div > div:last-of-type a[aria-label] {
+    font-size: 11px !important;
+    letter-spacing: 0.12em !important;
+  }
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  main > section {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+  main > section > div {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  main > section:first-child:not([class*="min-h-"]) {
+    padding-top: 128px !important;
+    padding-bottom: 64px !important;
+  }
+  header nav a {
+    font-size: 13px !important;
+  }
+  main p.ja-eyebrow {
+    font-size: 17px !important;
+  }
+  main p.ja-sublabel {
+    font-size: 16px !important;
+  }
+}
+
+
+/* Header: switch to hamburger below 1024px (prebuilt CSS has no lg: variants) */
+@media (max-width: 1023px) {
+  header nav[aria-label="Primary"],
+  header nav[aria-label="Primary"] + div {
+    display: none !important;
+  }
+  #ja-menu-btn {
+    display: flex !important;
+  }
+  #ja-mobile-nav:not([hidden]) {
+    display: block !important;
+  }
+}
+@media (min-width: 1024px) {
+  header nav[aria-label="Primary"] {
+    display: flex !important;
+  }
+  header nav[aria-label="Primary"] + div {
+    display: flex !important;
+  }
+  #ja-menu-btn,
+  #ja-mobile-nav {
+    display: none !important;
+  }
+}
+
+/* keep header row above the menu scrim */
+header > div:first-child {
+  position: relative;
+  z-index: 3;
+}
+
+
+/* Header: クラス dropdown */
+.ja-navdrop { position: relative; }
+.ja-navtrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 0;
+  padding: 0 0 2px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: var(--ja-ink-70);
+  transition: color .25s ease, opacity .25s ease;
+}
+.ja-navtrigger:hover { color: var(--ja-ink); }
+.ja-navtrigger.active {
+  color: var(--ja-ink);
+  border-bottom: 1px solid var(--color-brand-moss);
+}
+.ja-navtrigger-caret { transition: transform .25s ease; opacity: .75; }
+.ja-navdrop[data-open] .ja-navtrigger-caret,
+.ja-navdrop:hover .ja-navtrigger-caret { transform: rotate(180deg); }
+.ja-navdrop-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 6px);
+  margin-top: 14px;
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  background: #F5EFDF;
+  border: 1px solid rgba(138, 96, 67, .34);
+  box-shadow: 0 18px 40px -24px rgba(67, 52, 43, .45);
+  padding: 6px 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  z-index: 120;
+}
+.ja-navdrop-menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  height: 14px;
+}
+.ja-navdrop:hover .ja-navdrop-menu,
+.ja-navdrop:focus-within .ja-navdrop-menu,
+.ja-navdrop[data-open] .ja-navdrop-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+header nav .ja-navdrop-menu a {
+  display: block;
+  padding: 11px 20px;
+  font-size: 14.5px !important;
+  letter-spacing: 0.03em !important;
+  white-space: nowrap;
+  color: var(--ja-ink);
+  border-bottom: 0;
+  transition: background-color .2s ease;
+}
+header nav .ja-navdrop-menu a:hover { background: rgba(67, 52, 43, .07); }
+@media (min-width: 768px) and (max-width: 1180px) {
+  .ja-navtrigger { font-size: 13.5px; letter-spacing: 0; }
+}
+
+
+/* ── Unified CTA buttons (same style as the home page, all /ja pages) ──── */
+main a.inline-flex:not(.ja-btn-ghost) {
+  background-color: #8A6043 !important;
+  background-image: none !important;
+  border: 0 !important;
+  color: #ffffff !important;
+  border-radius: 2px;
+  font-size: 14px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: none !important;
+  transition: background-color .3s ease;
+}
+main a.inline-flex:not(.ja-btn-ghost):hover {
+  background-color: #6F4B33 !important;
+  color: #ffffff !important;
+}
+main a.ja-btn-ghost {
+  background: transparent !important;
+  border: 1px solid #8A6043 !important;
+  color: #8A6043 !important;
+  border-radius: 2px;
+  font-size: 14px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: none !important;
+  transition: background-color .3s ease, color .3s ease;
+}
+main a.ja-btn-ghost:hover {
+  background: #8A6043 !important;
+  color: #ffffff !important;
+}
+/* On a dark band the primary CTA inverts (as on the home page's olive band) */
+main .brand-dark a.inline-flex:not(.ja-btn-ghost) {
+  background-color: #F5EFDF !important;
+  color: #3e3227 !important;
+}
+main .brand-dark a.inline-flex:not(.ja-btn-ghost):hover {
+  background-color: #E8D9C2 !important;
+  color: #3e3227 !important;
+}
+main .brand-dark a.ja-btn-ghost {
+  border-color: rgba(245, 239, 223, 0.7) !important;
+  color: #F5EFDF !important;
+}
+main .brand-dark a.ja-btn-ghost:hover {
+  background: #F5EFDF !important;
+  color: #3e3227 !important;
+}
+
+/* Never render body copy at the 12px xs step */
+main .text-sm,
+main .text-\[13px\] {
+  font-size: 15px !important;
+}
+
+/* ---- earthy card + reveal system (shared with schools.html pattern) ---- */
+.ja-card {
+  background: #ffffff;
+  border: 1px solid rgba(138, 96, 67, 0.32);
+  border-top: 3px solid #7E8764;
+  border-radius: 6px;
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.3s ease;
+}
+.ja-card:nth-child(4n + 2) { border-top-color: #b17b55; }
+.ja-card:nth-child(4n + 3) { border-top-color: #C98B67; }
+.ja-card:nth-child(4n + 4) { border-top-color: #596044; }
+.ja-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 44px -26px rgba(62, 50, 39, 0.42);
+}
+.ja-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(138, 96, 67, 0.4);
+  flex: none;
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.ja-card:hover .ja-icon { transform: scale(1.08) rotate(-4deg); }
+.ja-portrait { width: 100%; max-width: 230px; margin-inline: auto; }
+@media (min-width: 768px) { .ja-portrait { max-width: none; } }
+.sc-rise { opacity: 1; transform: none; }
+html.js .sc-rise {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+html.js .sc-rise.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.js .sc-rise { opacity: 1 !important; transform: none !important; transition: none; }
+  .ja-card:hover { transform: none; }
+}
+/* body copy floors — no type below 15px on the redesigned pages */
+main .text-xs { font-size: 15px !important; }
+main p.text-sm, main li.text-sm, main span.text-sm, main dd.text-sm { font-size: 15px !important; }
+
+
+/* Header: keep the primary nav on a single line (desktop) */
+@media (min-width: 768px) {
+  header nav[aria-label="Primary"] { flex-wrap: nowrap; gap: 22px; }
+  header nav[aria-label="Primary"] > a,
+  header nav[aria-label="Primary"] .ja-navtrigger {
+    white-space: nowrap;
+    font-size: 13.5px;
+    letter-spacing: 0.04em;
+  }
+}
+@media (min-width: 768px) and (max-width: 1240px) {
+  header nav[aria-label="Primary"] { gap: 14px; }
+  header nav[aria-label="Primary"] > a,
+  header nav[aria-label="Primary"] .ja-navtrigger {
+    font-size: 12.5px;
+    letter-spacing: 0;
+  }
+}
+
+
+/* ── About hero: portrait stays beside the intro text ─────────────────── */
+.ja-hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(20px, 4vw, 56px);
+}
+@media (max-width: 560px) {
+  .ja-hero-split { grid-template-columns: 1fr; gap: 34px; }
+}
+
+/* ── Organic photo frames (forest-walk story) ─────────────────────────── */
+.ja-figure { position: relative; margin: 4px 0 22px; }
+.ja-figure .ja-figure-inner {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #E8D9C2;
+  box-shadow: 0 30px 54px -30px rgba(62, 50, 39, .45);
+}
+.ja-figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ja-figure figcaption {
+  position: relative;
+  z-index: 3;
+  margin-top: 16px;
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ja-ink-70);
+}
+/* soft blob peeking out behind the photo */
+.ja-figure::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 8% -13% -9% 12%;
+  background: #CBD0B8;
+  opacity: .85;
+}
+/* thin hand-drawn-looking outline, offset the other way */
+.ja-figure::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -8% 10% 9% -12%;
+  border: 1px solid rgba(62, 50, 39, .5);
+}
+.ja-figure[data-shape="a"] .ja-figure-inner { border-radius: 62% 38% 46% 54% / 50% 58% 42% 50%; }
+.ja-figure[data-shape="a"]::before { border-radius: 44% 56% 62% 38% / 58% 44% 56% 42%; }
+.ja-figure[data-shape="a"]::after { border-radius: 58% 42% 38% 62% / 44% 60% 40% 56%; }
+.ja-figure[data-shape="b"] .ja-figure-inner { border-radius: 42% 58% 60% 40% / 56% 44% 56% 44%; }
+.ja-figure[data-shape="b"]::before { border-radius: 60% 40% 42% 58% / 44% 58% 42% 56%; background: #F0CFAE; }
+.ja-figure[data-shape="b"]::after { border-radius: 46% 54% 58% 42% / 60% 42% 58% 40%; }
+
+.ja-fig-left,
+.ja-fig-right {
+  width: min(44%, 330px);
+  shape-margin: 26px;
+}
+.ja-fig-left {
+  float: left;
+  margin-right: clamp(22px, 3.6vw, 46px);
+  shape-outside: ellipse(56% 52% at 44% 50%);
+}
+.ja-fig-right {
+  float: right;
+  margin-left: clamp(22px, 3.6vw, 46px);
+  shape-outside: ellipse(56% 52% at 56% 50%);
+}
+.ja-fig-right figcaption { text-align: right; }
+.ja-story { overflow: visible; }
+.ja-story > p { text-wrap: pretty; }
+@media (max-width: 720px) {
+  .ja-fig-left,
+  .ja-fig-right {
+    float: none;
+    width: min(100%, 320px);
+    margin: 30px auto 34px;
+    shape-outside: none;
+  }
+}
+
+
+/* ── Light-only palette: bands replace former dark sections ───────────── */
+.ja-band-sage { background: #DDE1CE !important; }
+.ja-band-sand { background: #E8D9C2 !important; }
+.ja-band-foot { background: #E8D9C2 !important; border-top: 1px solid rgba(138,96,67,.22); }
+.ja-band-card { background: #FBF8EE !important; border: 1px solid rgba(138,96,67,.25); border-radius: 6px; }
+.ja-band h1, .ja-band h2, .ja-band h3, .ja-band h4 { color: #3A3228 !important; }
+.ja-band p, .ja-band li, .ja-band blockquote, .ja-band dd, .ja-band dt { color: #4F4538; }
+.ja-band p.ja-eyebrow, .ja-band p.ja-sublabel { color: #8A6043 !important; }
+.ja-band p.ja-eyebrow::after { background: rgba(138,96,67,.35); }
+.ja-band a:not(.inline-flex):not([style*="background"]) { color: #3A3228; }
+.ja-band-foot a { color: #4F4538; }
+.ja-band-foot .font-display { color: #3A3228; }
+main .ja-band a.inline-flex:not(.ja-btn-ghost) { background-color: #8A6043 !important; color: #fff !important; }
+main .ja-band a.inline-flex:not(.ja-btn-ghost):hover { background-color: #6F4B33 !important; }
+main .ja-band a.ja-btn-ghost { border-color: #8A6043 !important; color: #8A6043 !important; }
+main .ja-band a.ja-btn-ghost:hover { background: #8A6043 !important; color: #fff !important; }
+.ja-band .opacity-60, .ja-band .opacity-70, .ja-band .opacity-80 { opacity: 1 !important; }
+.ja-band .opacity-70 { color: #6B5F4E; }
+/* hero photo scrims: ivory wash instead of dark */
+main > section:first-child .bg-gradient-to-r {
+  background-image: linear-gradient(100deg, rgba(245,239,223,.94) 0%, rgba(245,239,223,.78) 46%, rgba(245,239,223,.15) 100%) !important;
+}
+main > section:first-child .bg-gradient-to-t {
+  background-image: linear-gradient(to top, rgba(245,239,223,.5), transparent 55%) !important;
+}
+
+/* bold all text */
+body,body *{font-weight:700 !important}
