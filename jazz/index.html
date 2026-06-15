@@ -110,9 +110,9 @@
       .hero h1 {
         font-family: var(--display);
         font-weight: 500;
-        line-height: 1.02;
-        font-size: clamp(2.6rem, 8vw, 5.6rem);
-        letter-spacing: 0.01em;
+        line-height: 1.04;
+        font-size: clamp(1.5rem, 3.6vw, 2.4rem);
+        letter-spacing: 0.05em;
         color: #fbf4e6;
         text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
         opacity: 0;
@@ -122,25 +122,37 @@
         font-style: italic;
         color: #e8d4a8;
       }
+      .hero-date {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: clamp(1.5rem, 5vw, 3rem);
+        letter-spacing: 0.08em;
+        color: #e8d4a8;
+        text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
+        margin-bottom: 14px;
+        opacity: 0;
+        animation: rise 1.1s 0.6s forwards;
+      }
       .artist-name {
         font-family: var(--display);
         font-weight: 600;
-        font-size: clamp(1.7rem, 5vw, 3rem);
-        letter-spacing: 0.16em;
+        line-height: 1.02;
+        font-size: clamp(3rem, 11vw, 7rem);
+        letter-spacing: 0.04em;
         color: #fbf4e6;
-        text-shadow: 0 2px 18px rgba(0, 0, 0, 0.75);
-        margin-bottom: 18px;
+        text-shadow: 0 3px 24px rgba(0, 0, 0, 0.8);
+        margin-bottom: 20px;
         opacity: 0;
         animation: rise 1.1s 0.45s forwards;
       }
       .hero .jp-sub {
         font-family: var(--jp);
-        font-weight: 300;
-        font-size: clamp(0.92rem, 2.3vw, 1.12rem);
-        letter-spacing: 0.16em;
+        font-weight: 400;
+        font-size: clamp(1.15rem, 3.2vw, 1.7rem);
+        letter-spacing: 0.14em;
         color: #fbf4e6;
-        margin-top: 22px;
-        text-shadow: 0 1px 14px rgba(0, 0, 0, 0.8);
+        margin-top: 26px;
+        text-shadow: 0 1px 14px rgba(0, 0, 0, 0.85);
         opacity: 0;
         animation: rise 1.1s 0.8s forwards;
       }
@@ -208,13 +220,38 @@
         color: var(--brass);
       }
       .prose {
-        max-width: 56ch;
         margin-top: 24px;
         color: var(--paper-dim);
         font-size: 1.02rem;
       }
       .prose + .prose {
         margin-top: 16px;
+      }
+      .en-block {
+        margin-top: 36px;
+        padding-top: 32px;
+        border-top: 1px solid var(--hairline);
+      }
+      .en-title {
+        font-family: var(--display);
+        font-weight: 500;
+        font-style: italic;
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        color: var(--brass);
+        margin-bottom: 18px;
+      }
+      .prose.en {
+        font-style: italic;
+        color: rgba(74, 58, 38, 0.6);
+        font-size: 0.96rem;
+        line-height: 1.75;
+      }
+      .prose.en em {
+        font-style: normal;
+        color: var(--brass);
+      }
+      .prose.en:first-child {
+        margin-top: 0;
       }
       .jp {
         font-family: var(--jp);
@@ -241,20 +278,26 @@
       }
       .slot .time {
         font-family: var(--display);
-        font-size: 1.6rem;
+        font-size: 1.05rem;
         color: var(--brass);
-        letter-spacing: 0.02em;
-        margin-bottom: 8px;
+        letter-spacing: 0.04em;
+        margin-bottom: 5px;
       }
       .slot h3 {
         font-family: var(--display);
         font-weight: 500;
-        font-size: 1.25rem;
-        margin-bottom: 6px;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
       }
       .slot p {
         color: var(--paper-dim);
-        font-size: 0.93rem;
+        font-size: 0.8rem;
+      }
+      .stage-grid-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .stage-grid-3 .slot {
+        padding: clamp(20px, 2.6vw, 30px);
       }
 
       /* details */
@@ -290,9 +333,12 @@
       /* about with portrait */
       .about-grid {
         display: grid;
-        grid-template-columns: 0.85fr 1.15fr;
-        gap: clamp(36px, 5vw, 70px);
-        align-items: center;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(36px, 5vw, 64px);
+        align-items: start;
+      }
+      .about-grid .en-block {
+        grid-column: 1/-1;
       }
       .portrait {
         position: relative;
@@ -359,12 +405,19 @@
         transform: translateY(-2px);
       }
       .links a.yt {
-        color: var(--brass);
-        border-bottom: 1px solid var(--hairline);
-        padding-bottom: 4px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 30px;
+        border-radius: 2px;
+        color: #fbf4e6;
+        font-weight: 500;
+        background: #c0392b;
+        box-shadow: 0 6px 20px rgba(192, 57, 43, 0.28);
       }
       .links a.yt:hover {
-        color: var(--paper);
+        transform: translateY(-2px);
+        background: #a93226;
       }
 
       /* CTA */
@@ -517,12 +570,15 @@
         .stage-grid {
           grid-template-columns: 1fr;
         }
+        .stage-grid-3 {
+          grid-template-columns: 1fr;
+        }
         .about-grid {
           grid-template-columns: 1fr;
           gap: 34px;
         }
         .portrait {
-          max-width: 340px;
+          max-width: 440px;
           margin: 0 auto;
         }
         .fact {
@@ -554,13 +610,11 @@
     <header class="hero">
       <div class="hero-bg"></div>
       <div class="hero-inner">
-        <div class="eyebrow">Roppongi · Sat, June 27, 2026</div>
         <div class="artist-name">SETSUKO HATA</div>
-        <h1>Lunch Time<br /><em>Jazz</em></h1>
+        <div class="hero-date jp">2026年6月27日（土）＠All of Me</div>
+        <h1>Lunch &amp; Vocal Jazz Live</h1>
         <div class="wave" id="wave"></div>
-        <p class="jp-sub jp">
-          2026年6月27日（土）六本木<br />帰国後初の東京ソロコンサート。8人編成で贈る、昼下がりのジャズ。
-        </p>
+        <p class="jp-sub jp">15年ぶりの帰国、東京初のソロライブ。</p>
       </div>
     </header>
 
@@ -586,14 +640,53 @@
         <p class="prose jp">
           セツコの音楽には、長年にわたる芸術的探求と内面的な成長の軌跡、そして「今この瞬間を生きること」への深いメッセージが込められています。
         </p>
+        <div class="en-block">
+          <p class="en-title">A Hymn to Life Itself</p>
+          <p class="prose en">
+            The music of Setsuko Hata is a hymn to life itself. Thirteen years
+            of musical activity in the United States, and the pursuit of yoga
+            and meditation in India — the experiences, insights, and inner
+            transformations gathered along that journey breathe through each of
+            her compositions. Setsuko continues her work with a single theme: to
+            quietly awaken the life force and sensitivity within each listener,
+            and to offer inspiration toward a freer, richer life.
+          </p>
+          <p class="prose en">
+            Held on Saturday, June 27 at the Roppongi jazz club "All of Me,"
+            <em>LUNCH &amp; VOCAL JAZZ LIVE</em> is Setsuko's first Tokyo solo
+            concert since relocating back to Japan after fifteen years abroad.
+            The program features jazz standards arranged by Setsuko herself,
+            alongside original works for which she has written the lyrics,
+            composed the music, and created the arrangements.
+          </p>
+          <p class="prose en">
+            Rooted in jazz, blues, soul, and funk, the sound is woven by a rich
+            ensemble — piano, bass, and drums joined by trumpet, saxophone, and
+            trombone — where stillness and passion, prayer and joy intersect.
+          </p>
+          <p class="prose en">
+            Improvisation among the musicians and reinterpretations of Indian
+            Sanskrit songs as jazz are among the highlights, inviting you on a
+            musical journey that transcends the boundaries of genre and culture.
+          </p>
+          <p class="prose en">
+            Within her music lies the trace of a long artistic and inner
+            journey, and a deep message about living fully in this present
+            moment.
+          </p>
+        </div>
       </div>
     </section>
 
     <section class="band" style="padding-top: 0">
       <div class="wrap reveal">
-        <div class="sect-label">The Stages</div>
-        <p class="lead">Two sets, one afternoon.</p>
-        <div class="stage-grid">
+        <div class="sect-label">Schedule</div>
+        <div class="stage-grid stage-grid-3">
+          <div class="slot">
+            <div class="time">Open</div>
+            <h3>12PM</h3>
+            <p class="jp">Door Open &amp; Lunch</p>
+          </div>
           <div class="slot">
             <div class="time">1st Stage</div>
             <h3>13:00 – 14:00</h3>
@@ -619,22 +712,10 @@
             </dd>
           </div>
           <div class="fact">
-            <dt>Doors</dt>
-            <dd>Open 12:00<span class="sub jp">開場 12:00</span></dd>
-          </div>
-          <div class="fact">
             <dt>Lunch</dt>
             <dd>
               Handmade Italian by Chef Michiko<span class="sub jp"
                 >みちこシェフによる手作りイタリアン。新鮮で無添加の、体にやさしい本格イタリアンをお楽しみください。</span
-              >
-            </dd>
-          </div>
-          <div class="fact">
-            <dt>Stages</dt>
-            <dd>
-              1st 13:00–14:00 · 2nd 14:30–15:30<span class="sub jp"
-                >2ステージ制</span
               >
             </dd>
           </div>
@@ -664,7 +745,7 @@
             <dd>
               Setsuko Hata Octet<span class="sub jp"
                 >上保一恵（Piano）／酒井一郎（Bass）／山下暢彦（Drums）／北川匡厚（Trumpet）／亀岡純一（Tenor
-                Sax）／中野貴子（Alto Sax）／野原靖雄（Trombone）</span
+                Sax）／中野貴子（Alt Sax）／野原靖雄（Trombone）</span
               >
             </dd>
           </div>
@@ -703,7 +784,7 @@
       <div class="wrap reveal">
         <div class="about-grid">
           <div class="portrait">
-            <img src="./setsuko_jazz_headshot.png" alt="Setsuko Hata" />
+            <img src="setsuko_jazz_headshot.png" alt="Setsuko Hata" />
           </div>
           <div>
             <div class="sect-label">The Artist</div>
@@ -712,7 +793,7 @@
             </p>
             <p class="prose jp" style="margin-top: 18px">
               秦
-              節子。大阪府出身。ジャズシンガー、作曲家、編曲家、ハタヨガ講師。大阪市立大学生活科学部食品栄養学科卒業。21歳で躁うつ病を経験するも克服し、2011年に音楽を学ぶため渡米。
+              節子。大阪府出身。ジャズシンガー、作曲家、編曲家、ハタヨガ講師。大阪市立大学生活科学部食品栄養学科卒業。2011年に音楽を学ぶため渡米。
             </p>
             <p class="prose jp">
               その後13年間、ニューヨーク、コロラド、ロサンゼルスを拠点に、プロのジャズシンガー・作曲家として活動。ニューヨークでジャズボーカルを学び、北コロラド大学大学院ではジャズに加え、ビッグバンド、オーケストラ、映画音楽など幅広いジャンルの作曲・編曲を研究。同大学では日本人初となる教授アシスタントを務めた。
@@ -728,7 +809,7 @@
               公認のハタヨガ講師資格を取得。現在、日本国内で認定を受けた講師はわずか4名のみであり、その一人として活動している。
             </p>
             <p class="prose jp">
-              セツコの音楽は、ジャズの伝統に根ざしながらも、人生の探求、内なる成長、そして自然とのつながりを独自の世界観で表現している。2026年より活動拠点を日本へ移し、「ストレスやうつに苦しむ人を一人でも減らし、一人ひとりが本来持つ可能性を開花できる社会をつくる」というビジョンのもと活動を展開。音楽を通じて人々の心に希望と感動を届けるとともに、ハタヨガ講師として人生を変革するための実践的なツールを伝えている。
+              セツコの音楽は、ジャズの伝統に根ざしながらも、人生の探求、内なる成長、そして自然とのつながりを独自の世界観で表現している。2026年より活動拠点を日本へ移し、「一人ひとりが本来持つ可能性を開花できる社会をつくる」というビジョンのもと活動を展開。音楽を通じて人々の心に希望と感動を届けるとともに、ハタヨガ講師として人生を豊かにするための実践的なツールを伝えている。
             </p>
             <p class="prose jp">
               音楽とヨガという二つのアプローチを通じて、人々の内なる生命力と可能性を呼び覚ますことを活動のテーマとしている。
@@ -742,13 +823,58 @@
                 >＠setsuko_hata をフォロー ↗</a
               >
               <a
-                href="https://www.youtube.com/watch?v=vX_uhpmGQmQ"
+                href="https://www.youtube.com/@setsukohata"
                 target="_blank"
                 rel="noopener"
                 class="yt"
-                >YouTube ↗</a
+                >YouTube チャンネル登録 ↗</a
               >
             </div>
+          </div>
+          <div class="en-block">
+            <p class="en-title">Setsuko Hata</p>
+            <p class="prose en">
+              Setsuko Hata. Born in Osaka, Japan — jazz singer, composer,
+              arranger, and Hatha Yoga teacher. A graduate of Osaka City
+              University's Faculty of Human Life Science, Department of Food and
+              Nutrition. She moved to the United States in 2011 to study music.
+            </p>
+            <p class="prose en">
+              Over the following thirteen years she worked as a professional
+              jazz singer and composer based in New York, Colorado, and Los
+              Angeles. She studied jazz vocals in New York, and at the
+              University of Northern Colorado graduate school she researched
+              composition and arrangement across a wide range of genres — jazz,
+              big band, orchestra, and film music — becoming the first Japanese
+              national to serve as a teaching assistant there.
+            </p>
+            <p class="prose en">
+              Performing across the United States, she produced numerous
+              self-organized concerts, including a solo show at the renowned
+              Catalina Jazz Club in Los Angeles. In 2024 she appeared on the
+              Yomiuri TV documentary program "Gutto! Chikyu-bin," which featured
+              her work as a jazz singer.
+            </p>
+            <p class="prose en">
+              In 2024 she spent roughly a year and a half exploring yoga and
+              meditation at the Isha Foundation in India. Completing over 1,750
+              hours of rigorous training, she earned the Sadhguru-certified
+              Hatha Yoga teacher qualification — a rare certification held by
+              only four teachers in Japan today, of whom she is one.
+            </p>
+            <p class="prose en">
+              Her music, while rooted in the jazz tradition, expresses a
+              distinctive worldview of life's inquiry, inner growth, and
+              connection with nature. Relocating her base to Japan in 2026, she
+              works under the vision of "creating a society where each person
+              can blossom into their innate potential." Through music she brings
+              hope and emotion to people's hearts, and as a Hatha Yoga teacher
+              she shares practical tools for enriching one's life.
+            </p>
+            <p class="prose en">
+              Through these two approaches — music and yoga — her theme is to
+              awaken the inner life force and possibility within each person.
+            </p>
           </div>
         </div>
       </div>
@@ -785,7 +911,12 @@
 
     <section class="band cta-band">
       <div class="wrap reveal">
-        <h2 class="cta-h">Come sit close to<br />the <em>sound</em>.</h2>
+        <h2 class="cta-h">
+          Come Experience the<br /><em>Blissful</em> Showtime.
+        </h2>
+        <p class="cta-jp jp" style="margin-top: 14px; font-size: 1.05rem">
+          Looking Forward to Seeing You!
+        </p>
         <p class="cta-jp jp">
           前売り 5,000円／当日
           6,600円　席数には限りがあります。どうぞ、お早めに。

@@ -1,0 +1,2010 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>秦節子 — 本格ハタヨガ｜企業健康経営・個人プログラム</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #4a3f2e;
+        --ink-soft: #6b5d48;
+        --paper: #faf6ee;
+        --paper-warm: #f1e9da;
+        --sand: #e6dac4;
+        --clay: #c0703f;
+        --clay-deep: #a85a2e;
+        --moss: #94a06f;
+        --moss-deep: #828e60;
+        --gold: #bf9a5e;
+        --line: rgba(74, 63, 46, 0.16);
+        --mincho: "Shippori Mincho", serif;
+        --gothic: "Zen Kaku Gothic New", sans-serif;
+        --latin: "Cormorant Garamond", serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--gothic);
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.9;
+        font-weight: 300;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      .wrap {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+      .narrow {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--mincho);
+        font-weight: 500;
+        letter-spacing: 0.04em;
+      }
+      .eyebrow {
+        font-family: var(--latin);
+        font-style: italic;
+        font-size: 1.05rem;
+        letter-spacing: 0.12em;
+        color: var(--clay);
+        display: block;
+        margin-bottom: 1rem;
+      }
+      .section-num {
+        font-family: var(--latin);
+        font-size: 0.9rem;
+        letter-spacing: 0.3em;
+        color: var(--gold);
+        display: block;
+        margin-bottom: 0.6rem;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(246, 242, 234, 0.82);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+        transition: transform 0.4s ease;
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+      }
+      .brand {
+        font-family: var(--mincho);
+        font-size: 1.15rem;
+        letter-spacing: 0.18em;
+        font-weight: 600;
+      }
+      .brand span {
+        font-family: var(--latin);
+        font-style: italic;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        color: var(--clay);
+        display: block;
+        margin-top: -2px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        font-size: 0.82rem;
+        letter-spacing: 0.1em;
+      }
+      .nav-links a {
+        color: var(--ink-soft);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--clay);
+      }
+      .nav-cta {
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        padding: 0.55rem 1.4rem;
+        border: 1px solid var(--ink);
+        border-radius: 40px;
+        color: var(--ink);
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .nav-cta:hover {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--ink);
+      }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: auto;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 92px 0 40px;
+        overflow: hidden;
+        min-height: auto;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+          radial-gradient(
+            circle at 82% 22%,
+            rgba(191, 154, 94, 0.2),
+            transparent 48%
+          ),
+          radial-gradient(
+            circle at 12% 85%,
+            rgba(125, 138, 92, 0.18),
+            transparent 52%
+          ),
+          linear-gradient(160deg, #fbf7ef 0%, #f2e9d8 100%);
+      }
+      .hero-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 3.5rem;
+        align-items: center;
+        width: 100%;
+      }
+      .hero-copy {
+        max-width: 640px;
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 4.6vw, 3.5rem);
+        line-height: 1.3;
+        font-weight: 600;
+        margin: 0.4rem 0 1.6rem;
+      }
+      .hero h1 em {
+        font-family: var(--latin);
+        font-style: italic;
+        color: var(--clay);
+        font-weight: 500;
+      }
+      .hero p {
+        font-size: 1.06rem;
+        color: var(--ink-soft);
+        max-width: 32em;
+        margin-bottom: 2.4rem;
+      }
+      .hero-ctas {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .hero-photo {
+        position: relative;
+        justify-self: center;
+      }
+      .hero-photo .frame {
+        width: min(40vw, 410px);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 6px solid var(--paper);
+        box-shadow:
+          0 26px 60px rgba(74, 63, 46, 0.22),
+          0 0 0 1px var(--line);
+        position: relative;
+        z-index: 2;
+      }
+      .hero-photo .frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .hero-photo .ring {
+        position: absolute;
+        inset: -26px;
+        border: 1px solid rgba(191, 154, 94, 0.55);
+        border-radius: 50%;
+        z-index: 1;
+        animation: spin 38s linear infinite;
+      }
+      .hero-photo .ring::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--clay);
+        transform: translateX(-50%);
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .hero-photo .tag {
+        position: absolute;
+        bottom: 6%;
+        left: -6%;
+        z-index: 3;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 40px;
+        padding: 0.55rem 1.3rem;
+        font-family: var(--latin);
+        font-style: italic;
+        font-size: 0.92rem;
+        color: var(--clay);
+        box-shadow: 0 10px 26px rgba(74, 63, 46, 0.14);
+      }
+      .btn {
+        display: inline-block;
+        font-family: var(--gothic);
+        font-size: 0.92rem;
+        letter-spacing: 0.06em;
+        padding: 0.95rem 2.1rem;
+        border-radius: 44px;
+        text-decoration: none;
+        transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+        cursor: pointer;
+        border: 1px solid transparent;
+      }
+      .btn-primary {
+        background: var(--clay);
+        color: #fff;
+        box-shadow: 0 8px 24px rgba(138, 77, 48, 0.28);
+      }
+      .btn-primary:hover {
+        background: var(--clay-deep);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(138, 77, 48, 0.36);
+      }
+      .btn-ghost {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+      .btn-ghost:hover {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .hero-meta {
+        position: absolute;
+        bottom: 42px;
+        left: 28px;
+        z-index: 2;
+        font-family: var(--latin);
+        font-style: italic;
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        color: var(--ink-soft);
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+      .hero-meta::before {
+        content: "";
+        width: 46px;
+        height: 1px;
+        background: var(--clay);
+      }
+
+      /* lotus svg */
+      .petal {
+        fill: none;
+        stroke: var(--clay);
+        stroke-width: 1.1;
+        opacity: 0.5;
+      }
+      .petal2 {
+        fill: none;
+        stroke: var(--gold);
+        stroke-width: 1.1;
+        opacity: 0.4;
+      }
+
+      /* ── SECTION base ── */
+      section {
+        padding: 56px 0;
+        position: relative;
+      }
+      .section-head {
+        margin-bottom: 1.8rem;
+      }
+      .section-head h2 {
+        font-size: clamp(2rem, 4vw, 2.9rem);
+        line-height: 1.3;
+      }
+      .section-head .lead {
+        font-size: 1.05rem;
+        color: var(--ink-soft);
+        margin-top: 1.2rem;
+        max-width: 34em;
+      }
+
+      /* ── ABOUT HATHA ── */
+      .hatha {
+        background: var(--paper-warm);
+      }
+      .hatha-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.6rem;
+        align-items: start;
+      }
+      .hatha-eyebrow {
+        font-size: 1.7rem;
+        font-style: normal;
+        font-family: var(--mincho);
+        color: var(--ink);
+        letter-spacing: 0.06em;
+        margin-bottom: 0.7rem;
+      }
+      .hatha-text p {
+        margin-bottom: 1.3rem;
+        color: var(--ink-soft);
+        font-size: 1.08rem;
+      }
+      .hatha-text p strong {
+        font-family: var(--mincho);
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .repertoire {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 2rem 2rem;
+      }
+      .repertoire h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.3rem;
+      }
+      .repertoire .sub {
+        font-family: var(--latin);
+        font-style: italic;
+        color: var(--clay);
+        font-size: 0.95rem;
+        margin-bottom: 1.4rem;
+        display: block;
+      }
+      .benefit2-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem 1.4rem;
+      }
+      .b2 {
+        display: flex;
+        gap: 0.55rem;
+        align-items: flex-start;
+        font-family: var(--mincho);
+        font-size: 1.02rem;
+        color: var(--ink);
+        line-height: 1.5;
+      }
+      .b2 .bk {
+        color: var(--moss-deep);
+        flex-shrink: 0;
+        font-size: 0.85rem;
+        margin-top: 0.2rem;
+      }
+      @media (max-width: 600px) {
+        .benefit2-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ── HATHA BENEFITS ── */
+      .benefits {
+        margin-top: 2.4rem;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 3rem 3rem 2.6rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .benefits-head {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+      .benefits-head h3 {
+        font-size: 1.5rem;
+        color: var(--moss-deep);
+      }
+      .benefits-head .en {
+        font-family: var(--latin);
+        font-style: italic;
+        color: var(--clay);
+        font-size: 1rem;
+      }
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem 2.4rem;
+        position: relative;
+        z-index: 2;
+        max-width: 78%;
+      }
+      .benefit {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.8rem;
+        align-items: start;
+        padding: 0.55rem 0;
+      }
+      .benefit .ck {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: rgba(148, 160, 111, 0.16);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--moss-deep);
+        font-size: 0.7rem;
+        margin-top: 0.15rem;
+      }
+      .benefit .bt {
+        font-family: var(--mincho);
+        font-size: 1.05rem;
+        color: var(--ink);
+        line-height: 1.5;
+      }
+      .benefits-lotus {
+        position: absolute;
+        right: -30px;
+        bottom: -40px;
+        width: 230px;
+        z-index: 1;
+        opacity: 0.92;
+        pointer-events: none;
+      }
+      @media (max-width: 760px) {
+        .benefits {
+          padding: 2.2rem 1.8rem;
+        }
+        .benefits-grid {
+          grid-template-columns: 1fr;
+          max-width: 100%;
+        }
+        .benefits-lotus {
+          display: none;
+        }
+      }
+
+      /* ── PROFILE ── */
+      .profile {
+        background: var(--paper-warm);
+      }
+      .profile .eyebrow {
+        color: var(--clay);
+      }
+      .profile .section-num {
+        color: var(--clay);
+      }
+      .profile-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .profile-portrait {
+        aspect-ratio: 4/5;
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+        background: var(--sand);
+        border: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .profile-portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .profile-portrait .seal {
+        position: absolute;
+        bottom: 18px;
+        right: 18px;
+        width: 74px;
+        height: 74px;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--mincho);
+        font-size: 1.4rem;
+        color: var(--gold);
+      }
+      .profile h2 {
+        color: var(--ink);
+        font-size: clamp(2rem, 4vw, 2.9rem);
+      }
+      .profile-name-en {
+        font-family: var(--latin);
+        font-style: italic;
+        font-size: 1.3rem;
+        color: var(--clay);
+        margin: 0.3rem 0 1.8rem;
+        letter-spacing: 0.06em;
+      }
+      .profile-bio p {
+        color: var(--ink-soft);
+        margin-bottom: 0.9rem;
+      }
+      .cred {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin-top: 1.6rem;
+        border-top: 1px solid var(--line);
+        padding-top: 1.4rem;
+      }
+      .cred .n {
+        font-family: var(--latin);
+        font-size: 2.2rem;
+        color: var(--clay);
+        line-height: 1;
+      }
+      .cred .l {
+        font-size: 0.82rem;
+        color: var(--ink-soft);
+        margin-top: 0.4rem;
+        letter-spacing: 0.04em;
+      }
+
+      /* ── PERSONAL PROGRAMS ── */
+      .programs {
+        background: var(--paper);
+      }
+      .prog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.6rem;
+        margin-top: 1rem;
+      }
+      .prog-card {
+        background: var(--paper-warm);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 2.4rem 2rem;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.4s;
+        position: relative;
+        overflow: hidden;
+      }
+      .prog-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--clay);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+      }
+      .prog-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(28, 26, 23, 0.1);
+      }
+      .prog-card:hover::before {
+        transform: scaleX(1);
+      }
+      .prog-tier {
+        font-family: var(--latin);
+        font-style: italic;
+        font-size: 0.92rem;
+        letter-spacing: 0.1em;
+        color: var(--clay);
+        margin-bottom: 0.8rem;
+      }
+      .prog-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+      }
+      .prog-card .desc {
+        font-size: 0.92rem;
+        color: var(--ink-soft);
+        margin-bottom: 1.6rem;
+        flex-grow: 1;
+      }
+      .prog-card .price {
+        font-family: var(--mincho);
+        font-size: 1.5rem;
+        color: var(--ink);
+        margin-bottom: 0.3rem;
+      }
+      .prog-card .price small {
+        font-size: 0.78rem;
+        color: var(--ink-soft);
+        font-family: var(--gothic);
+      }
+      .prog-card .note {
+        font-size: 0.78rem;
+        color: var(--ink-soft);
+        margin-bottom: 1.6rem;
+      }
+      .prog-link {
+        font-size: 0.88rem;
+        letter-spacing: 0.06em;
+        color: var(--clay);
+        text-decoration: none;
+        border-bottom: 1px solid var(--clay);
+        padding-bottom: 2px;
+        align-self: flex-start;
+        transition: gap 0.3s;
+      }
+      .prog-link:hover {
+        color: var(--clay-deep);
+      }
+
+      /* ── COURSES ── */
+      .courses {
+        background: var(--paper-warm);
+      }
+      .course-intro {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 2rem 2.2rem;
+        margin-bottom: 1.8rem;
+        border-left: 4px solid var(--clay);
+      }
+      .course-intro h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.9rem;
+        color: var(--ink);
+      }
+      .course-intro p {
+        color: var(--ink-soft);
+        max-width: 50em;
+      }
+      .course-intro p strong {
+        font-family: var(--mincho);
+        font-weight: 500;
+        color: var(--clay-deep);
+      }
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+      }
+      .course-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 1.8rem 1.7rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+      }
+      .course-card .ico {
+        font-size: 1.4rem;
+        margin-bottom: 0.6rem;
+        display: block;
+      }
+      .course-card h3 {
+        font-size: 1.45rem;
+        margin-bottom: 0.2rem;
+      }
+      .course-card .romaji {
+        font-family: var(--latin);
+        font-style: italic;
+        color: var(--clay);
+        font-size: 1rem;
+        margin-bottom: 1.4rem;
+        display: block;
+      }
+      .course-sched {
+        list-style: none;
+        margin-bottom: 1.2rem;
+      }
+      .course-sched li {
+        padding: 0.85rem 0;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 1.12rem;
+        align-items: baseline;
+      }
+      .course-sched li .day {
+        font-family: var(--mincho);
+        color: var(--ink);
+        font-size: 1.18rem;
+      }
+      .course-sched li .time {
+        color: var(--clay-deep);
+        font-size: 1.05rem;
+        white-space: nowrap;
+        font-weight: 500;
+      }
+      .course-note {
+        font-size: 0.95rem;
+        color: var(--ink);
+        background: var(--sand);
+        border-radius: 5px;
+        padding: 1rem 1.1rem;
+        margin-bottom: 1.4rem;
+        line-height: 1.75;
+      }
+      .course-note strong {
+        font-family: var(--mincho);
+        font-weight: 600;
+        color: var(--clay-deep);
+      }
+      .course-note ul {
+        margin: 0.5rem 0 0;
+        padding-left: 1.2rem;
+      }
+      .course-note li {
+        margin-bottom: 0.35rem;
+        color: var(--ink);
+      }
+      .course-price {
+        margin-top: auto;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        border-top: 1px solid var(--line);
+        padding-top: 1.3rem;
+      }
+      .course-price .p {
+        font-family: var(--mincho);
+        font-size: 1.55rem;
+        color: var(--ink);
+      }
+      .course-price .p small {
+        font-size: 0.78rem;
+        color: var(--ink-soft);
+        font-family: var(--gothic);
+        margin-left: 0.2rem;
+      }
+      .course-price a {
+        font-size: 0.86rem;
+        letter-spacing: 0.04em;
+        color: #fff;
+        background: var(--clay);
+        padding: 0.6rem 1.3rem;
+        border-radius: 40px;
+        text-decoration: none;
+        transition: background 0.3s;
+        white-space: nowrap;
+      }
+      .course-price a:hover {
+        background: var(--clay-deep);
+      }
+      .course-about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.4rem;
+        margin-bottom: 1.8rem;
+      }
+      .about-lead {
+        grid-column: 1 / -1;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        border-left: 4px solid var(--clay);
+        padding: 1.4rem 1.8rem;
+      }
+      .about-lead h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.7rem;
+        color: var(--ink);
+      }
+      .about-lead p {
+        font-size: 1.02rem;
+        color: var(--ink-soft);
+      }
+      .about-lead p b {
+        font-family: var(--mincho);
+        font-weight: 500;
+        color: var(--clay-deep);
+      }
+      .about-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 1.6rem 1.7rem;
+      }
+      .about-card .ico {
+        font-size: 1.3rem;
+      }
+      .about-card h4 {
+        font-family: var(--mincho);
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: var(--ink);
+        margin: 0.5rem 0 0.2rem;
+      }
+      .about-card .romaji {
+        font-family: var(--latin);
+        font-style: italic;
+        color: var(--clay);
+        font-size: 0.92rem;
+        display: block;
+        margin-bottom: 0.9rem;
+      }
+      .about-card p {
+        font-size: 0.92rem;
+        color: var(--ink-soft);
+        margin-bottom: 0.9rem;
+      }
+      .about-card .ben {
+        font-size: 0.86rem;
+        color: var(--moss-deep);
+        font-family: var(--mincho);
+        line-height: 1.7;
+      }
+      .about-card .ben b {
+        color: var(--clay-deep);
+        font-weight: 500;
+      }
+      @media (max-width: 760px) {
+        .course-about {
+          grid-template-columns: 1fr;
+        }
+      }
+      .venue-box {
+        margin-top: 1.8rem;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 2.2rem 2.4rem;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 1.6rem;
+        align-items: center;
+      }
+      .venue-box .pin {
+        font-size: 1.6rem;
+      }
+      .venue-box .vinfo h4 {
+        font-family: var(--mincho);
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--ink);
+        margin-bottom: 0.3rem;
+      }
+      .venue-box .vinfo .addr {
+        font-size: 1rem;
+        color: var(--ink);
+        margin-bottom: 0.3rem;
+      }
+      .venue-box .vinfo .access {
+        font-size: 0.88rem;
+        color: var(--ink-soft);
+      }
+      .venue-box .vmap {
+        font-size: 0.88rem;
+        color: #fff;
+        background: var(--moss-deep);
+        padding: 0.7rem 1.4rem;
+        border-radius: 40px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background 0.3s;
+      }
+      .venue-box .vmap:hover {
+        background: var(--moss);
+      }
+      @media (max-width: 640px) {
+        .venue-box {
+          grid-template-columns: 1fr;
+          text-align: left;
+          gap: 1rem;
+        }
+        .venue-box .vmap {
+          justify-self: start;
+        }
+      }
+
+      /* ── CORPORATE ── */
+      .corporate {
+        background: var(--paper-warm);
+      }
+      .corporate .eyebrow {
+        color: var(--clay);
+      }
+      .corporate .section-num {
+        color: var(--gold);
+      }
+      .corp-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.2rem;
+        align-items: start;
+      }
+      .corporate h2 {
+        color: var(--ink);
+        font-size: clamp(2rem, 4vw, 2.9rem);
+      }
+      .corporate .lead {
+        color: var(--ink-soft);
+      }
+      .corp-points {
+        list-style: none;
+        margin-top: 1.4rem;
+      }
+      .corp-points li {
+        padding: 1.3rem 0;
+        border-top: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1.2rem;
+        align-items: start;
+      }
+      .corp-points li .ix {
+        font-family: var(--latin);
+        font-size: 1.3rem;
+        color: var(--moss-deep);
+        font-style: italic;
+        padding-top: 0.1rem;
+      }
+      .corp-points li .bd h4 {
+        font-family: var(--mincho);
+        font-size: 1.18rem;
+        font-weight: 500;
+        color: var(--ink);
+        margin-bottom: 0.35rem;
+      }
+      .corp-points li .bd p {
+        font-size: 1rem;
+        color: var(--ink-soft);
+      }
+      .corp-formats {
+        background: var(--moss-deep);
+        border-radius: 8px;
+        padding: 2.2rem 2.1rem;
+        color: #fff;
+      }
+      .corp-formats h3 {
+        color: #fff;
+        font-size: 1.3rem;
+        margin-bottom: 1.4rem;
+      }
+      .fmt {
+        padding: 1.05rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      .fmt:last-child {
+        border-bottom: none;
+      }
+      .fmt .ft {
+        font-family: var(--mincho);
+        font-size: 1.15rem;
+        color: #fff;
+        margin-bottom: 0.25rem;
+      }
+      .fmt .fd {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .corp-cta {
+        margin-top: 1.8rem;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        padding: 1.4rem 1.5rem;
+        text-align: center;
+      }
+      .corp-cta .cta-label {
+        font-family: var(--mincho);
+        font-size: 1.1rem;
+        color: #fff;
+        margin-bottom: 1rem;
+        display: block;
+      }
+      .corp-cta .cline {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0.4rem 0;
+        font-size: 1.08rem;
+      }
+      .corp-cta .cline a {
+        color: #fff;
+        text-decoration: none;
+        font-family: var(--mincho);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      .corp-cta .cline a:hover {
+        border-color: #fff;
+      }
+
+      /* ── EVENT 6/27 ── */
+      .event {
+        background: linear-gradient(165deg, #f4ede0 0%, #e8e0cd 100%);
+        color: var(--ink);
+        overflow: hidden;
+      }
+      .event .eyebrow {
+        color: var(--clay);
+      }
+      .event-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
+        align-items: center;
+      }
+      .event-date {
+        font-family: var(--latin);
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 1.4rem;
+      }
+      .event-date .d {
+        font-size: 5rem;
+        line-height: 0.9;
+        color: var(--clay);
+        font-weight: 500;
+      }
+      .event-date .m {
+        font-size: 1.2rem;
+        font-style: italic;
+        color: var(--ink-soft);
+        letter-spacing: 0.1em;
+      }
+      .event h2 {
+        color: var(--ink);
+        font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+        margin-bottom: 1.2rem;
+      }
+      .event h2 em {
+        font-family: var(--latin);
+        font-style: italic;
+        color: var(--clay);
+      }
+      .event-venue {
+        font-size: 0.95rem;
+        color: var(--ink-soft);
+        letter-spacing: 0.05em;
+        margin-bottom: 2rem;
+      }
+      .event-venue strong {
+        font-family: var(--mincho);
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .timeline {
+        list-style: none;
+      }
+      .timeline li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1.6rem;
+        padding-bottom: 1.8rem;
+        position: relative;
+      }
+      .timeline li::before {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 1.7rem;
+        bottom: -0.2rem;
+        width: 1px;
+        background: rgba(192, 112, 63, 0.4);
+      }
+      .timeline li:last-child::before {
+        display: none;
+      }
+      .timeline .dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--clay);
+        margin-top: 0.5rem;
+        position: relative;
+        z-index: 1;
+      }
+      .timeline .tt {
+        font-family: var(--latin);
+        font-style: italic;
+        color: var(--clay);
+        font-size: 0.95rem;
+        margin-bottom: 0.2rem;
+      }
+      .timeline .th {
+        font-family: var(--mincho);
+        font-size: 1.15rem;
+        color: var(--ink);
+        margin-bottom: 0.3rem;
+      }
+      .timeline .tp {
+        font-size: 0.88rem;
+        color: var(--ink-soft);
+      }
+      .event-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 2.6rem;
+        box-shadow: 0 16px 40px rgba(74, 63, 46, 0.12);
+      }
+      .event-card .label {
+        font-family: var(--latin);
+        font-style: italic;
+        color: var(--clay);
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+      }
+      .event-card h3 {
+        color: var(--ink);
+        font-size: 1.5rem;
+        margin: 0.5rem 0 1.6rem;
+      }
+      .event-card .ec-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 0.92rem;
+      }
+      .event-card .ec-row span:first-child {
+        color: var(--ink-soft);
+      }
+      .event-card .ec-row span:last-child {
+        font-family: var(--mincho);
+        color: var(--ink);
+      }
+      .event-card .btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 1.8rem;
+      }
+
+      /* ── FINAL CTA ── */
+      .final {
+        background: var(--paper-warm);
+        text-align: center;
+      }
+      .final h2 {
+        font-size: clamp(2rem, 4.5vw, 3.2rem);
+        line-height: 1.35;
+        margin-bottom: 1.4rem;
+      }
+      .final h2 em {
+        font-family: var(--latin);
+        font-style: italic;
+        color: var(--clay);
+      }
+      .final p {
+        color: var(--ink-soft);
+        max-width: 32em;
+        margin: 0 auto 1.8rem;
+        font-size: 1.05rem;
+      }
+      .final-ctas {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .line-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 0 auto 1.6rem;
+        max-width: 420px;
+        box-shadow: 0 16px 40px rgba(74, 63, 46, 0.1);
+      }
+      .line-card .qr {
+        width: 180px;
+        height: 180px;
+        border-radius: 8px;
+        display: block;
+        margin: 0 auto 1rem;
+      }
+      .line-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: var(--ink);
+      }
+      .line-card p {
+        font-size: 0.95rem;
+        color: var(--ink-soft);
+        margin: 0 auto 0.4rem;
+        max-width: 26em;
+      }
+      .line-btn {
+        display: inline-block;
+        margin-top: 1.2rem;
+        background: #06c755;
+        color: #fff;
+        font-size: 0.95rem;
+        letter-spacing: 0.04em;
+        padding: 0.85rem 2.2rem;
+        border-radius: 44px;
+        text-decoration: none;
+        transition:
+          filter 0.3s,
+          transform 0.3s;
+      }
+      .line-btn:hover {
+        filter: brightness(1.06);
+        transform: translateY(-2px);
+      }
+      .contact-corp {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 1.8rem 2rem;
+        max-width: 520px;
+        margin: 0 auto;
+        text-align: left;
+      }
+      .contact-corp h4 {
+        font-family: var(--mincho);
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: var(--ink);
+        margin-bottom: 0.3rem;
+      }
+      .contact-corp .sub {
+        font-size: 0.85rem;
+        color: var(--ink-soft);
+        margin-bottom: 1.1rem;
+      }
+      .contact-corp .row {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+      }
+      .contact-corp .row .ic {
+        width: 22px;
+        text-align: center;
+      }
+      .contact-corp .row a {
+        color: var(--clay-deep);
+        text-decoration: none;
+        font-family: var(--mincho);
+      }
+      .contact-corp .row a:hover {
+        text-decoration: underline;
+      }
+      .sns-follow {
+        max-width: 520px;
+        margin: 1.6rem auto 0;
+        text-align: center;
+      }
+      .sns-follow .lead2 {
+        font-size: 0.98rem;
+        color: var(--ink-soft);
+        margin-bottom: 1.2rem;
+      }
+      .sns-btns {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .sns-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        text-decoration: none;
+        font-size: 0.95rem;
+        padding: 0.8rem 1.8rem;
+        border-radius: 44px;
+        transition:
+          transform 0.3s,
+          filter 0.3s;
+        color: #fff;
+      }
+      .sns-btn:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.06);
+      }
+      .sns-ig {
+        background: linear-gradient(
+          45deg,
+          #f09433,
+          #e6683c 30%,
+          #dc2743 55%,
+          #cc2366 75%,
+          #bc1888
+        );
+      }
+      .sns-yt {
+        background: #ff0000;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: #5a4f3b;
+        color: rgba(250, 246, 238, 0.78);
+        padding: 64px 0 40px;
+        font-size: 0.85rem;
+      }
+      .foot-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
+        flex-wrap: wrap;
+        padding-bottom: 2.4rem;
+        border-bottom: 1px solid rgba(246, 242, 234, 0.16);
+      }
+      .foot-brand {
+        font-family: var(--mincho);
+        font-size: 1.3rem;
+        letter-spacing: 0.16em;
+        color: var(--paper);
+      }
+      .foot-brand span {
+        font-family: var(--latin);
+        font-style: italic;
+        font-size: 0.85rem;
+        color: var(--gold);
+        display: block;
+        margin-top: 0.2rem;
+      }
+      .foot-links {
+        display: flex;
+        gap: 2.4rem;
+        flex-wrap: wrap;
+      }
+      .foot-col h5 {
+        font-family: var(--mincho);
+        color: var(--paper);
+        font-weight: 500;
+        font-size: 0.95rem;
+        margin-bottom: 0.9rem;
+        letter-spacing: 0.05em;
+      }
+      .foot-col a {
+        display: block;
+        color: rgba(246, 242, 234, 0.7);
+        text-decoration: none;
+        margin-bottom: 0.5rem;
+        transition: color 0.3s;
+      }
+      .foot-col a:hover {
+        color: var(--gold);
+      }
+      .foot-bottom {
+        padding-top: 1.8rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.78rem;
+        color: rgba(246, 242, 234, 0.5);
+      }
+
+      /* reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* responsive */
+      @media (max-width: 900px) {
+        .nav-links,
+        .nav-cta {
+          display: none;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 2.4rem;
+          text-align: center;
+        }
+        .hero-copy {
+          margin: 0 auto;
+        }
+        .hero p {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .hero-ctas {
+          justify-content: center;
+        }
+        .hero-photo {
+          order: -1;
+        }
+        .hero-photo .frame {
+          width: min(64vw, 300px);
+        }
+        .hatha-grid,
+        .profile-grid,
+        .corp-grid,
+        .event-grid {
+          grid-template-columns: 1fr;
+          gap: 2.6rem;
+        }
+        .prog-grid {
+          grid-template-columns: 1fr;
+        }
+        .course-grid {
+          grid-template-columns: 1fr;
+        }
+        .repertoire {
+          position: static;
+        }
+        .profile-portrait {
+          max-width: 380px;
+        }
+      }
+      @media (max-width: 560px) {
+        .wrap,
+        .narrow {
+          padding: 0 20px;
+        }
+        section {
+          padding: 54px 0;
+        }
+        .cred {
+          grid-template-columns: 1fr;
+        }
+        .event-date .d {
+          font-size: 3.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+      <div class="wrap nav-inner">
+        <div class="brand">秦 節子<span>Setsuko Hata · Hatha Yoga</span></div>
+        <ul class="nav-links">
+          <li><a href="#hatha">ハタヨガとは</a></li>
+          <li><a href="#profile">プロフィール</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">お問い合わせ</a>
+        <button
+          class="menu-toggle"
+          aria-label="メニュー"
+          onclick="document.querySelector('.nav-links').scrollIntoView()"
+        >
+          ☰
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"
+            >Upgrade Your Life with Authentic Hatha Yoga</span
+          >
+          <h1>本格ハタヨガで、<br /><em>生命のアップグレード。</em></h1>
+          <p>
+            心と身体、そしてエネルギーのレベルから変革していく。1万5千年の歴史をもつ本格ヨガを、一生ご自身で実践できる形で伝授します。南インドにあるサドグルのイシャファンデーションで1,750時間の厳格な修行を終えたハタヨガ講師・秦節子が、ていねいにお教えします。
+          </p>
+          <div class="hero-ctas">
+            <a href="#courses" class="btn btn-primary">講座を見る</a>
+            <a href="#corporate" class="btn btn-ghost">企業向け健康経営</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <div class="ring"></div>
+          <div class="frame">
+            <img src="./setsuko_hero.png" alt="ハタヨガ講師 秦節子" />
+          </div>
+          <div class="tag">Setsuko Hata</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HATHA -->
+    <section class="hatha" id="hatha">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-num">01 — WHAT IS HATHA YOGA</span>
+          <span class="eyebrow hatha-eyebrow">ハタヨガとは</span>
+          <h2>
+            自分の体・マインド・感情・エネルギーのすべてを、<br />思った通りにエンジニアリングしていく科学。
+          </h2>
+        </div>
+        <div class="hatha-grid">
+          <div class="hatha-text reveal">
+            <p>
+              ヨガとは、ただポーズを取ったり、体を柔らかくすることではありません。ハタヨガの<strong>「ハ」はサンスクリットで太陽、「タ」は月</strong>を意味し、ヨガとは<strong>「ユニオン（結合）」</strong>を指します。自身の生命と宇宙が一体化した状態——これが、ヨガなのです。
+            </p>
+          </div>
+          <div class="repertoire reveal">
+            <h3>ハタヨガで得られる主な効果</h3>
+            <span class="sub">Benefits of the Practice</span>
+            <div class="benefit2-grid">
+              <div class="b2"><span class="bk">✓</span>体と心の不調を改善</div>
+              <div class="b2">
+                <span class="bk">✓</span>エネルギーに満ちた体
+              </div>
+              <div class="b2">
+                <span class="bk">✓</span>心の安定・ストレス軽減
+              </div>
+              <div class="b2">
+                <span class="bk">✓</span>集中力・直観力の向上
+              </div>
+              <div class="b2"><span class="bk">✓</span>内なる静けさと喜び</div>
+              <div class="b2">
+                <span class="bk">✓</span>人生の質が根本から変わる
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile" id="profile">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-num">02 — PROFILE</span>
+          <span class="eyebrow">Instructor</span>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-portrait reveal">
+            <img src="instructor_shoukai.png" alt="ハタヨガ講師 秦節子" />
+            <div class="seal">節</div>
+          </div>
+          <div class="profile-bio reveal">
+            <h2>講師　秦 節子</h2>
+            <div class="profile-name-en">Setsuko Hata</div>
+            <p>
+              サドグル公認のハタヨガ講師として、<strong
+                style="color: var(--gold); font-family: var(--mincho)"
+                >この資格を日本で持つ4人のうちの1人</strong
+              >です。
+            </p>
+            <p>
+              インドに渡る前は、アメリカで13年間、プロのジャズシンガー・作曲家として活動。
+            </p>
+            <p>
+              日本では大阪市立大学で栄養学を学び、栄養士の資格を取得。21歳のときに心身の不調（躁鬱病）を経験して以来、「本物の健康とは何か」「自分の生命の可能性を最大限に引き出すにはどうしたらいいか」を、常に探求してきました。
+            </p>
+            <p>
+              その答えに出会ったのが、ヨガの科学でした。実践を通して心身がともに整い、体調が良くなり、自身の生命の可能性が広がっていくのを実感。その本質を深く学ぶため、インドに渡って約1年半の本格修行に入りました。
+            </p>
+            <p>
+              南インド・イシャファンデーションにて1,750時間の厳格なハタヨガコースを修了し、サドグル公認講師の資格を取得。2026年に帰国して以来、日本にまだ広く知られていない本物のハタヨガを、ひとりでも多くの方にお届けすることを使命としています。
+            </p>
+            <div class="cred">
+              <div>
+                <div class="n">
+                  1,750<small style="font-size: 1rem">h+</small>
+                </div>
+                <div class="l">インドでの修行時間</div>
+              </div>
+              <div>
+                <div class="n">1 / 4</div>
+                <div class="l">日本のサドグル公認講師</div>
+              </div>
+              <div>
+                <div class="n">13<small style="font-size: 1rem">年</small></div>
+                <div class="l">米国でのジャズ活動歴</div>
+              </div>
+              <div>
+                <div class="n">
+                  東京<small style="font-size: 1rem"> &amp; </small>大阪
+                </div>
+                <div class="l">活動拠点</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section class="courses" id="courses">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-num">03 — COURSES</span>
+          <span class="eyebrow">クラススケジュール</span>
+          <h2>一度学べば、一生、自分のものになるヨガ。</h2>
+          <p class="lead">
+            スーリヤ・クリヤとスーリヤ・シャクティは、ご自身で毎日実践できるよう設計された本格プログラムです。
+          </p>
+        </div>
+
+        <div class="course-about reveal">
+          <div class="about-lead">
+            <h3>体得型プログラムについて</h3>
+            <p>
+              1日30〜40分、ご自身でヨガを実践できる方なら、毎日このプラクティスを続けていただけます。<b>一度お教えすれば、一生ご自身のものになるヨガ</b>として伝授します。心身を根本から整えていきますので、講座のあとはご自身でしっかりと練習を重ねていただきます。
+            </p>
+          </div>
+          <div class="about-card">
+            <span class="ico">☀️</span>
+            <h4>スーリヤ・クリヤとは</h4>
+            <span class="romaji">Surya Kriya</span>
+            <p>
+              「太陽のエネルギー」を体内に呼び覚ます、強力な浄化と活性化のプロセス。一連の動きと呼吸を通して、身体・呼吸・意識をひとつに統合していきます。
+            </p>
+            <p class="ben">
+              <b>得られる効果：</b
+              >心身のバランス、ホルモンと消化の安定、集中力と精神の安定、活力の向上。毎日の実践に最適です。
+            </p>
+          </div>
+          <div class="about-card">
+            <span class="ico">🔥</span>
+            <h4>スーリヤ・シャクティとは</h4>
+            <span class="romaji">Surya Shakti</span>
+            <p>
+              活力と体力を養う、ダイナミックな連続動作のプラクティス。全身を使い、エネルギーと持久力を高めていきます。
+            </p>
+            <p class="ben">
+              <b>得られる効果：</b
+              >筋力と持久力の向上、代謝の活性化、体幹の安定、心身の強さとしなやかさ。朝の実践におすすめです。
+            </p>
+          </div>
+        </div>
+
+        <div class="course-grid">
+          <div class="course-card reveal">
+            <span class="ico">☀️</span>
+            <h3>スーリヤ・クリヤ</h3>
+            <span class="romaji">Surya Kriya — 2-Day Course</span>
+            <ul class="course-sched">
+              <li>
+                <span class="day">6月27日（土）</span
+                ><span class="time">18:00〜21:00（3時間）</span>
+              </li>
+              <li>
+                <span class="day">6月28日（日）</span
+                ><span class="time">16:00〜19:00（3時間）</span>
+              </li>
+            </ul>
+            <div class="course-note">
+              ※この2日間はセットのコースです。両日ともご参加いただく必要があります。
+            </div>
+            <div class="course-price">
+              <span class="p">¥30,000<small>（税込）</small></span
+              ><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScF5frp_zOHpbOFqlXzuDrRQToALtYnwQ56pT9NLgSg8-6CVA/viewform?usp=header"
+                target="_blank"
+                rel="noopener"
+                >申し込みはこちら →</a
+              >
+            </div>
+          </div>
+
+          <div class="course-card reveal">
+            <span class="ico">🔥</span>
+            <h3>スーリヤ・シャクティ</h3>
+            <span class="romaji">Surya Shakti</span>
+            <ul class="course-sched">
+              <li>
+                <span class="day">6月29日（月）</span
+                ><span class="time">9:00〜13:00（4時間）</span>
+              </li>
+            </ul>
+            <div class="course-note">
+              活力を高めるダイナミックな連続動作。ご自身の毎日の実践にも取り入れていただけます。
+            </div>
+            <div class="course-price">
+              <span class="p">¥25,000<small>（税込）</small></span
+              ><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScF5frp_zOHpbOFqlXzuDrRQToALtYnwQ56pT9NLgSg8-6CVA/viewform?usp=header"
+                target="_blank"
+                rel="noopener"
+                >申し込みはこちら →</a
+              >
+            </div>
+          </div>
+
+          <div class="course-card reveal">
+            <span class="ico">☀️</span>
+            <h3>スーリヤ・クリヤ（追加クラス）</h3>
+            <span class="romaji">Surya Kriya — Part 2</span>
+            <ul class="course-sched">
+              <li>
+                <span class="day">6月29日（月）</span
+                ><span class="time">18:00〜21:00（3時間）</span>
+              </li>
+            </ul>
+            <div class="course-note">
+              ※このクラスは、以下のいずれかを受講された方のみご参加いただけます。<strong
+                >（料金は2日間込み）</strong
+              >
+              <ul>
+                <li>
+                  6月27日（土）18:00〜21:00
+                  スーリヤ・クリヤ（前半）を受講された方
+                </li>
+                <li>
+                  6月29日（月）9:00〜13:00 スーリヤ・シャクティを受講された方
+                </li>
+              </ul>
+            </div>
+            <div class="course-price">
+              <span class="p">¥30,000<small>（税込）</small></span
+              ><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScF5frp_zOHpbOFqlXzuDrRQToALtYnwQ56pT9NLgSg8-6CVA/viewform?usp=header"
+                target="_blank"
+                rel="noopener"
+                >申し込みはこちら →</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="venue-box reveal">
+          <span class="pin">📍</span>
+          <div class="vinfo">
+            <h4>スタジオ会場</h4>
+            <div class="addr">東京都港区三田5丁目1-2-301</div>
+            <div class="access">
+              麻布十番／白金高輪より徒歩10分　・　三田／田町より徒歩10分
+            </div>
+          </div>
+          <a
+            class="vmap"
+            href="https://maps.app.goo.gl/uRZR5DF2J8FfxEHu8?g_st=ic"
+            target="_blank"
+            rel="noopener"
+            >地図で見る →</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- CORPORATE -->
+    <section class="corporate" id="corporate">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-num">04 — FOR COMPANIES</span>
+          <span class="eyebrow">企業向け・健康経営</span>
+          <h2>ハタヨガで変わる、<br />健康経営。</h2>
+          <p class="lead">
+            本格ハタヨガで、従業員一人ひとりの心身を、豊かに、健やかに。組織全体が本当に健康になる変革を、はじめませんか。
+          </p>
+        </div>
+        <div class="corp-grid">
+          <div class="reveal">
+            <ul class="corp-points">
+              <li>
+                <span class="ix">i</span>
+                <div class="bd">
+                  <h4>ストレス・メンタルヘルス対策</h4>
+                  <p>
+                    呼吸と自律神経にはたらきかけ、ストレス耐性と感情の安定を養います。休職予防・離職率改善の土台に。
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="ix">ii</span>
+                <div class="bd">
+                  <h4>集中力と生産性の向上</h4>
+                  <p>
+                    短時間でも整う実践により、午後のパフォーマンスや会議の質が変わります。デスクワーク中心の組織に最適。
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="ix">iii</span>
+                <div class="bd">
+                  <h4>健康経営の対外的な評価</h4>
+                  <p>
+                    従業員の心身への投資は、採用力・ブランド・健康経営優良法人の取り組みにつながります。
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="corp-formats reveal">
+            <h3>提供形式</h3>
+            <div class="fmt">
+              <div class="ft">月額契約プログラム</div>
+              <div class="fd">
+                定期開催で習慣化を支援。最も成果が出やすい形です。
+              </div>
+            </div>
+            <div class="fmt">
+              <div class="ft">出張・対面セッション</div>
+              <div class="fd">オフィスやイベントスペースに講師が伺います。</div>
+            </div>
+            <div class="fmt">
+              <div class="ft">オンラインセッション</div>
+              <div class="fd">
+                複数拠点・リモートの従業員にも一斉に届けられます。
+              </div>
+            </div>
+            <div class="fmt">
+              <div class="ft">組み合わせも可能</div>
+              <div class="fd">
+                対面とオンライン、月額契約と単発、どちらも柔軟に対応します。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final" id="contact">
+      <div class="narrow reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2>まずは、<br /><em>LINEでつながりましょう。</em></h2>
+        <p>
+          講座のお申し込み・ご予約、これからのヨガの最新情報は、すべてLINEからご案内します。下のQRコードから、お気軽に友だち追加してください。
+        </p>
+
+        <div class="line-card">
+          <img class="qr" src="line_qr.jpeg" alt="LINE友だち追加QRコード" />
+          <h3>LINEで友だち追加</h3>
+          <p>
+            これからのヨガの情報は、LINEを友だち追加してお受け取りください。お申し込み・ご予約もこちらから。
+          </p>
+          <a class="line-btn" href="#" target="_blank" rel="noopener"
+            >友だち追加する</a
+          >
+        </div>
+
+        <div class="contact-corp">
+          <h4>企業・健康経営に関するお問い合わせ</h4>
+          <div class="sub">
+            法人のご相談は、メールまたはお電話でも承ります。
+          </div>
+          <div class="row">
+            <span class="ic">✉️</span
+            ><a href="mailto:yoga@setsukohata.com">yoga@setsukohata.com</a>
+          </div>
+          <div class="row">
+            <span class="ic">📞</span
+            ><a href="tel:07065417865">070-6541-7865</a>
+          </div>
+        </div>
+
+        <div class="sns-follow">
+          <p class="lead2">
+            ヨガと暮らしのヒントを、SNSでも発信しています。<br />ぜひフォローしてください。
+          </p>
+          <div class="sns-btns">
+            <a
+              class="sns-btn sns-ig"
+              href="https://www.instagram.com/setsuko_hata/"
+              target="_blank"
+              rel="noopener"
+              >📷　Instagramをフォロー</a
+            >
+            <a
+              class="sns-btn sns-yt"
+              href="https://www.youtube.com/@SetsukoHataJapanse"
+              target="_blank"
+              rel="noopener"
+              >▶　YouTubeを登録</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="foot-top">
+          <div class="foot-brand">
+            秦 節子<span>Setsuko Hata · Authentic Hatha Yoga</span>
+          </div>
+          <div class="foot-links">
+            <div class="foot-col">
+              <h5>Sections</h5>
+              <a href="#hatha">ハタヨガとは</a>
+              <a href="#profile">プロフィール</a>
+              <a href="#courses">クラススケジュール</a>
+            </div>
+            <div class="foot-col">
+              <h5>Services</h5>
+              <a href="#courses">クラススケジュール</a>
+              <a href="#corporate">企業・健康経営</a>
+              <a href="#contact">お問い合わせ</a>
+            </div>
+            <div class="foot-col">
+              <h5>Connect</h5>
+              <a
+                href="https://www.instagram.com/setsuko_hata/"
+                target="_blank"
+                rel="noopener"
+                >Instagram</a
+              >
+              <a
+                href="https://www.youtube.com/@SetsukoHataJapanse"
+                target="_blank"
+                rel="noopener"
+                >YouTube</a
+              >
+              <a href="#contact">LINE 公式アカウント</a>
+            </div>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span>© 2026 Setsuko Hata. All rights reserved.</span>
+          <span>Tokyo &amp; Osaka, Japan — In person &amp; Online</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // reveal on scroll
+      const io = new IntersectionObserver(
+        (es) => {
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.14 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+      // hide nav on scroll down
+      let last = 0;
+      const nav = document.getElementById("nav");
+      window.addEventListener("scroll", () => {
+        const y = window.scrollY;
+        nav.style.transform =
+          y > last && y > 200 ? "translateY(-100%)" : "translateY(0)";
+        last = y;
+      });
+    </script>
+  </body>
+</html>

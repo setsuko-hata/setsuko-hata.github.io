@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>秦 節子 | Setsuko Hata</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --cream: #f7f0e6;
+        --cream-deep: #efe2d2;
+        --ink: #3a332c;
+        --ink-soft: #6b6058;
+        --gold: #c8a25a;
+        --gold-deep: #b6863c;
+        --terracotta: #cf8b6b;
+        --line: rgba(166, 134, 79, 0.25);
+        --bg: #f6f1ec;
+        --text: #3f322b;
+        --accent: #a77d5c;
+        --line: #d8cdc2;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Noto Serif JP", serif;
+        line-height: 1.9;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        background: rgba(246, 241, 236, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+        z-index: 100;
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: auto;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .logo h1 {
+        font-size: 3rem;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .logo p {
+        letter-spacing: 0.35em;
+        margin-top: 5px;
+        font-size: 0.9rem;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 50px;
+      }
+
+      nav a {
+        font-size: 1rem;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+      }
+
+      .hero {
+        max-width: 1400px;
+        margin: auto;
+        padding: 70px 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .content h2 {
+        font-size: 5rem;
+        font-weight: 400;
+        line-height: 1;
+        margin-bottom: 10px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .content h3 {
+        font-size: 3rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: var(--accent);
+        margin-bottom: 35px;
+      }
+
+      .bio {
+        font-size: 1rem;
+      }
+
+      .bio p {
+        margin-bottom: 24px;
+      }
+
+      .highlight {
+        margin-top: 30px;
+        padding-left: 20px;
+        border-left: 3px solid var(--accent);
+        color: var(--accent);
+        font-size: 1.05rem;
+      }
+
+      .image-wrapper {
+        text-align: center;
+      }
+
+      .image-wrapper img {
+        width: 100%;
+        max-width: 650px;
+        border-radius: 10px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--cream-deep);
+        padding: 36px 64px;
+        text-align: center;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-line {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 1.5rem;
+        color: var(--gold-deep);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        margin-bottom: 24px;
+      }
+
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        position: relative;
+      }
+
+      .socials {
+        display: flex;
+        gap: 18px;
+      }
+
+      .socials a {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--ink);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink);
+        text-decoration: none;
+        transition: all 0.25s ease;
+      }
+
+      .socials a:hover {
+        background: var(--ink);
+        color: var(--cream);
+      }
+
+      .socials svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+
+      .copyright {
+        margin-top: 30px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        color: var(--ink-soft);
+        letter-spacing: 0.04em;
+      }
+
+      @media (max-width: 1000px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .content h2 {
+          font-size: 3.5rem;
+        }
+
+        .content h3 {
+          font-size: 2.2rem;
+        }
+
+        nav ul {
+          gap: 20px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 18px;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .nav-container {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="nav-container">
+        <div class="logo">
+          <h1>Setsuko Hata</h1>
+          <p>秦 節子</p>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="./jazz/index.html">Jazz Flyer</a></li>
+            <li><a href="./yoga/index.html">Yoga Flyer</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="content">
+        <h2>秦 節子</h2>
+        <h3>Setsuko Hata</h3>
+
+        <div class="subtitle">
+          ジャズシンガー / 作曲家 / 編曲家 / ハタヨガ講師
+        </div>
+
+        <div class="bio">
+          <p>
+            大阪出身。ジャズシンガー、作曲家、編曲家、ハタヨガ講師。<br />
+            幼い頃から歌うことが大好きで、音楽はいつも私の人生の中心にありました。しかし、21歳の時にうつ病・双極性障害を経験し、人生の大きな転機を迎えます。
+          </p>
+          <p>
+            その経験をきっかけに、「人はどうすれば心身ともに健康に生きられるのか」「本当の幸せとは何か」という問いを深く探求するようになりました。
+          </p>
+          <p>
+            3年間の休学を経て、Osaka City
+            University生活科学部食品栄養科学科を卒業し、栄養士資格を取得。その後、夢だった音楽の道を本格的に歩むため、2011年にアメリカへ渡りました。
+          </p>
+          <p>
+            その後13年間、ニューヨーク、コロラド、ロサンゼルスを拠点に、プロのジャズシンガー・作曲家として活動。City
+            College of New York（CUNY）でジャズボーカルを学んだ後、University of
+            Northern
+            Colorado大学院へ進学。ジャズボーカルに加え、作曲、編曲、ビッグバンド、オーケストラ、映画音楽など幅広い音楽表現を研究し、同大学では日本人初となる教授アシスタントを務めました。
+          </p>
+          <p>
+            全米各地で数多くの演奏活動を重ねながら、ロサンゼルスの名門ジャズクラブ
+            Catalina Jazz Club
+            にてソロコンサートを開催するなど、多数の自主企画公演をプロデュース。2024年には
+            グッと！地球便
+            に出演し、アメリカで活動するジャズシンガーとして特集されました。
+          </p>
+          <p>
+            セツコの音楽は、ジャズの伝統に根ざしながらも、「人生の探求」「内なる成長」「自然とのつながり」をテーマに、聴く人の心に深く響く世界観を表現しています。
+          </p>
+          <p>
+            2024年にはインドの Isha Foundation
+            にて約1年半にわたりヨガと瞑想を探求。1,750時間を超える厳格なトレーニングを修了し、Sadhguru公認ハタヨガ講師資格を取得しました。
+          </p>
+          <p>
+            2026年より活動拠点を日本へ移し、「ストレスやうつに苦しむ人を一人でも減らし、一人ひとりが本来持つ可能性を開花できる社会をつくる」というビジョンのもと活動を展開。音楽を通して人々の心に希望と感動を届けるとともに、ハタヨガ講師として人生を変革するための実践的なツールを伝えています。
+          </p>
+        </div>
+
+        <p class="highlight">
+          音楽とヨガ。<br />
+          私にとってこの二つは、人生を変えてくれたかけがえのない贈り物です。<br />
+          音楽は心を開き、ヨガは生命の可能性を開いてくれました。<br />
+          苦しみの中にいた私自身が、この二つを通して生きる喜びを取り戻すことができたように、一人でも多くの人が、自分の内なる豊かさと可能性に気づき、より意識的で幸せな人生を歩んでほしいと願っています。<br />
+          音楽とヨガを通して、人々がより健康に、より幸せに、そして自分らしく輝ける社会へ。<br />
+          そんな未来の実現に向けて、活動を続けています。
+        </p>
+      </div>
+
+      <div class="image-wrapper">
+        <img src="./setsuko_main_page.png" alt="Setsuko Hata" />
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-line">
+        <span>心身が整えば、人生はもっと自由に、美しく響き始める。</span>
+      </div>
+      <div class="footer-bottom">
+        <div class="socials">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5zM17.5 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"
+              />
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C18.1 5 12 5 12 5s-6.1 0-7.8.5c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.9 19 12 19 12 19s6.1 0 7.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7zM10 15.2V8.8L15.5 12 10 15.2z"
+              />
+            </svg>
+          </a>
+          <a href="#" aria-label="Email">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M2 5.5C2 4.67 2.67 4 3.5 4h17c.83 0 1.5.67 1.5 1.5v13c0 .83-.67 1.5-1.5 1.5h-17C2.67 20 2 19.33 2 18.5v-13zM4 6l8 6 8-6V18H4V6zm.4-1L12 10.5 19.6 5H4.4z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Setsuko Hata All Rights Reserved.</div>
+    </footer>
+  </body>
+</html>
