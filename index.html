@@ -11,248 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-
-    <style>
-      :root {
-        --cream: #f7f0e6;
-        --cream-deep: #efe2d2;
-        --ink: #3a332c;
-        --ink-soft: #6b6058;
-        --gold: #c8a25a;
-        --gold-deep: #b6863c;
-        --terracotta: #cf8b6b;
-        --line: rgba(166, 134, 79, 0.25);
-        --bg: #f6f1ec;
-        --text: #3f322b;
-        --accent: #a77d5c;
-        --line: #d8cdc2;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Noto Serif JP", serif;
-        line-height: 1.9;
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      header {
-        position: sticky;
-        top: 0;
-        background: rgba(246, 241, 236, 0.95);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid var(--line);
-        z-index: 100;
-      }
-
-      .nav-container {
-        max-width: 1400px;
-        margin: auto;
-        padding: 20px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        font-family: "Cormorant Garamond", serif;
-      }
-
-      .logo h1 {
-        font-size: 3rem;
-        font-weight: 400;
-        line-height: 1;
-      }
-
-      .logo p {
-        letter-spacing: 0.35em;
-        margin-top: 5px;
-        font-size: 0.9rem;
-      }
-
-      nav ul {
-        display: flex;
-        list-style: none;
-        gap: 50px;
-      }
-
-      nav a {
-        font-size: 1rem;
-        transition: 0.3s;
-      }
-
-      nav a:hover {
-        color: var(--accent);
-      }
-
-      .hero {
-        max-width: 1400px;
-        margin: auto;
-        padding: 70px 40px;
-        gap: 60px;
-        align-items: center;
-      }
-      .content {
-        text-align: center;
-      }
-
-      .content h2 {
-        font-size: 5rem;
-        font-weight: 400;
-        line-height: 1;
-        margin-bottom: 10px;
-        font-family: "Cormorant Garamond", serif;
-      }
-
-      .content h3 {
-        font-size: 3rem;
-        font-weight: 500;
-        margin-bottom: 20px;
-        font-family: "Cormorant Garamond", serif;
-      }
-
-      .subtitle {
-        font-size: 1.2rem;
-        color: var(--accent);
-        margin-bottom: 35px;
-      }
-
-      .bio {
-        font-size: 1rem;
-      }
-
-      .bio p {
-        margin-bottom: 24px;
-      }
-
-      .highlight {
-        margin-top: 30px;
-        padding-left: 20px;
-        border-left: 3px solid var(--accent);
-        color: var(--accent);
-        font-size: 1.05rem;
-      }
-
-      .image-wrapper {
-        text-align: center;
-      }
-
-      .image-wrapper img {
-        width: 100%;
-        max-width: 650px;
-        border-radius: 10px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-      }
-
-      /* Footer */
-      footer {
-        background: var(--cream-deep);
-        padding: 36px 64px;
-        text-align: center;
-        border-top: 1px solid var(--line);
-        display: flex;
-        flex-direction: column;
-      }
-
-      .footer-line {
-        font-family: "Cormorant Garamond", serif;
-        font-style: italic;
-        font-size: 1.5rem;
-        color: var(--gold-deep);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 18px;
-        margin-bottom: 24px;
-      }
-
-      .footer-bottom {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        flex-wrap: wrap;
-        position: relative;
-      }
-
-      .socials {
-        display: flex;
-        gap: 18px;
-      }
-
-      .socials a {
-        width: 38px;
-        height: 38px;
-        border: 1px solid var(--ink);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--ink);
-        text-decoration: none;
-        transition: all 0.25s ease;
-      }
-
-      .socials a:hover {
-        background: var(--ink);
-        color: var(--cream);
-      }
-
-      .socials svg {
-        width: 18px;
-        height: 18px;
-        fill: currentColor;
-      }
-
-      .copyright {
-        margin-top: 30px;
-        font-family: "Cormorant Garamond", serif;
-        font-size: 1rem;
-        color: var(--ink-soft);
-        letter-spacing: 0.04em;
-      }
-
-      @media (max-width: 1000px) {
-        .content h2 {
-          font-size: 3.5rem;
-        }
-
-        .content h3 {
-          font-size: 2.2rem;
-        }
-
-        nav ul {
-          gap: 20px;
-        }
-
-        .footer-bottom {
-          flex-direction: column;
-          gap: 18px;
-        }
-      }
-
-      @media (max-width: 700px) {
-        .nav-container {
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        nav ul {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./claude_styles.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
@@ -272,19 +32,61 @@
         </nav>
       </div>
     </header>
-
-    <div class="image-wrapper">
-      <img src="./setsuko_main_page.png" alt="Setsuko Hata" />
-    </div>
+    <!-- ABOUT -->
+    <section class="sh-section sh-about">
+      <div class="sh-about-portrait">
+        <div class="sh-portrait-frame">
+          <div class="sh-portrait-inner">
+            <div class="image-wrapper">
+              <img src="./setsuko_main_page.png" alt="Setsuko Hata" />
+            </div>
+          </div>
+        </div>
+        <div
+          style="
+            position: absolute;
+            bottom: -14px;
+            right: -14px;
+            width: 70%;
+            height: 50%;
+            border: 1px solid #c8a96e;
+            opacity: 0.4;
+            pointer-events: none;
+          "
+        ></div>
+      </div>
+      <div>
+        <h3 class="sh-section-label">
+          ジャズシンガー / 作曲家 / 編曲家 / ハタヨガ講師
+        </h3>
+        <div class="sh-ornament">
+          <hr />
+          <div class="sh-ornament-diamond"></div>
+          <hr />
+        </div>
+        <p class="sh-about-body">音楽とヨガ</p>
+        <p class="sh-about-desc">
+          私にとってこの二つは、人生を変えてくれたかけがえのない贈り物です。<br />
+          音楽は心を開き、ヨガは生命の可能性を開いてくれました。<br />
+          苦しみの中にいた私自身が、この二つを通して生きる喜びを取り戻すことができたように、一人でも多くの人が、自分の内なる豊かさと可能性に気づき、より意識的で幸せな人生を歩んでほしいと願っています。<br />
+          音楽とヨガを通して、人々がより健康に、より幸せに、そして自分らしく輝ける社会へ。<br />
+          そんな未来の実現に向けて、活動を続けています。
+        </p>
+      </div>
+    </section>
+    <div class="gold-rule"></div>
     <section class="hero">
       <div class="content">
-        <h2>秦 節子</h2>
-        <h3>Setsuko Hata</h3>
-
-        <div class="subtitle">
-          ジャズシンガー / 作曲家 / 編曲家 / ハタヨガ講師
+        <div class="sh-section-label">About Setsuko</div>
+        <h2 class="sh-section-title">
+          A Teacher.<br />A <em>Vocalist.</em><br />A Seeker.
+        </h2>
+        <div class="sh-ornament">
+          <hr />
+          <div class="sh-ornament-diamond"></div>
+          <hr />
         </div>
-
+        <br />
         <div class="bio">
           <p>
             大阪出身。ジャズシンガー、作曲家、編曲家、ハタヨガ講師。<br />
@@ -321,15 +123,75 @@
             2026年より活動拠点を日本へ移し、「ストレスやうつに苦しむ人を一人でも減らし、一人ひとりが本来持つ可能性を開花できる社会をつくる」というビジョンのもと活動を展開。音楽を通して人々の心に希望と感動を届けるとともに、ハタヨガ講師として人生を変革するための実践的なツールを伝えています。
           </p>
         </div>
-
-        <p class="highlight">
-          音楽とヨガ。<br />
-          私にとってこの二つは、人生を変えてくれたかけがえのない贈り物です。<br />
-          音楽は心を開き、ヨガは生命の可能性を開いてくれました。<br />
-          苦しみの中にいた私自身が、この二つを通して生きる喜びを取り戻すことができたように、一人でも多くの人が、自分の内なる豊かさと可能性に気づき、より意識的で幸せな人生を歩んでほしいと願っています。<br />
-          音楽とヨガを通して、人々がより健康に、より幸せに、そして自分らしく輝ける社会へ。<br />
-          そんな未来の実現に向けて、活動を続けています。
+      </div>
+    </section>
+    <section class="sh-section sh-offerings">
+      <div class="sh-offerings-intro">
+        <div class="sh-section-label">Offerings</div>
+        <h2 class="sh-section-title">イベント一覧</h2>
+        <p>
+          それぞれの体験は、一つの扉。心身へ、音へ、そして自分の中心に宿る静けさへと、あなたを導きます。
         </p>
+      </div>
+      <div class="sh-grid">
+        <div class="sh-card">
+          <div class="sh-card-info">
+            <div class="sh-card-num">2026/06/27</div>
+            <h3 class="sh-card-title">Hatha Yoga & Lunch Jazz Live</h3>
+            <div class="sh-card-subtitle">
+              朝のヨガと昼のジャズで特別な１日を
+            </div>
+            <p class="sh-card-desc">
+              ヨガ、生演奏のジャズ、そして意識的な時間が交わる、あなただけの特別な一日を。心身を整え、内なる静けさと繋がり、日常を超えた体験へ。
+              <b>
+                ヨガ体験は朝１０：００に東京ミッドタウン檜町公園で行います。参加無料、ヨガマット不要、初心者も大歓迎。</b
+              >
+            </p>
+          </div>
+          <a class="sh-btn-gold" href="https://ticketdive.com/event/setsukohata"
+            >申し込む</a
+          >
+        </div>
+        <div class="sh-card">
+          <div class="sh-card-info">
+            <div class="sh-card-num">2026/06/29</div>
+            <h3 class="sh-card-title">スリアクリア/シャクティ</h3>
+            <div class="sh-card-subtitle">
+              身体と内側の両方を整える、本格ハタヨガ1日集中プログラム
+            </div>
+            <p class="sh-card-desc">
+              身体の活力を高める スーリヤシャクティ
+              と、心身のバランスと安定を育む スーリヤクリヤ。
+              2つの本格ハタヨガプログラムを1日で学べる特別コースです。
+              身体を鍛えるだけではなく、エネルギー、集中力、心の安定、健康そのものを高めていく実践を学びます。
+            </p>
+          </div>
+          <a
+            class="sh-btn-gold"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSe8FHtEgDMcYCrEpV6B9dr_YcdqKavEYD4bw3FXkLQlCAYT-Q/viewform?usp=header"
+            >申し込む</a
+          >
+        </div>
+        <div class="sh-card">
+          <div class="sh-card-info">
+            <div class="sh-card-num">木曜コース</div>
+            <h3 class="sh-card-title">本格インドのハタヨガ教室</h3>
+
+            <div class="sh-card-subtitle">Authentic Hatha Yoga · Osaka</div>
+            <div class="sh-card-desc" style="margin-top: 12px">
+              <div>7月 2日・9日・16日｜10:00〜12:00</div>
+            </div>
+            <p class="sh-card-desc">
+              心身と呼吸、エネルギーを整える伝統的なハタヨガの3回コース。
+              初心者の方も大歓迎です。
+            </p>
+          </div>
+          <a
+            class="sh-btn-gold"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSe8FHtEgDMcYCrEpV6B9dr_YcdqKavEYD4bw3FXkLQlCAYT-Q/viewform?usp=header"
+            >申し込む</a
+          >
+        </div>
       </div>
     </section>
 

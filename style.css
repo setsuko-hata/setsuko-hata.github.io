@@ -1,0 +1,255 @@
+:root {
+  --cream: #f7f0e6;
+  --cream-deep: #efe2d2;
+  --ink: #3a332c;
+  --ink-soft: #6b6058;
+  --gold: #c8a25a;
+  --gold-deep: #b6863c;
+  --terracotta: #cf8b6b;
+  --line: rgba(166, 134, 79, 0.25);
+  --bg: #f6f1ec;
+  --text: #3f322b;
+  --accent: #a77d5c;
+  --line: #d8cdc2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background:
+    radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba(216, 183, 120, 0.12) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 40% 30% at 20% 80%,
+      rgba(200, 169, 110, 0.08) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 35% 25% at 80% 20%,
+      rgba(232, 213, 163, 0.1) 0%,
+      transparent 55%
+    ),
+    #faf7f0;
+  color: var(--text);
+  font-family: "Noto Serif JP", serif;
+  line-height: 1.9;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(246, 241, 236, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.logo h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.logo p {
+  letter-spacing: 0.35em;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 50px;
+}
+
+nav a {
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+.hero {
+  max-width: 1400px;
+  margin: auto;
+  padding: 70px 40px;
+  gap: 60px;
+  align-items: center;
+}
+.content {
+  text-align: center;
+}
+
+.content h2 {
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.content h3 {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 35px;
+}
+
+.bio {
+  font-size: 1rem;
+}
+
+.bio p {
+  margin-bottom: 24px;
+}
+
+.highlight {
+  margin-top: 30px;
+  padding-left: 20px;
+  border-left: 3px solid var(--accent);
+  color: var(--accent);
+  font-size: 1.05rem;
+}
+
+.image-wrapper {
+  text-align: center;
+}
+
+.image-wrapper img {
+  width: 100%;
+  max-width: 650px;
+  /* border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); */
+}
+
+/* Footer */
+footer {
+  background: var(--cream-deep);
+  padding: 36px 64px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-line {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--gold-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.socials {
+  display: flex;
+  gap: 18px;
+}
+
+.socials a {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.socials a:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.socials svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.copyright {
+  margin-top: 30px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 1000px) {
+  .content h2 {
+    font-size: 3.5rem;
+  }
+
+  .content h3 {
+    font-size: 2.2rem;
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

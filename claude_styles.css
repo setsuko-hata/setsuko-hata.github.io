@@ -1,0 +1,748 @@
+.sh-root {
+  background: #faf7f0;
+  color: #3d2e1a;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sh-serif {
+  font-family: "Cormorant Garamond", serif;
+}
+.sh-cinzel {
+  font-family: "Cinzel", serif;
+}
+
+/* Gold gradient line */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #c8a96e 30%,
+    #e8d5a3 50%,
+    #c8a96e 70%,
+    transparent 100%
+  );
+  margin: 0;
+  border: none;
+}
+
+.gold-rule-thin {
+  height: 0.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #c8a96e 40%,
+    #e8d5a3 50%,
+    #c8a96e 60%,
+    transparent 100%
+  );
+}
+
+/* NAV */
+.sh-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 52px;
+  background: rgba(250, 247, 240, 0.92);
+  position: relative;
+  z-index: 10;
+}
+
+.sh-nav-logo {
+  font-family: "Cinzel", serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: #8b6914;
+  text-transform: uppercase;
+}
+
+.sh-nav-logo span {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  color: #a07840;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.sh-nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sh-nav-links a {
+  font-family: "Lato", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: #6b5230;
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* HERO */
+.sh-hero {
+  position: relative;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 80px 40px;
+}
+
+.sh-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      rgba(216, 183, 120, 0.12) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 40% 30% at 20% 80%,
+      rgba(200, 169, 110, 0.08) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 35% 25% at 80% 20%,
+      rgba(232, 213, 163, 0.1) 0%,
+      transparent 55%
+    ),
+    #faf7f0;
+}
+
+/* Decorative SVG motif behind hero */
+.sh-hero-motif {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0.07;
+}
+
+.sh-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+}
+
+.sh-eyebrow {
+  font-family: "Cinzel", serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  color: #a07840;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.sh-hero h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 1.08;
+  color: #2a1f0f;
+  margin: 0 0 8px;
+  letter-spacing: 0.02em;
+}
+
+.sh-hero h1 em {
+  font-style: italic;
+  color: #8b6914;
+}
+
+.sh-hero-kanji {
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  color: #b09060;
+  margin: 18px 0 28px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+.sh-hero-sub {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: #5a4020;
+  line-height: 1.65;
+  margin-bottom: 44px;
+  opacity: 0.9;
+}
+
+.sh-btn-gold {
+  display: inline-block;
+  padding: 14px 44px;
+  background: linear-gradient(135deg, #c8a96e 0%, #e8d5a3 50%, #c8a96e 100%);
+  color: #2a1a06;
+  font-family: "Cinzel", serif;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+
+.sh-btn-outline {
+  display: inline-block;
+  padding: 13px 40px;
+  background: transparent;
+  color: #8b6914;
+  font-family: "Cinzel", serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #c8a96e;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+/* SECTION COMMONS */
+.sh-section {
+  padding: 88px 52px;
+  position: relative;
+}
+
+.sh-section-label {
+  font-family: "Cinzel", serif;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  color: #a07840;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sh-section-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 44px;
+  font-weight: 300;
+  color: #2a1f0f;
+  line-height: 1.12;
+  margin: 0 0 20px;
+}
+
+.sh-section-title em {
+  font-style: italic;
+  color: #8b6914;
+}
+
+/* ABOUT SECTION */
+.sh-about {
+  background: #f5f0e6;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.sh-about-portrait {
+  position: relative;
+}
+
+.sh-portrait-frame {
+  width: 100%;
+  aspect-ratio: 3/4;
+  /* background: linear-gradient(160deg, #e8d5a3 0%, #c8a96e 40%, #a07840 100%); */
+  position: relative;
+  overflow: hidden;
+}
+
+.sh-portrait-inner {
+  position: absolute;
+  inset: 16px;
+  /* background: linear-gradient(
+    180deg,
+    rgba(200, 169, 110, 0.3) 0%,
+    rgba(160, 120, 64, 0.6) 100%
+  ); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sh-portrait-inner svg {
+  width: 70%;
+  opacity: 0.4;
+}
+
+.sh-about-body {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.78;
+  color: #3d2e1a;
+  margin: 24px 0 36px;
+  font-style: italic;
+}
+
+.sh-about-desc {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: #5a4530;
+  margin-bottom: 36px;
+  letter-spacing: 0.02em;
+}
+
+.sh-tag-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.sh-tag {
+  padding: 6px 16px;
+  border: 0.5px solid #c8a96e;
+  font-family: "Cinzel", serif;
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  color: #8b6914;
+  text-transform: uppercase;
+  background: rgba(232, 213, 163, 0.18);
+}
+
+/* OFFERINGS GRID */
+.sh-offerings {
+  background: #faf7f0;
+}
+
+.sh-offerings-intro {
+  max-width: 500px;
+  margin-bottom: 60px;
+}
+
+.sh-offerings-intro p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  font-weight: 300;
+  font-style: italic;
+  color: #5a4020;
+  line-height: 1.7;
+}
+
+.sh-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.sh-card {
+  background: #f5f0e6;
+  padding: 44px 32px;
+  position: relative;
+  border-top: 1.5px solid #c8a96e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sh-card-num {
+  font-family: "Cinzel", serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.sh-card-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #2a1f0f;
+  margin: 0 0 6px;
+}
+
+.sh-card-subtitle {
+  font-family: "Cinzel", serif;
+  letter-spacing: 0.26em;
+  color: #a07840;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.sh-card-desc {
+  font-family: "Lato", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: #5a4530;
+}
+
+/* PHILOSOPHY / QUOTE BANNER */
+.sh-quote-banner {
+  background: linear-gradient(135deg, #2a1f0f 0%, #3d2e1a 40%, #2a1f0f 100%);
+  padding: 80px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sh-quote-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 80% at 50% 50%,
+    rgba(200, 169, 110, 0.12) 0%,
+    transparent 70%
+  );
+}
+
+.sh-quote-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 34px;
+  font-weight: 300;
+  font-style: italic;
+  color: #e8d5a3;
+  line-height: 1.52;
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto 20px;
+}
+
+.sh-quote-attr {
+  font-family: "Cinzel", serif;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: #a07840;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+/* EVENTS */
+.sh-events {
+  background: #f5f0e6;
+}
+
+.sh-events-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 52px;
+}
+
+.sh-event-card {
+  background: #faf7f0;
+  padding: 36px 32px;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.sh-event-date {
+  flex-shrink: 0;
+  text-align: center;
+  width: 52px;
+}
+
+.sh-event-month {
+  font-family: "Cinzel", serif;
+  font-size: 8.5px;
+  letter-spacing: 0.24em;
+  color: #a07840;
+  text-transform: uppercase;
+  display: block;
+}
+
+.sh-event-day {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: #c8a96e;
+  line-height: 1;
+  display: block;
+}
+
+.sh-event-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #2a1f0f;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.sh-event-meta {
+  font-family: "Lato", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: #8b6914;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.sh-event-desc {
+  font-family: "Lato", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #5a4530;
+}
+
+/* TESTIMONIALS */
+.sh-testimonials {
+  background: #faf7f0;
+  text-align: center;
+}
+
+.sh-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+}
+
+.sh-testimonial {
+  padding: 36px 28px;
+  background: #f5f0e6;
+  position: relative;
+  border-bottom: 1px solid #c8a96e;
+}
+
+.sh-quote-mark {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 72px;
+  color: #e8d5a3;
+  line-height: 0.5;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.sh-testimonial-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  font-weight: 300;
+  font-style: italic;
+  color: #3d2e1a;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.sh-testimonial-name {
+  font-family: "Cinzel", serif;
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  color: #a07840;
+  text-transform: uppercase;
+}
+
+/* CTA / NEWSLETTER */
+.sh-cta {
+  background: linear-gradient(160deg, #2a1f0f 0%, #4a3420 100%);
+  padding: 100px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sh-cta::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 400px;
+  background: radial-gradient(
+    ellipse,
+    rgba(200, 169, 110, 0.15) 0%,
+    transparent 70%
+  );
+}
+
+.sh-cta-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 48px;
+  font-weight: 300;
+  font-style: italic;
+  color: #e8d5a3;
+  margin: 0 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.sh-cta-sub {
+  font-family: "Lato", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: #c8a96e;
+  margin-bottom: 44px;
+  position: relative;
+  z-index: 1;
+}
+
+.sh-input-row {
+  display: flex;
+  gap: 0;
+  max-width: 440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.sh-input {
+  flex: 1;
+  padding: 16px 24px;
+  background: rgba(250, 247, 240, 0.08);
+  border: 1px solid rgba(200, 169, 110, 0.4);
+  border-right: none;
+  color: #e8d5a3;
+  font-family: "Lato", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  outline: none;
+}
+
+.sh-input::placeholder {
+  color: rgba(200, 169, 110, 0.5);
+}
+
+/* FOOTER */
+.sh-footer {
+  background: #1e1508;
+  padding: 56px 52px 40px;
+}
+
+.sh-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 52px;
+  margin-bottom: 48px;
+}
+
+.sh-footer-brand {
+  font-family: "Cinzel", serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #c8a96e;
+  letter-spacing: 0.18em;
+  margin-bottom: 6px;
+}
+
+.sh-footer-brand-sub {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  font-weight: 300;
+  font-style: italic;
+  color: #a07840;
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+}
+
+.sh-footer-desc {
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(200, 169, 110, 0.6);
+  letter-spacing: 0.04em;
+}
+
+.sh-footer-col h4 {
+  font-family: "Cinzel", serif;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  color: #a07840;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+
+.sh-footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sh-footer-col ul li {
+  margin-bottom: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(200, 169, 110, 0.55);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.sh-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Lato", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(160, 120, 64, 0.4);
+  letter-spacing: 0.1em;
+}
+
+/* ORNAMENT */
+.sh-ornament {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 28px 0;
+}
+.sh-ornament hr {
+  flex: 1;
+  height: 0.5px;
+  background: #c8a96e;
+  border: none;
+  opacity: 0.4;
+}
+.sh-ornament-diamond {
+  width: 5px;
+  height: 5px;
+  background: #c8a96e;
+  transform: rotate(45deg);
+  opacity: 0.7;
+}
+
+.sh-social-row {
+  display: flex;
+  gap: 18px;
+  margin-top: 22px;
+}
+.sh-social-btn {
+  width: 34px;
+  height: 34px;
+  border: 0.5px solid rgba(200, 169, 110, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.sh-social-btn i {
+  font-size: 14px;
+  color: rgba(200, 169, 110, 0.55);
+}
