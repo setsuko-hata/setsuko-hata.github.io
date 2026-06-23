@@ -151,8 +151,10 @@ nav a:hover {
 .image-wrapper img {
   width: 100%;
   max-width: 650px;
-  /* border-radius: 10px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); */
+}
+
+.no-wrap-text {
+  white-space: nowrap;
 }
 
 /* Footer */

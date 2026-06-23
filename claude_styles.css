@@ -225,6 +225,7 @@
 .sh-section {
   padding: 88px 52px;
   position: relative;
+  overflow: hidden;
 }
 
 .sh-section-label {
@@ -254,9 +255,20 @@
 .sh-about {
   background: #f5f0e6;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 72px;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .sh-about {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0px;
+  }
+  .sh-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .sh-about-portrait {
@@ -348,8 +360,14 @@
 
 .sh-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .sh-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .sh-card {
@@ -745,4 +763,8 @@
 .sh-social-btn i {
   font-size: 14px;
   color: rgba(200, 169, 110, 0.55);
+}
+
+.sh-card-info {
+  margin-bottom: 30px;
 }
