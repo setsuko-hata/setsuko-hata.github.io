@@ -77,6 +77,14 @@
   position: relative;
   overflow: hidden;
 }
+
+@media (max-width: 768px) {
+  .uy-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}
+
 .uy-hero-left {
   background: linear-gradient(160deg, #3a6e28 0%, #2e5c20 50%, #1e3e14 100%);
   padding: 64px 52px;
