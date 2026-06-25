@@ -78,13 +78,6 @@
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .uy-hero {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-}
-
 .uy-hero-left {
   background: linear-gradient(160deg, #3a6e28 0%, #2e5c20 50%, #1e3e14 100%);
   padding: 64px 52px;
@@ -304,12 +297,14 @@
 .uy-schedule {
   background: #edf2e4;
   padding: 72px 44px;
+  text-align: center;
 }
 .uy-schedule-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 28px;
   margin-top: 48px;
+  text-align: left;
 }
 .uy-schedule-block {
   background: #f8f5ee;
@@ -339,6 +334,23 @@
   letter-spacing: 0.16em;
   color: rgba(255, 255, 255, 0.75);
 }
+.uy-schedule-cta {
+  display: inline-block;
+  padding: 14px 36px;
+  background: #c8a96e;
+  color: #1e1508;
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  width: fit-content;
+  font-size: 1em;
+  margin-top: 2em;
+}
+
 .uy-session-list {
   padding: 0;
   margin: 0;
@@ -641,4 +653,17 @@
   width: 18px;
   height: 18px;
   fill: currentColor;
+}
+
+@media (max-width: 768px) {
+  .uy-hero,
+  .uy-schedule-grid,
+  .uy-bring,
+  .uy-benefits-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .uy-welcome {
+    flex-direction: column;
+  }
 }
