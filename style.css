@@ -89,10 +89,10 @@ header {
   position: sticky;
   top: 0;
   background: rgba(249, 241, 234, 0.92);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
   z-index: 100;
-  overflow: hidden;
 }
 
 .nav-container {

@@ -49,7 +49,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 28px 52px;
-  background: color-mix(in srgb, var(--cream) 92%, transparent);
+  background: rgba(249, 241, 234, 0.92);
   position: relative;
   z-index: 10;
 }
@@ -111,22 +111,22 @@
   background:
     radial-gradient(
       ellipse 60% 55% at 10% 5%,
-      color-mix(in srgb, var(--blush) 35%, transparent) 0%,
+      rgba(227, 184, 179, 0.35) 0%,
       transparent 65%
     ),
     radial-gradient(
       ellipse 50% 45% at 50% 45%,
-      color-mix(in srgb, var(--gold) 14%, transparent) 0%,
+      rgba(201, 168, 106, 0.14) 0%,
       transparent 70%
     ),
     radial-gradient(
       ellipse 45% 35% at 20% 80%,
-      color-mix(in srgb, var(--blush-deep) 12%, transparent) 0%,
+      rgba(207, 148, 141, 0.12) 0%,
       transparent 60%
     ),
     radial-gradient(
       ellipse 40% 30% at 85% 25%,
-      color-mix(in srgb, var(--gold-light) 16%, transparent) 0%,
+      rgba(232, 207, 163, 0.16) 0%,
       transparent 55%
     ),
     var(--cream);
@@ -303,8 +303,8 @@
   inset: 16px;
   /* background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--gold) 30%, transparent) 0%,
-    color-mix(in srgb, var(--gold-deep) 60%, transparent) 100%
+    rgba(201, 168, 106, 0.3) 0%,
+    rgba(184, 135, 74, 0.6) 100%
   ); */
   display: flex;
   align-items: center;
@@ -351,7 +351,7 @@
   letter-spacing: 0.24em;
   color: var(--gold-deep);
   text-transform: uppercase;
-  background: color-mix(in srgb, var(--gold-light) 18%, transparent);
+  background: rgba(232, 207, 163, 0.18);
 }
 
 /* OFFERINGS GRID */
@@ -453,7 +453,7 @@
   inset: 0;
   background: radial-gradient(
     ellipse 60% 80% at 50% 50%,
-    color-mix(in srgb, var(--blush) 14%, transparent) 0%,
+    rgba(227, 184, 179, 0.14) 0%,
     transparent 70%
   );
 }
@@ -622,7 +622,7 @@
   height: 400px;
   background: radial-gradient(
     ellipse,
-    color-mix(in srgb, var(--gold) 15%, transparent) 0%,
+    rgba(201, 168, 106, 0.15) 0%,
     transparent 70%
   );
 }
@@ -661,8 +661,8 @@
 .sh-input {
   flex: 1;
   padding: 16px 24px;
-  background: color-mix(in srgb, var(--cream) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  background: rgba(249, 241, 234, 0.08);
+  border: 1px solid rgba(201, 168, 106, 0.4);
   border-right: none;
   color: var(--gold-light);
   font-family: "Lato", sans-serif;
@@ -673,7 +673,7 @@
 }
 
 .sh-input::placeholder {
-  color: color-mix(in srgb, var(--gold) 50%, transparent);
+  color: rgba(201, 168, 106, 0.5);
 }
 
 /* FOOTER */
@@ -713,7 +713,7 @@
   font-size: 12px;
   font-weight: 300;
   line-height: 1.85;
-  color: color-mix(in srgb, var(--gold) 60%, transparent);
+  color: rgba(201, 168, 106, 0.6);
   letter-spacing: 0.04em;
 }
 
@@ -737,7 +737,7 @@
   font-family: "Lato", sans-serif;
   font-size: 12px;
   font-weight: 300;
-  color: color-mix(in srgb, var(--gold) 55%, transparent);
+  color: rgba(201, 168, 106, 0.55);
   letter-spacing: 0.06em;
   cursor: pointer;
 }
@@ -749,7 +749,7 @@
   font-family: "Lato", sans-serif;
   font-size: 11px;
   font-weight: 300;
-  color: color-mix(in srgb, var(--gold-deep) 40%, transparent);
+  color: rgba(184, 135, 74, 0.4);
   letter-spacing: 0.1em;
 }
 
@@ -783,7 +783,7 @@
 .sh-social-btn {
   width: 34px;
   height: 34px;
-  border: 0.5px solid color-mix(in srgb, var(--gold) 35%, transparent);
+  border: 0.5px solid rgba(201, 168, 106, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -791,7 +791,7 @@
 }
 .sh-social-btn i {
   font-size: 14px;
-  color: color-mix(in srgb, var(--gold) 55%, transparent);
+  color: rgba(201, 168, 106, 0.55);
 }
 
 .sh-card-info {
