@@ -1,6 +1,6 @@
 .sh-root {
-  background: #faf7f0;
-  color: #3d2e1a;
+  background: var(--cream);
+  color: var(--ink);
   font-family: "Lato", sans-serif;
   font-weight: 300;
   margin: 0;
@@ -22,9 +22,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #c8a96e 30%,
-    #e8d5a3 50%,
-    #c8a96e 70%,
+    var(--gold) 30%,
+    var(--gold-light) 50%,
+    var(--gold) 70%,
     transparent 100%
   );
   margin: 0;
@@ -36,9 +36,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #c8a96e 40%,
-    #e8d5a3 50%,
-    #c8a96e 60%,
+    var(--gold) 40%,
+    var(--gold-light) 50%,
+    var(--gold) 60%,
     transparent 100%
   );
 }
@@ -49,7 +49,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 28px 52px;
-  background: rgba(250, 247, 240, 0.92);
+  background: color-mix(in srgb, var(--cream) 92%, transparent);
   position: relative;
   z-index: 10;
 }
@@ -59,7 +59,7 @@
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.18em;
-  color: #8b6914;
+  color: var(--gold-deep);
   text-transform: uppercase;
 }
 
@@ -69,7 +69,7 @@
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.28em;
-  color: #a07840;
+  color: var(--gold-deep);
   text-transform: uppercase;
   margin-top: 2px;
 }
@@ -87,7 +87,7 @@
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.22em;
-  color: #6b5230;
+  color: var(--ink-soft);
   text-decoration: none;
   text-transform: uppercase;
   opacity: 0.85;
@@ -110,21 +110,26 @@
   inset: 0;
   background:
     radial-gradient(
-      ellipse 70% 60% at 50% 50%,
-      rgba(216, 183, 120, 0.12) 0%,
+      ellipse 60% 55% at 10% 5%,
+      color-mix(in srgb, var(--blush) 35%, transparent) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 50% 45% at 50% 45%,
+      color-mix(in srgb, var(--gold) 14%, transparent) 0%,
       transparent 70%
     ),
     radial-gradient(
-      ellipse 40% 30% at 20% 80%,
-      rgba(200, 169, 110, 0.08) 0%,
+      ellipse 45% 35% at 20% 80%,
+      color-mix(in srgb, var(--blush-deep) 12%, transparent) 0%,
       transparent 60%
     ),
     radial-gradient(
-      ellipse 35% 25% at 80% 20%,
-      rgba(232, 213, 163, 0.1) 0%,
+      ellipse 40% 30% at 85% 25%,
+      color-mix(in srgb, var(--gold-light) 16%, transparent) 0%,
       transparent 55%
     ),
-    #faf7f0;
+    var(--cream);
 }
 
 /* Decorative SVG motif behind hero */
@@ -149,7 +154,7 @@
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.35em;
-  color: #a07840;
+  color: var(--gold-deep);
   text-transform: uppercase;
   margin-bottom: 20px;
 }
@@ -159,20 +164,20 @@
   font-size: 64px;
   font-weight: 300;
   line-height: 1.08;
-  color: #2a1f0f;
+  color: var(--ink-deep);
   margin: 0 0 8px;
   letter-spacing: 0.02em;
 }
 
 .sh-hero h1 em {
   font-style: italic;
-  color: #8b6914;
+  color: var(--gold-deep);
 }
 
 .sh-hero-kanji {
   font-size: 13px;
   letter-spacing: 0.32em;
-  color: #b09060;
+  color: var(--gold);
   margin: 18px 0 28px;
   font-family: "Lato", sans-serif;
   font-weight: 300;
@@ -183,7 +188,7 @@
   font-size: 20px;
   font-weight: 300;
   font-style: italic;
-  color: #5a4020;
+  color: var(--ink);
   line-height: 1.65;
   margin-bottom: 44px;
   opacity: 0.9;
@@ -192,8 +197,13 @@
 .sh-btn-gold {
   display: inline-block;
   padding: 14px 44px;
-  background: linear-gradient(135deg, #c8a96e 0%, #e8d5a3 50%, #c8a96e 100%);
-  color: #2a1a06;
+  background: linear-gradient(
+    135deg,
+    var(--gold) 0%,
+    var(--gold-light) 50%,
+    var(--gold) 100%
+  );
+  color: var(--ink-deeper);
   font-family: "Cinzel", serif;
   font-weight: 400;
   letter-spacing: 0.28em;
@@ -209,14 +219,14 @@
   display: inline-block;
   padding: 13px 40px;
   background: transparent;
-  color: #8b6914;
+  color: var(--gold-deep);
   font-family: "Cinzel", serif;
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid #c8a96e;
+  border: 1px solid var(--gold);
   margin-left: 16px;
   cursor: pointer;
 }
@@ -232,7 +242,7 @@
   font-family: "Cinzel", serif;
   font-weight: 400;
   letter-spacing: 0.38em;
-  color: #a07840;
+  color: var(--gold-deep);
   text-transform: uppercase;
   margin-bottom: 12px;
 }
@@ -241,23 +251,28 @@
   font-family: "Cormorant Garamond", serif;
   font-size: 44px;
   font-weight: 300;
-  color: #2a1f0f;
+  color: var(--ink-deep);
   line-height: 1.12;
   margin: 0 0 20px;
 }
 
 .sh-section-title em {
   font-style: italic;
-  color: #8b6914;
+  color: var(--gold-deep);
 }
 
 /* ABOUT SECTION */
 .sh-about {
-  background: #f5f0e6;
+  background: var(--cream-deep);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 72px;
   align-items: center;
+}
+
+.sh-about > *:not(.marble-overlay) {
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -278,7 +293,7 @@
 .sh-portrait-frame {
   width: 100%;
   aspect-ratio: 3/4;
-  /* background: linear-gradient(160deg, #e8d5a3 0%, #c8a96e 40%, #a07840 100%); */
+  /* background: linear-gradient(160deg, var(--gold-light) 0%, var(--gold) 40%, var(--gold-deep) 100%); */
   position: relative;
   overflow: hidden;
 }
@@ -288,8 +303,8 @@
   inset: 16px;
   /* background: linear-gradient(
     180deg,
-    rgba(200, 169, 110, 0.3) 0%,
-    rgba(160, 120, 64, 0.6) 100%
+    color-mix(in srgb, var(--gold) 30%, transparent) 0%,
+    color-mix(in srgb, var(--gold-deep) 60%, transparent) 100%
   ); */
   display: flex;
   align-items: center;
@@ -306,7 +321,7 @@
   font-size: 20px;
   font-weight: 300;
   line-height: 1.78;
-  color: #3d2e1a;
+  color: var(--ink);
   margin: 24px 0 36px;
   font-style: italic;
 }
@@ -316,7 +331,7 @@
   font-size: 14px;
   font-weight: 300;
   line-height: 1.9;
-  color: #5a4530;
+  color: var(--ink-soft);
   margin-bottom: 36px;
   letter-spacing: 0.02em;
 }
@@ -330,18 +345,23 @@
 
 .sh-tag {
   padding: 6px 16px;
-  border: 0.5px solid #c8a96e;
+  border: 0.5px solid var(--gold);
   font-family: "Cinzel", serif;
   font-size: 9px;
   letter-spacing: 0.24em;
-  color: #8b6914;
+  color: var(--gold-deep);
   text-transform: uppercase;
-  background: rgba(232, 213, 163, 0.18);
+  background: color-mix(in srgb, var(--gold-light) 18%, transparent);
 }
 
 /* OFFERINGS GRID */
 .sh-offerings {
-  background: #faf7f0;
+  background: var(--cream);
+}
+
+.sh-offerings > *:not(.marble-overlay) {
+  position: relative;
+  z-index: 1;
 }
 
 .sh-offerings-intro {
@@ -354,7 +374,7 @@
   font-size: 19px;
   font-weight: 300;
   font-style: italic;
-  color: #5a4020;
+  color: var(--ink);
   line-height: 1.7;
 }
 
@@ -371,10 +391,10 @@
 }
 
 .sh-card {
-  background: #f5f0e6;
+  background: var(--cream-deep);
   padding: 44px 32px;
   position: relative;
-  border-top: 1.5px solid #c8a96e;
+  border-top: 1.5px solid var(--gold);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -393,14 +413,14 @@
   font-family: "Cormorant Garamond", serif;
   font-size: 26px;
   font-weight: 400;
-  color: #2a1f0f;
+  color: var(--ink-deep);
   margin: 0 0 6px;
 }
 
 .sh-card-subtitle {
   font-family: "Cinzel", serif;
   letter-spacing: 0.26em;
-  color: #a07840;
+  color: var(--gold-deep);
   text-transform: uppercase;
   margin-bottom: 18px;
 }
@@ -410,12 +430,17 @@
   font-size: 13px;
   font-weight: 300;
   line-height: 1.85;
-  color: #5a4530;
+  color: var(--ink-soft);
 }
 
 /* PHILOSOPHY / QUOTE BANNER */
 .sh-quote-banner {
-  background: linear-gradient(135deg, #2a1f0f 0%, #3d2e1a 40%, #2a1f0f 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ink-deeper) 0%,
+    var(--ink-deep) 40%,
+    var(--ink-deeper) 100%
+  );
   padding: 80px 80px;
   text-align: center;
   position: relative;
@@ -428,7 +453,7 @@
   inset: 0;
   background: radial-gradient(
     ellipse 60% 80% at 50% 50%,
-    rgba(200, 169, 110, 0.12) 0%,
+    color-mix(in srgb, var(--blush) 14%, transparent) 0%,
     transparent 70%
   );
 }
@@ -438,7 +463,7 @@
   font-size: 34px;
   font-weight: 300;
   font-style: italic;
-  color: #e8d5a3;
+  color: var(--gold-light);
   line-height: 1.52;
   position: relative;
   z-index: 1;
@@ -450,7 +475,7 @@
   font-family: "Cinzel", serif;
   font-size: 9px;
   letter-spacing: 0.32em;
-  color: #a07840;
+  color: var(--gold-deep);
   text-transform: uppercase;
   position: relative;
   z-index: 1;
@@ -458,7 +483,7 @@
 
 /* EVENTS */
 .sh-events {
-  background: #f5f0e6;
+  background: var(--cream-deep);
 }
 
 .sh-events-grid {
@@ -469,7 +494,7 @@
 }
 
 .sh-event-card {
-  background: #faf7f0;
+  background: var(--cream);
   padding: 36px 32px;
   display: flex;
   gap: 28px;
@@ -486,7 +511,7 @@
   font-family: "Cinzel", serif;
   font-size: 8.5px;
   letter-spacing: 0.24em;
-  color: #a07840;
+  color: var(--gold-deep);
   text-transform: uppercase;
   display: block;
 }
@@ -495,7 +520,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: 42px;
   font-weight: 300;
-  color: #c8a96e;
+  color: var(--gold);
   line-height: 1;
   display: block;
 }
@@ -504,7 +529,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: 22px;
   font-weight: 400;
-  color: #2a1f0f;
+  color: var(--ink-deep);
   margin: 0 0 6px;
   line-height: 1.2;
 }
@@ -514,7 +539,7 @@
   font-size: 11px;
   font-weight: 300;
   letter-spacing: 0.12em;
-  color: #8b6914;
+  color: var(--gold-deep);
   margin-bottom: 10px;
   text-transform: uppercase;
 }
@@ -524,12 +549,12 @@
   font-size: 13px;
   font-weight: 300;
   line-height: 1.75;
-  color: #5a4530;
+  color: var(--ink-soft);
 }
 
 /* TESTIMONIALS */
 .sh-testimonials {
-  background: #faf7f0;
+  background: var(--cream);
   text-align: center;
 }
 
@@ -542,15 +567,15 @@
 
 .sh-testimonial {
   padding: 36px 28px;
-  background: #f5f0e6;
+  background: var(--cream-deep);
   position: relative;
-  border-bottom: 1px solid #c8a96e;
+  border-bottom: 1px solid var(--gold);
 }
 
 .sh-quote-mark {
   font-family: "Cormorant Garamond", serif;
   font-size: 72px;
-  color: #e8d5a3;
+  color: var(--gold-light);
   line-height: 0.5;
   margin-bottom: 24px;
   display: block;
@@ -561,7 +586,7 @@
   font-size: 17px;
   font-weight: 300;
   font-style: italic;
-  color: #3d2e1a;
+  color: var(--ink);
   line-height: 1.75;
   margin-bottom: 24px;
 }
@@ -570,13 +595,17 @@
   font-family: "Cinzel", serif;
   font-size: 9px;
   letter-spacing: 0.24em;
-  color: #a07840;
+  color: var(--gold-deep);
   text-transform: uppercase;
 }
 
 /* CTA / NEWSLETTER */
 .sh-cta {
-  background: linear-gradient(160deg, #2a1f0f 0%, #4a3420 100%);
+  background: linear-gradient(
+    160deg,
+    var(--ink-deeper) 0%,
+    var(--ink-deep) 100%
+  );
   padding: 100px 52px;
   text-align: center;
   position: relative;
@@ -593,7 +622,7 @@
   height: 400px;
   background: radial-gradient(
     ellipse,
-    rgba(200, 169, 110, 0.15) 0%,
+    color-mix(in srgb, var(--gold) 15%, transparent) 0%,
     transparent 70%
   );
 }
@@ -603,7 +632,7 @@
   font-size: 48px;
   font-weight: 300;
   font-style: italic;
-  color: #e8d5a3;
+  color: var(--gold-light);
   margin: 0 0 16px;
   position: relative;
   z-index: 1;
@@ -614,7 +643,7 @@
   font-size: 13px;
   font-weight: 300;
   letter-spacing: 0.12em;
-  color: #c8a96e;
+  color: var(--gold);
   margin-bottom: 44px;
   position: relative;
   z-index: 1;
@@ -632,10 +661,10 @@
 .sh-input {
   flex: 1;
   padding: 16px 24px;
-  background: rgba(250, 247, 240, 0.08);
-  border: 1px solid rgba(200, 169, 110, 0.4);
+  background: color-mix(in srgb, var(--cream) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
   border-right: none;
-  color: #e8d5a3;
+  color: var(--gold-light);
   font-family: "Lato", sans-serif;
   font-size: 13px;
   font-weight: 300;
@@ -644,12 +673,12 @@
 }
 
 .sh-input::placeholder {
-  color: rgba(200, 169, 110, 0.5);
+  color: color-mix(in srgb, var(--gold) 50%, transparent);
 }
 
 /* FOOTER */
 .sh-footer {
-  background: #1e1508;
+  background: var(--ink-deeper);
   padding: 56px 52px 40px;
 }
 
@@ -664,7 +693,7 @@
   font-family: "Cinzel", serif;
   font-size: 17px;
   font-weight: 500;
-  color: #c8a96e;
+  color: var(--gold);
   letter-spacing: 0.18em;
   margin-bottom: 6px;
 }
@@ -674,7 +703,7 @@
   font-size: 13px;
   font-weight: 300;
   font-style: italic;
-  color: #a07840;
+  color: var(--gold-deep);
   letter-spacing: 0.12em;
   margin-bottom: 20px;
 }
@@ -684,7 +713,7 @@
   font-size: 12px;
   font-weight: 300;
   line-height: 1.85;
-  color: rgba(200, 169, 110, 0.6);
+  color: color-mix(in srgb, var(--gold) 60%, transparent);
   letter-spacing: 0.04em;
 }
 
@@ -692,7 +721,7 @@
   font-family: "Cinzel", serif;
   font-size: 9px;
   letter-spacing: 0.28em;
-  color: #a07840;
+  color: var(--gold-deep);
   text-transform: uppercase;
   margin: 0 0 20px;
 }
@@ -708,7 +737,7 @@
   font-family: "Lato", sans-serif;
   font-size: 12px;
   font-weight: 300;
-  color: rgba(200, 169, 110, 0.55);
+  color: color-mix(in srgb, var(--gold) 55%, transparent);
   letter-spacing: 0.06em;
   cursor: pointer;
 }
@@ -720,7 +749,7 @@
   font-family: "Lato", sans-serif;
   font-size: 11px;
   font-weight: 300;
-  color: rgba(160, 120, 64, 0.4);
+  color: color-mix(in srgb, var(--gold-deep) 40%, transparent);
   letter-spacing: 0.1em;
 }
 
@@ -734,14 +763,14 @@
 .sh-ornament hr {
   flex: 1;
   height: 0.5px;
-  background: #c8a96e;
+  background: var(--gold);
   border: none;
   opacity: 0.4;
 }
 .sh-ornament-diamond {
   width: 5px;
   height: 5px;
-  background: #c8a96e;
+  background: var(--gold);
   transform: rotate(45deg);
   opacity: 0.7;
 }
@@ -754,7 +783,7 @@
 .sh-social-btn {
   width: 34px;
   height: 34px;
-  border: 0.5px solid rgba(200, 169, 110, 0.35);
+  border: 0.5px solid color-mix(in srgb, var(--gold) 35%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -762,7 +791,7 @@
 }
 .sh-social-btn i {
   font-size: 14px;
-  color: rgba(200, 169, 110, 0.55);
+  color: color-mix(in srgb, var(--gold) 55%, transparent);
 }
 
 .sh-card-info {
