@@ -69,8 +69,8 @@ a {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url("./marble-photo.jpg");
-  background-size: cover;
+  /* background-image: url("./marble-photo.jpg"); */
+  background-color: #efcfd4;
   background-position: center;
   opacity: 0.55;
   mix-blend-mode: multiply;
