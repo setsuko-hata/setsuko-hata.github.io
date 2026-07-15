@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&amp;family=Inter+Tight:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Shippori+Mincho:wght@400;500&amp;family=Zen+Kaku+Gothic+New:wght@400;500&amp;display=swap"
+      data-precedence="default"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/styles-Q1zC6xcO.css"
+      data-precedence="default"
+    />
+    <title>プログラム | Setsuko Hata Yoga</title>
+    <meta name="theme-color" content="#f7f2e8" />
+    <meta property="og:site_name" content="Setsuko Hata Yoga Studio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Setsuko Hata Yoga Studio" />
+    <meta
+      property="og:description"
+      content="Authentic Hatha Yoga instruction by a Sadhguru Certified teacher, trained over 1,750 hours in India. Classes in Tokyo and Osaka, and corporate wellness programs."
+    />
+    <meta property="og:image" content="../assets/hero.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="../assets/hero.jpg" />
+    <meta
+      name="description"
+      content="ウパヨガ、スーリヤ・シャクティ、スーリヤ・クリヤ。サドグルによって体系化された本格ハタヨガプログラム。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&amp;family=Inter+Tight:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Shippori+Mincho:wght@400;500&amp;family=Zen+Kaku+Gothic+New:wght@400;500&amp;display=swap"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="../assets/hero.webp"
+      type="image/webp"
+      media="(min-width: 901px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="../assets/hero-900.webp"
+      type="image/webp"
+      media="(max-width: 900px)"
+    />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" hreflang="ja" href="./offerings.html" />
+    <link rel="alternate" hreflang="en" href="../en/offerings.html" />
+    <style>
+      /* Static export overrides — replace behaviours that used to be driven by
+ * client-side JS (scroll listeners, mobile menu toggle).
+ * Hero/dark-band text stays white; mobile nav has no JS toggle so it's
+ * always expanded. */
+      section[class*="brand-dark"] h1,
+      section[class*="brand-dark"] h2,
+      section[class*="brand-dark"] h3,
+      section[class*="brand-dark"] h4 {
+        color: #fff !important;
+      }
+      /* Mobile: reveal the nav links stacked under the logo since the hamburger
+ * toggle needs JS to open the panel. */
+      @media (max-width: 767px) {
+        header nav {
+          display: flex !important;
+          flex-wrap: wrap;
+          gap: 1rem !important;
+          padding: 0.5rem 0 0.75rem;
+          width: 100%;
+        }
+        header button[aria-expanded] {
+          display: none !important;
+        }
+        header nav a {
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--$-->
+    <div class="flex min-h-dvh flex-col">
+      <header
+        class="fixed inset-x-0 top-0 z-50 transition-colors duration-500 bg-[#f7f2e8]/95 backdrop-blur-md text-brand-espresso border-b border-brand-espresso/10"
+      >
+        <div
+          class="mx-auto w-full max-w-7xl px-6 md:px-10 flex h-20 items-center justify-between"
+        >
+          <a
+            class="font-display text-lg leading-none tracking-tight active"
+            href="../index.html"
+            data-status="active"
+            aria-current="page"
+            ><span
+              class="block text-[11px] font-mono uppercase tracking-[0.28em] opacity-70"
+              >Setsuko Hata</span
+            ><span class="mt-0.5 block text-xl text-brand-espresso"
+              >Yoga Studio</span
+            ></a
+          >
+          <nav class="hidden items-center gap-9 md:flex" aria-label="Primary">
+            <a
+              href="../index.html"
+              class="text-[13px] uppercase tracking-[0.18em] transition-opacity hover:opacity-70 [&amp;.active]:font-semibold"
+              >ホーム</a
+            ><a
+              href="./about.html"
+              class="text-[13px] uppercase tracking-[0.18em] transition-opacity hover:opacity-70 [&amp;.active]:font-semibold"
+              >私たちについて</a
+            ><a
+              class="text-[13px] uppercase tracking-[0.18em] transition-opacity hover:opacity-70 [&amp;.active]:font-semibold active"
+              href="./offerings.html"
+              data-status="active"
+              aria-current="page"
+              >プログラム</a
+            ><a
+              href="./membership.html"
+              class="text-[13px] uppercase tracking-[0.18em] transition-opacity hover:opacity-70 [&amp;.active]:font-semibold"
+              >メンバーシップ</a
+            ><a
+              href="./contact.html"
+              class="text-[13px] uppercase tracking-[0.18em] transition-opacity hover:opacity-70 [&amp;.active]:font-semibold"
+              >お問い合わせ</a
+            >
+          </nav>
+          <div class="hidden items-center gap-6 md:flex">
+            <a
+              href="../en/offerings.html"
+              class="font-mono text-[11px] uppercase tracking-[0.22em] opacity-80 transition-opacity hover:opacity-100"
+              aria-label="Switch to English"
+              >EN</a
+            ><a
+              href="./contact.html"
+              class="px-5 py-2.5 text-[11px] uppercase tracking-[0.22em] font-medium transition-colors bg-brand-espresso text-white hover:bg-brand-moss"
+              >クラスを予約する</a
+            >
+          </div>
+          <button
+            type="button"
+            class="flex h-10 w-10 items-center justify-center md:hidden"
+            aria-expanded="false"
+            aria-label="Toggle menu"
+          >
+            <span class="relative block h-4 w-5" aria-hidden="true"
+              ><span
+                class="absolute left-0 top-0 h-px w-5 bg-current transition-transform duration-200"
+              ></span
+              ><span
+                class="absolute left-0 top-2 h-px w-5 bg-current transition-opacity duration-200"
+              ></span
+              ><span
+                class="absolute left-0 top-4 h-px w-5 bg-current transition-transform duration-200"
+              ></span
+            ></span>
+          </button>
+        </div>
+      </header>
+      <main class="flex-1">
+        <section class="brand-dark bg-brand-moss pt-32 pb-24 md:pt-40 md:pb-32">
+          <div class="mx-auto w-full max-w-6xl px-6 md:px-10">
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.24em] text-brand-tan"
+            >
+              Offerings
+            </p>
+            <h1
+              class="mt-6 max-w-3xl font-display text-5xl leading-[1.05] text-white md:text-7xl"
+            >
+              本格プログラム
+            </h1>
+            <p class="mt-8 max-w-xl text-lg leading-relaxed text-white/85">
+              ウパヨガ、スーリヤ・シャクティ、スーリヤ・クリヤ。サドグルによって体系化された、本格的なハタヨガの実践です。
+            </p>
+          </div>
+        </section>
+        <section class="bg-[#f7f2e8]">
+          <div class="mx-auto w-full max-w-7xl px-6 md:px-10 py-20 md:py-28">
+            <div class="grid items-center gap-12 md:grid-cols-2 md:gap-20">
+              <div class="relative aspect-[4/5] overflow-hidden">
+                <img
+                  src="https://d8j0ntlcm91z4.cloudfront.net/user_3GPbQMbfR1ccKRGYF3GMm7Snyeb/hf_20260713_014348_0ffe647e-2fb8-42bd-91f4-f4436580e897.png"
+                  alt="ウパヨガ"
+                  loading="lazy"
+                  class="h-full w-full object-cover"
+                />
+                <div
+                  class="absolute left-4 top-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white/90"
+                >
+                  01<!-- -->
+                  /
+                  <!-- -->02
+                </div>
+              </div>
+              <div>
+                <p
+                  class="font-mono text-[11px] uppercase tracking-[0.24em] text-brand-moss"
+                >
+                  はじまりの、10の実践
+                </p>
+                <h2
+                  class="mt-4 font-display text-4xl leading-tight md:text-5xl"
+                >
+                  ウパヨガ
+                </h2>
+                <p
+                  class="mt-6 max-w-md text-lg leading-relaxed text-brand-espresso/80"
+                >
+                  関節、筋肉、そしてエネルギーの流れにやさしく働きかける、10のプラクティス。凝り固まった心と身体を、内側からじんわりとほぐしていきます。
+                </p>
+                <ul class="mt-8 space-y-3">
+                  <li class="flex gap-3 text-sm text-brand-espresso/85">
+                    <span aria-hidden="true" class="text-brand-moss">─</span
+                    ><span
+                      >身体にたまったストレスと疲れを、ゆっくりと解き放つ</span
+                    >
+                  </li>
+                  <li class="flex gap-3 text-sm text-brand-espresso/85">
+                    <span aria-hidden="true" class="text-brand-moss">─</span
+                    ><span>関節と筋肉に優しく働きかける</span>
+                  </li>
+                  <li class="flex gap-3 text-sm text-brand-espresso/85">
+                    <span aria-hidden="true" class="text-brand-moss">─</span
+                    ><span>動かない時間が続いた身体を、内側から蘇らせる</span>
+                  </li>
+                  <li class="flex gap-3 text-sm text-brand-espresso/85">
+                    <span aria-hidden="true" class="text-brand-moss">─</span
+                    ><span>時差ボケや長旅で乱れたリズムを、静かに整える</span>
+                  </li>
+                </ul>
+                <dl
+                  class="mt-8 grid grid-cols-2 gap-6 border-t border-brand-espresso/15 pt-6 text-sm"
+                >
+                  <div>
+                    <dt
+                      class="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-moss"
+                    >
+                      構成
+                    </dt>
+                    <dd class="mt-2 text-brand-espresso/85">10の実践</dd>
+                  </div>
+                  <div>
+                    <dt
+                      class="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-moss"
+                    >
+                      対象
+                    </dt>
+                    <dd class="mt-2 text-brand-espresso/85">
+                      ヨガが初めての方、他のプログラムへの準備として
+                    </dd>
+                  </div>
+                </dl>
+                <div class="mt-10">
+                  <a
+                    href="./contact.html"
+                    class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[13px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss"
+                    >クラスを予約する</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="bg-[#f7f2e8]">
+          <div class="mx-auto w-full max-w-7xl px-6 md:px-10 py-20 md:py-28">
+            <div class="grid items-center gap-12 md:grid-cols-2 md:gap-20">
+              <div class="relative aspect-[4/5] overflow-hidden">
+                <img
+                  src="https://d8j0ntlcm91z4.cloudfront.net/user_3GPbQMbfR1ccKRGYF3GMm7Snyeb/hf_20260713_014414_813724c7-cf90-4d5e-8f7d-523b062f5347.png"
+                  alt="スーリヤ・クリヤ、スーリヤ・シャクティ"
+                  loading="lazy"
+                  class="h-full w-full object-cover"
+                />
+                <div
+                  class="absolute left-4 top-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white/90"
+                >
+                  02<!-- -->
+                  /
+                  <!-- -->02
+                </div>
+              </div>
+              <div>
+                <p
+                  class="font-mono text-[11px] uppercase tracking-[0.24em] text-brand-moss"
+                >
+                  本場インドより受け継がれる、太陽の実践
+                </p>
+                <h2
+                  class="mt-4 font-display text-3xl leading-tight md:text-4xl"
+                >
+                  スーリヤ・シャクティ／スーリヤ・クリヤ
+                </h2>
+                <p
+                  class="mt-6 max-w-md text-base leading-loose text-brand-espresso/80"
+                >
+                  本場インドで何千年にもわたり受け継がれてきた、本格的なハタヨガプログラム。太陽のサイクルと自分自身の生命を調和させ、身体・心・生命エネルギーを内側から整えていきます。一般的なヨガやストレッチとは異なり、身体・エネルギーレベルで生命に変革をもたらすとてもパワフルなヨガの実践です。
+                </p>
+
+                <div class="mt-10 border-t border-brand-espresso/15 pt-8">
+                  <p class="flex items-center gap-2 font-display text-xl md:text-2xl">
+                    <span aria-hidden="true">🔥</span
+                    ><span>Surya Shakti（スーリヤ・シャクティ）</span>
+                  </p>
+                  <p class="mt-3 text-sm leading-relaxed text-brand-espresso/80">
+                    生命エネルギーを高め、身体をしなやかで力強く育てる伝統的なハタヨガです。
+                  </p>
+                  <ul class="mt-5 space-y-2.5">
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>生命エネルギー・活力の向上</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>筋力・柔軟性・持久力の向上</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>姿勢・身体バランスの改善</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>代謝・身体機能の活性化</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>疲れにくく、軽やかな身体へ</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>集中力・行動力・パフォーマンスの向上</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="mt-8 border-t border-brand-espresso/15 pt-8">
+                  <p class="flex items-center gap-2 font-display text-xl md:text-2xl">
+                    <span aria-hidden="true">☀️</span
+                    ><span>Surya Kriya（スーリヤ・クリヤ）</span>
+                  </p>
+                  <p class="mt-3 text-sm leading-relaxed text-brand-espresso/80">
+                    身体・呼吸・生命エネルギーを深く調和させ、内側から心身を整える本格的なハタヨガです。
+                  </p>
+                  <ul class="mt-5 space-y-2.5">
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>自律神経・ホルモンバランスを整えるサポート</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>深い集中力と心の安定</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>ストレス・不安の軽減</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>呼吸が深まり、睡眠の質をサポート</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>瞑想の質を高め、内側の静けさを育む</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-brand-espresso/85">
+                      <span aria-hidden="true" class="text-brand-moss">─</span
+                      ><span>穏やかで活力あふれる毎日へ</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="mt-10">
+                  <a
+                    href="./contact.html"
+                    class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[13px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss"
+                    >クラスを予約する</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="brand-dark bg-brand-espresso py-24 md:py-32">
+          <div class="mx-auto w-full max-w-6xl px-6 md:px-10 max-w-3xl">
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.24em] text-brand-tan"
+            >
+              よくあるご質問
+            </p>
+            <div
+              class="mt-10 divide-y divide-white/15 border-t border-white/15"
+            >
+              <details class="group py-6">
+                <summary
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl text-white md:text-2xl"
+                >
+                  <span>ヨガの経験がなくても参加できますか。</span
+                  ><span
+                    aria-hidden="true"
+                    class="shrink-0 text-brand-tan transition-transform duration-300 group-open:rotate-45"
+                    >+</span
+                  >
+                </summary>
+                <p class="mt-4 max-w-2xl leading-relaxed text-white/80">
+                  はい。ウパヨガは初めての方への入り口として設計されています。お一人お一人の身体の状態に合わせて指導します。
+                </p>
+              </details>
+              <details class="group py-6">
+                <summary
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl text-white md:text-2xl"
+                >
+                  <span>何を持参すればよいですか。</span
+                  ><span
+                    aria-hidden="true"
+                    class="shrink-0 text-brand-tan transition-transform duration-300 group-open:rotate-45"
+                    >+</span
+                  >
+                </summary>
+                <p class="mt-4 max-w-2xl leading-relaxed text-white/80">
+                  動きやすい服装と、ヨガマットをご用意ください。会場によってはマットの貸し出しもございます。
+                </p>
+              </details>
+              <details class="group py-6">
+                <summary
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl text-white md:text-2xl"
+                >
+                  <span>フィットネスヨガとは何が違いますか。</span
+                  ><span
+                    aria-hidden="true"
+                    class="shrink-0 text-brand-tan transition-transform duration-300 group-open:rotate-45"
+                    >+</span
+                  >
+                </summary>
+                <p class="mt-4 max-w-2xl leading-relaxed text-white/80">
+                  フィットネスヨガが身体のエクササイズを主眼とするのに対し、ハタヨガは身体の仕組みへの理解に基づき、心とエネルギーを含めた総合的な実践を行います。
+                </p>
+              </details>
+              <details class="group py-6">
+                <summary
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl text-white md:text-2xl"
+                >
+                  <span>企業向けプログラムについて教えてください。</span
+                  ><span
+                    aria-hidden="true"
+                    class="shrink-0 text-brand-tan transition-transform duration-300 group-open:rotate-45"
+                    >+</span
+                  >
+                </summary>
+                <p class="mt-4 max-w-2xl leading-relaxed text-white/80">
+                  健康経営を目的とした企業向けに、オフィスでも実践できる形でプログラムをカスタマイズしています。詳しくはお問い合わせください。
+                </p>
+              </details>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="brand-dark bg-brand-espresso">
+        <div
+          class="mx-auto w-full max-w-7xl px-6 md:px-10 grid gap-14 py-20 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]"
+        >
+          <div>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.28em] opacity-70"
+            >
+              Setsuko Hata
+            </p>
+            <p class="mt-1 font-display text-2xl text-white">Yoga Studio</p>
+            <p class="mt-6 max-w-xs text-sm leading-relaxed opacity-80">
+              本格的なハタヨガを、日常へ。
+            </p>
+          </div>
+          <div>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.22em] text-brand-tan"
+            >
+              サイトマップ
+            </p>
+            <ul class="mt-5 space-y-2.5 text-sm">
+              <li>
+                <a
+                  class="opacity-80 transition-opacity hover:opacity-100 active"
+                  href="../index.html"
+                  data-status="active"
+                  aria-current="page"
+                  >ホーム</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./about.html"
+                  class="opacity-80 transition-opacity hover:opacity-100"
+                  >私たちについて</a
+                >
+              </li>
+              <li>
+                <a
+                  class="opacity-80 transition-opacity hover:opacity-100 active"
+                  href="./offerings.html"
+                  data-status="active"
+                  aria-current="page"
+                  >プログラム</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./membership.html"
+                  class="opacity-80 transition-opacity hover:opacity-100"
+                  >メンバーシップ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./contact.html"
+                  class="opacity-80 transition-opacity hover:opacity-100"
+                  >お問い合わせ</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.22em] text-brand-tan"
+            >
+              お問い合わせ
+            </p>
+            <ul class="mt-5 space-y-2.5 text-sm">
+              <li class="opacity-80">大阪府</li>
+              <li>
+                <a href="./contact.html" class="opacity-80 hover:opacity-100"
+                  >お問い合わせ</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.22em] text-brand-tan"
+            >
+              ニュースレター
+            </p>
+            <p class="mt-5 text-sm leading-relaxed opacity-80">
+              クラスやワークショップの情報をお届けします。
+            </p>
+            <form class="mt-5 flex gap-2" aria-label="ニュースレター">
+              <label for="newsletter-email" class="sr-only"
+                >メールアドレス</label
+              ><input
+                id="newsletter-email"
+                type="email"
+                placeholder="メールアドレス"
+                class="w-full border-b border-white/25 bg-transparent py-2 text-sm text-white placeholder:text-white/40 focus:border-brand-tan focus:outline-none"
+              /><button
+                type="submit"
+                class="shrink-0 border-b border-brand-tan pb-2 text-[11px] uppercase tracking-[0.2em] text-brand-tan hover:text-white"
+              >
+                登録する
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="border-t border-white/10">
+          <div
+            class="mx-auto w-full max-w-7xl px-6 md:px-10 flex flex-col gap-2 py-6 text-xs opacity-60 md:flex-row md:justify-between"
+          >
+            <p>
+              ©
+              <!-- -->2026<!-- -->
+              Setsuko Hata Yoga Studio.
+              <!-- -->All rights reserved.
+            </p>
+            <p class="font-mono uppercase tracking-[0.2em]">
+              Tokyo · Osaka · India
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!--/$-->
+  </body>
+</html>
