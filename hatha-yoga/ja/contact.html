@@ -34,6 +34,14 @@
       section[class*="brand-dark"] h4 {
         color: #fff !important;
       }
+      /* Expandable cards: hide the native disclosure triangle (Safari needs
+ * the -webkit- pseudo-element; list-none covers the rest). */
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::marker {
+        content: "";
+      }
       /* Mobile: reveal the nav links stacked under the logo since the hamburger
  * toggle needs JS to open the panel. */
       @media (max-width: 767px) {

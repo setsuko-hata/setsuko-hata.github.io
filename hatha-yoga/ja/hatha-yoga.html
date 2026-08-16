@@ -34,6 +34,14 @@
       section[class*="brand-dark"] h4 {
         color: #fff !important;
       }
+      /* Expandable cards: hide the native disclosure triangle (Safari needs
+ * the -webkit- pseudo-element; list-none covers the rest). */
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::marker {
+        content: "";
+      }
       /* Mobile: reveal the nav links stacked under the logo since the hamburger
  * toggle needs JS to open the panel. */
       @media (max-width: 767px) {
@@ -77,7 +85,7 @@
             <source type="image/webp" media="(max-width: 900px)" srcset="../assets/threshold-1000.webp" />
             <source type="image/webp" srcset="../assets/threshold.webp" />
             <source type="image/jpeg" media="(max-width: 900px)" srcset="../assets/threshold-1000.jpg" />
-            <img src="../assets/threshold.jpg" alt="日と月が向かい合う円窓と、積まれた石" class="absolute inset-0 -z-10 h-full w-full object-cover object-center" fetchpriority="high" />
+            <img src="../assets/threshold.jpg" alt="日と月が向かい合う円窓と、積まれた石" class="absolute inset-0 -z-10 h-full w-full object-cover object-center" fetchpriority="high" width="1600" height="1067" />
           </picture>
           <div aria-hidden="true" class="absolute inset-0 -z-10 bg-gradient-to-t from-brand-espresso/85 via-brand-espresso/20 to-brand-espresso/45"></div>
           <div class="mx-auto w-full max-w-7xl px-6 pb-20 md:px-10 md:pb-28">
@@ -93,7 +101,7 @@
               <div class="group relative isolate flex min-h-[420px] items-center overflow-hidden md:min-h-[600px]">
                 <picture>
                   <source type="image/webp" srcset="../assets/sun.webp" />
-                  <img src="../assets/sun.jpg" alt="木漏れ日" loading="lazy" class="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.04]" />
+                  <img src="../assets/sun.jpg" alt="木漏れ日" loading="lazy" width="800" height="1421" class="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.04]" />
                 </picture>
                 <div aria-hidden="true" class="absolute inset-0 -z-10 bg-brand-espresso/55"></div>
                 <p class="max-w-md px-8 py-16 text-left font-display text-2xl leading-[1.75] text-white md:px-14 md:text-[2rem] md:leading-[1.7]">ヨガとは、『ユニオン』ー自身の生命と宇宙が一体になった状態のこと。</p>
@@ -136,7 +144,7 @@
               <div class="group relative isolate flex min-h-[420px] items-center overflow-hidden md:min-h-[600px]">
                 <picture>
                   <source type="image/webp" srcset="../assets/moon.webp" />
-                  <img src="../assets/moon.jpg" alt="夜空の満月" loading="lazy" class="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.04]" />
+                  <img src="../assets/moon.jpg" alt="夜空の満月" loading="lazy" width="800" height="1422" class="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.04]" />
                 </picture>
                 <div aria-hidden="true" class="absolute inset-0 -z-10 bg-brand-espresso/55"></div>
                 <p class="max-w-md px-8 py-16 text-left font-display text-2xl leading-[1.75] text-white md:px-14 md:text-[2rem] md:leading-[1.7]">ハタヨガは、自分の中の太陽と月のバランスを整える科学です。</p>

@@ -34,6 +34,14 @@
       section[class*="brand-dark"] h4 {
         color: #fff !important;
       }
+      /* Expandable cards: hide the native disclosure triangle (Safari needs
+ * the -webkit- pseudo-element; list-none covers the rest). */
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::marker {
+        content: "";
+      }
       /* Mobile: reveal the nav links stacked under the logo since the hamburger
  * toggle needs JS to open the panel. */
       @media (max-width: 767px) {
@@ -73,8 +81,8 @@
       <main class="flex-1">
 
         <section class="relative h-[92vh] min-h-[640px] w-full overflow-hidden bg-brand-espresso text-white">
-          <picture><source type="image/webp" media="(max-width: 900px)" srcset="../assets/hero-900.webp" /><source type="image/webp" srcset="../assets/hero.webp" /><source type="image/jpeg" media="(max-width: 900px)" srcset="../assets/hero-900.jpg" /><img src="../assets/hero.jpg" alt="秦節子、庭園の小川にて" class="absolute inset-0 h-full w-full object-cover object-[center_38%]" fetchpriority="high" /></picture>
-          <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/30 to-black/5"></div>
+          <picture><source type="image/webp" media="(max-width: 900px)" srcset="../assets/hero-900.webp" /><source type="image/webp" srcset="../assets/hero.webp" /><source type="image/jpeg" media="(max-width: 900px)" srcset="../assets/hero-900.jpg" /><img src="../assets/hero.jpg" alt="秦節子、庭園の小川のほとりにて" class="absolute inset-0 h-full w-full object-cover object-[72%_12%] lg:object-[center_12%]" fetchpriority="high" width="1700" height="1275" /></picture>
+          <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/12"></div>
           <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10"></div>
           <div class="mx-auto w-full max-w-7xl px-6 md:px-10 relative z-10 flex h-full flex-col justify-center pt-24 md:pt-28">
             <div class="max-w-2xl motion-safe:animate-[brand-fade-up_900ms_ease-out]">
@@ -149,7 +157,7 @@
             <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss">講師紹介</p>
             <div class="mt-10 grid items-center gap-14 md:grid-cols-[1fr_1.2fr] md:gap-20">
               <div class="relative aspect-[4/5] overflow-hidden">
-                <picture><source type="image/webp" srcset="../assets/setsuko-about.webp" /><img src="../assets/setsuko-about.jpg" alt="秦節子" loading="lazy" class="h-full w-full object-cover" /></picture>
+                <picture><source type="image/webp" srcset="../assets/setsuko-about.webp" /><img src="../assets/setsuko-about.jpg" alt="秦節子" loading="lazy" class="h-full w-full object-cover" width="1200" height="1200" /></picture>
               </div>
               <div>
                 <h2 class="font-display text-4xl md:text-5xl">秦節子</h2>
