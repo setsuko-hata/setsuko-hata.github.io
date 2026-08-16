@@ -26,10 +26,11 @@ Layout
 ------
   index.html                 Homepage (Japanese, default locale)
   ja/                        Japanese pages
-      about.html
-      offerings.html
-      membership.html
-      contact.html
+      about.html             講師紹介
+      hatha-yoga.html        ハタヨガとは
+      classes.html           クラス
+      membership.html        月額会員
+      contact.html           お問い合わせ
   en/                        English pages
       index.html
       about.html

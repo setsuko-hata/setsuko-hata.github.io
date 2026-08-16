@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://setsuko-hata-yoga.higgsfield.app/ja</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja" />
@@ -10,23 +10,31 @@
   </url>
   <url>
     <loc>https://setsuko-hata-yoga.higgsfield.app/ja/about</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/about" />
     <xhtml:link rel="alternate" hreflang="en" href="https://setsuko-hata-yoga.higgsfield.app/en/about" />
   </url>
   <url>
-    <loc>https://setsuko-hata-yoga.higgsfield.app/ja/offerings</loc>
-    <lastmod>2026-07-14</lastmod>
+    <loc>https://setsuko-hata-yoga.higgsfield.app/ja/hatha-yoga</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/offerings" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/hatha-yoga" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://setsuko-hata-yoga.higgsfield.app/en" />
+  </url>
+  <url>
+    <loc>https://setsuko-hata-yoga.higgsfield.app/ja/classes</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/classes" />
     <xhtml:link rel="alternate" hreflang="en" href="https://setsuko-hata-yoga.higgsfield.app/en/offerings" />
   </url>
   <url>
     <loc>https://setsuko-hata-yoga.higgsfield.app/ja/membership</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/membership" />
@@ -34,7 +42,7 @@
   </url>
   <url>
     <loc>https://setsuko-hata-yoga.higgsfield.app/ja/contact</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/contact" />
@@ -42,7 +50,7 @@
   </url>
   <url>
     <loc>https://setsuko-hata-yoga.higgsfield.app/en</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja" />
@@ -50,7 +58,7 @@
   </url>
   <url>
     <loc>https://setsuko-hata-yoga.higgsfield.app/en/about</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/about" />
@@ -58,15 +66,15 @@
   </url>
   <url>
     <loc>https://setsuko-hata-yoga.higgsfield.app/en/offerings</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/offerings" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/classes" />
     <xhtml:link rel="alternate" hreflang="en" href="https://setsuko-hata-yoga.higgsfield.app/en/offerings" />
   </url>
   <url>
     <loc>https://setsuko-hata-yoga.higgsfield.app/en/membership</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/membership" />
@@ -74,7 +82,7 @@
   </url>
   <url>
     <loc>https://setsuko-hata-yoga.higgsfield.app/en/contact</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ja" href="https://setsuko-hata-yoga.higgsfield.app/ja/contact" />
