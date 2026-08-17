@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://setsukohata.com/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/about/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/ja/index.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/ja/about.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/ja/hatha-yoga.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/ja/classes.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/ja/membership.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/ja/contact.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+</urlset>

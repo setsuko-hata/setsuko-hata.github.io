@@ -1,0 +1,45 @@
+---
+interface Props {
+  reveal?: boolean;
+}
+
+const { reveal = false } = Astro.props;
+const revealAttr = reveal ? { 'data-reveal': true } : {};
+---
+
+<section id="paths" class="explore">
+  <a href="/hatha-yoga/index.html" class="explore-card" {...revealAttr}>
+    <img
+      loading="lazy"
+      decoding="async"
+      src="/assets/card-yoga-new.jpg"
+      alt="Setsuko Hata practising hatha yoga"
+      class="explore-card__img"
+      style="object-position: center 55%;"
+    />
+    <div class="explore-card__overlay"></div>
+    <div class="explore-card__content">
+      <h3 class="explore-card__title">Explore<br />Yoga</h3>
+      <span class="explore-card__rule"></span>
+      <p class="explore-card__desc">Practices for<br />a more conscious life</p>
+      <span class="explore-card__cta">Discover <span class="arrow">→</span></span>
+    </div>
+  </a>
+  <div class="explore-card" {...revealAttr}>
+    <img
+      loading="lazy"
+      decoding="async"
+      src="/assets/card-music-new.jpg"
+      alt="Setsuko Hata singing with her band"
+      class="explore-card__img"
+      style="object-position: center 40%;"
+    />
+    <div class="explore-card__overlay"></div>
+    <div class="explore-card__content">
+      <h3 class="explore-card__title">Explore<br />Music</h3>
+      <span class="explore-card__rule"></span>
+      <p class="explore-card__desc">Sound for<br />a brighter tomorrow</p>
+      <span class="explore-card__cta">Coming soon</span>
+    </div>
+  </div>
+</section>

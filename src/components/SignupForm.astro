@@ -1,0 +1,85 @@
+---
+---
+
+<section class="signup">
+  <div class="signup__inner">
+    <div class="signup-card" data-reveal>
+      <div class="signup-card__inner">
+        <h2 class="signup-card__title">Stay Connected</h2>
+        <span class="signup-card__rule" aria-hidden="true">
+          <svg viewBox="0 0 132 14" width="132" height="14" fill="none" stroke="#A8802F" stroke-width="1">
+            <path d="M0 7h44" stroke-opacity="0.55"></path>
+            <path d="M132 7H88" stroke-opacity="0.55"></path>
+            <path d="M52 7c5-5 9-5 14 0-5 5-9 5-14 0z"></path>
+            <path d="M80 7c-5-5-9-5-14 0 5 5 9 5 14 0z"></path>
+            <path d="M66 2.2c1.6 1.6 1.6 3.2 0 4.8-1.6-1.6-1.6-3.2 0-4.8z" stroke-opacity="0.75"></path>
+            <path d="M66 11.8c1.6-1.6 1.6-3.2 0-4.8-1.6 1.6-1.6 3.2 0 4.8z" stroke-opacity="0.75"></path>
+          </svg>
+        </span>
+        <p class="signup-card__text" lang="ja">最新のクラス・音源・イベント情報をお届けします。</p>
+      </div>
+    </div>
+
+    <form class="signup-form" data-signup data-reveal>
+      <label class="field">
+        <span class="field__label">First name *</span>
+        <input type="text" name="firstName" required autocomplete="given-name" placeholder="First name" class="field__input" />
+      </label>
+      <label class="field">
+        <span class="field__label">Last name *</span>
+        <input type="text" name="lastName" required autocomplete="family-name" placeholder="Last name" class="field__input" />
+      </label>
+      <label class="field field--full">
+        <span class="field__label">Email *</span>
+        <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" class="field__input" />
+      </label>
+      <button type="submit" class="signup-submit">Subscribe</button>
+      <div data-signup-msg role="status" aria-live="polite" class="signup-msg"></div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const endpoint = import.meta.env.PUBLIC_SIGNUP_ENDPOINT ?? '';
+
+  const form = document.querySelector<HTMLFormElement>('[data-signup]');
+  const button = form?.querySelector<HTMLButtonElement>('.signup-submit');
+  const msg = form?.querySelector<HTMLElement>('[data-signup-msg]');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form || !button || !msg) return;
+
+    const firstName = (form.querySelector<HTMLInputElement>('[name="firstName"]')?.value ?? '').trim();
+    const lastName = (form.querySelector<HTMLInputElement>('[name="lastName"]')?.value ?? '').trim();
+    const email = (form.querySelector<HTMLInputElement>('[name="email"]')?.value ?? '').trim();
+
+    if (!endpoint) {
+      console.warn('PUBLIC_SIGNUP_ENDPOINT is not set — signup was not recorded anywhere.');
+      msg.textContent = `Thank you${firstName ? ', ' + firstName : ''} — ご登録ありがとうございます。`;
+      form.querySelectorAll<HTMLInputElement>('input').forEach((input) => { input.value = ''; });
+      return;
+    }
+
+    button.disabled = true;
+    msg.textContent = '';
+
+    try {
+      // Apps Script Web Apps don't return CORS headers, so the response body
+      // can't be read from the browser. `no-cors` still delivers the request;
+      // a plain string body avoids a preflight (keeps this a "simple" request).
+      await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({ firstName, lastName, email }),
+      });
+      msg.textContent = `Thank you${firstName ? ', ' + firstName : ''} — ご登録ありがとうございます。`;
+      form.querySelectorAll<HTMLInputElement>('input').forEach((input) => { input.value = ''; });
+    } catch (err) {
+      console.error('Signup submission failed', err);
+      msg.textContent = 'Something went wrong — please try again, or email info@setsukohata.com.';
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>

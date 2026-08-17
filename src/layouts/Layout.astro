@@ -1,0 +1,63 @@
+---
+import Header from '../components/Header.astro';
+import FooterHome from '../components/FooterHome.astro';
+import FooterAbout from '../components/FooterAbout.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  active: 'home' | 'about';
+  footer: 'home' | 'about';
+  image?: string;
+  jsonLd?: Record<string, unknown>;
+}
+
+const { title, description, active, footer, image = '/assets/og-image.jpg', jsonLd } = Astro.props;
+
+// GitHub Pages serves /about as /about/, so canonical URLs always end in a slash.
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(path, Astro.site).href;
+const imageUrl = new URL(image, Astro.site).href;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#FAF7F2" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap.xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta property="og:site_name" content="秦 節子 | Setsuko Hata" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={imageUrl} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <a href="#top" class="skip-link">Skip to content</a>
+    <Header active={active} />
+    <main id="top">
+      <slot />
+    </main>
+    {footer === 'home' ? <FooterHome /> : <FooterAbout />}
+    <script src="../scripts/reveal.ts"></script>
+  </body>
+</html>
