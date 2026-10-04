@@ -7,8 +7,8 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
-  active: 'home' | 'about';
-  footer: 'home' | 'about';
+  active: 'home' | 'about' | 'music';
+  footer: 'home' | 'about' | 'none';
   image?: string;
   jsonLd?: Record<string, unknown>;
 }
@@ -50,6 +50,7 @@ const imageUrl = new URL(image, Astro.site).href;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={imageUrl} />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <slot name="head" />
   </head>
   <body>
     <a href="#top" class="skip-link">Skip to content</a>
@@ -57,7 +58,8 @@ const imageUrl = new URL(image, Astro.site).href;
     <main id="top">
       <slot />
     </main>
-    {footer === 'home' ? <FooterHome /> : <FooterAbout />}
+    {footer === 'home' && <FooterHome />}
+    {footer === 'about' && <FooterAbout />}
     <script src="../scripts/reveal.ts"></script>
   </body>
 </html>

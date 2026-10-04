@@ -1,45 +1,71 @@
 ---
+type CardId = 'yoga' | 'music' | 'home';
+
 interface Props {
   reveal?: boolean;
+  /** Which cards to show, in order. Home and About show yoga + music; the music page shows yoga + home. */
+  show?: CardId[];
 }
 
-const { reveal = false } = Astro.props;
+const { reveal = false, show = ['yoga', 'music'] } = Astro.props;
 const revealAttr = reveal ? { 'data-reveal': true } : {};
+
+const cards: Record<CardId, { href: string; img: string; alt: string; position: string; title: string; desc: string; cta: string }> = {
+  yoga: {
+    href: '/hatha-yoga/index.html',
+    img: '/assets/card-yoga-new.jpg',
+    alt: 'Setsuko Hata practising hatha yoga',
+    position: 'center 55%',
+    title: 'Explore<br />Yoga',
+    desc: 'Practices for<br />a more conscious life',
+    cta: 'Discover',
+  },
+  music: {
+    href: '/music',
+    img: '/assets/card-music-new.jpg',
+    alt: 'Setsuko Hata singing with her band',
+    position: 'center 40%',
+    title: 'Explore<br />Music',
+    desc: 'Sound for<br />a brighter tomorrow',
+    cta: 'Listen',
+  },
+  home: {
+    href: '/',
+    img: '/assets/hero-stream.jpg',
+    alt: 'Setsuko Hata beside a mountain stream',
+    position: 'center 40%',
+    title: 'Setsuko<br />Hata',
+    desc: 'Yoga · Music<br />Conscious living',
+    cta: 'Home',
+  },
+};
 ---
 
 <section id="paths" class="explore">
-  <a href="/hatha-yoga/index.html" class="explore-card" {...revealAttr}>
-    <img
-      loading="lazy"
-      decoding="async"
-      src="/assets/card-yoga-new.jpg"
-      alt="Setsuko Hata practising hatha yoga"
-      class="explore-card__img"
-      style="object-position: center 55%;"
-    />
-    <div class="explore-card__overlay"></div>
-    <div class="explore-card__content">
-      <h3 class="explore-card__title">Explore<br />Yoga</h3>
-      <span class="explore-card__rule"></span>
-      <p class="explore-card__desc">Practices for<br />a more conscious life</p>
-      <span class="explore-card__cta">Discover <span class="arrow">→</span></span>
-    </div>
-  </a>
-  <div class="explore-card" {...revealAttr}>
-    <img
-      loading="lazy"
-      decoding="async"
-      src="/assets/card-music-new.jpg"
-      alt="Setsuko Hata singing with her band"
-      class="explore-card__img"
-      style="object-position: center 40%;"
-    />
-    <div class="explore-card__overlay"></div>
-    <div class="explore-card__content">
-      <h3 class="explore-card__title">Explore<br />Music</h3>
-      <span class="explore-card__rule"></span>
-      <p class="explore-card__desc">Sound for<br />a brighter tomorrow</p>
-      <span class="explore-card__cta">Coming soon</span>
-    </div>
-  </div>
+  {
+    show.map((id) => {
+      const card = cards[id];
+      return (
+        <a href={card.href} class="explore-card" {...revealAttr}>
+          <img
+            loading="lazy"
+            decoding="async"
+            src={card.img}
+            alt={card.alt}
+            class="explore-card__img"
+            style={`object-position: ${card.position};`}
+          />
+          <div class="explore-card__overlay" />
+          <div class="explore-card__content">
+            <h3 class="explore-card__title" set:html={card.title} />
+            <span class="explore-card__rule" />
+            <p class="explore-card__desc" set:html={card.desc} />
+            <span class="explore-card__cta">
+              {card.cta} <span class="arrow">→</span>
+            </span>
+          </div>
+        </a>
+      );
+    })
+  }
 </section>

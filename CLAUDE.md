@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Static Astro 4 site for setsukohata.com — a bilingual (Japanese-primary, English-secondary) personal site for Setsuko Hata (秦 節子), jazz singer / composer / Hatha Yoga teacher. Astro builds Home (`src/pages/index.astro`) and About (`src/pages/about.astro`).
+Static Astro 4 site for setsukohata.com — a bilingual (Japanese-primary, English-secondary) personal site for Setsuko Hata (秦 節子), jazz singer / composer / Hatha Yoga teacher. Astro builds Home (`src/pages/index.astro`), About (`src/pages/about.astro`), and Music (`src/pages/music.astro`, the jazz-singer page, nav label 音楽, also linked from the Home "Explore Music" card).
 
 `/hatha-yoga` is a separate, prebuilt static export (its own CSS, fonts, JA/EN pages, no JS) living in `public/hatha-yoga/`, so Astro copies it verbatim into the build. Edit those HTML files directly; don't convert them to Astro components or restyle them with `global.css`. Its own `sitemap.xml` still points at the old higgsfield.app domain — the root `public/sitemap.xml` is the one that counts.
 
@@ -32,9 +32,10 @@ There is no test suite or linter; `npm run check` plus a build is the verificati
 
 ## Architecture
 
-- **`src/layouts/Layout.astro`** wraps every page: `<html lang="ja">`, Google Fonts, meta/OG tags, skip link, `Header`, and a footer. Props `active: 'home' | 'about'` sets the nav's `aria-current`; `footer: 'home' | 'about'` picks `FooterHome` (light) or `FooterAbout` (dark). Adding a page means extending both unions, `Header.astro`, and `public/sitemap.xml`.
+- **`src/layouts/Layout.astro`** wraps every page: `<html lang="ja">`, Google Fonts, meta/OG tags, skip link, `Header`, and a footer. Props `active: 'home' | 'about'` sets the nav's `aria-current`; `footer: 'home' | 'about' | 'none'` picks `FooterHome` (light), `FooterAbout` (dark), or no footer (Music, which ends on Explore Yoga + back-to-Home cards instead). Adding a page means extending both unions, `Header.astro`, and `public/sitemap.xml`. Pages can inject extra `<head>` tags (e.g. a page-only font) via `slot="head"`.
+- **Music page** keeps its own champagne/brass palette and Playfair Display (loaded only there) under the `/* ---------- Music ---------- */` block in `global.css`; its tokens are `--jazz-*`, scoped to `.jazz`, so they don't collide with site tokens.
 - **All styling lives in one file, `src/styles/global.css`**, imported by the layout. Components use BEM-ish class names (`.intro__body`, `.signup-card__title`) rather than scoped `<style>` blocks. The file starts with design tokens on `:root` (`--paper`, `--ink`, `--gold`, `--gold-deep`, `--gutter`, `--page-max`, font stacks, `--ease-standard`) and is organized into `/* ---------- Section ---------- */` blocks per page region. Responsive rules sit next to the section they affect (breakpoints mostly 900px and 560px).
-- **Scroll reveal:** `src/scripts/reveal.ts` (loaded by the layout) adds `.is-visible` to `[data-reveal]` and `[data-reveal-soft]` elements via IntersectionObserver, with an in-viewport check on first frame and a timeout failsafe. The hidden/visible states are defined at the end of `global.css`. Reduced motion shows everything immediately. `ExploreCards` takes `reveal` to opt in.
+- **Scroll reveal:** `src/scripts/reveal.ts` (loaded by the layout) adds `.is-visible` to `[data-reveal]` and `[data-reveal-soft]` elements via IntersectionObserver, with an in-viewport check on first frame and a timeout failsafe. The hidden/visible states are defined at the end of `global.css`. Reduced motion shows everything immediately. `ExploreCards` takes `reveal` to opt in, and `show` to pick which cards (`yoga`, `music`, `home`) appear.
 - **`StatCards.astro`** holds the three "At a Glance" cards, shared by About (`reveal`) and Home (`float`, placed in `.hero-stats`, whose negative top margin overlaps the hero photo — `.hero__copy-wrap`'s large bottom padding keeps the copy card clear of them).
 - **Images** are plain `<img src="/assets/...jpg">` from `public/assets/` (not Astro's image pipeline).
 

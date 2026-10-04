@@ -1,6 +1,6 @@
 ---
 interface Props {
-  active: 'home' | 'about';
+  active: 'home' | 'about' | 'music';
 }
 
 const { active } = Astro.props;
@@ -24,6 +24,9 @@ const { active } = Astro.props;
         </li>
         <li>
           <a href="/hatha-yoga/index.html" class="nav-link nav-link--jp" lang="ja">ハタヨガ</a>
+        </li>
+        <li>
+          <a href="/music" class="nav-link nav-link--jp" lang="ja" aria-current={active === 'music' ? 'page' : undefined}>音楽</a>
         </li>
       </ul>
     </nav>

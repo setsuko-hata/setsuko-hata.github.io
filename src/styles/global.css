@@ -1848,6 +1848,385 @@ a.explore-card:hover .explore-card__overlay {
   border-color: var(--gold);
 }
 
+/* ---------- Music ---------- */
+/* Champagne/brass palette from the jazz design handoff; namespaced so it can't collide with site tokens. */
+.jazz {
+  --jazz-champagne: #FBF4E6;
+  --jazz-gold-soft: #E8D4A8;
+  --jazz-espresso: #2B2012;
+  --jazz-text: #4A3A26;
+  --jazz-body: rgba(74, 58, 38, 0.85);
+  --jazz-dim: #5E4E3A;
+  --jazz-brass: #B08A3E;
+  --jazz-brass-deep: #8A6A2C;
+  --jazz-hairline: rgba(176, 138, 62, 0.34);
+  --jazz-display: 'Playfair Display', Georgia, serif;
+
+  background: linear-gradient(165deg, #FBF4E6 0%, #F2E9D8 45%, #EAD9B8 100%);
+  color: var(--jazz-text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.jazz [id] {
+  scroll-margin-top: 80px;
+}
+
+.jazz-hero {
+  position: relative;
+  min-height: calc(100vh - 72px);
+  min-height: calc(100svh - 72px);
+  display: flex;
+  flex-direction: column;
+  color: var(--jazz-champagne);
+  background: #120A0C url('/assets/jazz-hero.jpg') center 30% / cover no-repeat;
+}
+
+.jazz-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 6, 8, 0.7) 0%, rgba(8, 6, 8, 0.25) 38%, rgba(8, 6, 8, 0.7) 70%, rgba(8, 6, 8, 0.94) 100%);
+}
+
+.jazz-hero__inner {
+  position: relative;
+  margin-top: auto;
+  padding: 80px 24px 10vh;
+  text-align: center;
+}
+
+.jazz-hero__eyebrow {
+  margin: 0 0 22px;
+  font-size: 12px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--jazz-gold-soft);
+}
+
+.jazz-hero__title {
+  margin: 0;
+  font-family: var(--jazz-display);
+  font-weight: 500;
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 1.02;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+}
+
+.jazz-hero__title em {
+  color: var(--jazz-gold-soft);
+}
+
+.jazz-hero__sub {
+  margin: 22px 0 0;
+  font-family: var(--font-jp-sans);
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+  letter-spacing: 0.2em;
+}
+
+.jazz-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.jazz-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  border-radius: 2px;
+  background: var(--jazz-brass);
+  color: var(--jazz-espresso);
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  transition: background 300ms ease, color 300ms ease;
+}
+
+.jazz-btn:hover {
+  background: var(--jazz-gold-soft);
+  color: var(--jazz-espresso);
+}
+
+.jazz-btn--solid {
+  padding: 17px 44px;
+}
+
+.jazz-btn--solid:hover {
+  background: var(--jazz-text);
+  color: var(--jazz-champagne);
+}
+
+.jazz-section {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(80px, 12vw, 130px) 28px;
+}
+
+.jazz-section--wide {
+  max-width: 1200px;
+  padding-block: clamp(80px, 12vw, 140px);
+}
+
+.jazz-label {
+  margin: 0 0 20px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--jazz-brass-deep);
+}
+
+.jazz-lead {
+  margin: 0;
+  font-family: var(--jazz-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.28;
+  color: var(--jazz-text);
+}
+
+.jazz-lead em {
+  color: var(--jazz-brass);
+}
+
+.jazz-lead--spaced {
+  margin-bottom: 40px;
+}
+
+.jazz-artist {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: clamp(36px, 5vw, 64px);
+  align-items: start;
+}
+
+.jazz-artist__photo {
+  position: sticky;
+  top: 104px;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 20px 50px rgba(58, 46, 30, 0.28);
+}
+
+.jazz-artist__bio {
+  margin-top: 28px;
+  columns: 2 280px;
+  column-gap: clamp(28px, 4vw, 52px);
+}
+
+.jazz-artist__bio p {
+  margin: 0 0 16px;
+  break-inside: avoid;
+  font-family: var(--font-jp-sans);
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--jazz-body);
+}
+
+.jazz-rule {
+  max-width: 1080px;
+  height: 1px;
+  margin: 0 auto;
+  border: 0;
+  background: var(--jazz-hairline);
+}
+
+.jazz-journey {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--jazz-hairline);
+}
+
+.jazz-journey__item {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 12px 32px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--jazz-hairline);
+}
+
+.jazz-journey__year {
+  font-family: var(--jazz-display);
+  font-size: 1.5rem;
+  color: var(--jazz-brass);
+}
+
+.jazz-journey__title {
+  font-family: var(--jazz-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.jazz-journey__body {
+  margin-top: 4px;
+  font-family: var(--font-jp-sans);
+  font-size: 0.92rem;
+  line-height: 2;
+  color: var(--jazz-dim);
+}
+
+.jazz-listen {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.jazz-video {
+  display: block;
+  color: var(--jazz-espresso);
+}
+
+.jazz-video:hover {
+  color: var(--jazz-espresso);
+}
+
+.jazz-video__thumb {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(43, 32, 18, 0.35);
+  border-radius: 3px;
+  box-shadow: 0 20px 50px rgba(58, 46, 30, 0.28);
+}
+
+.jazz-video__thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.jazz-video__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 6, 8, 0.3);
+}
+
+.jazz-video__play span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 78px;
+  height: 78px;
+  padding-left: 6px;
+  border-radius: 50%;
+  background: var(--jazz-espresso);
+  color: #E6C670;
+  font-size: 1.5rem;
+}
+
+.jazz-video__cap {
+  margin-top: 16px;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.jazz-connect {
+  padding: clamp(70px, 10vw, 120px) 28px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 0%, rgba(201, 163, 94, 0.14), transparent 60%);
+}
+
+.jazz-connect__title {
+  margin: 0;
+  font-family: var(--jazz-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  line-height: 1.18;
+  color: var(--jazz-text);
+}
+
+.jazz-connect__title em {
+  color: var(--jazz-brass);
+}
+
+.jazz-connect__jp {
+  margin: 16px 0 0;
+  font-family: var(--font-jp-sans);
+  line-height: 2;
+  letter-spacing: 0.1em;
+  color: var(--jazz-dim);
+}
+
+.jazz-connect__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.jazz-textlink {
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(176, 138, 62, 0.5);
+  color: var(--jazz-brass-deep);
+  font-size: 0.76rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  transition: color 300ms ease;
+}
+
+.jazz-textlink:hover {
+  color: var(--jazz-text);
+}
+
+.jazz-signoff {
+  padding: 48px 28px 60px;
+  text-align: center;
+  border-top: 1px solid var(--jazz-hairline);
+  color: var(--jazz-dim);
+}
+
+.jazz-signoff__name {
+  font-family: var(--jazz-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  color: var(--jazz-text);
+}
+
+.jazz-signoff__tag {
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .jazz-artist {
+    grid-template-columns: 1fr;
+  }
+
+  .jazz-artist__photo {
+    position: static;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .jazz-journey__item {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jazz-btn,
+  .jazz-textlink {
+    transition: none;
+  }
+}
+
 /* ---------- Scroll reveal ---------- */
 [data-reveal] {
   opacity: 0;
