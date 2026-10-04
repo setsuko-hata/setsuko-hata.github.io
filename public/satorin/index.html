@@ -29,6 +29,8 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 #cmp-mobile,#path-mobile{display:none}@media (max-width:719px){#cmp-desktop,#path-desktop{display:none!important}#cmp-mobile,#path-mobile{display:grid!important}}
 
+@media (min-width:900px){.hero-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
+@media (max-width:899px){.hero-grid{grid-template-columns:minmax(0,1fr) !important;gap:0 !important}.hero-text{display:contents}.hero-photo{order:1;margin:36px auto 8px;width:100%;max-width:520px;box-sizing:border-box}.hero-rest{order:2}}
 [data-hv="0"]:hover{background:#464D35 !important;color:#fff !important}
 [data-hv="1"]:hover{background:#8A6A2C !important;color:#fff !important}
 [data-hv="2"]:hover{transform:translateY(-6px) !important;box-shadow:0 2px 4px rgba(47,42,38,.08),0 36px 64px -22px rgba(47,42,38,.4) !important}
@@ -44,17 +46,17 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
   <div style="max-width:1200px;margin:0 auto;padding:22px clamp(20px,5vw,64px) 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:8px 16px">
     <a href="/" style="white-space:nowrap;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#4A433C">← setsukohata.com</a>
       </div>
-  <div style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vh,64px) clamp(20px,5vw,64px) clamp(20px,3vh,40px);flex:1;width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
-    <div>
+  <div class="hero-grid" style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vh,64px) clamp(20px,5vw,64px) clamp(20px,3vh,40px);flex:1;width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
+    <div class="hero-text">
       <div style="font-family:'Inter',sans-serif;font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:#4A433C;display:flex;align-items:center;gap:12px"><span style="width:28px;height:1px;background:#C49A4A;flex:none"></span>SATORIN ONLINE MEMBERSHIP</div>
       <div style="display:inline-block;margin-top:16px;padding:8px 20px;background:#2F2A26;color:#F5EBD3;font-family:'Noto Serif JP',serif;font-weight:600;font-size:16px;letter-spacing:.2em;border:1px solid #C49A4A">2026年10月19日スタート｜先行受付中</div>
       <h1 style="font-family:'Noto Serif JP',serif;font-weight:600;font-size:clamp(28px,min(5.6vw,6.4vh),56px);line-height:1.45;letter-spacing:.06em;margin:clamp(12px,2vh,22px) 0 0;text-wrap:balance">朝7時、<span style="white-space:nowrap">秦節子と</span>始める<br>本格ハタヨガ。</h1>
-      <p style="font-family:'Noto Serif JP',serif;font-size:clamp(16px,1.8vw,20px);line-height:2;color:#2F2A26;margin:clamp(10px,2vh,20px) 0 0;text-wrap:pretty">朝が変われば、身体が変わる。<br>意識が変われば、人生が変わる。</p>
-      <p style="font-size:clamp(15px,1.5vw,16px);line-height:1.9;color:#2F2A26;margin:clamp(8px,1.6vh,16px) 0 0;max-width:32em;text-wrap:pretty">南インドのIsha Yoga Centerで約1年半修行し、1,750時間以上の厳格なトレーニングを修了したSadhguru Gurukulam公認ハタヨガ講師・<span style="white-space:nowrap">秦節子。</span>平日の朝、<mark style="background:linear-gradient(transparent 55%,#F2DC9B 55%);color:inherit;font-weight:700;padding:0 2px">オンライン</mark>で本格ハタヨガ、呼吸法、瞑想を一緒に実践します。一人では続けられなかった朝のヨガを、今度こそ日常の一部にしてみませんか？</p>
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px;margin-top:clamp(16px,3vh,32px)"><a href="#plans" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 36px;background:#596044;color:#fff;border-radius:3px;font-size:16px;letter-spacing:.14em;font-weight:400;box-shadow:0 14px 28px -16px rgba(120,96,58,.7)" data-hv="0">今すぐ先行予約する <span style="font-family:'Inter',sans-serif">→</span></a></div>
-      <div style="position:relative;display:flex;gap:14px;align-items:center;margin:clamp(12px,2vh,20px) 0 0;padding:10px 20px;background:#FFF3C9;border:2px dashed #C49A4A;border-radius:999px;color:#2F2A26;box-shadow:0 10px 22px -14px rgba(168,128,47,.6)"><span style="flex:none;font-size:22px;line-height:1;color:#C49A4A">✦</span><span style="flex:none;font-family:'Noto Serif JP',serif;font-weight:600;font-size:13px;letter-spacing:.1em;white-space:nowrap;background:#A8802F;color:#fff;padding:5px 14px;border-radius:999px;transform:rotate(-4deg)">お得なチャンス</span><p style="margin:0;font-family:'Noto Serif JP',serif;font-weight:500;font-size:clamp(14px,1.7vw,16px);line-height:1.7;text-wrap:pretty">＊2026年10月18日（日）23:59（日本時間）までのお申込みが対象です</p></div>
+      <p class="hero-rest" style="font-family:'Noto Serif JP',serif;font-size:clamp(16px,1.8vw,20px);line-height:2;color:#2F2A26;margin:clamp(10px,2vh,20px) 0 0;text-wrap:pretty">朝が変われば、身体が変わる。<br>意識が変われば、人生が変わる。</p>
+      <p class="hero-rest" style="font-size:clamp(15px,1.5vw,16px);line-height:1.9;color:#2F2A26;margin:clamp(8px,1.6vh,16px) 0 0;max-width:32em;text-wrap:pretty">南インドのIsha Yoga Centerで約1年半修行し、1,750時間以上の厳格なトレーニングを修了したSadhguru Gurukulam公認ハタヨガ講師・<span style="white-space:nowrap">秦節子。</span>平日の朝、<mark style="background:linear-gradient(transparent 55%,#F2DC9B 55%);color:inherit;font-weight:700;padding:0 2px">オンライン</mark>で本格ハタヨガ、呼吸法、瞑想を一緒に実践します。一人では続けられなかった朝のヨガを、今度こそ日常の一部にしてみませんか？</p>
+      <div class="hero-rest" style="display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px;margin-top:clamp(16px,3vh,32px)"><a href="#plans" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 36px;background:#596044;color:#fff;border-radius:3px;font-size:16px;letter-spacing:.14em;font-weight:400;box-shadow:0 14px 28px -16px rgba(120,96,58,.7)" data-hv="0">今すぐ先行予約する <span style="font-family:'Inter',sans-serif">→</span></a></div>
+      <div class="hero-rest" style="position:relative;display:flex;gap:14px;align-items:center;margin:clamp(12px,2vh,20px) 0 0;padding:10px 20px;background:#FFF3C9;border:2px dashed #C49A4A;border-radius:999px;color:#2F2A26;box-shadow:0 10px 22px -14px rgba(168,128,47,.6)"><span style="flex:none;font-size:22px;line-height:1;color:#C49A4A">✦</span><span style="flex:none;font-family:'Noto Serif JP',serif;font-weight:600;font-size:13px;letter-spacing:.1em;white-space:nowrap;background:#A8802F;color:#fff;padding:5px 14px;border-radius:999px;transform:rotate(-4deg)">お得なチャンス</span><p style="margin:0;font-family:'Noto Serif JP',serif;font-weight:500;font-size:clamp(14px,1.7vw,16px);line-height:1.7;text-wrap:pretty">＊2026年10月18日（日）23:59（日本時間）までのお申込みが対象です</p></div>
     </div>
-    <div style="position:relative;padding:0 0 22px 22px">
+    <div class="hero-photo" style="position:relative;padding:0 0 22px 22px">
       <div style="position:absolute;left:0;bottom:0;right:22px;top:22px;border:1px solid rgba(168,128,47,.55);border-radius:200px 200px 4px 4px"></div>
       <img src="/assets/hero-setsuko.jpg" alt="秦節子" style="position:relative;display:block;width:100%;aspect-ratio:4/5;max-height:calc(100svh - 190px);object-fit:cover;object-position:50% 30%;border-radius:200px 200px 4px 4px;background:#E7D9C4;filter:sepia(.18) saturate(.82) brightness(1.03) contrast(.97) hue-rotate(-6deg);box-shadow:0 24px 50px -28px rgba(120,96,58,.6)">
       <div style="position:absolute;top:-30px;left:-12px;z-index:2;width:clamp(148px,15vw,176px);height:clamp(148px,15vw,176px);border-radius:50%;background:#FFFDF9;border:1px solid #A8802F;outline:1px solid rgba(168,128,47,.35);outline-offset:-8px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 14px 28px -16px rgba(120,96,58,.6)"><span style="font-family:'Noto Serif JP',serif;font-weight:600;line-height:1.3;font-size:clamp(12px,1.2vw,14px);letter-spacing:.02em;white-space:nowrap;color:#596044">今だけ特別価格！</span><span style="width:40px;height:1px;background:#A8802F;margin:6px 0"></span><span style="font-family:'Noto Serif JP',serif;font-weight:600;line-height:1.3;font-size:clamp(17px,1.8vw,21px);letter-spacing:0;white-space:nowrap;color:#A8802F">入会金無料</span><span style="font-family:'Noto Serif JP',serif;font-weight:600;line-height:1.3;font-size:clamp(17px,1.8vw,21px);letter-spacing:0;white-space:nowrap;color:#A8802F;margin-top:4px">全コース半額*</span></div>
@@ -690,7 +692,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
         </div>
       
     </div>
-    <p style="font-size:13px;line-height:1.9;color:#4A433C;margin:16px 0 0">※料金は月額です。パーソナル／プレミアムプランは最低3か月からのご利用となります。</p>
+    
   </div>
 </section>
 
@@ -738,8 +740,8 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
 <div style="position:relative;display:grid;grid-template-columns:40% 60%;align-items:stretch">
 <div style="padding:0 12px"><div style="background:#FBF6EC;border:1px solid rgba(168,128,47,.55);border-radius:6px;overflow:hidden;box-shadow:0 18px 38px -26px rgba(120,96,58,.55);height:100%;box-sizing:border-box;display:flex;flex-direction:column;text-align:left">
 <div style="background:#C9CDB3;padding:10px 18px"><div style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.2em;color:#596044">UPA YOGA</div><div style="font-family:'Noto Serif JP',serif;font-size:18px;letter-spacing:.06em;color:#2F2A26;line-height:1.5">ウパヨガ</div></div>
-<div style="display:flex;flex-wrap:wrap;flex:1">
-<div style="flex:1.4 1 200px;padding:16px 18px;display:grid;gap:10px;align-content:start"><p style="margin:0;font-size:14.5px;line-height:1.95;text-wrap:pretty">約5分から実践できる10種類のヨガ。身体のこわばりをゆるめ、心身を整えます。毎日の生活に取り入れやすい、シンプルで効果的なヨガです。</p>
+<div style="display:flex;flex-direction:column;flex:1">
+<div style="flex:0 0 auto;padding:16px 18px;display:grid;gap:10px;align-content:start"><p style="margin:0;font-size:14.5px;line-height:1.95;text-wrap:pretty">約5分から実践できる10種類のヨガ。身体のこわばりをゆるめ、心身を整えます。毎日の生活に取り入れやすい、シンプルで効果的なヨガです。</p>
 <div style="display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;border-top:1px solid rgba(196,154,74,.4);padding-top:8px"><span style="font-size:13.5px;color:#4A433C">伝授：約5時間</span><span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;color:#A8802F">¥30,000</span></div></div>
 <div style="flex:1 1 140px;min-height:140px;background:url(/assets/step-upa.jpg) center/cover no-repeat"></div>
 </div></div></div><div style="padding:0 12px"><div style="background:#FBF6EC;border:1px solid rgba(168,128,47,.55);border-radius:6px;overflow:hidden;box-shadow:0 18px 38px -26px rgba(120,96,58,.55);height:100%;box-sizing:border-box;display:flex;flex-direction:column;text-align:left">
@@ -747,7 +749,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
 <div style="display:flex;flex-wrap:wrap;flex:1">
 <div style="flex:1.4 1 200px;padding:16px 18px;display:grid;gap:10px;align-content:start"><p style="margin:0;font-size:14.5px;line-height:1.95;text-wrap:pretty">太陽のサイクルと、自らの生命のリズムを調和させていく、本格的なヨガ。ホルモンバランスや集中力、安定性、活力を高め、心身を調和した状態へ導きます。</p>
 <div style="display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;border-top:1px solid rgba(196,154,74,.4);padding-top:8px"><span style="font-size:13.5px;color:#4A433C">伝授：約6.5時間</span><span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;color:#A8802F">¥60,000</span></div></div>
-<div style="flex:1 1 140px;min-height:140px;background:url(/assets/step-surya.jpg) center/cover no-repeat"></div>
+<div style="flex:1 1 100%;aspect-ratio:1.3;background:url(/assets/step-surya.jpg) center top/cover no-repeat"></div>
 </div></div></div><div style="position:absolute;left:40%;top:50%;transform:translate(-50%,-50%);z-index:3;width:44px;height:44px;border-radius:50%;background:#FFFDF9;border:1px solid #A8802F;color:#8A6A2C;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.06em;font-weight:500;box-shadow:0 6px 14px -8px rgba(120,96,58,.6)">OR</div>
 </div>
 <div style="position:relative;height:72px"><svg viewBox="0 0 100 72" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible"><path d="M70 0 V34 M25 34 H75 M25 34 V60 M75 34 V60" fill="none" stroke="#8A6A2C" stroke-width="2.5" vector-effect="non-scaling-stroke" stroke-linejoin="round"></path></svg><div style="position:absolute;left:25%;bottom:0;transform:translateX(-50%);width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:12px solid #8A6A2C"></div><div style="position:absolute;left:75%;bottom:0;transform:translateX(-50%);width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:12px solid #8A6A2C"></div></div>
@@ -757,13 +759,13 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
 <div style="display:flex;flex-wrap:wrap;flex:1">
 <div style="flex:1.4 1 200px;padding:16px 18px;display:grid;gap:10px;align-content:start"><p style="margin:0;font-size:14.5px;line-height:1.95;text-wrap:pretty">48のアーサナを通して、身体・心・エネルギーを深いレベルから整えていくヨガ。身体を安定させ、内なる静けさを育みながら、心とエネルギーを調和させていきます。</p>
 <div style="display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;border-top:1px solid rgba(196,154,74,.4);padding-top:8px"><span style="font-size:13.5px;color:#4A433C">伝授：約12時間</span><span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;color:#A8802F">¥80,000</span></div></div>
-<div style="flex:1 1 140px;min-height:140px;background:url(/assets/step-asana.jpg) center/cover no-repeat"></div>
+<div style="flex:1 1 100%;aspect-ratio:0.93;background:url(/assets/step-asana.jpg) center 62%/cover no-repeat"></div>
 </div></div></div><div><div style="background:#FBF6EC;border:1px solid rgba(168,128,47,.55);border-radius:6px;overflow:hidden;box-shadow:0 18px 38px -26px rgba(120,96,58,.55);height:100%;box-sizing:border-box;display:flex;flex-direction:column;text-align:left">
 <div style="background:#C9CDB3;padding:10px 18px"><div style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.2em;color:#596044">ANGAMARDANA</div><div style="font-family:'Noto Serif JP',serif;font-size:18px;letter-spacing:.06em;color:#2F2A26;line-height:1.5">アンガマルダナ</div></div>
-<div style="display:flex;flex-wrap:wrap;flex:1">
-<div style="flex:1.4 1 200px;padding:16px 18px;display:grid;gap:10px;align-content:start"><p style="margin:0;font-size:14.5px;line-height:1.95;text-wrap:pretty">自分の身体そのものを使い、筋肉・骨格・腱などを総合的に鍛え上げる力強いヨガ。筋力・柔軟性・持久力を高め、強く、しなやかで軽やかな身体へと導きます。</p>
+<div style="display:flex;flex-direction:column;flex:1">
+<div style="flex:0 0 auto;padding:16px 18px;display:grid;gap:10px;align-content:start"><p style="margin:0;font-size:14.5px;line-height:1.95;text-wrap:pretty">自分の身体そのものを使い、筋肉・骨格・腱などを総合的に鍛え上げる力強いヨガ。筋力・柔軟性・持久力を高め、強く、しなやかで軽やかな身体へと導きます。</p>
 <div style="display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;border-top:1px solid rgba(196,154,74,.4);padding-top:8px"><span style="font-size:13.5px;color:#4A433C">伝授：約12時間</span><span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;color:#A8802F">¥70,000</span></div></div>
-<div style="flex:1 1 140px;min-height:140px;background:url(/assets/step-anga.jpg) center/cover no-repeat"></div>
+<div style="flex:1 1 auto;aspect-ratio:3/2;background:url(/assets/step-anga.jpg) center/cover no-repeat"></div>
 </div></div></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:44px;height:44px;border-radius:50%;background:#FFFDF9;border:1px solid #A8802F;color:#8A6A2C;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.06em;font-weight:500;box-shadow:0 6px 14px -8px rgba(120,96,58,.6)">OR</div></div></div>
 </div>
 </div>
@@ -791,7 +793,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
 <div style="display:flex;flex-wrap:wrap;flex:1">
 <div style="flex:1.4 1 200px;padding:16px 18px;display:grid;gap:10px;align-content:start"><p style="margin:0;font-size:14.5px;line-height:1.95;text-wrap:pretty">太陽のサイクルと、自らの生命のリズムを調和させていく、本格的なヨガ。ホルモンバランスや集中力、安定性、活力を高め、心身を調和した状態へ導きます。</p>
 <div style="display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;border-top:1px solid rgba(196,154,74,.4);padding-top:8px"><span style="font-size:13.5px;color:#4A433C">伝授：約6.5時間</span><span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;color:#A8802F">¥60,000</span></div></div>
-<div style="flex:1 1 140px;min-height:140px;background:url(/assets/step-surya.jpg) center/cover no-repeat"></div>
+<div style="flex:1 1 100%;aspect-ratio:1.3;background:url(/assets/step-surya.jpg) center top/cover no-repeat"></div>
 </div></div>
 <div style="display:flex;flex-direction:column;align-items:center"><div style="width:2.5px;height:28px;background:#8A6A2C"></div><div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:12px solid #8A6A2C"></div></div>
 <div style="border-left:3px solid #A8802F;margin-left:6px;padding-left:16px;display:grid;gap:14px">
@@ -801,7 +803,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
 <div style="display:flex;flex-wrap:wrap;flex:1">
 <div style="flex:1.4 1 200px;padding:16px 18px;display:grid;gap:10px;align-content:start"><p style="margin:0;font-size:14.5px;line-height:1.95;text-wrap:pretty">48のアーサナを通して、身体・心・エネルギーを深いレベルから整えていくヨガ。身体を安定させ、内なる静けさを育みながら、心とエネルギーを調和させていきます。</p>
 <div style="display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;border-top:1px solid rgba(196,154,74,.4);padding-top:8px"><span style="font-size:13.5px;color:#4A433C">伝授：約12時間</span><span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;color:#A8802F">¥80,000</span></div></div>
-<div style="flex:1 1 140px;min-height:140px;background:url(/assets/step-asana.jpg) center/cover no-repeat"></div>
+<div style="flex:1 1 100%;aspect-ratio:0.93;background:url(/assets/step-asana.jpg) center 62%/cover no-repeat"></div>
 </div></div>
 <div style="display:flex;align-items:center;gap:12px;color:#8A6A2C;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.1em"><span style="flex:1;height:1px;background:rgba(138,106,44,.5)"></span>OR<span style="flex:1;height:1px;background:rgba(138,106,44,.5)"></span></div>
 <div style="background:#FBF6EC;border:1px solid rgba(168,128,47,.55);border-radius:6px;overflow:hidden;box-shadow:0 18px 38px -26px rgba(120,96,58,.55);height:100%;box-sizing:border-box;display:flex;flex-direction:column;text-align:left">
@@ -809,7 +811,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
 <div style="display:flex;flex-wrap:wrap;flex:1">
 <div style="flex:1.4 1 200px;padding:16px 18px;display:grid;gap:10px;align-content:start"><p style="margin:0;font-size:14.5px;line-height:1.95;text-wrap:pretty">自分の身体そのものを使い、筋肉・骨格・腱などを総合的に鍛え上げる力強いヨガ。筋力・柔軟性・持久力を高め、強く、しなやかで軽やかな身体へと導きます。</p>
 <div style="display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;border-top:1px solid rgba(196,154,74,.4);padding-top:8px"><span style="font-size:13.5px;color:#4A433C">伝授：約12時間</span><span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;color:#A8802F">¥70,000</span></div></div>
-<div style="flex:1 1 140px;min-height:140px;background:url(/assets/step-anga.jpg) center/cover no-repeat"></div>
+<div style="flex:1 1 100%;aspect-ratio:3/2;background:url(/assets/step-anga.jpg) center/cover no-repeat"></div>
 </div></div>
 </div>
 </div>
@@ -858,7 +860,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
   </div>
 </section>
 
-<section data-screen-label="11 Closing" style="position:relative;overflow:hidden;text-align:center;color:#FFFDF9;background:linear-gradient(180deg,rgba(38,42,28,.78),rgba(38,42,28,.88)),url(/assets/step-anga.jpg) center/cover no-repeat;padding:clamp(88px,12vw,168px) clamp(20px,5vw,64px) clamp(72px,9vw,120px)">
+<section data-screen-label="11 Closing" style="position:relative;overflow:hidden;text-align:center;color:#FFFDF9;background:linear-gradient(180deg,rgba(38,42,28,.78),rgba(38,42,28,.88)),url(/assets/step-surya.jpg) center/cover no-repeat;padding:clamp(88px,12vw,168px) clamp(20px,5vw,64px) clamp(72px,9vw,120px)">
   <div style="max-width:760px;margin:0 auto;display:grid;gap:clamp(22px,3vw,32px);justify-items:center">
     <h2 style="font-family:'Noto Serif JP',serif;font-weight:600;font-size:clamp(32px,7vw,64px);line-height:1.5;letter-spacing:.08em;margin:0;text-wrap:balance">本格ハタヨガを、<br>あなたの日常へ。</h2>
     <div style="width:56px;height:2px;background:#E3C47E"></div>
