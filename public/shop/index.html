@@ -6,14 +6,14 @@ header{padding:20px clamp(20px,5vw,64px) 0;max-width:1228px;margin:0 auto}
 .back{display:inline-flex;align-items:center;min-height:44px;font:500 13px Inter,sans-serif;letter-spacing:.14em;color:var(--gold-deep)}.back:hover{color:var(--gold)}
 .head{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding:8px 0 20px}
 header .commit{border-bottom:1px solid rgba(196,154,74,.45);padding:16px 0 clamp(32px,4vw,44px);text-align:center}
-.ey{font:500 12px Inter,sans-serif;letter-spacing:.22em;color:var(--sage)}
-.statement{max-width:860px;margin:14px auto 0;font:600 clamp(18px,2.4vw,24px)/1.9 "Noto Serif JP",serif;letter-spacing:.05em;color:var(--sage);text-wrap:balance}
-.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(24px,3vw,40px);margin-top:clamp(28px,3vw,40px)}
-.ic{display:flex;width:48px;height:48px;border-radius:50%;background:#F3E6D2;align-items:center;justify-content:center;margin:0 auto 10px}
-.ic svg{width:24px;height:24px;fill:none;stroke:var(--gold);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
-.pillars h3{position:relative;display:inline-block;margin:0;padding:6px 26px;font:600 clamp(17px,1.8vw,20px)/1.5 "Noto Serif JP",serif;letter-spacing:.06em}
-.pillars h3 span{position:relative}.brush{position:absolute;inset:0;width:100%;height:100%;fill:#D3D6BE}
-.pillars p{max-width:340px;margin:12px auto 0;font-size:14px;line-height:2.1;color:var(--soft);text-wrap:pretty}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(16px,2vw,26px);margin-top:clamp(20px,2.5vw,28px);text-align:left}
+.pc{position:relative;background:var(--paper);border:1px solid rgba(196,154,74,.32);padding:clamp(22px,2.4vw,30px) clamp(22px,2.4vw,30px) clamp(24px,2.6vw,32px);box-shadow:0 20px 44px -30px rgba(120,96,58,.45)}
+.pn{position:absolute;top:18px;right:22px;font:500 clamp(34px,3.4vw,44px)/1 "Cormorant Garamond",serif;color:#E7D9C4}
+.ic{display:flex;width:56px;height:56px;border-radius:50%;background:#F3E6D2;align-items:center;justify-content:center;margin:0 0 20px}
+.ic svg{width:26px;height:26px;fill:none;stroke:var(--gold);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.pillars h3{margin:0;font:600 clamp(18px,1.9vw,21px)/1.5 "Noto Serif JP",serif;letter-spacing:.08em}
+.pillars h3 span{background:linear-gradient(transparent 62%,#D3D6BE 62%);padding:0 6px 0 0}
+.pillars p{margin:14px 0 0;font-size:14px;line-height:2.1;color:var(--soft);text-wrap:pretty}
 header .intro{padding:clamp(8px,2vw,20px) 0 clamp(24px,3vw,36px)}
 .eb{display:flex;align-items:center;gap:14px;font:400 13px Inter,sans-serif;letter-spacing:.24em;color:var(--soft)}
 .eb i{width:28px;height:1px;background:var(--line)}.eb u{width:1px;height:14px;background:rgba(47,42,38,.35)}
@@ -61,12 +61,10 @@ footer{background:#262A1C;color:#F0D690;text-align:center;padding:48px 20px;font
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style></head><body>
 <header><div class="bar"><a class="back" href="https://setsukohata.com">← setsukohata.com</a></div>
-<div class="intro"><div class="eb"><i></i>GREEN MOON<u></u>OUR TOOLS</div><div class="cols"><h1>ヨガと瞑想<br>のための、<br>天然素材の道具たち</h1><p>練習の時間を支えてくれる道具も、心地よく、やさしいものを選びたい。そんな想いで出会ったのが、グリーンムーンです。「地球にやさしいものを届けたい」「農村で暮らす人たちの力になりたい」という、ふたつの願いからはじまったブランドです。</p></div></div><section class="commit"><div class="ey">OUR COMMITMENT</div>
-<p class="statement">グリーンムーンが生まれたのは、地球にやさしい選択肢を届けたい、そして農村に暮らす人々の力になりたいという、ひとつの想いからでした。</p>
-<div class="pillars">
-<div><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-8 5-14 14-14 0 9-6 14-14 14z"/><path d="M5 19c3-4 6-7 10-9"/></svg></span><h3><svg class="brush" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path d="M5 22 L38 12 Q70 6 150 8 Q230 4 288 13 L297 19 L272 25 L293 35 L284 46 Q220 60 150 58 Q80 62 30 59 L12 61 L22 47 L3 39 L15 30 Z"/></svg><span>地球にやさしく</span></h3><p>自然に寄り添う素材を選び、ムダを減らす。グリーンムーンの製品を手にするたびに、あなたの毎日が、より緑豊かで健やかな未来へとつながっていきます。</p></div>
-<div><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7" r="2.5"/><circle cx="16.5" cy="8" r="2"/><path d="M3.5 19c0-3.5 2-6 4.5-6s4.5 2.500 4.500 6"/><path d="M14 13.500c1-.8 1.800-1 2.500-1 2 0 3.500 2 3.500 5"/></svg></span><h3><svg class="brush" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path d="M5 22 L38 12 Q70 6 150 8 Q230 4 288 13 L297 19 L272 25 L293 35 L284 46 Q220 60 150 58 Q80 62 30 59 L12 61 L22 47 L3 39 L15 30 Z"/></svg><span>人にやさしく</span></h3><p>つくり手の暮らしと誇りを大切にすること。その想いが、心のこもった特別な製品を生み出す力になっています。</p></div>
-<div><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12C12 8 9.500 6 5 6c0 4 2.500 6 7 6z"/><path d="M12 14c0-3 2-5 6-5 0 3-2 5-6 5z"/><path d="M8 21h8"/></svg></span><h3><svg class="brush" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path d="M5 22 L38 12 Q70 6 150 8 Q230 4 288 13 L297 19 L272 25 L293 35 L284 46 Q220 60 150 58 Q80 62 30 59 L12 61 L22 47 L3 39 L15 30 Z"/></svg><span>未来にやさしく</span></h3><p>素材はすべて100%天然。自然への負担をできるだけ小さくして、大地に還るものづくりを続けています。</p></div>
+<div class="intro"><div class="eb"><i></i>GREEN MOON<u></u>OUR TOOLS</div><div class="cols"><h1>ヨガと瞑想<br>のための、<br>天然素材の道具たち</h1><p>練習の時間を支えてくれる道具も、心地よく、やさしいものを選びたい。そんな想いで出会ったのが、グリーンムーンです。「地球にやさしいものを届けたい」「農村で暮らす人たちの力になりたい」という、ふたつの願いからはじまったブランドです。</p></div></div><section class="commit"><div class="pillars">
+<div class="pc"><b class="pn">01</b><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-8 5-14 14-14 0 9-6 14-14 14z"/><path d="M5 19c3-4 6-7 10-9"/></svg></span><h3><span>地球にやさしく</span></h3><p>自然に寄り添う素材を選び、ムダを減らす。グリーンムーンの製品を手にするたびに、あなたの毎日が、より緑豊かで健やかな未来へとつながっていきます。</p></div>
+<div class="pc"><b class="pn">02</b><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7" r="2.5"/><circle cx="16.5" cy="8" r="2"/><path d="M3.5 19c0-3.5 2-6 4.5-6s4.5 2.500 4.500 6"/><path d="M14 13.500c1-.8 1.800-1 2.500-1 2 0 3.500 2 3.500 5"/></svg></span><h3><span>人にやさしく</span></h3><p>つくり手の暮らしと誇りを大切にすること。その想いが、心のこもった特別な製品を生み出す力になっています。</p></div>
+<div class="pc"><b class="pn">03</b><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12C12 8 9.500 6 5 6c0 4 2.500 6 7 6z"/><path d="M12 14c0-3 2-5 6-5 0 3-2 5-6 5z"/><path d="M8 21h8"/></svg></span><h3><span>未来にやさしく</span></h3><p>素材はすべて100%天然。自然への負担をできるだけ小さくして、大地に還るものづくりを続けています。</p></div>
 </div></section><div class="head"><h2 class="sub">発送商品明細</h2><nav><a href="#c0">ヨガマット</a><a href="#c1">瞑想用マット・座布団</a><a href="#c2">銅製水筒用貯水容器</a></nav></div></header>
 <section class="cat" id="c0"><div class="tag">Yoga Mats</div><h2>ヨガマット</h2><div class="grid"><article class="card" role="button" tabindex="0" aria-haspopup="dialog"><div class="ph jpg"><img src="img/01.jpg" alt="" loading="lazy"></div><div class="body"><h3>手織りオーガニック草本ヨガマット</h3><div class="en">Handwoven Organic Herbal Yoga Mat</div>
 <div class="price"><b>¥25,500</b><small>$170.00</small></div></div>
