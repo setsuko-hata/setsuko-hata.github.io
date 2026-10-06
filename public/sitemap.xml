@@ -36,18 +36,53 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://setsukohata.com/hatha-yoga/ja/classes.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://setsukohata.com/hatha-yoga/ja/membership.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://setsukohata.com/hatha-yoga/ja/contact.html</loc>
     <lastmod>2026-09-21</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/ja/offerings.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/ja/prepare.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/ja/wellness.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/ja/schools.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/en/index.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/en/about.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/en/offerings.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/en/membership.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://setsukohata.com/hatha-yoga/en/contact.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>

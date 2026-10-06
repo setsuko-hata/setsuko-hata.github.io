@@ -15,6 +15,7 @@ VS Code. If you drop it into a folder called `hatha-yoga`, Live Server
 will serve the site at:
 
   http://127.0.0.1:5500/hatha-yoga/            (Japanese home)
+  http://127.0.0.1:5500/hatha-yoga/en/         (English home)
   http://127.0.0.1:5500/hatha-yoga/ja/about.html
   ...
 
@@ -27,11 +28,10 @@ Layout
   ja/                        Japanese pages
       about.html             講師紹介
       hatha-yoga.html        ハタヨガとは
-      classes.html           クラス
-      membership.html        月額会員
+      offerings.html         クラス・月額会員（統合ページ）
+      prepare.html           ご参加の準備（予約後のご案内）
       contact.html           お問い合わせ
-  en/                        English pages (work in progress: not linked
-                             from anywhere, noindex, not in the sitemap)
+  en/                        English pages
       index.html
       about.html
       offerings.html

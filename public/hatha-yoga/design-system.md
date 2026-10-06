@@ -1,4 +1,4 @@
-# Setsuko Hata Yoga — Design System (JA warm)
+# Setsuko Hata Yoga — Design System (JA light natural)
 
 Reference for rebuilding the Japanese pages of setsukohata.com from scratch.
 Everything below is what the current `/ja` pages actually use.
@@ -7,29 +7,43 @@ Everything below is what the current `/ja` pages actually use.
 
 ## 1. Foundations
 
-### Colour
+### Colour — light, natural, beige & green
+
+Feel: Light · Warm · Natural · Calm · Organic · Refined · Spacious. Japanese organic
+luxury × editorial wellness × quiet nature (linen, plaster, sage foliage, sand, clay).
+**Lightness is the default. Darkness is intentional and limited.**
+
+**Area budget:** 50–60% ivory/cream/beige · 20–30% light sage/soft olive · 10–15% sand/camel ·
+≤5% terracotta/brown/gold. Dark colours cover <5–10% of the viewport at any time.
+Blur test: the page must read as light beige, cream and soft green.
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--color-brand-espresso` | `#43342b` | warm cocoa — body ink, primary buttons, borders |
-| `--ja-ink-70` | `#6b564a` | default body-copy ink (softer than espresso) |
-| `--color-brand-moss` | `#b36a4c` | terracotta — eyebrows, accents, hover fill, active rules |
-| `--color-brand-clay` | `#c97a57` | hairline dividers, card underlines |
-| `--color-brand-tan` | `#e4c8ae` | warm sand — labels on dark bands |
-| `--color-brand-cream` | `#f3e5d4` | light cream surfaces |
-| `--ja-page` | `#fbf5ec` | page ground |
-| `--ja-page-2` | `#f6eadb` | alternating band |
-| `--ja-sage` | `#5f6d55` | one cool-green band, for variety only |
-| dark band | `#8a5a44` | mid-cocoa section band (`.brand-dark`) |
-| footer | `#4a3830` | darkest cocoa |
-| warm white | `#fdf7ee` | text on dark bands, inverted button fill |
-| card surface | `#ffffff` / `#faf4ea` | opaque card on light band / card inside white panel |
+| Ivory Cream `--ja-page` | `#F5EFDF` | page ground, header, cards' base |
+| Warm Beige `--ja-page-2` | `#E8D9C2` | alternating band, footer |
+| Sand Beige | `#D9C4A3` | borders, tabs, quiet fills |
+| Pale Sage `--ja-sage` | `#DDE1CE` | tinted section band (tint of `#AEB39A`) |
+| Light Sage | `#AEB39A` | decorative fills, blobs, rules |
+| Sage Green | `#7E8764` | borders, icons, card top-rules |
+| Deep Olive | `#596044` | accent only — tiny icons, thin lines |
+| Warm Brown `--color-brand-moss` | `#8A6043` | eyebrows, buttons, hover — small |
+| Camel Brown | `#B17B55` | decorative lines, icons |
+| Soft Terracotta `--color-brand-clay` | `#C98B67` | hairlines, chips, photo warmth |
+| Ink | `#3A3228` | headings, primary text (never `#000`) |
+| Ink-70 | `#6B5F4E` | secondary text |
+| Card surface | `#FBF8EE` | cards on any band |
 
-Rules of thumb: **max two background tones per page** plus one dark band.
-Terracotta is an accent, never a large field. Never pure black or pure grey.
+**Never** a large deep-olive, brown or dark-green section; no dark footer.
+Deep Olive / Warm Brown / Camel are for headings, small text, thin borders, small buttons,
+icons, rules, labels and image overlays only.
 
-Borders: `rgba(67,52,43,.14–.22)` on light, `rgba(253,247,238,.24)` on dark.
-Radius: `2px` on buttons, `3px` on cards and images. Nothing rounder.
+**Section rhythm:** Ivory → Pale sage → Warm beige → Ivory → Pale sage → Beige/sand → Footer
+(warm beige, dark text). Contrast comes from switching between light neutrals and muted
+greens (`.ja-band-sage`, `.ja-band-sand`, `.ja-band-card`, `.ja-band-foot`), never dark blocks.
+Photo heroes use an **ivory wash** scrim (`rgba(245,239,223,.94→.15)`) with dark text.
+Buttons: warm-brown `#8A6043` fill / white text, hover `#6F4B33`.
+
+Borders: `rgba(138,96,67,.2–.35)`. Radius: `2px` buttons, `3–6px` cards and images.
 
 ### Type
 
@@ -120,15 +134,12 @@ Unordered: flex row, `─` in terracotta as the marker, 12px gap, 15px text.
 Ordered: same shape with `01` / `02` mono numerals in terracotta.
 
 ### Hero
-Full-bleed photo with a warm scrim —
-`linear-gradient(100deg, rgba(64,40,28,.86), rgba(92,60,42,.5) 46%, rgba(150,104,70,.14))`
-plus a bottom-up `rgba(64,40,28,.3) → transparent 55%`. Never a neutral black scrim.
-Inner pages use a flat coloured band instead of a photo.
+Full-bleed photo under an ivory wash (see Colour) with ink text; inner pages use a flat
+ivory / pale-sage band. No dark scrims.
 
 ### Footer
-`#4a3830`, warm-white text at 80% opacity, four link columns with tan mono
-column headings, then a `border-white/10` bar with copyright and
-`Tokyo · Osaka · India` in mono.
+`#E8D9C2` warm beige, ink text, four link columns with warm-brown mono headings, hairline
+rule, then copyright and `Tokyo · Osaka · India` in mono.
 
 ---
 
