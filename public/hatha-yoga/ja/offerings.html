@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&amp;family=Inter+Tight:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Shippori+Mincho:wght@400;500&amp;family=Zen+Kaku+Gothic+New:wght@400;500&amp;display=swap" data-precedence="default" />
     <link rel="stylesheet" href="../assets/styles-Q1zC6xcO.css" data-precedence="default" />
     <link rel="stylesheet" href="../assets/ja-warm.css" />
+    <link rel="stylesheet" href="../assets/hy-calendar.css" />
+    <script src="../assets/hy-calendar.js" defer></script>
     <title>クラス・月額会員 | Setsuko Hata Yoga</title>
     <meta name="theme-color" content="#F5EFDF" />
     <meta name="description" content="単発参加と月額会員の比較、対面クラス・オンラインクラス・特別プログラム・大阪限定会員・SATORIN メンバーシップのご案内。" />
@@ -234,7 +236,7 @@
             </div>
             <div id="calendar" class="mt-12 scroll-mt-24">
               <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss">カレンダー</p>
-              <div class="mt-6"><iframe src="https://calendar.google.com/calendar/embed?src=c_c18b30caf2a258b39674caeb09062f1c4bf61d6db96d43d83184767c11b1947a%40group.calendar.google.com&amp;color=%23D50000&amp;ctz=Asia%2FTokyo&amp;mode=MONTH&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;bgcolor=%23ffffff&amp;wkst=1" class="block w-full" style="border:0;height:700px" frameborder="0" scrolling="no" loading="lazy" title="対面クラスカレンダー"></iframe></div>
+              <div class="mt-6"><div data-hy-cal data-tone="clay" data-label="対面クラスカレンダー" data-ics="../calendars/inperson.ics"></div></div>
             </div>
             </div>
           </div>
@@ -294,7 +296,7 @@
               </div>
             <div id="calendar-online" class="mt-12 scroll-mt-24">
               <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss">カレンダー</p>
-              <div class="mt-6"><iframe src="https://calendar.google.com/calendar/embed?src=c_c18b30caf2a258b39674caeb09062f1c4bf61d6db96d43d83184767c11b1947a%40group.calendar.google.com&amp;color=%23D50000&amp;ctz=Asia%2FTokyo&amp;mode=MONTH&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;bgcolor=%23ffffff&amp;wkst=1" class="block w-full" style="border:0;height:700px" frameborder="0" scrolling="no" loading="lazy" title="オンラインクラスカレンダー"></iframe></div>
+              <div class="mt-6"><div data-hy-cal data-tone="sage" data-label="オンラインクラスカレンダー" data-ics="../calendars/online.ics"></div></div>
             </div>
             </div>
           </div>
@@ -321,7 +323,7 @@
             </div></div>
             <div class="mt-12">
               <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss ja-eyebrow">開催スケジュール</p>
-              <div class="mt-5"><div class="overflow-hidden ja-card sc-rise bg-white"><iframe src="https://calendar.google.com/calendar/embed?mode=MONTH&amp;src=c_f58a081ccbc0edefbc76b8609c9c4aaa852024adc1251e062e07864bc2e7b35d%40group.calendar.google.com&amp;color=%239B6A4C&amp;ctz=Asia%2FTokyo&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;bgcolor=%23ffffff&amp;wkst=1" class="block w-full" style="border:0;height:700px" frameborder="0" scrolling="no" loading="lazy" title="特別プログラムカレンダー"></iframe></div></div>
+              <div class="mt-5"><div data-hy-cal data-tone="honey" data-label="特別プログラムカレンダー" data-ics="../calendars/special.ics"></div></div>
             </div>
             <div class="mt-10"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeVjPhVjYziIatrZLVkluYZ4vvhXAZD64f9h8pjhA7ZhsgBSQ/viewform?usp=dialog" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss">特別プログラムに申し込む</a></div>
           </div>

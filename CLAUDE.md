@@ -8,6 +8,10 @@ Static Astro 4 site for setsukohata.com — a bilingual (Japanese-primary, Engli
 
 `/hatha-yoga` is a separate, prebuilt static export (its own CSS, fonts, JA/EN pages, no JS) living in `public/hatha-yoga/`, so Astro copies it verbatim into the build. Edit those HTML files directly; don't convert them to Astro components or restyle them with `global.css`. Its own `sitemap.xml` still points at the old higgsfield.app domain — the root `public/sitemap.xml` is the one that counts.
 
+### Hatha Yoga calendars
+
+Schedules use one reusable component, `public/hatha-yoga/assets/hy-calendar.{js,css}` (linked in the page `<head>`). Never embed Google's iframe or write a new calendar; add a mount point: `<div data-hy-cal data-tone="sage|clay|honey" data-label="…" data-ics="../calendars/NAME.ics"></div>`. Then register `NAME: '<calendar id>'` in `scripts/fetch-calendars.mjs`, which the deploy runs every 6 hours to snapshot the public .ics into `public/hatha-yoga/calendars/` (browsers can't fetch Google's feed directly). Event colours come from Google's colorId via the `GOOGLE_CALENDAR_API_KEY` repo secret and are mapped to earthy shades in `hy-calendar.js`. Keep it light and earthy: no dark fills.
+
 ## Deployment
 
 GitHub Pages via `.github/workflows/deploy.yml` (withastro/action → deploy-pages) on every push to `main`; the repo's Pages source must be set to "GitHub Actions". The custom domain comes from `CNAME` (a copy lives in `public/CNAME` so it lands in `dist/`). `PUBLIC_SIGNUP_ENDPOINT` is set in the workflow because `.env` is gitignored.

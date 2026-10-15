@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'  # refresh the yoga calendar snapshots
 
 permissions:
   contents: read
@@ -22,6 +24,12 @@ jobs:
       PUBLIC_SIGNUP_ENDPOINT: https://script.google.com/macros/s/AKfycbzJjvddoresqI4B_FyhkNb3iSZvjTwWncf-P7sUnWHYOQEZCBN_s63W3LMaUVk3ZtES/exec
     steps:
       - uses: actions/checkout@v4
+      # Snapshot the public Google calendars so the custom calendar can read them same-origin.
+      # On failure the committed copy in public/hatha-yoga/calendars/ is kept.
+      - name: Refresh calendar snapshots
+        env:
+          GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+        run: node scripts/fetch-calendars.mjs
       - uses: withastro/action@v3
         with:
           node-version: 20

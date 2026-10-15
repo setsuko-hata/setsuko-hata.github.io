@@ -2258,3 +2258,195 @@ a.explore-card:hover .explore-card__overlay {
     transform: none;
   }
 }
+
+/* ---------- Morning yoga trial (landing) ---------- */
+.trial {
+  --sage: #C9CDB3;
+  --olive: #464D35;
+  --blush: #E3A98F;
+  --gold-bright: #F5C34A;
+  --gold-bright-deep: #C98F12;
+  background: linear-gradient(180deg, #F5EFDF 0%, #FBF6EC 100%);
+}
+
+.trial-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(360px, 44vw, 520px);
+  background: #FFF1CC url('/assets/morning-bg.webp') center / cover no-repeat;
+  border-bottom-left-radius: 50% 28px;
+  border-bottom-right-radius: 50% 28px;
+}
+
+.trial-hero__copy {
+  position: relative;
+  z-index: 2;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 56px) var(--gutter);
+}
+
+.trial-hero__eyebrow {
+  margin: 0 0 14px;
+  font-family: var(--font-jp-sans);
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(255, 253, 249, 0.85);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--olive);
+  font-weight: 700;
+}
+
+.trial-hero__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--font-jp-serif);
+  font-weight: 700;
+}
+
+.trial-hero__line {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--paper-card-alt);
+  box-shadow: 5px 5px 0 var(--sage);
+  font-size: clamp(19px, 2.6vw, 34px);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  color: var(--olive);
+}
+
+.trial-hero__num {
+  padding: 0 4px;
+  background: linear-gradient(transparent 40%, #FAD77A 40%);
+  color: var(--ink);
+  font-size: 1.15em;
+  font-weight: 700;
+}
+
+.trial-hero__line--accent {
+  font-size: clamp(26px, 3.6vw, 48px);
+  color: var(--gold-bright-deep);
+  box-shadow: 5px 5px 0 var(--gold-bright);
+}
+
+.trial-hero__person {
+  position: absolute;
+  z-index: 1;
+  right: max(var(--gutter), calc((100% - var(--page-max)) / 2 + var(--gutter)));
+  bottom: 0;
+  height: 92%;
+  width: auto;
+  max-width: 55%;
+  object-fit: contain;
+  object-position: bottom right;
+}
+
+.trial-info {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.trial-info__dates {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px 14px;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(28px, 3.6vw, 42px);
+  line-height: 1.2;
+  color: var(--gold-bright-deep);
+}
+
+.trial-info__dates small {
+  font-family: var(--font-jp-sans);
+  font-size: 0.42em;
+  color: var(--ink-70);
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.trial-info__dash {
+  font-family: Inter, sans-serif;
+  font-size: 0.6em;
+}
+
+.trial-info__meta {
+  margin: 0;
+  font-family: var(--font-jp-sans);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--olive);
+}
+
+.trial-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+  min-height: 56px;
+  margin-top: 4px;
+  padding: 0 28px;
+  background: linear-gradient(180deg, #FAD77A 0%, var(--gold-bright) 55%, #E2A62A 100%);
+  color: var(--ink);
+  font-family: var(--font-jp-sans);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  border-radius: 999px;
+  box-shadow: 0 6px 0 var(--gold-bright-deep);
+  transition: background 300ms ease;
+}
+
+.trial-cta:hover {
+  background: linear-gradient(180deg, #FCE096 0%, #F7CB5E 55%, #E9B037 100%);
+  color: var(--ink);
+}
+
+.trial-info__teacher {
+  margin: 0;
+  font-family: var(--font-jp-sans);
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+@media (max-width: 560px) {
+  .trial-hero {
+    min-height: 350px;
+  }
+
+  .trial-hero__person {
+    height: 62%;
+    max-width: 50%;
+    right: -4px;
+  }
+
+  .trial-hero__line {
+    font-size: 18px;
+  }
+
+  .trial-hero__line--accent {
+    font-size: 26px;
+  }
+
+  .trial-hero__eyebrow {
+    font-size: 12px;
+  }
+}
