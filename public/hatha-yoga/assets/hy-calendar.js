@@ -25,8 +25,10 @@
     7: ['#4F7F86', '#DFEDEE', '#355B61'], 8: ['#7A7468', '#ECE8E0', '#504B42'], 9: ['#5F7396', '#E3E9F2', '#41526F'],
     10: ['#4F7A4F', '#E1EDDD', '#355635'], 11: ['#A3593A', '#F6E3D5', '#7C4228']
   };
+  var TONES = { sage: ['#5E6A47', '#E9ECDA', '#46503A'], clay: ['#A3593A', '#F6E3D5', '#7C4228'], honey: ['#8A6A2C', '#F4E8CF', '#6B5020'] };
+  function paletteOf(e) { return GCOLORS[e.color] || (e.tone && TONES[e.tone]); }
   function colorStyle(e) {
-    var c = GCOLORS[e.color];
+    var c = paletteOf(e);
     return c ? ' style="--c-deep:' + c[0] + ';--c-tint:' + c[1] + ';--c-ink:' + c[2] + '"' : '';
   }
 
@@ -88,7 +90,7 @@
       function push(start) {
         var end = start + dur;
         if (end <= from || start >= to) return;
-        res.push({ color: e.color, title: e.title || '(無題)', loc: e.loc, desc: e.desc, start: start, end: end, allDay: e.s.allDay });
+        res.push({ src: e.src, tone: e.tone, color: e.color, title: e.title || '(無題)', loc: e.loc, desc: e.desc, start: start, end: end, allDay: e.s.allDay });
       }
       if (!e.rrule || e.recId != null) { push(e.s.t); return; }
       var r = parseRule(e.rrule), interval = +(r.INTERVAL || 1), count = r.COUNT ? +r.COUNT : Infinity;
@@ -117,14 +119,17 @@
 
   /* ---- component ---- */
   function init(root) {
-    var url = root.dataset.ics, tone = root.dataset.tone || 'sage';
+    var sources = root.dataset.sources ? JSON.parse(root.dataset.sources) : [{ key: 'main', label: '', ics: root.dataset.ics, tone: root.dataset.tone || 'sage' }];
+    var multi = sources.length > 1, tone = multi ? 'sage' : sources[0].tone;
+    var srcOf = {}; sources.forEach(function (x) { srcOf[x.key] = x; });
     var label = root.dataset.label || 'カレンダー';
     var now = parts(nowJ());
-    var st = { y: now.y, m: now.m, view: 'month', sel: startOfDay(nowJ()), vev: [], loaded: false, failed: false, shown: [] };
+    var st = { y: now.y, m: now.m, view: 'month', sel: startOfDay(nowJ()), vev: [], filter: 'all', loaded: false, failed: false, shown: [] };
     root.classList.add('hy-cal', 'hy-cal--' + tone);
     root.setAttribute('role', 'region');
     root.setAttribute('aria-label', label);
 
+    function vevs() { return st.filter === 'all' ? st.vev : st.vev.filter(function (e) { return e.src === st.filter; }); }
     function monthRange() {
       var first = wall(st.y, st.m, 1), gridStart = first - parts(first).w * D;
       return { first: first, gridStart: gridStart, gridEnd: gridStart + 42 * D };
@@ -147,7 +152,7 @@
         var cls = 'hy-cal__day' + (p.m !== st.m ? ' is-out' : '') + (day === today ? ' is-today' : '') + (day === st.sel ? ' is-sel' : '') + (de.length ? ' has-ev' : '');
         h += '<div class="' + cls + '" data-day="' + day + '" tabindex="-1"><span class="hy-cal__num">' + p.d + '</span>';
         h += '<div class="hy-cal__evs">' + de.slice(0, 3).map(function (e) { return pill(e, st.shown.indexOf(e)); }).join('') + (de.length > 3 ? '<span class="hy-cal__more">ほか' + (de.length - 3) + '件</span>' : '') + '</div>';
-        h += '<div class="hy-cal__dots" aria-hidden="true">' + de.slice(0, 3).map(function () { return '<i></i>'; }).join('') + '</div></div>';
+        h += '<div class="hy-cal__dots" aria-hidden="true">' + de.slice(0, 3).map(function (e) { return '<i' + colorStyle(e) + '></i>'; }).join('') + '</div></div>';
       }
       h += '</div>';
       // Small-screen day detail
@@ -169,21 +174,30 @@
           h += '<div class="hy-cal__lday"><div class="hy-cal__ldate' + (d === startOfDay(nowJ()) ? ' is-today' : '') + '"><b>' + p.d + '</b><small>' + (p.m + 1) + '月・' + WD[p.w] + '</small></div><div class="hy-cal__lcards">';
           last = d;
         }
-        h += '<button type="button" class="hy-cal__card" data-ev="' + st.shown.indexOf(e) + '"' + colorStyle(e) + '><span class="hy-cal__card-t">' + esc(timeText(e)) + '</span><span class="hy-cal__card-n">' + esc(e.title) + '</span>' + (e.loc ? '<span class="hy-cal__card-l">' + esc(e.loc) + '</span>' : '') + '</button>';
+        h += '<button type="button" class="hy-cal__card" data-ev="' + st.shown.indexOf(e) + '"' + colorStyle(e) + '><span class="hy-cal__card-t">' + esc(timeText(e)) + '</span><span class="hy-cal__card-n">' + esc(e.title) + '</span>' + (multi && srcOf[e.src] ? '<span class="hy-cal__card-l">' + esc(srcOf[e.src].label) + '</span>' : '') + (e.loc ? '<span class="hy-cal__card-l">' + esc(e.loc) + '</span>' : '') + '</button>';
       });
       if (last !== null) h += '</div></div>';
       h += '</div>';
       return n ? h : '<p class="hy-cal__empty">これからの予定は、決まり次第お知らせします。</p>';
     }
 
+    function filters() {
+      if (!multi) return '';
+      var all = [{ key: 'all', label: '全部' }].concat(sources);
+      return '<div class="hy-cal__filters" role="tablist" aria-label="カレンダーの種類">' + all.map(function (x) {
+        var c = x.key !== 'all' && TONES[x.tone];
+        return '<button type="button" role="tab" class="hy-cal__f" data-f="' + esc(x.key) + '" aria-selected="' + (st.filter === x.key) + '"' + (c ? ' style="--c-deep:' + c[0] + ';--c-tint:' + c[1] + ';--c-ink:' + c[2] + '"' : '') + '>' + (c ? '<i aria-hidden="true"></i>' : '') + esc(x.label) + '</button>';
+      }).join('') + '</div>';
+    }
+
     function render() {
       var title, evs, body;
       if (st.view === 'month') {
-        var r = monthRange(); evs = expand(st.vev, r.gridStart, r.gridEnd); st.shown = evs;
+        var r = monthRange(); evs = expand(vevs(), r.gridStart, r.gridEnd); st.shown = evs;
         title = '<span class="hy-cal__year">' + st.y + '年</span>' + (st.m + 1) + '月';
         body = st.failed ? '' : renderMonth(evs);
       } else {
-        st.listFrom = startOfDay(nowJ()); evs = expand(st.vev, st.listFrom, st.listFrom + 120 * D); st.shown = evs;
+        st.listFrom = startOfDay(nowJ()); evs = expand(vevs(), st.listFrom, st.listFrom + 120 * D); st.shown = evs;
         title = 'これからの予定';
         body = st.failed ? '' : renderList(evs);
       }
@@ -194,6 +208,7 @@
         '<h3 class="hy-cal__title" aria-live="polite">' + title + '</h3>' +
         '<div class="hy-cal__nav"><button type="button" class="hy-cal__btn" data-act="prev" aria-label="前へ">‹</button><button type="button" class="hy-cal__btn hy-cal__btn--t" data-act="today">今日</button><button type="button" class="hy-cal__btn" data-act="next" aria-label="次へ">›</button></div>' +
         '<div class="hy-cal__seg" role="group" aria-label="表示切り替え"><button type="button" data-v="month" aria-pressed="' + (st.view === 'month') + '">月</button><button type="button" data-v="list" aria-pressed="' + (st.view === 'list') + '">一覧</button></div></div>' +
+        filters() +
         '<div class="hy-cal__body">' + body + '</div><p class="hy-cal__tz">時間は日本時間（JST）です</p>';
     }
 
@@ -204,9 +219,9 @@
       var desc = e.desc ? '<p class="hy-cal__m-desc">' + esc(e.desc).replace(/https?:\/\/[^\s<]+/g, function (u) { return '<a href="' + u + '" target="_blank" rel="noopener noreferrer">' + u + '</a>'; }) + '</p>' : '';
       var m = document.createElement('div');
       m.className = 'hy-cal__scrim hy-cal--' + tone;
-      var cs = GCOLORS[e.color];
+      var cs = paletteOf(e);
       if (cs) m.setAttribute('style', '--c-deep:' + cs[0] + ';--c-tint:' + cs[1] + ';--c-ink:' + cs[2]);
-      m.innerHTML = '<div class="hy-cal__modal" role="dialog" aria-modal="true" aria-label="' + esc(e.title) + '"><div class="hy-cal__m-head"><h4>' + esc(e.title) + '</h4><p>' + when + '</p></div><div class="hy-cal__m-body">' +
+      m.innerHTML = '<div class="hy-cal__modal" role="dialog" aria-modal="true" aria-label="' + esc(e.title) + '"><div class="hy-cal__m-head">' + (multi && srcOf[e.src] ? '<span class="hy-cal__m-src">' + esc(srcOf[e.src].label) + '</span>' : '') + '<h4>' + esc(e.title) + '</h4><p>' + when + '</p></div><div class="hy-cal__m-body">' +
         (e.loc ? '<p class="hy-cal__m-loc">' + esc(e.loc) + '</p>' : '') + desc + '<button type="button" class="hy-cal__close">閉じる</button></div></div>';
       var prevFocus = document.activeElement;
       function close() { m.remove(); document.removeEventListener('keydown', onKey); if (prevFocus && prevFocus.focus) prevFocus.focus(); }
@@ -229,6 +244,8 @@
         root.classList.remove('is-in'); render(); requestAnimationFrame(function () { root.classList.add('is-in'); });
         return;
       }
+      var f = t.closest('[data-f]');
+      if (f) { st.filter = f.dataset.f; render(); return; }
       var v = t.closest('[data-v]');
       if (v) { st.view = v.dataset.v; render(); return; }
       var day = t.closest('[data-day]');
@@ -236,10 +253,15 @@
     });
 
     render();
-    fetch(url).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (txt) {
-      st.vev = parseICS(txt); st.loaded = true;
+    Promise.all(sources.map(function (x) {
+      return fetch(x.ics).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (txt) {
+        return parseICS(txt).map(function (e) { e.src = x.key; e.tone = x.tone; return e; });
+      }).catch(function () { return null; });
+    })).then(function (lists) {
+      var ok = lists.filter(Boolean);
+      if (!ok.length) { st.failed = true; render(); return; }
+      st.vev = [].concat.apply([], ok); st.loaded = true;
       // If this month is empty, jump to the next month that has something.
-      var r0 = monthRange();
       if (!expand(st.vev, wall(st.y, st.m, 1), wall(st.y, st.m + 1, 1)).length) {
         for (var k = 1; k <= 6; k++) {
           var y = st.y, m = st.m + k; y += Math.floor(m / 12); m = m % 12;
@@ -247,7 +269,7 @@
         }
       }
       render();
-    }).catch(function () { st.failed = true; render(); });
+    });
   }
 
   function boot() { document.querySelectorAll('[data-hy-cal]').forEach(init); }

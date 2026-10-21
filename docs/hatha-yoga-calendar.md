@@ -47,10 +47,20 @@ Browsers cannot read Google's public `.ics` feed directly (no CORS), so the depl
    The id is the Google Calendar ID without `@group.calendar.google.com`. The calendar must be **shared publicly** in Google Calendar.
 4. Run `node scripts/fetch-calendars.mjs` once and commit the new `.ics`, so there is a fallback copy.
 
+On `ja/offerings.html` there is **one** calendar (`<section id="calendar">`, below the class tabs and independent of the side menu). It takes several calendars at once and shows filter tabs 全部 / オンラインクラス / 対面クラス / 特別プログラム:
+```html
+<div data-hy-cal data-label="開催スケジュール" data-sources='[
+  {"key":"online","label":"オンラインクラス","ics":"../calendars/online.ics","tone":"sage"},
+  {"key":"inperson","label":"対面クラス","ics":"../calendars/inperson.ics","tone":"clay"},
+  {"key":"special","label":"特別プログラム","ics":"../calendars/special.ics","tone":"honey"}]'></div>
+```
+With more than one source the component adds the 全部 tab plus one tab per source (coloured dot = legend), colours events by their source's tone, and labels the source in the event popup and list view. With a single `data-ics` + `data-tone` it behaves as a plain calendar with no tabs. Add a new category by adding an entry to `data-sources` and to `scripts/fetch-calendars.mjs`.
+
 Never use Google's iframe or write a second calendar implementation.
 
 ## Features
 
+- Filter tabs (全部 + one per calendar) when several sources are given.
 - Month grid and list view (月 / 一覧), prev / next / 今日, tap an event for details.
 - Narrow containers (under 760px, measured on the calendar itself via a container query) switch to dots, and tapping a day lists that day's classes.
 - Start and end time are shown as a highlighted badge on every event.

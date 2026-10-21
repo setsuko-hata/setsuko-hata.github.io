@@ -10,7 +10,7 @@ Static Astro 4 site for setsukohata.com — a bilingual (Japanese-primary, Engli
 
 ### Hatha Yoga calendars
 
-Schedules use one reusable component, `public/hatha-yoga/assets/hy-calendar.{js,css}` (linked in the page `<head>`). Never embed Google's iframe or write a new calendar; add a mount point: `<div data-hy-cal data-tone="sage|clay|honey" data-label="…" data-ics="../calendars/NAME.ics"></div>`. Then register `NAME: '<calendar id>'` in `scripts/fetch-calendars.mjs`, which the deploy runs every 6 hours to snapshot the public .ics into `public/hatha-yoga/calendars/` (browsers can't fetch Google's feed directly). Event colours come from Google's colorId via the `GOOGLE_CALENDAR_API_KEY` repo secret and are mapped to earthy shades in `hy-calendar.js`. Keep it light and earthy: no dark fills.
+Schedules use one reusable component, `public/hatha-yoga/assets/hy-calendar.{js,css}` (linked in the page `<head>`). Never embed Google's iframe or write a new calendar; add a mount point: `<div data-hy-cal data-tone="sage|clay|honey" data-label="…" data-ics="../calendars/NAME.ics"></div>`, or for several calendars with filter tabs `data-sources='[{"key","label","ics","tone"}, …]'` (the offerings page uses one combined calendar this way). Then register `NAME: '<calendar id>'` in `scripts/fetch-calendars.mjs`, which the deploy runs every 6 hours to snapshot the public .ics into `public/hatha-yoga/calendars/` (browsers can't fetch Google's feed directly). Event colours come from Google's colorId via the `GOOGLE_CALENDAR_API_KEY` repo secret and are mapped to earthy shades in `hy-calendar.js`. Keep it light and earthy: no dark fills.
 
 ## Deployment
 
