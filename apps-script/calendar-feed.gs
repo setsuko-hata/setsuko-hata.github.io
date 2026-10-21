@@ -1,5 +1,5 @@
 /**
- * Calendar feed for the Hatha Yoga schedule (setsukohata.com/hatha-yoga/ja/offerings.html).
+ * Calendar feed for the Hatha Yoga schedule (setsukohata.com/hatha-yoga/ja/offerings).
  *
  * Deploy as a web app owned by events@setsukohata.com (Execute as: Me, Who has access: Anyone).
  * Setup steps are in docs/hatha-yoga-calendar.md. Source of truth for this code is this file;

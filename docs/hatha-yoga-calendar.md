@@ -1,6 +1,6 @@
 # Hatha Yoga calendar
 
-The schedule on `/hatha-yoga/ja/offerings.html` is one reusable, hand-built calendar (no Google iframe) with filter tabs 全部 / オンラインクラス / 対面クラス / 特別プログラム. Light, warm, earthy: no dark fills.
+The schedule on `/hatha-yoga/ja/offerings` is one reusable, hand-built calendar (no Google iframe) with filter tabs 全部 / オンラインクラス / 対面クラス / 特別プログラム. Light, warm, earthy: no dark fills.
 
 ## How it works
 

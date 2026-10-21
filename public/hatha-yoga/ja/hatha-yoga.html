@@ -22,7 +22,7 @@
     <link rel="preload" as="image" href="../assets/hero.webp" type="image/webp" media="(min-width: 901px)" />
     <link rel="preload" as="image" href="../assets/hero-900.webp" type="image/webp" media="(max-width: 900px)" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
-    <link rel="alternate" hreflang="ja" href="./hatha-yoga.html" />
+    <link rel="alternate" hreflang="ja" href="./hatha-yoga" />
     <link rel="alternate" hreflang="en" href="../en/index.html" />
     <style>
       /* Static export overrides — replace behaviours that used to be driven by
@@ -67,9 +67,8 @@
       <header class="fixed inset-x-0 top-0 z-50 transition-colors duration-500 bg-[#F5EFDF]/95 backdrop-blur-md text-brand-espresso border-b border-brand-espresso/10">
         <div class="mx-auto w-full max-w-7xl px-6 md:px-10 flex h-20 items-center justify-between" style="position:relative;z-index:3">
           <a class="flex items-center gap-3 font-mono text-[13px] uppercase tracking-[0.28em]" href="https://setsukohata.com/" aria-label="setsukohata.com に戻る"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg><span>SETSUKOHATA.COM</span></a>
-          <nav class="hidden items-center gap-9 md:flex" aria-label="Primary">
-            <a href="./index.html" class="text-[14px] uppercase tracking-[0.18em] transition-opacity hover:opacity-70 [&amp;.active]:font-semibold">ホーム</a><a href="./about.html" class="text-[14px] uppercase tracking-[0.18em] transition-opacity hover:opacity-70 [&amp;.active]:font-semibold">秦 節子｜SETSUKO HATA</a><a href="./hatha-yoga.html" class="text-[14px] uppercase tracking-[0.18em] transition-opacity hover:opacity-70 [&amp;.active]:font-semibold active" data-status="active" aria-current="page">ハタヨガとは</a><div class="ja-navdrop" data-navdrop><button type="button" class="ja-navtrigger" data-href="./offerings.html" aria-expanded="false" aria-haspopup="true" aria-controls="ja-classes-menu">クラス<svg class="ja-navtrigger-caret" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button><div class="ja-navdrop-menu" id="ja-classes-menu" role="menu"><a href="./offerings.html#trial" role="menuitem">初めての方へ</a><a href="./offerings.html#inperson" role="menuitem">対面クラス</a><a href="./offerings.html#online-class" role="menuitem">オンラインクラス</a><a href="./offerings.html#special" role="menuitem">特別プログラム</a><a href="./offerings.html#pricing" role="menuitem">クラス価格</a></div></div><div class="ja-navdrop" data-navdrop><button type="button" class="ja-navtrigger" data-href="./wellness.html" aria-expanded="false" aria-haspopup="true" aria-controls="ja-corporate-menu">法人・団体向け<svg class="ja-navtrigger-caret" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button><div class="ja-navdrop-menu" id="ja-corporate-menu" role="menu"><a href="./wellness.html" role="menuitem">企業・健康経営</a></div></div><div class="ja-navdrop" data-navdrop><button type="button" class="ja-navtrigger" data-href="./schools.html" aria-expanded="false" aria-haspopup="true" aria-controls="ja-schools-menu">学校・教育機関向け<svg class="ja-navtrigger-caret" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button><div class="ja-navdrop-menu" id="ja-schools-menu" role="menu"><a href="./schools.html#stage-es" role="menuitem">小学校</a><a href="./schools.html#stage-jhs" role="menuitem">中学校</a><a href="./schools.html#stage-hs" role="menuitem">高校</a><a href="./schools.html#stage-uni" role="menuitem">大学</a></div></div><a href="./contact.html" class="text-[14px] uppercase tracking-[0.18em] transition-opacity hover:opacity-70 [&amp;.active]:font-semibold">お問い合わせ</a>
-          </nav>
+          <nav class="hidden items-center gap-9 md:flex" aria-label="Primary" data-ja-nav data-active="hatha-yoga"></nav>
+          <script src="../assets/ja-nav.js?v=2"></script>
           <button id="ja-menu-btn" type="button" class="flex h-10 w-10 items-center justify-center md:hidden" aria-expanded="false" aria-controls="ja-mobile-nav" aria-label="メニューを開く"><span class="relative block h-4 w-5" aria-hidden="true"><span data-bar="1" class="absolute left-0 top-0 h-px w-5 bg-current transition-transform duration-300"></span><span data-bar="2" class="absolute left-0 top-2 h-px w-5 bg-current transition-opacity duration-200"></span><span data-bar="3" class="absolute left-0 top-4 h-px w-5 bg-current transition-transform duration-300"></span></span></button>
         </div>
       </header>
@@ -100,7 +99,6 @@
         </section>
         <section class="scroll-mt-24" style="position:relative;background:#F5EFDF;overflow:hidden" data-screen-label="ユニオン">
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
-            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">ヨガとは</p>
             <div class="grid gap-12 md:grid-cols-2 md:gap-16">
               <div class="sc-rise group relative isolate flex min-h-[420px] items-center overflow-hidden md:min-h-[600px]" style="border-radius:6px">
                 <picture>
@@ -111,7 +109,7 @@
                 <p class="max-w-md px-8 py-16 text-left font-display text-2xl leading-[1.75] text-white md:px-14 md:text-[2rem] md:leading-[1.7]">ヨガとは、『ユニオン』ー自身の生命と宇宙が一体になった状態のこと。</p>
               </div>
               <div class="flex items-center">
-                <div class="max-w-xl space-y-8 text-lg leading-[2.1] text-brand-espresso/80"><p>ヨガは、ポーズを取ったり身体を柔軟にすることではありません。</p><p>ヨガとは何かを「する」ものではないのです。<br />自身の生命と宇宙が一体になった状態、その状態そのものを、ヨガと呼びます。</p></div>
+                <div class="max-w-xl space-y-8 text-lg leading-[2.1] text-brand-espresso/80"><p>ヨガは、ポーズを取ったり身体を柔軟にすることではありません。</p><p><strong style="color:#3A3228;font-size:1.12em;background:linear-gradient(transparent 62%,rgba(201,139,103,.32) 62%)">ヨガとは</strong>何かを「する」ものではないのです。<br />自身の生命と宇宙が一体になった状態、その状態そのものを、ヨガと呼びます。</p></div>
               </div>
             </div>
           </div>
@@ -141,7 +139,7 @@
           <div aria-hidden="true" style="position:absolute;left:-120px;bottom:-160px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(208,138,94,.35) 0%,rgba(208,138,94,0) 70%);pointer-events:none"></div>
           <div class="mx-auto w-full max-w-4xl px-6 text-center md:px-10" style="position:relative">
             <p class="font-display text-3xl leading-[1.6] text-brand-espresso md:text-5xl md:leading-[1.5]">ハタヨガの「ハ」は太陽、「タ」は月。</p>
-            <p class="mt-10 font-display text-xl leading-[1.9] md:text-2xl" style="color:#EDE2CB">私たちの内側にある、太陽と月。陽と陰。二つのエネルギーを意味します。</p>
+            <p class="mt-10 font-display text-xl leading-[1.9] md:text-2xl" style="color:#4F4538">私たちの内側にある、太陽と月。陽と陰。二つのエネルギーを意味します。</p>
             <div class="mx-auto my-14 h-px w-24" style="background:#B09372" aria-hidden="true"></div>
             <p class="mx-auto max-w-2xl text-lg leading-[2.1] text-brand-espresso">心身のあらゆる不調は、この二つのエネルギーのバランスが崩れることから始まります。しかし本来、健康とは手に入れるものではなく、私たちがはじめから持っている状態です。</p>
           </div>
@@ -169,7 +167,7 @@
           <div class="mx-auto w-full max-w-4xl px-6 md:px-10" style="position:relative">
             <p class="font-display text-4xl leading-[1.4] md:text-6xl" style="color:#3E3227">これがヨガの道なのです。</p>
             <p class="mx-auto mt-8 max-w-xl text-base leading-loose" style="color:#4A3F31">まずは一度、通常のクラスをそのまま体験していただけます。</p>
-            <div class="mt-12" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center"><a href="https://docs.google.com/forms/d/1rKoOxcGQyew2a_d341eduWZ4QuhbK7R3YloP14Z6s8w/viewform" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss">体験レッスンを予約する</a><a href="./offerings.html" class="ja-btn-ghost inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium">クラスを見る</a></div>
+            <div class="mt-12" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center"><a href="https://docs.google.com/forms/d/1rKoOxcGQyew2a_d341eduWZ4QuhbK7R3YloP14Z6s8w/viewform" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss">体験レッスンを予約する</a><a href="./offerings" class="ja-btn-ghost inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium">クラスを見る</a></div>
           </div>
         </section>
       </main>
@@ -183,7 +181,7 @@
           <div>
             <p class="font-mono text-[13px] uppercase tracking-[0.22em] text-brand-moss">サイトマップ</p>
             <ul class="mt-5 space-y-2.5 text-sm">
-              <li><a href="./index.html" class="opacity-80 transition-opacity hover:opacity-100">ホーム</a></li><li><a href="./about.html" class="opacity-80 transition-opacity hover:opacity-100">秦 節子｜SETSUKO HATA</a></li><li><a href="./hatha-yoga.html" class="opacity-80 transition-opacity hover:opacity-100">ハタヨガとは</a></li><li><a href="./offerings.html" class="opacity-80 transition-opacity hover:opacity-100">クラス・月額会員</a></li><li><a href="./prepare.html" class="opacity-80 transition-opacity hover:opacity-100">ご参加の準備</a></li><li><a href="./wellness.html" class="opacity-80 transition-opacity hover:opacity-100">企業・健康経営</a></li><li><a href="./schools.html" class="opacity-80 transition-opacity hover:opacity-100">学校・教育機関</a></li><li><a href="./contact.html" class="opacity-80 transition-opacity hover:opacity-100">お問い合わせ</a></li>
+              <li><a href="./" class="opacity-80 transition-opacity hover:opacity-100">ホーム</a></li><li><a href="./about" class="opacity-80 transition-opacity hover:opacity-100">秦 節子｜SETSUKO HATA</a></li><li><a href="./hatha-yoga" class="opacity-80 transition-opacity hover:opacity-100">ハタヨガとは</a></li><li><a href="./hatha-types" class="opacity-80 transition-opacity hover:opacity-100">ハタヨガの種類</a></li><li><a href="./offerings" class="opacity-80 transition-opacity hover:opacity-100">クラス・月額会員</a></li><li><a href="./prepare" class="opacity-80 transition-opacity hover:opacity-100">ご参加の準備</a></li><li><a href="./wellness" class="opacity-80 transition-opacity hover:opacity-100">企業・健康経営</a></li><li><a href="./schools" class="opacity-80 transition-opacity hover:opacity-100">学校・教育機関</a></li><li><a href="./contact" class="opacity-80 transition-opacity hover:opacity-100">お問い合わせ</a></li>
             </ul>
           </div>
           <div>

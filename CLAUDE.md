@@ -8,6 +8,10 @@ Static Astro 4 site for setsukohata.com — a bilingual (Japanese-primary, Engli
 
 `/hatha-yoga` is a separate, prebuilt static export (its own CSS, fonts, JA/EN pages, no JS) living in `public/hatha-yoga/`, so Astro copies it verbatim into the build. Edit those HTML files directly; don't convert them to Astro components or restyle them with `global.css`. Its own `sitemap.xml` still points at the old higgsfield.app domain — the root `public/sitemap.xml` is the one that counts.
 
+### Hatha Yoga JA header nav
+
+The Japanese pages' header nav is one shared component, `public/hatha-yoga/assets/ja-nav.js` (menu list at the top of the file). Each `ja/*.html` has an empty `<nav aria-label="Primary" data-ja-nav data-active="…">` followed by the script tag; bump `?v=N` on all pages after editing. Don't paste nav markup back into pages. The mobile menu is built by each page's inline script from this nav, and the footer link lists are still per-page.
+
 ### Hatha Yoga calendars
 
 The class schedule uses one reusable calendar component, `public/hatha-yoga/assets/hy-calendar.{js,css}`, fed live by a Google Apps Script (`apps-script/calendar-feed.gs`, deployed separately in events@setsukohata.com's Google account). Never embed Google's iframe or write a new calendar; see `docs/hatha-yoga-calendar.md` for the mount point, adding a category, redeploying the script and cache-busting `?v=N`. Keep it light and earthy: no dark fills.
