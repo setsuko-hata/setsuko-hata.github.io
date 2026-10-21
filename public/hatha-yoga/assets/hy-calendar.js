@@ -49,6 +49,8 @@
       .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
     // Drop Google Meet dial-in boilerplate that Google appends to descriptions.
     s = s.replace(/Google Meet[\s\S]*$/i, '').replace(/-::~[\s\S]*$/, '');
+    // Never show Zoom invites (meeting links, ID, passcode) on the public page.
+    s = s.replace(/[^\n]*(scheduled Zoom meeting|Join Zoom Meeting|zoom\.us)[\s\S]*$/i, '');
     return s.replace(/\n{3,}/g, '\n\n').trim();
   }
   function parseICS(text) {
@@ -75,6 +77,24 @@
     return out;
   }
 
+  /* ---- live feed (Google Apps Script) -> same shape as parsed ICS events, already expanded ---- */
+  function parseFeedDate(v, allDay) {
+    var m = String(v).match(/^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)/);
+    return m ? wall(+m[1], m[2] - 1, +m[3], +m[4], +m[5], +m[6]) : NaN;
+  }
+  function fromFeed(list) {
+    return (list || []).map(function (f) {
+      var s = parseFeedDate(f.start), e = parseFeedDate(f.end);
+      if (isNaN(s)) return null;
+      return {
+        pre: true, ex: [], uid: f.id,
+        title: String(f.title || '').replace(/[\s\u3000]*秦[\s\u3000]*節子[\s\u3000]*/g, ' ').trim(),
+        loc: f.loc || '', desc: cleanDescription(f.desc), color: +f.color || undefined,
+        s: { t: s, allDay: !!f.allDay }, e: { t: isNaN(e) ? s + H : e }
+      };
+    }).filter(Boolean);
+  }
+
   /* ---- recurrence expansion into [from, to) ---- */
   function parseRule(str) {
     var r = {};
@@ -92,7 +112,7 @@
         if (end <= from || start >= to) return;
         res.push({ src: e.src, tone: e.tone, color: e.color, title: e.title || '(無題)', loc: e.loc, desc: e.desc, start: start, end: end, allDay: e.s.allDay });
       }
-      if (!e.rrule || e.recId != null) { push(e.s.t); return; }
+      if (!e.rrule || e.recId != null || e.pre) { push(e.s.t); return; }
       var r = parseRule(e.rrule), interval = +(r.INTERVAL || 1), count = r.COUNT ? +r.COUNT : Infinity;
       var until = r.UNTIL ? parseDate(r.UNTIL).t : Infinity;
       if (r.UNTIL && /Z$/.test(r.UNTIL)) until = parseDate(r.UNTIL).t;
@@ -121,6 +141,7 @@
   function init(root) {
     var sources = root.dataset.sources ? JSON.parse(root.dataset.sources) : [{ key: 'main', label: '', ics: root.dataset.ics, tone: root.dataset.tone || 'sage' }];
     var multi = sources.length > 1, tone = multi ? 'sage' : sources[0].tone;
+    var feedUrl = root.dataset.feed || '';
     var srcOf = {}; sources.forEach(function (x) { srcOf[x.key] = x; });
     var label = root.dataset.label || 'カレンダー';
     var now = parts(nowJ());
@@ -253,11 +274,22 @@
     });
 
     render();
-    Promise.all(sources.map(function (x) {
+    // Live feed (Apps Script). A source with an `ics` path falls back to that file if the feed fails.
+    function loadFeed() {
+      if (!feedUrl) return Promise.resolve(null);
+      var ctrl = window.AbortController ? new AbortController() : null, timer = ctrl && setTimeout(function () { ctrl.abort(); }, 8000);
+      var url = feedUrl + (feedUrl.indexOf('?') < 0 ? '?' : '&') + 'cal=' + sources.map(function (x) { return encodeURIComponent(x.key); }).join(',');
+      return fetch(url, ctrl ? { signal: ctrl.signal } : {}).then(function (r) { if (!r.ok) throw 0; return r.json(); })
+        .then(function (d) { return d && typeof d === 'object' ? d : null; }).catch(function () { return null; })
+        .then(function (d) { if (timer) clearTimeout(timer); return d; });
+    }
+    loadFeed().then(function (feed) { return Promise.all(sources.map(function (x) {
+      if (feed && Array.isArray(feed[x.key])) return fromFeed(feed[x.key]).map(function (e) { e.src = x.key; e.tone = x.tone; return e; });
+      if (!x.ics) return null;
       return fetch(x.ics).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (txt) {
         return parseICS(txt).map(function (e) { e.src = x.key; e.tone = x.tone; return e; });
       }).catch(function () { return null; });
-    })).then(function (lists) {
+    })); }).then(function (lists) {
       var ok = lists.filter(Boolean);
       if (!ok.length) { st.failed = true; render(); return; }
       st.vev = [].concat.apply([], ok); st.loaded = true;

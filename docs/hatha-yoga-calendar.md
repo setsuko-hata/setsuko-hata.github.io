@@ -1,111 +1,85 @@
 # Hatha Yoga calendar
 
-The schedules on `/hatha-yoga/ja/offerings.html` (対面クラス, オンラインクラス, 特別プログラム) use one reusable, hand-built calendar instead of Google's iframe embed. Light, warm, earthy: no dark fills.
+The schedule on `/hatha-yoga/ja/offerings.html` is one reusable, hand-built calendar (no Google iframe) with filter tabs 全部 / オンラインクラス / 対面クラス / 特別プログラム. Light, warm, earthy: no dark fills.
 
 ## How it works
 
 ```
-Google Calendar (public)
-   │  deploy workflow, every 6h + on push
+Google Calendar (owned by events@setsukohata.com)
+   │  read live by a Google Apps Script web app (apps-script/calendar-feed.gs)
    ▼
-scripts/fetch-calendars.mjs ──► public/hatha-yoga/calendars/NAME.ics   (same-origin snapshot)
-                                          │
-                                          ▼
-              hy-calendar.js (in the browser) parses + expands repeats + renders
+JSON feed  ──►  hy-calendar.js (in the browser) renders month / list views
 ```
 
-Browsers cannot read Google's public `.ics` feed directly (no CORS), so the deploy saves a copy next to the site and the page reads that copy.
+Nothing is saved in the repo or built at deploy time: every page load asks the feed, which reads the calendars as their owner and caches for 120 seconds. Edits in Google Calendar show up within about 2 minutes.
 
 | Piece | Path |
 |---|---|
 | Component (JS) | `public/hatha-yoga/assets/hy-calendar.js` |
 | Component (CSS) | `public/hatha-yoga/assets/hy-calendar.css` |
-| Fetch script | `scripts/fetch-calendars.mjs` |
-| Saved calendars | `public/hatha-yoga/calendars/*.ics` |
-| Refresh schedule | `.github/workflows/deploy.yml` (push to `main`, manual run, cron every 6 hours) |
+| Feed script (Google-side) | `apps-script/calendar-feed.gs` |
+| Mount point | `<section id="calendar">` in `public/hatha-yoga/ja/offerings.html` |
 
-`public/hatha-yoga/` is served verbatim by Astro: edit these files directly, no build step for the component.
+`public/hatha-yoga/` is served verbatim by Astro: edit these files directly, no build step for the component. There is no GitHub Action for the calendar.
 
-## Adding a calendar to a page
+## The mount point
 
-1. Load the component once in the page `<head>` (already done on `ja/offerings.html`):
-   ```html
-   <link rel="stylesheet" href="../assets/hy-calendar.css" />
-   <script src="../assets/hy-calendar.js" defer></script>
-   ```
-2. Put a mount point where the calendar goes:
-   ```html
-   <div data-hy-cal data-tone="sage" data-label="オンラインクラスカレンダー" data-ics="../calendars/online.ics"></div>
-   ```
-   - `data-tone`: `sage` (online), `clay` (in-person), `honey` (special programs). New tones are CSS variables in `hy-calendar.css` (`.hy-cal--NAME`, plus its `.hy-cal__scrim` twin for the popup).
-   - `data-label`: accessible name.
-   - `data-ics`: path to the saved file, relative to the page.
-3. Register the calendar in `scripts/fetch-calendars.mjs`:
-   ```js
-   const CALENDARS = { online: 'c_…', inperson: 'c_…', special: 'c_…', NAME: 'c_<id>' };
-   ```
-   The id is the Google Calendar ID without `@group.calendar.google.com`. The calendar must be **shared publicly** in Google Calendar.
-4. Run `node scripts/fetch-calendars.mjs` once and commit the new `.ics`, so there is a fallback copy.
-
-On `ja/offerings.html` there is **one** calendar (`<section id="calendar">`, below the class tabs and independent of the side menu). It takes several calendars at once and shows filter tabs 全部 / オンラインクラス / 対面クラス / 特別プログラム:
 ```html
-<div data-hy-cal data-label="開催スケジュール" data-sources='[
-  {"key":"online","label":"オンラインクラス","ics":"../calendars/online.ics","tone":"sage"},
-  {"key":"inperson","label":"対面クラス","ics":"../calendars/inperson.ics","tone":"clay"},
-  {"key":"special","label":"特別プログラム","ics":"../calendars/special.ics","tone":"honey"}]'></div>
+<div data-hy-cal data-label="開催スケジュール" data-feed="https://script.google.com/macros/s/…/exec"
+  data-sources='[{"key":"online","label":"オンラインクラス","tone":"sage"},
+                 {"key":"inperson","label":"対面クラス","tone":"clay"},
+                 {"key":"special","label":"特別プログラム","tone":"honey"}]'></div>
 ```
-With more than one source the component adds the 全部 tab plus one tab per source (coloured dot = legend), colours events by their source's tone, and labels the source in the event popup and list view. With a single `data-ics` + `data-tone` it behaves as a plain calendar with no tabs. Add a new category by adding an entry to `data-sources` and to `scripts/fetch-calendars.mjs`.
 
-Never use Google's iframe or write a second calendar implementation.
+- `data-feed`: the Apps Script web app URL (public by design, like the signup form's). The page requests `?cal=<keys>`.
+- `data-sources`: one entry per category: `key` (matches `CALENDARS` in the script), `label` (tab text), `tone` (`sage`, `clay`, `honey`; add tones in `hy-calendar.css` as `.hy-cal--NAME`, plus its popup twin, and in `TONES` in the JS). Optional `ics`: a path to a `.ics` file used only if the feed fails.
+- With more than one source the component adds the 全部 tab and a tab per source (coloured dot = legend), colours events by category, and names the category in the popup and list view. A single `data-ics` + `data-tone` gives a plain calendar with no tabs.
+
+Load the component once in the page `<head>`:
+```html
+<link rel="stylesheet" href="../assets/hy-calendar.css?v=N" />
+<script src="../assets/hy-calendar.js?v=N" defer></script>
+```
+GitHub Pages caches assets ~10 minutes, so bump `?v=N` whenever the component or the mount-point attributes change (stale JS + new HTML shows "カレンダーを読み込めませんでした").
+
+Never embed Google's iframe or write a second calendar implementation.
+
+## Adding a category
+
+1. Add `key: 'calendarId@group.calendar.google.com'` to `CALENDARS` in `apps-script/calendar-feed.gs` and redeploy the script (below). The script's account must own or be subscribed to the calendar.
+2. Add `{"key": "...", "label": "...", "tone": "..."}` to `data-sources`.
 
 ## Features
 
-- Filter tabs (全部 + one per calendar) when several sources are given.
-- Month grid and list view (月 / 一覧), prev / next / 今日, tap an event for details.
-- Narrow containers (under 760px, measured on the calendar itself via a container query) switch to dots, and tapping a day lists that day's classes.
-- Start and end time are shown as a highlighted badge on every event.
+- Filter tabs, month grid and list view (月 / 一覧), prev / next / 今日, tap an event for details.
+- Narrow containers (under 700px, measured on the calendar itself) switch to coloured dots and tapping a day lists that day's classes.
+- Wide layout shows a start–end time badge and the title on every event.
 - Times always display in JST regardless of visitor timezone.
-- Repeating events are expanded in the browser: `DAILY`, `WEEKLY` (with `BYDAY`, `INTERVAL`), `MONTHLY` (same day of month), `YEARLY`, with `COUNT`, `UNTIL`, `EXDATE` and edited single instances (`RECURRENCE-ID`). Not supported: ordinal rules like "second Tuesday".
-- The author name 秦節子 is stripped from event titles (see `parseICS`).
-- Google Meet dial-in boilerplate is removed from descriptions.
+- Author name 秦節子 is stripped from titles; Zoom / Google Meet invites (links, IDs, passcodes) are stripped from descriptions, both in the script and again in the page.
 - Opens on the next month that has events if the current month is empty.
+- Event colours: Google's 11 event colours are mapped to earthy shades (`GCOLORS` in the JS). Events with the default colour use their category tone.
 - Respects `prefers-reduced-motion`.
 
-## Updating events
+## The Apps Script feed
 
-Edit events in Google Calendar. The site shows them after the next snapshot:
+`apps-script/calendar-feed.gs` is the source of truth; the Apps Script project only holds a pasted copy.
 
-- **Live site:** within 6 hours, or immediately by running **Actions → Deploy to GitHub Pages → Run workflow**. Google's feed itself can lag a few minutes.
-- **Local:** run `node scripts/fetch-calendars.mjs` and reload. No key needed.
+**Deploying**
+1. Signed in as events@setsukohata.com, go to script.google.com → **New project**.
+2. Replace `Code.gs` with the file's contents, **Run** `doGet` once and approve the Calendar permission.
+3. **Deploy → New deployment → Web app**: *Execute as* **Me**, *Who has access* **Anyone**. Copy the `…/exec` URL into `data-feed`.
+4. Check `<url>?cal=online` in a browser: it should return JSON events.
 
-If a download fails the script keeps the committed `.ics`, so a Google outage never breaks the page.
+**After changing the script:** Deploy → Manage deployments → Edit → New version → Deploy. The URL stays the same. (A `/macros/library/…` link is not the web app URL.)
 
-## Event colours (current status)
+The feed reads about 2 months back and 13 months ahead, with repeats already expanded by Google. It exposes only the calendars listed in `CALENDARS`.
 
-Google's public `.ics` feed carries no colours, so every event uses its calendar's tone.
+## If the calendar shows an error
 
-The script also supports `GOOGLE_CALENDAR_API_KEY` (a GitHub Actions secret): when set, it asks the Calendar API for each event's `colorId` and writes it into the `.ics` as `X-HY-COLOR`, which `hy-calendar.js` maps to earthy shades (`GCOLORS`).
+- The page asks the feed with an 8s timeout; if it fails and a source has no `ics` fallback the page shows "カレンダーを読み込めませんでした". Open the feed URL directly to see whether the script is failing (Apps Script → Executions shows errors; a Google-side permission change on the calendars is the usual cause).
+- Old browser cache: bump `?v=N`.
 
-**This does not work today.** Tested with a valid key: Google returns `colorId: null` for every event, even right after an event's colour was changed (the `updated` time moved). The API does not expose event colours to a key-only (anonymous) reader. Reading them needs the calendar owner's sign-in, and the organization blocks service-account key creation.
+## Notes
 
-Options if per-event colours are wanted:
-
-- **Tag in the event** (recommended, not built yet): write e.g. `[clay]` in the description or title, parse it in `parseICS`, hide it in the display. No key, no secret.
-- **Owner access:** an admin allows service account keys, then use a service account shared on the calendars.
-
-Until then the API-key code is harmless (it falls back to plain events if the call fails) and the secret can stay unset.
-
-## Checking things
-
-```bash
-# refresh the saved calendars locally
-node scripts/fetch-calendars.mjs
-
-# list titles in a saved calendar
-grep -h "^SUMMARY" public/hatha-yoga/calendars/online.ics | sort | uniq -c
-
-# local preview
-npm run dev   # then open /hatha-yoga/ja/offerings.html and pick the class tab
-```
-
-Never commit an API key. `.env` is gitignored; pass keys as environment variables or GitHub secrets.
+- No API key is used. Google does not expose per-event colours to key-only readers (tested: `colorId` is null), which is why the owner-run script is used.
+- Never commit secrets. `.env` is gitignored.
