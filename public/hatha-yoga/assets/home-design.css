@@ -1,0 +1,97 @@
+/* Homepage-only study; preserve the shared Japanese design system. */
+body.yoga-home,body.yoga-home *{font-weight:400!important}
+body.yoga-home{--study-accent:#596044;background:#F5EFDF}
+.yoga-home h1,.yoga-home h2,.yoga-home h3{letter-spacing:.04em;text-wrap:balance}
+.yoga-home main{scroll-margin-top:100px}
+.yoga-home h2{line-height:1.65!important}
+.yoga-home p,.yoga-home li{line-height:2.05}
+.yoga-home .font-mono{font-family:"Newsreader","Shippori Mincho",serif;text-transform:none!important}
+.yoga-home a,.yoga-home button{touch-action:manipulation}
+.yoga-home :is(a,button):focus-visible{outline:2px solid #596044;outline-offset:5px}
+.yoga-home ::selection{background:#D9C4A3;color:#3A3228}
+.yoga-home header{background:#F5EFDF!important;border-color:#D9C4A3!important}
+.yoga-home header nav a,.yoga-home .ja-navtrigger{font-size:14px!important}
+.yoga-home main>section{scroll-margin-top:100px}
+.yoga-home main>section>svg,.yoga-home main>section>div[aria-hidden]{display:none!important}
+.yoga-home main>section>div{min-width:0}
+.yoga-home main a{transition:background-color .2s ease,color .2s ease}
+.yoga-home .yoga-button{background:var(--study-accent)!important;color:#fff!important;border:1px solid var(--study-accent);box-shadow:none!important;letter-spacing:.06em!important}
+.yoga-home .yoga-button:hover{background:#3e4931!important}
+.yoga-home main a:not(.yoga-button):hover{color:#596044!important;text-decoration:underline;text-underline-offset:6px}
+.yoga-hero{isolation:isolate;margin-top:80px}
+.yoga-hero img{filter:saturate(.78) contrast(.95)!important}
+.yoga-hero-copy>div{max-width:100%!important}
+.yoga-hero h1{line-height:1.5!important;color:#3A3228!important}
+.yoga-hero p.font-mono{font-size:13px!important;letter-spacing:.13em!important;color:#596044!important}
+.yoga-home #about>div>div:nth-child(2)>div:first-child{border-radius:4px!important;box-shadow:none!important}
+.yoga-home #trial>div:last-child>div:nth-child(3)>div{background:#FBF8EE!important;box-shadow:none!important;border:1px solid #b8bba3}
+.yoga-home #trial>div:last-child>div:nth-child(3)>div>span{width:1px!important;background:#7E8764!important}
+.yoga-skip{position:fixed;left:16px;top:-90px;z-index:150;background:#F5EFDF;padding:12px 20px;color:#3A3228}
+.yoga-skip:focus{top:12px}
+@media(max-width:700px){
+ .yoga-home main>section:not(.yoga-hero){padding-top:64px!important;padding-bottom:64px!important}
+ .yoga-home main>section>div{padding-inline:22px!important}
+ .yoga-home :is(#hatha,#first)>div,.yoga-home #about>div>div:nth-child(2),.yoga-home #program>div>div:nth-last-child(2){grid-template-columns:minmax(0,1fr)!important}
+ .yoga-hero h1{font-size:38px!important}
+ .yoga-hero p br{display:none!important}
+ .yoga-home main a{white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){.yoga-home *,.yoga-home *::before,.yoga-home *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* B: centered, lighter typography on a sunlit material background. */
+.yoga-home{--study-accent:#8A6043}
+.yoga-hero{display:block!important;min-height:0!important;background:#F5EFDF!important;padding-bottom:0!important}
+.yoga-hero-copy{padding:48px 30px 50px!important;text-align:center;max-width:900px!important}
+.yoga-hero h1{margin-top:12px!important;font-size:clamp(38px,4.2vw,58px)!important;letter-spacing:.1em}
+.yoga-hero-copy>div>p{margin-inline:auto}
+.yoga-hero-copy>div>p:nth-child(3){margin-top:16px!important}
+.yoga-hero-copy>div>p:nth-child(4){font-size:20px!important}
+.yoga-hero-copy>div>div{justify-content:center;margin-top:22px!important}
+.yoga-home main>section:nth-child(2){background:#F5EFDF!important;border-bottom:1px solid #D9C4A3}
+.yoga-home main>section:nth-child(2) span{background:transparent!important}
+.yoga-home #hatha>div>div:last-child{background:transparent!important;border:0!important;border-left:1px solid #b99755!important;border-radius:0!important}
+.yoga-home #about{background:#ebeada!important}
+.yoga-home #trial{background:#eee7d6!important}
+.yoga-home #trial>div:last-child>div:nth-child(3)>div{background:transparent!important;border-width:1px 0 0;border-radius:0!important}
+.yoga-home #program>div>div:nth-last-child(2)>div{border:0!important;border-top:1px solid #b99755!important;border-radius:0!important;background:transparent!important}
+@media(max-width:700px){
+ .yoga-hero-copy{padding:36px 22px 38px!important}
+ .yoga-hero h1{letter-spacing:.04em}
+}
+
+.yoga-home main [style*="color:#8A6043"],.yoga-home footer .text-brand-moss{color:#705035!important}
+
+.yoga-home .ja-wave-t::before,.yoga-home .ja-wave-b::after{display:none}
+
+/* Round two: photographic morning light and flax, without changing page structure. */
+.yoga-home{--study-material:url("./sunlit-botanical-linen-v2.webp")}
+.yoga-hero{background-size:cover!important;background-position:center!important}
+.yoga-hero img{filter:saturate(.85) contrast(.94) brightness(1.04) sepia(.12)!important}
+.yoga-home main>section:nth-child(2){border-color:rgba(185,151,85,.38)!important}
+.yoga-home #hatha>div>div:last-child{
+ background-image:linear-gradient(rgba(245,239,223,.8),rgba(245,239,223,.8)),var(--study-material)!important;
+ background-size:cover!important;background-position:right bottom!important
+}
+.yoga-home #about>div>div:nth-child(2)>div:first-child{border-color:#b99755!important}
+.yoga-home #trial{
+ background-image:linear-gradient(rgba(221,225,206,.9),rgba(221,225,206,.9)),var(--study-material)!important;
+ background-size:cover!important;background-position:center!important
+}
+.yoga-home #trial>div:last-child>div:nth-child(3)>div{border-color:rgba(126,135,100,.3)!important}
+.yoga-home footer{
+ background-image:linear-gradient(rgba(232,217,194,.84),rgba(232,217,194,.84)),var(--study-material)!important;
+ background-size:cover!important;background-position:center bottom!important
+}
+
+/* Impeccable: one material backdrop; quiet type with no landscape image. */
+.yoga-hero{background-image:linear-gradient(rgba(245,239,223,.58),rgba(245,239,223,.58)),var(--study-material)!important}
+.yoga-hero-copy{padding-top:62px!important}
+.yoga-hero-copy>div{background:rgba(245,239,223,.76);padding:24px 30px 30px}
+.yoga-home #hatha>div>div:last-child{background-image:none!important}
+.yoga-home #trial{background-image:linear-gradient(rgba(232,217,194,.93),rgba(232,217,194,.93)),var(--study-material)!important}
+@media(max-width:700px){
+ .yoga-hero-copy{padding-top:32px!important}
+ .yoga-hero-copy>div{padding:20px 12px}
+ .yoga-hero{background-position:46% top!important}
+}
+
+.yoga-hero-copy>div{background:transparent}
