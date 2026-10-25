@@ -1,0 +1,109 @@
+---
+import Header from '../components/yoga/Header.astro';
+import Footer from '../components/yoga/Footer.astro';
+import Sprite from '../components/yoga/Sprite.astro';
+import type { Locale } from '../data/yoga';
+import '../styles/yoga/tailwind.css';
+import '../styles/yoga/warm.css';
+import '../styles/yoga/satori.css';
+import '../styles/yoga/layers.css';
+import '../styles/yoga/home.css';
+import '../styles/yoga/main-look.css';
+import '../styles/yoga/sunlit.css';
+import '../styles/yoga/shell.css';
+
+interface Props {
+  title: string;
+  description: string;
+  locale?: Locale;
+  /** Nav item id highlighted in the header (see NAV in data/yoga.ts). */
+  active?: string;
+  /** Extra class on <body>, e.g. a page-scoped style hook. */
+  bodyClass?: string;
+  /** Apply the shared "main look" restyle of the legacy Tailwind markup to <main> (default). The home page opts out and scopes it to its first two sections. */
+  mainLook?: boolean;
+  ogTitle?: string;
+  ogDescription?: string;
+  /** Absolute-path image under /hatha-yoga/assets/. */
+  image?: string;
+  themeColor?: string;
+  /** Same page in the other language, if any. */
+  alternateHref?: string;
+  /** Preload the responsive hero image (home pages). */
+  preloadHero?: boolean;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  locale = 'ja',
+  active = '',
+  bodyClass,
+  mainLook = true,
+  ogTitle = title,
+  ogDescription = description,
+  image = '/hatha-yoga/assets/hero.jpg',
+  themeColor = '#F5EDDF',
+  alternateHref,
+  preloadHero = false,
+  noindex = false,
+} = Astro.props;
+
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(path, Astro.site).href;
+const imageUrl = new URL(image, Astro.site).href;
+const alternate = alternateHref ? new URL(alternateHref, Astro.site).href : undefined;
+const jaUrl = locale === 'ja' ? canonical : alternate;
+const enUrl = locale === 'en' ? canonical : alternate;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="theme-color" content={themeColor} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {jaUrl && <link rel="alternate" hreflang="ja" href={jaUrl} />}
+    {enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
+
+    <meta property="og:site_name" content="Setsuko Hata Yoga Studio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === 'ja' ? 'ja_JP' : 'en_US'} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={imageUrl} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,700;6..72,800&family=Inter+Tight:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;700&family=Shippori+Mincho:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+    />
+    {preloadHero && <link rel="preload" as="image" href="/hatha-yoga/assets/hero.webp" type="image/webp" media="(min-width: 901px)" />}
+    {preloadHero && <link rel="preload" as="image" href="/hatha-yoga/assets/hero-900.webp" type="image/webp" media="(max-width: 900px)" />}
+    <slot name="head" />
+  </head>
+  <body class:list={['yoga-site', 'ja-sunlit', bodyClass]}>
+    <Sprite />
+    <a class="satori-skip" href="#main-content">{locale === 'ja' ? '本文へスキップ' : 'Skip to content'}</a>
+    <div class="flex min-h-dvh flex-col">
+      <Header locale={locale} active={active} switchHref={alternateHref} />
+      <main class:list={['flex-1', { 'main-look': mainLook }]} id="main-content" tabindex="-1">
+        <slot />
+      </main>
+      <Footer locale={locale} />
+    </div>
+    <script>
+      import '../scripts/yoga/reveal.js';
+    </script>
+  </body>
+</html>

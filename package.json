@@ -11,7 +11,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.0"
+    "astro": "^4.16.0",
+    "chart.js": "^4.6.1",
+    "swiper": "^11.2.10"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

@@ -1,0 +1,101 @@
+---
+import YogaLayout from '../../../layouts/YogaLayout.astro';
+---
+<YogaLayout title="お問い合わせ | Setsuko Hata Yoga"
+  description="クラスや月額会員に関するお問い合わせはこちらから。"
+  locale="ja"
+  active="contact"
+  alternateHref="/hatha-yoga/en/contact/"
+>
+
+
+        <section class="pt-32 pb-24 md:pt-40 md:pb-32 ja-band ja-band-sage" data-lt="1">
+          <div class="mx-auto w-full max-w-6xl px-6 md:px-10">
+            <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss">Contact</p>
+            <h1 class="mt-6 max-w-3xl font-display text-4xl leading-[1.2] text-brand-espresso md:text-6xl md:leading-[1.1]">お問い合わせ</h1>
+            
+          </div>
+        </section>
+        <section class="bg-paper py-24 md:py-32">
+          <div class="mx-auto w-full max-w-6xl px-6 md:px-10">
+            <div class="grid gap-16 md:grid-cols-2 md:gap-24">
+              <div>
+                <form class="space-y-7" action="https://formsubmit.co/yoga@setsukohata.com" method="POST">
+                    <input type="hidden" name="_subject" value="お問い合わせフォームより" />
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                    <div>
+                      <label
+                        for="name"
+                        class="mb-2 block font-mono text-[13px] uppercase tracking-[0.22em] text-brand-espresso/70"
+                        >お名前<!-- -->
+                        <span aria-hidden="true">*</span></label
+                      ><input
+                        id="name"
+                        type="text"
+                        required=""
+                        autocomplete="name"
+                        class="w-full border-b border-brand-espresso/25 bg-transparent py-2 text-brand-espresso focus:border-brand-moss focus:outline-none"
+                        name="name"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        for="email"
+                        class="mb-2 block font-mono text-[13px] uppercase tracking-[0.22em] text-brand-espresso/70"
+                        >メールアドレス<!-- -->
+                        <span aria-hidden="true">*</span></label
+                      ><input
+                        id="email"
+                        type="email"
+                        required=""
+                        autocomplete="email"
+                        class="w-full border-b border-brand-espresso/25 bg-transparent py-2 text-brand-espresso focus:border-brand-moss focus:outline-none"
+                        name="email"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        for="phone"
+                        class="mb-2 block font-mono text-[13px] uppercase tracking-[0.22em] text-brand-espresso/70"
+                        >電話番号（任意）<!-- --> </label
+                      ><input
+                        id="phone"
+                        type="tel"
+                        autocomplete="tel"
+                        class="w-full border-b border-brand-espresso/25 bg-transparent py-2 text-brand-espresso focus:border-brand-moss focus:outline-none"
+                        name="phone"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        for="message"
+                        class="mb-2 block font-mono text-[13px] uppercase tracking-[0.22em] text-brand-espresso/70"
+                        >メッセージ<!-- -->
+                        <span aria-hidden="true">*</span></label
+                      ><textarea
+                        id="message"
+                        name="message"
+                        required=""
+                        rows="5"
+                        class="w-full border-b border-brand-espresso/25 bg-transparent py-2 text-brand-espresso focus:border-brand-moss focus:outline-none"
+                      ></textarea>
+                    </div>
+                    <button
+                      type="submit"
+                      class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[13px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      送信する
+                    </button>
+                  </form>
+              </div>
+              <div>
+                <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss ja-eyebrow">お問い合わせ</p>
+                <p class="mt-6 font-display text-3xl md:text-4xl">秦 節子</p>
+                <ul class="mt-8 space-y-4 border-t border-brand-espresso/15 pt-6 text-base">
+                  <li><a href="mailto:yoga@setsukohata.com" class="hover:opacity-70">✉️ yoga@setsukohata.com</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+</YogaLayout>

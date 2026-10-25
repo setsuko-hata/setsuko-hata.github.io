@@ -1,0 +1,619 @@
+/* satori-home.css: Japanese homepage only (replaces home-design.css).
+ * Named .sh-* classes, no inline styles. Colours come from the tokens in satori.css.
+ * Header, footer, heading scale and section tints still come from ja-sunlit.css. */
+
+.yoga-site { --sh-gutter: clamp(20px, 4vw, 40px); --sh-space: clamp(64px, 9vw, 120px); --sh-rule: color-mix(in srgb, var(--color-antique-gold) 55%, transparent); --sh-sage: color-mix(in srgb, var(--color-light-sage) 34%, var(--color-paper)); --sh-sand: color-mix(in srgb, var(--color-sand-beige) 42%, var(--color-paper)); }
+.yoga-site :is(a, button):focus-visible { outline: 2px solid var(--color-deep-olive); outline-offset: 4px; }
+.yoga-site main { scroll-margin-top: 100px; }
+.yoga-site main > section { scroll-margin-top: 100px; }
+.yoga-site .yoga-skip { position: fixed; left: 16px; top: -90px; z-index: 150; background: var(--color-ivory-cream); padding: 12px 20px; color: var(--color-text-primary); }
+.yoga-site .yoga-skip:focus { top: 12px; }
+.yoga-site header { background: var(--color-ivory-cream) !important; border-color: var(--sh-rule) !important; }
+
+.sh-wrap { max-width: 1120px; margin: 0 auto; padding-inline: var(--sh-gutter); }
+.yoga-site main p, .yoga-site main li { line-height: 2.05; }
+.yoga-site main h2, .yoga-site main h3 { text-wrap: balance; }
+
+/* labels: Japanese section names in Mincho, English tags in Newsreader (sentence case) */
+.sh-label { font-family: "Newsreader", "Shippori Mincho", serif; font-style: italic; font-size: 14px; letter-spacing: .1em; color: var(--color-deep-olive); line-height: 1.6; }
+.sh-label--section { font-family: "Shippori Mincho", serif; font-style: normal; font-size: 17px; letter-spacing: .16em; display: flex; align-items: center; gap: 16px; margin-bottom: 20px; color: var(--color-text-primary); }
+.sh-label--section::after { content: ""; flex: 1; height: 1px; background: var(--sh-rule); }
+.sh-label--en { margin-top: 10px; }
+
+.sh-body { margin-top: 22px; font-size: 16px; max-width: 34em; color: var(--color-text-primary); }
+.sh-body + .sh-body { margin-top: 14px; }
+.sh-note { margin-top: 14px; font-size: 14px; color: var(--color-text-secondary); }
+
+/* buttons */
+.sh-actions { margin-top: clamp(28px, 3.5vw, 40px); display: flex; flex-wrap: wrap; align-items: center; gap: 14px 16px; }
+.sh-actions--center { justify-content: flex-start; gap: 18px 28px; }
+.sh-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 30px; font-size: 14px; letter-spacing: .12em; border-radius: 2px; border: 1px solid var(--color-deep-olive); transition: background-color .2s ease, color .2s ease; text-decoration: none; }
+.sh-body + .sh-btn { margin-top: 28px; }
+.sh-btn--primary { background: var(--color-deep-olive); color: var(--color-paper) !important; }
+.sh-btn--primary:hover { background: var(--color-text-primary); border-color: var(--color-text-primary); }
+.sh-btn--line { color: var(--color-deep-olive) !important; background: transparent; }
+.sh-btn--line:hover { background: color-mix(in srgb, var(--color-deep-olive) 10%, transparent); }
+.yoga-site main a.sh-btn:hover { text-decoration: none; }
+
+.sh-icon { width: 60px; height: 60px; color: var(--color-deep-olive); display: block; }
+.sh-icon--lg { width: 84px; height: 84px; color: var(--color-deep-olive); }
+
+/* ---------- Hero: the photograph fills the section; copy sits on a flat panel ---------- */
+body.ja-sunlit .sh-hero { position: relative; display: flex; align-items: center; min-height: min(88vh, 780px); background: var(--color-warm-beige) !important; border-bottom: 1px solid var(--sh-rule); overflow: hidden; padding: clamp(112px, 12vw, 140px) max(var(--sh-gutter), calc((100% - 1160px) / 2)) clamp(48px, 6vw, 80px); }
+.sh-hero__bg { position: absolute; inset: 0; display: block; }
+.sh-hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 18%; display: block; border-radius: 0; }
+.sh-hero__copy { position: relative; z-index: 1; width: min(560px, 100%); background: color-mix(in srgb, var(--color-paper) 92%, transparent); padding: clamp(28px, 4vw, 52px) clamp(24px, 4vw, 52px) !important; }
+body.ja-sunlit .sh-hero h1 { font-size: clamp(2.2rem, 4.2vw, 3.6rem) !important; line-height: 1.35 !important; letter-spacing: .06em !important; margin-top: 16px; }
+.sh-hero__lead { margin-top: 24px; font-size: clamp(15px, 1.4vw, 17px); color: var(--color-text-primary); }
+.sh-hero__sub { margin-top: 12px; font-family: "Shippori Mincho", serif; font-size: clamp(20px, 2.2vw, 26px); color: var(--color-deep-olive); line-height: 1.7; }
+
+.sh-arch { display: block; position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 999px 999px 2px 2px; background: var(--color-warm-beige); box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-antique-gold) 70%, transparent); }
+.sh-arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; border-radius: 0; }
+
+/* ---------- Venues: headline plus three tinted tiles ---------- */
+.sh-venues { background: var(--color-warm-beige); border-bottom: 1px solid var(--sh-rule); padding: clamp(48px, 6vw, 80px) 0; text-align: center; }
+body.yoga-site .sh-venues__title { font-family: "Shippori Mincho", serif; font-size: clamp(24px, 3.4vw, 40px); line-height: 1.6; font-weight: 500 !important; color: var(--color-text-primary); text-wrap: balance; }
+.sh-venues__list { margin: clamp(24px, 3vw, 36px) auto 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); list-style: none; padding: 0; max-width: 860px; }
+.sh-venues__list li { --tone: var(--color-deep-olive); padding: clamp(22px, 3vw, 34px) 16px; font-family: "Shippori Mincho", serif; font-size: clamp(18px, 2vw, 24px); letter-spacing: .08em; line-height: 1.6; background: color-mix(in srgb, var(--color-light-sage) 40%, var(--color-paper)); border: 1.5px solid var(--tone); border-top-width: 8px; }
+.sh-venues__list li:nth-child(2) { --tone: var(--color-warm-brown); background: color-mix(in srgb, var(--color-sand-beige) 55%, var(--color-paper)); }
+.sh-venues__list li:nth-child(3) { --tone: var(--color-camel-brown); background: color-mix(in srgb, var(--color-soft-terracotta) 30%, var(--color-paper)); }
+.sh-venues__note { margin-top: 22px; font-size: clamp(15px, 1.5vw, 18px); color: var(--color-text-primary); }
+
+/* ---------- Generic section ---------- */
+.sh-section { padding: var(--sh-space) 0; overflow-x: clip; }
+.sh-section--sage { background: var(--sh-sage); border-block: 1px solid var(--sh-rule); }
+.sh-section--sand { background: var(--sh-sand); border-block: 1px solid var(--sh-rule); }
+.sh-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(36px, 6vw, 88px); align-items: start; }
+.sh-split--portrait { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: center; }
+.sh-pull { margin-top: 26px; font-family: "Shippori Mincho", serif; font-size: clamp(22px, 2.4vw, 27px); line-height: 1.6; color: var(--color-deep-olive); }
+.sh-aside { position: relative; padding-left: clamp(24px, 3vw, 40px); border-left: 1px solid var(--color-antique-gold); }
+.sh-aside__lead { font-family: "Shippori Mincho", serif; font-size: clamp(20px, 2.2vw, 25px); line-height: 1.85; color: var(--color-text-primary); }
+.sh-aside__blob { position: absolute; top: -40px; right: -80px; width: 340px; z-index: 0; pointer-events: none; }
+.sh-aside__blob path { fill: color-mix(in srgb, var(--color-light-sage) 38%, var(--color-paper)); }
+.sh-aside > :not(.sh-aside__blob) { position: relative; z-index: 1; }
+.sh-aside .sh-body { margin-top: 14px; }
+
+/* ---------- Quote: flat sage panel beside a photograph ---------- */
+.sh-quote { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); background: var(--sh-sage); border-block: 1px solid var(--sh-rule); }
+.sh-quote__panel { padding: var(--sh-space) clamp(28px, 6vw, 96px); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.sh-quote__panel blockquote { margin-top: 24px; font-family: "Shippori Mincho", serif; font-size: clamp(22px, 2.5vw, 30px); line-height: 1.8; color: var(--color-text-primary); text-wrap: balance; }
+.sh-rule-ornament { width: 160px; height: 20px; margin: 30px 0 26px; color: var(--color-antique-gold); }
+.sh-quote__verse { font-family: "Shippori Mincho", serif; font-size: clamp(17px, 1.7vw, 20px); line-height: 2.2; }
+.sh-quote__tail { margin-top: 22px; font-size: 16px; }
+.sh-quote__tail strong { color: var(--color-deep-olive); }
+.sh-quote__photo { display: block; min-height: 420px; position: relative; }
+.sh-quote__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; display: block; border-radius: 0; }
+
+/* ---------- Effects: three tinted arch windows, staggered ---------- */
+.sh-columns { margin-top: clamp(40px, 5vw, 64px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.6vw, 36px); align-items: stretch; }
+.sh-column { --tone: var(--color-deep-olive); --wash: color-mix(in srgb, var(--color-light-sage) 40%, var(--color-paper)); background: var(--wash); border: 1.5px solid var(--tone); border-radius: 999px 999px 6px 6px; padding: clamp(48px, 5vw, 68px) clamp(24px, 3vw, 40px) 44px; text-align: center; transition: box-shadow .25s ease; }
+.sh-column:nth-child(2) { --tone: var(--color-warm-brown); --wash: color-mix(in srgb, var(--color-sand-beige) 55%, var(--color-paper)); margin-top: clamp(24px, 4vw, 56px); }
+.sh-column:nth-child(3) { --tone: var(--color-camel-brown); --wash: color-mix(in srgb, var(--color-soft-terracotta) 26%, var(--color-paper)); }
+.sh-column__ring { width: 88px; height: 88px; margin: 0 auto 24px; border-radius: 50%; display: grid; place-items: center; background: var(--tone); }
+.sh-column__ring .sh-icon { width: 52px; height: 52px; color: var(--color-paper); }
+body.yoga-site .sh-column h3 { margin: 0; font-size: clamp(1.7rem, 2.6vw, 2.3rem) !important; font-weight: 500 !important; color: var(--color-text-primary); }
+.sh-column h3::after { content: ""; display: block; width: 44px; height: 2px; background: var(--tone); margin: 20px auto 22px; }
+.sh-column ul { list-style: none; padding: 0; margin: 0; font-size: 16px; text-align: left; }
+.sh-column li { padding: 11px 0 11px 26px; line-height: 1.8; position: relative; border-top: 1px solid color-mix(in srgb, var(--tone) 28%, transparent); }
+.sh-column li::before { content: ""; position: absolute; left: 4px; top: 1.15em; width: 7px; height: 7px; background: var(--tone); transform: rotate(45deg); }
+
+/* ---------- First-timers: a real sequence ---------- */
+.sh-steps { list-style: none; margin: 0; padding: 0; position: relative; }
+.sh-steps::before { content: ""; position: absolute; left: 23px; top: 24px; bottom: 24px; width: 1px; background: var(--sh-rule); }
+.sh-steps li { position: relative; display: flex; gap: 22px; align-items: flex-start; padding: 0 0 28px; }
+.sh-steps li:last-child { padding-bottom: 0; }
+.sh-steps__n { flex: none; width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--color-antique-gold); border-radius: 50%; background: var(--color-paper); font-family: "Newsreader", serif; font-size: 18px; color: var(--color-deep-olive); position: relative; z-index: 1; }
+.sh-steps strong { display: block; font-family: "Shippori Mincho", serif; font-weight: 400; font-size: 20px; line-height: 1.7; margin-top: 8px; }
+.sh-steps li > span:last-child { font-size: 15px; line-height: 1.9; }
+
+/* ---------- Instructor ---------- */
+.sh-arch--portrait { max-width: 400px; width: 100%; }
+.sh-name { margin-top: 0; }
+.sh-role { margin-top: 6px; font-family: "Shippori Mincho", serif; font-size: 19px; letter-spacing: .1em; color: var(--color-deep-olive); }
+.sh-creds { list-style: none; margin: 30px 0 0; padding: 0; border-top: 1px solid var(--sh-rule); font-size: 15px; }
+.sh-creds li { padding: 12px 0; border-bottom: 1px solid color-mix(in srgb, var(--color-warm-brown) 14%, transparent); line-height: 1.9; }
+.sh-creds + .sh-btn { margin-top: 30px; }
+
+/* ---------- Trial ---------- */
+.sh-formats { margin-top: clamp(32px, 4vw, 48px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sh-formats > div { padding: 4px clamp(18px, 3vw, 36px); }
+.sh-formats > div:first-child { padding-left: 0; }
+.sh-formats > div + div { border-left: 1px solid var(--color-antique-gold); }
+.sh-formats__name { margin-top: 6px; font-family: "Shippori Mincho", serif; font-size: 20px; line-height: 1.7; }
+
+/* ---------- Programs: the two headline offerings ---------- */
+.sh-copy { margin-top: 12px; }
+.sh-programs { margin-top: clamp(36px, 4.5vw, 56px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px); }
+.sh-program { background: var(--color-paper); border: 1px solid var(--color-deep-olive); border-top-width: 8px; padding: clamp(32px, 4vw, 52px) clamp(26px, 3.4vw, 46px) clamp(32px, 4vw, 48px); }
+.sh-program .sh-icon { width: 72px; height: 72px; color: var(--color-deep-olive); }
+.sh-program__en { margin-top: 20px; font-size: 16px; }
+body.yoga-site .sh-program h3 { margin-top: 6px; font-size: clamp(1.9rem, 3.2vw, 2.7rem) !important; line-height: 1.35 !important; font-weight: 500 !important; color: var(--color-text-primary); }
+.sh-program h3::after { content: ""; display: block; width: 48px; height: 2px; background: var(--color-antique-gold); margin: 22px 0 20px; }
+.sh-program .sh-body { margin-top: 0; font-size: clamp(16px, 1.5vw, 18px); }
+.sh-where { font-size: 14px; letter-spacing: .1em; color: var(--color-text-primary); }
+
+/* ---------- Footer horizon ---------- */
+
+/* ---------- Tablet / mobile ---------- */
+@media (max-width: 900px) {
+  body.ja-sunlit .sh-hero { display: flex; flex-direction: column; align-items: stretch; min-height: 0; padding: 80px 0 0 !important; background: var(--color-paper) !important; }
+  .sh-hero__bg { position: relative; inset: auto; height: min(78vw, 440px); }
+  .sh-hero__bg img { object-position: 72% 14%; }
+  .sh-hero__copy { width: 100%; background: var(--color-paper); padding: 30px var(--sh-gutter) 48px !important; }
+  .sh-split, .sh-split--portrait { grid-template-columns: minmax(0, 1fr); }
+  .sh-split--portrait .sh-arch { margin: 0 auto; max-width: 320px; }
+  .sh-columns, .sh-formats { grid-template-columns: minmax(0, 1fr); }
+  .sh-columns { gap: 20px; }
+  .sh-column:nth-child(2) { margin-top: 0; }
+  .sh-column { width: 100%; max-width: 440px; margin-inline: auto; border-radius: 220px 220px 6px 6px; }
+  .sh-formats > div, .sh-formats > div:first-child { padding: 18px 0; }
+  .sh-formats > div + div { border-left: 0; border-top: 1px solid var(--color-antique-gold); }
+  .sh-programs { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  body.ja-sunlit .sh-hero h1 { font-size: 2.2rem !important; letter-spacing: .04em !important; }
+  .sh-venues__list { grid-template-columns: minmax(0, 1fr); }
+  .sh-btn { width: 100%; }
+  .sh-actions--center .sh-where { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .yoga-site *, .yoga-site *::before, .yoga-site *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* wrapping fixes */
+body.ja-sunlit .sh-split h2 { font-size: clamp(1.45rem, 2.4vw, 2.1rem) !important; }
+.sh-quote blockquote { max-width: 22em; text-wrap: balance; }
+
+/* ja-warm.css sets body * to 700; the homepage keeps its lighter editorial weight */
+body.yoga-site, body.yoga-site * { font-weight: 400 !important; }
+body.yoga-site .sh-quote__tail strong { font-weight: 500 !important; }
+/* ja-warm.css pads every section > div by 40px; the hero grid children manage their own spacing */
+.yoga-site main > section.sh-hero > .sh-hero__copy { padding-left: 0; padding-right: 0; }
+
+/* phrase-aware Japanese line breaks where supported */
+.yoga-site main :is(h1, h2, h3, blockquote, .sh-body, .sh-pull) { word-break: auto-phrase; }
+
+/* ---------- Photo frames, flat organic shape, flat footer ---------- */
+.sh-frame { display: block; position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 2px; box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-antique-gold) 70%, transparent); }
+.sh-frame img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0; }
+.sh-split--photo { align-items: center; margin-top: 8px; }
+.sh-split--photo h2 { margin-top: 0; }
+body.yoga-site footer, body.yoga-site footer.ja-band-foot { background: var(--color-warm-beige) !important; background-image: none !important; border-top: 1px solid var(--sh-rule); }
+@media (max-width: 900px) {
+  .sh-quote { grid-template-columns: minmax(0, 1fr); }
+  .sh-quote__photo { min-height: 0; aspect-ratio: 3 / 2; order: -1; }
+  .sh-split--photo { grid-template-columns: minmax(0, 1fr); }
+  }
+
+
+/* ================= Layout reference pass (design-references/website-layout.png) ================= */
+
+/* flat organic waves, as at the foot of the reference panels */
+.w-sage { fill: color-mix(in srgb, var(--color-light-sage) 85%, transparent); }
+.w-sand { fill: var(--color-sand-beige); }
+.w-terra { fill: color-mix(in srgb, var(--color-soft-terracotta) 75%, transparent); }
+.sh-hero__waves { position: absolute; left: 0; bottom: 0; width: min(52%, 720px); height: min(34%, 260px); z-index: 0; pointer-events: none; }
+
+/* pill buttons with a trailing arrow */
+.sh-btn { border-radius: 999px; min-height: 52px; padding: 12px 34px; }
+.sh-btn--primary { justify-content: space-between; gap: 28px; }
+.sh-btn--primary::after { content: "\2192"; font-family: "Inter Tight", "Inter", sans-serif; letter-spacing: 0; }
+
+/* circular arrow link used on cards */
+.sh-arrow { flex: none; width: 44px; height: 44px; border: 1px solid var(--color-deep-olive); border-radius: 50%; display: grid; place-items: center; color: var(--color-deep-olive); transition: background-color .2s ease, color .2s ease; }
+.sh-arrow svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.sh-arrow:hover { background: var(--color-deep-olive); color: var(--color-paper); }
+
+/* photograph bleeding off the left edge, cut by one big curve */
+.sh-curve { display: block; position: relative; overflow: hidden; aspect-ratio: 1 / 1.05; border-radius: 0 50% 50% 0 / 0 50% 50% 0; background: var(--color-warm-beige); }
+.sh-curve img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; border-radius: 0; }
+
+/* Instructor */
+.sh-about { position: relative; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(32px, 5vw, 80px); padding: var(--sh-space) 0; overflow: hidden; }
+.sh-about__text { position: relative; z-index: 1; padding-right: max(var(--sh-gutter), calc((100vw - 1120px) / 2 + var(--sh-gutter))); }
+.sh-about__waves { position: absolute; right: 0; bottom: 0; width: min(40%, 520px); height: 130px; pointer-events: none; z-index: 0; }
+.sh-about .sh-label--section { max-width: 100%; }
+
+/* First-timers: photo, copy, steps */
+.sh-first { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: clamp(24px, 3vw, 48px); padding: var(--sh-space) 0; background: var(--sh-sage); border-block: 1px solid var(--sh-rule); overflow: hidden; }
+.sh-curve--first { aspect-ratio: 4 / 5; }
+.sh-curve--first img { object-position: 50% 40%; }
+body.ja-sunlit .sh-first__copy h2 { margin-top: 0; font-size: clamp(1.25rem, 1.9vw, 1.75rem) !important; }
+.sh-steps { padding-right: max(var(--sh-gutter), calc((100vw - 1120px) / 2 + var(--sh-gutter))); }
+.sh-steps::before { display: none; }
+.sh-steps li { padding-bottom: 26px; }
+.sh-steps__n { width: 56px; height: 56px; background: transparent; border: 1px solid var(--color-deep-olive); font-size: 20px; }
+.sh-steps strong { margin-top: 2px; font-size: 19px; }
+
+/* Trial: three photo cards */
+.sh-formats { margin-top: clamp(32px, 4vw, 48px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 32px); padding: clamp(14px, 2vw, 24px); background: color-mix(in srgb, var(--color-paper) 70%, transparent); border-radius: 16px; }
+.sh-format { background: var(--color-paper); border-radius: 10px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--color-warm-brown) 20%, transparent); }
+.sh-format picture { display: block; aspect-ratio: 4 / 3; overflow: hidden; }
+.sh-format img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0; }
+.sh-format__body { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px 20px; }
+.sh-formats > div, .sh-formats > div + div { padding: 0; border: 0; }
+.sh-formats__name { margin-top: 2px; font-size: clamp(17px, 1.6vw, 20px); }
+
+@media (max-width: 900px) {
+  .sh-about, .sh-first { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .sh-about .sh-curve { max-width: 82%; }
+  .sh-curve--first { max-width: 82%; aspect-ratio: 1 / 1; }
+  .sh-about__text, .sh-first__copy, .sh-steps { padding-inline: var(--sh-gutter); }
+  .sh-formats { grid-template-columns: minmax(0, 1fr); }
+  body.ja-sunlit.yoga-site .sh-hero > .sh-hero__waves { display: none !important; }
+}
+
+/* below 1100px the panel would cover her, so the photograph stacks above the copy */
+@media (max-width: 1100px) {
+  body.ja-sunlit .sh-hero { display: flex; flex-direction: column; align-items: stretch; min-height: 0; padding: 80px 0 0 !important; background: var(--color-paper) !important; }
+  .sh-hero__bg { position: relative; inset: auto; order: -1; flex: none; height: min(62vw, 480px); }
+  .sh-hero__bg img { object-position: 72% 14%; }
+  .sh-hero__copy { width: 100%; background: var(--color-paper); padding: 30px var(--sh-gutter) 56px !important; }
+  body.ja-sunlit.yoga-site .sh-hero > .sh-hero__waves { display: none !important; }
+}
+
+
+/* ---------- Photographs added to the page ---------- */
+.sh-quote__photo img { object-position: 38% 50%; }
+.sh-band { height: clamp(180px, 26vw, 340px); position: relative; overflow: hidden; border-block: 1px solid var(--sh-rule); }
+.sh-band picture { position: absolute; inset: 0; display: block; }
+.sh-band img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; border-radius: 0; }
+.sh-format__top { object-position: 50% 50%; }
+.sh-horizon { position: relative; height: clamp(180px, 24vw, 320px); background: var(--color-ivory-cream); overflow: hidden; }
+
+/* footer hills (flat) and single-column program header now that the photo is gone */
+.sh-horizon { position: relative; height: clamp(110px, 13vw, 170px); background: var(--color-ivory-cream); overflow: hidden; }
+.sh-horizon__hills { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sh-split--photo { grid-template-columns: minmax(0, 1fr); }
+.sh-quote__photo img { object-position: 52% 45%; }
+
+/* ================= Refinement pass: compact, scannable, rounded ================= */
+.yoga-site { --sh-space: clamp(40px, 5.5vw, 72px); }
+
+/* compact rhythm */
+.sh-venues { padding: clamp(28px, 3.6vw, 48px) 0; }
+body.ja-sunlit .sh-hero { min-height: min(72vh, 620px); }
+.sh-band { height: clamp(140px, 18vw, 240px); }
+.sh-quote__photo { min-height: 320px; }
+.sh-quote__panel { padding-block: clamp(36px, 4.5vw, 60px); }
+.sh-label--section { margin-bottom: 14px; }
+.sh-body { margin-top: 14px; }
+.sh-columns, .sh-steps, .sh-formats { margin-top: clamp(22px, 3vw, 34px); }
+.sh-column { padding-top: clamp(36px, 4vw, 50px); padding-bottom: 30px; }
+.sh-steps li { padding-bottom: 18px; }
+
+/* emphasis: only the words that matter */
+.sh-key { font-style: normal; font-weight: 500 !important; color: var(--color-text-primary); background: linear-gradient(transparent 62%, color-mix(in srgb, var(--color-antique-gold) 34%, transparent) 62%); padding-inline: .1em; }
+body.yoga-site .sh-num { font-family: "Shippori Mincho", serif; font-weight: 500 !important; color: var(--color-deep-olive); font-size: 1.12em; }
+
+/* framed callout with a small illustration */
+.sh-callout { position: relative; margin-top: 18px; padding: 20px 24px 20px 84px; border-radius: 26px; background: color-mix(in srgb, var(--color-light-sage) 24%, var(--color-paper)); border: 1px solid color-mix(in srgb, var(--color-sage) 40%, transparent); }
+.sh-callout__mark { position: absolute; left: 18px; top: 50%; width: 52px; height: 52px; transform: translateY(-50%); color: var(--color-deep-olive); padding: 8px; border-radius: 50%; background: var(--color-paper); border: 1px solid color-mix(in srgb, var(--color-sage) 45%, transparent); box-sizing: content-box; width: 36px; height: 36px; }
+.sh-symptoms { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; font-size: 16px; }
+.sh-symptoms li { line-height: 1.9; padding-left: 16px; position: relative; }
+.sh-symptoms li::before { content: ""; position: absolute; left: 0; top: .95em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-antique-gold); }
+
+/* rounder, softer shapes */
+.sh-venues__list li { border-radius: 22px; border-width: 1.5px; border-top-width: 1.5px; }
+.sh-format { border-radius: 20px; }
+.sh-formats { border-radius: 26px; }
+.sh-arch, .sh-frame { border-radius: 24px; }
+.sh-aside { border-left: 0; padding-left: 0; }
+.sh-aside::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; border-radius: 3px; background: color-mix(in srgb, var(--color-antique-gold) 70%, transparent); }
+.sh-aside { padding-left: clamp(18px, 2.4vw, 28px); }
+.sh-btn--line { border-color: color-mix(in srgb, var(--color-deep-olive) 60%, transparent); }
+
+/* Programs: one featured card */
+.sh-program-head h2 { margin: 0; }
+.sh-programs { display: none; }
+.sh-program--feature { margin-top: clamp(20px, 3vw, 30px); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(20px, 3.4vw, 44px); align-items: center; padding: clamp(26px, 3.4vw, 42px); border-radius: 34px; background: var(--color-paper); border: 1.5px solid var(--color-deep-olive); }
+.sh-program__art { width: clamp(110px, 14vw, 170px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--color-antique-gold) 18%, var(--color-paper)); border: 1px solid color-mix(in srgb, var(--color-antique-gold) 55%, transparent); box-shadow: 0 0 0 10px color-mix(in srgb, var(--color-antique-gold) 10%, transparent); }
+.sh-program__sun { width: 62%; height: 62%; color: var(--color-warm-brown); }
+.sh-program--feature .sh-program__en { margin-top: 0; }
+body.yoga-site .sh-program--feature h3 { margin-top: 4px; font-size: clamp(1.6rem, 2.8vw, 2.3rem) !important; line-height: 1.4 !important; font-weight: 500 !important; }
+body.yoga-site .sh-program--feature h3 span { display: block; font-size: .62em; color: var(--color-deep-olive); letter-spacing: .06em; margin-top: 2px; }
+.sh-program--feature h3::after { display: none; }
+.sh-chips { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 10px; }
+.sh-chips li { padding: 6px 16px; font-size: 15px; line-height: 1.7; border-radius: 999px; background: color-mix(in srgb, var(--color-light-sage) 32%, var(--color-paper)); border: 1px solid color-mix(in srgb, var(--color-sage) 45%, transparent); }
+@media (max-width: 700px) {
+  .sh-program--feature { grid-template-columns: minmax(0, 1fr); text-align: left; }
+  .sh-callout { padding-left: 76px; }
+}
+
+
+/* ================= Round 3 ================= */
+.yoga-site { --sh-shadow: 0 6px 16px rgba(58, 50, 40, .12); --sh-shadow-hover: 0 12px 26px rgba(58, 50, 40, .28); }
+
+/* resting shadow that deepens on hover (no lift, no new shadow appearing) */
+.sh-column, .sh-format, .sh-venues__list li, .sh-program--feature, .sh-formats { box-shadow: var(--sh-shadow); transition: box-shadow .25s ease; }
+.sh-column:hover, .sh-format:hover, .sh-venues__list li:hover, .sh-program--feature:hover { box-shadow: var(--sh-shadow-hover); }
+.sh-formats { box-shadow: none; }
+
+/* Mirror card in はじめに: solid silvered glass, gilt frame, an occasional glare */
+.sh-mirror { position: relative; isolation: isolate; overflow: hidden; background: #ECE9DC; border: 7px solid #C3A360; border-radius: 160px 160px 26px 26px / 120px 120px 26px 26px; padding: clamp(46px, 6vw, 70px) clamp(24px, 3.4vw, 42px) 30px; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .6), inset 0 10px 22px rgba(58, 50, 40, .14), 0 8px 18px rgba(58, 50, 40, .22); }
+.sh-mirror::after { content: ""; position: absolute; top: -30%; bottom: -30%; left: 0; width: 28%; pointer-events: none; z-index: 2; transform: translateX(-260%) skewX(-18deg); background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0)); animation: sh-glare 8s ease-in-out infinite; }
+@keyframes sh-glare { 0%, 62% { transform: translateX(-260%) skewX(-18deg); } 82%, 100% { transform: translateX(520%) skewX(-18deg); } }
+@media (prefers-reduced-motion: reduce) { .sh-mirror::after { animation: none; opacity: 0; } }
+
+/* Quote: bolder, no icon, centred on small screens */
+body.yoga-site .sh-quote__panel blockquote { font-weight: 700 !important; color: #2F2920; }
+body.yoga-site .sh-quote__panel .sh-quote__verse { font-weight: 500 !important; color: #3A3228; }
+body.yoga-site .sh-quote__panel .sh-quote__tail { font-weight: 500 !important; color: #3A3228; }
+body.yoga-site .sh-quote__panel .sh-key { font-weight: 700 !important; }
+@media (max-width: 900px) { .sh-quote__panel { align-items: center; text-align: center; } }
+
+/* 効果: no dividers between items */
+.sh-column li { border-top: 0 !important; padding-block: 6px; }
+.sh-column ul { gap: 2px; }
+
+/* Program: Setsuko's photo replaces the sun disc */
+.sh-program__photo { display: block; width: clamp(112px, 14vw, 170px); aspect-ratio: 4 / 5; overflow: hidden; border-radius: 999px 999px 18px 18px; border: 1px solid color-mix(in srgb, var(--color-antique-gold) 70%, transparent); }
+.sh-program__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; border-radius: 0; }
+
+/* 体験: compact */
+#trial { padding-top: clamp(28px, 3.6vw, 44px); padding-bottom: clamp(70px, 9vw, 120px); border-bottom: 0; }
+#trial .sh-formats { margin-top: 18px; }
+.sh-format picture { aspect-ratio: 16 / 10; }
+.sh-format__body { padding: 12px 16px 14px; }
+.sh-actions { margin-top: 20px; }
+.wave-blend { --deco-src: url("/images/decorative/wave-b.svg"); --deco-color: var(--sh-sage); --deco-opacity: 1; z-index: 0; height: clamp(54px, 7vw, 100px); }
+#program { border-top: 0; }
+
+@media (max-width: 900px) {
+  /* 効果: small, calm cards */
+  .sh-columns { gap: 14px; }
+  .sh-column { max-width: 360px; border-radius: 150px 150px 18px 18px; padding: 36px 20px 18px; }
+  .sh-column__ring { width: 52px; height: 52px; margin-bottom: 12px; }
+  .sh-column__ring .sh-icon { width: 30px; height: 30px; }
+  body.yoga-site .sh-column h3 { font-size: 1.25rem !important; }
+  .sh-column h3::after { margin: 10px auto 10px; }
+  .sh-column ul { font-size: 14.5px; }
+  .sh-column li { padding-block: 3px; line-height: 1.7; }
+  /* 体験: horizontal rows instead of three tall photo cards */
+  .sh-formats { gap: 8px; padding: 8px; border-radius: 20px; }
+  .sh-format { display: grid; grid-template-columns: 88px minmax(0, 1fr); align-items: center; }
+  .sh-format picture { aspect-ratio: 1; height: 88px; }
+  .sh-format__body { padding: 8px 12px; }
+  .sh-formats__name { font-size: 16px; }
+  .sh-arrow { width: 38px; height: 38px; }
+  .sh-program--feature { padding: 22px 18px; }
+}
+
+/* ===== phone / small tablet: obey the space budget (CLAUDE.md section 15) ===== */
+@media (max-width: 900px) {
+  .yoga-site { --sh-space: 32px; }
+  .sh-section, .sh-about, .sh-first { padding-block: 32px; }
+  .sh-quote__photo { min-height: 0; aspect-ratio: 16 / 7; order: -1; }
+  .sh-quote__panel { padding: 26px 22px 30px; }
+  .sh-quote__panel blockquote { margin-top: 0; font-size: 21px; line-height: 1.7; }
+  .sh-rule-ornament { margin: 16px 0 14px; }
+  .sh-quote__verse { line-height: 1.9; font-size: 16px; }
+  .sh-quote__tail { margin-top: 10px; }
+
+  .sh-mirror { border-width: 6px; border-radius: 110px 110px 22px 22px / 80px 80px 22px 22px; padding: 40px 20px 20px; }
+  .sh-mirror p { line-height: 1.85 !important; }
+
+  .sh-curve, .sh-curve--first { width: 88%; max-width: none; aspect-ratio: 16 / 8; }
+  .sh-curve img { object-position: 50% 28%; }
+  .sh-about, .sh-first { gap: 18px; }
+  .sh-creds { margin-top: 14px; }
+  .sh-creds li { padding-block: 5px; }
+  .sh-steps li { padding-bottom: 10px; gap: 14px; }
+  .sh-steps__n { width: 44px; height: 44px; font-size: 16px; }
+
+  /* columns: icon and heading on one line, no dome */
+  .sh-column { max-width: none; border-radius: 22px; padding: 16px 18px 14px; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 0 12px; text-align: left; align-items: center; }
+  .sh-column__ring { width: 44px; height: 44px; margin: 0; }
+  .sh-column__ring .sh-icon { width: 26px; height: 26px; }
+  body.yoga-site .sh-column h3 { font-size: 1.2rem !important; margin: 0; text-align: left; }
+  .sh-column h3::after { display: none; }
+  .sh-column ul { grid-column: 1 / -1; margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; font-size: 14px; }
+  .sh-column li { padding: 3px 0 3px 18px; line-height: 1.6; }
+  .sh-column li::before { top: .95em; }
+
+  /* 体験 */
+  #trial { padding-top: 26px; padding-bottom: 96px; }
+  #trial h2 { margin-bottom: 0; }
+  #trial .sh-btn { width: auto; flex: 1 1 0; min-height: 46px; padding-inline: 16px; }
+  #trial .sh-actions { gap: 8px; margin-top: 14px; flex-wrap: nowrap; }
+
+  /* program card: photo beside the title, chips underneath */
+  .sh-program--feature { grid-template-columns: 84px minmax(0, 1fr); gap: 8px 14px; padding: 18px 16px; border-radius: 26px; align-items: center; }
+  .sh-program__main { display: contents; }
+  .sh-program__photo { width: 84px; grid-row: 1 / 3; }
+  .sh-chips { grid-column: 1 / -1; margin-top: 4px; }
+  .sh-chips li { padding: 4px 12px; font-size: 14px; }
+  .sh-actions { margin-top: 14px; }
+}
+
+@media (max-width: 900px) {
+  .yoga-site main .sh-section p, .yoga-site main .sh-section li, .yoga-site main .sh-quote p, .yoga-site main .sh-first p, .yoga-site main .sh-first li, .yoga-site main .sh-about p, .yoga-site main .sh-about li { line-height: 1.8; }
+  .yoga-site main .sh-format__body p { line-height: 1.5; }
+  .yoga-site main .sh-format__body .sh-label { line-height: 1.3; }
+  body.ja-sunlit .yoga-site h2, body.ja-sunlit.yoga-site main h2 { line-height: 1.45 !important; }
+  .sh-label--section { margin-bottom: 8px; }
+  .sh-body { margin-top: 10px; }
+  .sh-callout { margin-top: 12px; padding-block: 12px; }
+  .sh-symptoms li { line-height: 1.7; }
+}
+
+@media (max-width: 900px) {
+  body.yoga-site .main-look #hatha { padding-top: 30px !important; padding-bottom: 30px !important; }
+  body.yoga-site .main-look #hatha > div { gap: 18px !important; }
+  body.yoga-site .main-look #hatha h2 { margin-top: 0 !important; }
+  body.yoga-site .main-look #hatha p { line-height: 1.8 !important; margin-top: 10px !important; }
+  body.yoga-site .main-look #hatha div[style*="margin-bottom:22px"] { margin-bottom: 10px !important; }
+  .sh-first { gap: 12px; }
+  .sh-curve--first { aspect-ratio: 16 / 6; }
+  .sh-first__copy h2 br { display: none; }
+  .sh-steps li > span:last-child { font-size: 14px; line-height: 1.6 !important; }
+  .sh-steps strong { font-size: 17px; margin-top: 0; line-height: 1.4; }
+  .sh-steps li { padding-bottom: 6px; }
+  .sh-first__copy .sh-btn { margin-top: 14px; }
+}
+
+/* quote -> 効果: no gold rule, one wave in the next section's colour */
+.sh-quote { border-bottom: 0; }
+.wave-blend--ivory { --deco-color: var(--color-ivory-cream); }
+.sh-quote__panel { padding-bottom: clamp(70px, 9vw, 116px); }
+@media (max-width: 900px) { .sh-quote__panel { padding-bottom: 66px; } }
+
+/* quote and 効果 share one recipe: grain paper + sage wash. 効果 puts its wash at the bottom so the top matches the wave. */
+.sh-effects { --wy: 100%; --wx: 92%; }
+.wave-blend--ivory { --deco-color: #F0E9DA; }
+
+/* ================= Round 4 ================= */
+/* mirror: thinner, oval */
+.sh-mirror { border-width: 4px; border-radius: 50% 50% 46% 46% / 40% 40% 30% 30%; padding: clamp(60px, 8vw, 96px) clamp(40px, 6vw, 76px) clamp(40px, 5vw, 56px); }
+@media (max-width: 900px) { .sh-mirror { border-radius: 50% 50% 46% 46% / 34% 34% 22% 22%; padding: 56px 30px 38px; } }
+
+/* quote: photo meets the section edge */
+body.yoga-site main > section.sh-quote { padding: 0 !important; }
+
+/* はじめての方へ: copy floats over the olive photograph */
+.sh-first { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+.sh-first__stage { position: relative; display: grid; }
+.sh-first__stage .sh-curve--first { grid-area: 1 / 1; aspect-ratio: 5 / 4; width: 100%; }
+.sh-first__stage .sh-first__copy { grid-area: 1 / 1; align-self: center; justify-self: end; width: min(400px, 58%); margin-right: clamp(14px, 3vw, 40px); padding: clamp(20px, 2.4vw, 30px); border-radius: 24px; background: color-mix(in srgb, var(--color-paper) 90%, transparent); box-shadow: 0 8px 22px rgba(58, 50, 40, .22); position: relative; z-index: 2; }
+@media (max-width: 900px) {
+  .sh-first { grid-template-columns: minmax(0, 1fr); }
+  .sh-first__stage .sh-curve--first { width: 100%; aspect-ratio: 1 / 1; border-radius: 0; }
+  .sh-first__stage .sh-first__copy { align-self: end; justify-self: stretch; width: auto; margin: 0 14px 14px; padding: 16px 18px 18px; }
+  .sh-first__copy .sh-btn { margin-top: 10px; min-height: 44px; }
+}
+
+/* 講師紹介 on phones: a free-standing leaf-shaped blob */
+@media (max-width: 900px) {
+  .sh-about .sh-curve { width: min(74%, 300px); max-width: none; aspect-ratio: 1 / 1.08; margin: 4px auto 0; border-radius: 14% 86% 14% 86% / 14% 86% 14% 86%; box-shadow: 0 8px 20px rgba(58, 50, 40, .18); }
+  .sh-about .sh-curve img { object-position: 50% 24%; }
+}
+
+/* Program: card with a 30% photo beside it, description underneath */
+.sh-program-title { margin: 0 0 14px; }
+.sh-program-row { display: grid; grid-template-columns: 30% minmax(0, 1fr); gap: 14px; align-items: stretch; margin-top: 4px; }
+.sh-program-row .sh-program__photo { width: 100%; height: 100%; aspect-ratio: auto; min-height: 150px; grid-row: auto; border-radius: 999px 999px 18px 18px; }
+.sh-program-row .sh-program--feature { display: block; margin-top: 0; padding: clamp(18px, 2.6vw, 30px); border-radius: 28px; }
+.sh-program-row .sh-program__main { display: block; }
+.sh-program-row + .sh-body { margin-top: 14px; max-width: 46em; }
+@media (max-width: 900px) { .sh-program-row { grid-template-columns: 30% minmax(0, 1fr); } .sh-program-row .sh-program--feature { padding: 14px 14px 16px; border-radius: 22px; } .sh-program-row .sh-chips { margin-top: 8px; } }
+
+/* bottom waves float over the previous section instead of starting a new one */
+.sh-quote, #trial { z-index: 2; }
+.wave-float { --deco-src: url("/images/decorative/wave-b.svg"); --deco-color: var(--sl-sage); --deco-opacity: .26; bottom: -26px; height: clamp(60px, 8vw, 104px); z-index: 3; }
+.wave-float--b { --deco-src: url("/images/decorative/wave-c.svg"); --deco-color: var(--sl-gold); --deco-opacity: .2; bottom: -14px; transform: scaleX(-1); }
+
+/* fixes after first look */
+.sh-first__stage .sh-curve--first { max-width: none; margin: 0; aspect-ratio: 4 / 3.3; }
+.sh-first__stage .sh-first__copy { width: min(340px, 64%); }
+.sh-first__stage .sh-first__copy h2 br { display: none; }
+.sh-program-row .sh-program__photo { position: relative; aspect-ratio: auto; }
+.sh-program-row .sh-program__photo img { position: absolute; inset: 0; }
+/* ja-warm pads every section > div by 40px; the stage bleeds to the edge */
+body.yoga-site main > section.sh-first > .sh-first__stage { padding-left: 0 !important; padding-right: 0 !important; }
+@media (max-width: 900px) { .sh-about .sh-curve { width: min(62%, 240px); aspect-ratio: 1 / 1.05; } }
+
+/* ================= Round 5 ================= */
+/* mirror: tall rectangle, arched top, square bottom */
+.sh-mirror { border-width: 4px; border-radius: 170px 170px 3px 3px; padding: clamp(64px, 8vw, 100px) clamp(30px, 4.4vw, 54px) clamp(34px, 4vw, 46px); }
+@media (max-width: 900px) { .sh-mirror { border-radius: 130px 130px 3px 3px; padding: 62px 24px 30px; } }
+
+/* two ribbons, same curve, parallel (never crossing) */
+.wave-float { --deco-src: url("/images/decorative/wave-b.svg"); --deco-color: var(--sl-sage); --deco-opacity: .26; bottom: -24px; }
+.wave-float--b { --deco-src: url("/images/decorative/wave-b.svg"); --deco-color: var(--sl-gold); --deco-opacity: .22; bottom: -42px; transform: none; }
+
+/* はじめての方へ: frosted glass over the photograph */
+.sh-first__stage .sh-first__copy { background: color-mix(in srgb, var(--color-paper) 52%, transparent); -webkit-backdrop-filter: blur(14px) saturate(1.1); backdrop-filter: blur(14px) saturate(1.1); border: 1px solid rgba(255, 255, 255, .55); box-shadow: 0 8px 22px rgba(58, 50, 40, .16); }
+
+/* 講師紹介: leaf frame turned 90 degrees, key digits highlighted */
+@media (max-width: 900px) { .sh-about .sh-curve { border-radius: 86% 14% 86% 14% / 86% 14% 86% 14%; } }
+body.yoga-site .sh-creds .sh-num { font-family: "Shippori Mincho", serif; font-weight: 700 !important; font-size: 1.45em; line-height: 1; color: var(--color-deep-olive); padding: 0 .12em; margin-inline: .04em; background: linear-gradient(transparent 58%, color-mix(in srgb, var(--color-antique-gold) 45%, transparent) 58%); }
+
+/* 講師紹介 phone: wider leaf so her face and hands stay in frame */
+@media (max-width: 900px) {
+  .sh-about .sh-curve { width: min(92%, 340px); aspect-ratio: 1 / .92; border-radius: 62% 10% 62% 10% / 62% 10% 62% 10%; }
+  .sh-about .sh-curve img { object-position: 50% 18%; }
+}
+@media (max-width: 900px) { .sh-about .sh-curve { aspect-ratio: 1 / .82; } .sh-about { gap: 10px; } .sh-creds li { padding-block: 3px; } }
+
+/* ================= Header + footer: bolder, larger, linen footer ================= */
+body.yoga-site header, body.yoga-site header *, body.yoga-site #yoga-mobile-nav, body.yoga-site #yoga-mobile-nav * { font-weight: 700 !important; }
+body.yoga-site header, body.yoga-site header a, body.yoga-site header button { color: #2F2920; }
+body.yoga-site header nav a, body.yoga-site header .ja-navtrigger { font-size: 15px !important; letter-spacing: .03em; }
+
+body.yoga-site footer.ja-band-foot {
+  background: linear-gradient(rgba(251, 247, 239, .38), rgba(251, 247, 239, .38)), url("/hatha-yoga/assets/sunlit-botanical-linen-v2.webp") center 40% / cover no-repeat !important;
+  border-top: 0;
+}
+body.yoga-site footer, body.yoga-site footer * { font-weight: 700 !important; color: #2F2920; }
+body.yoga-site footer [class*="opacity-"] { opacity: 1 !important; }
+body.yoga-site footer a { font-size: 17px; line-height: 1.6; }
+body.yoga-site footer li { font-size: 17px; }
+body.yoga-site footer ul { gap: 0; }
+body.yoga-site footer ul li + li { margin-top: 8px; }
+body.yoga-site footer .font-mono { font-size: 15px !important; letter-spacing: .12em !important; }
+body.yoga-site footer .font-display { font-size: 2rem !important; line-height: 1.3; }
+body.yoga-site footer p { font-size: 16px; line-height: 1.8; }
+body.yoga-site footer .max-w-xs { max-width: 22rem; }
+body.yoga-site footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* footer: compact, two-column sitemap, bottom half of the linen only */
+body.yoga-site footer.ja-band-foot { background: linear-gradient(rgba(251, 247, 239, .3), rgba(251, 247, 239, .3)), url("/hatha-yoga/assets/sunlit-botanical-linen-v2.webp") center bottom / cover no-repeat !important; }
+body.yoga-site footer > div:first-child { padding-block: 28px !important; gap: 18px 36px !important; }
+@media (min-width: 768px) { body.yoga-site footer > div:first-child { grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr) minmax(0, 1fr) !important; } }
+body.yoga-site footer ul { margin-top: 10px !important; }
+body.yoga-site footer ul:has(a[href="/hatha-yoga/ja/about/"]) { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+body.yoga-site footer ul li + li { margin-top: 0; }
+body.yoga-site footer li, body.yoga-site footer a { font-size: 16px; line-height: 1.55; }
+body.yoga-site footer ul li { padding-block: 3px; }
+body.yoga-site footer .font-display { font-size: 1.7rem !important; }
+body.yoga-site footer p { font-size: 15px; line-height: 1.7; }
+body.yoga-site footer > div + div > div { padding-block: 12px !important; }
+body.yoga-site footer .mt-6 { margin-top: 8px !important; }
+@media (max-width: 767px) { body.yoga-site footer ul:has(a[href="/hatha-yoga/ja/about/"]) { gap: 0 16px; } body.yoga-site footer li, body.yoga-site footer a { font-size: 15px; } }
+body.yoga-site footer ul:has(a[href="/hatha-yoga/ja/about/"]) { grid-auto-flow: column; grid-template-rows: repeat(5, auto); }
+@media (min-width: 768px) { body.yoga-site footer ul:has(a[href="/hatha-yoga/ja/about/"]) li { white-space: nowrap; } }
+/* room for the corner swells at the foot of プログラム */
+#trial { padding-bottom: clamp(96px, 12vw, 150px); }
+
+/* section title lives on the river photograph */
+.sh-band__title { position: absolute; left: max(var(--sh-gutter), calc((100% - 1120px) / 2 + var(--sh-gutter))); top: 50%; transform: translateY(-50%); margin: 0; padding: 8px 22px; border-radius: 999px; font-family: "Shippori Mincho", serif; font-size: clamp(18px, 2.2vw, 24px); letter-spacing: .18em; line-height: 1.5; color: #2F2920; background: color-mix(in srgb, var(--color-paper) 58%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, .6); box-shadow: 0 6px 16px rgba(58, 50, 40, .18); }
+body.yoga-site .sh-band__title { font-weight: 700 !important; }
+
+/* title on the river photo: centred, flanked by rules, no glass */
+.sh-band__title { left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(620px, 88%); display: flex; align-items: center; gap: 18px; padding: 0; border: 0; border-radius: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; color: #fff; text-shadow: 0 1px 8px rgba(30, 26, 18, .65), 0 0 2px rgba(30, 26, 18, .5); white-space: nowrap; justify-content: center; }
+.sh-band__title::before, .sh-band__title::after { content: ""; flex: 1; height: 2px; border-radius: 2px; background: rgba(255, 255, 255, .92); box-shadow: 0 1px 6px rgba(30, 26, 18, .45); }
+.sh-band__title { font-size: clamp(20px, 2.6vw, 28px); }
+body.yoga-site main .sh-band .sh-band__title { color: #fff; text-shadow: 0 1px 8px rgba(30, 26, 18, .7), 0 0 3px rgba(30, 26, 18, .55); }
+
+/* round 6: legible band title, bold 講師紹介 */
+.sh-band::after { content: ""; position: absolute; inset: 0; background: rgba(30, 26, 18, .34); pointer-events: none; }
+.sh-band__title { z-index: 1; font-size: clamp(22px, 3vw, 32px); }
+body.yoga-site main .sh-band .sh-band__title { font-weight: 900 !important; text-shadow: 0 1px 10px rgba(20, 16, 10, .85), 0 0 3px rgba(20, 16, 10, .7); }
+body.yoga-site main .sh-about .sh-label--section { font-weight: 900 !important; font-size: 20px; }
+
+/* round 6: header on one line; back link matches nav text */
+@media (min-width: 768px) {
+  body.yoga-site header > div:first-child { flex-wrap: nowrap; gap: 20px; max-width: 1360px; }
+  body.yoga-site header > div:first-child > a { flex: none; white-space: nowrap; gap: 6px; font-family: inherit; font-size: 15px !important; letter-spacing: .03em !important; text-transform: none; }
+  body.yoga-site header > div:first-child > a svg { width: 16px; height: 16px; }
+  body.yoga-site header > div:first-child > nav { flex: 0 1 auto; flex-wrap: nowrap; white-space: nowrap; gap: clamp(12px, 1.6vw, 28px) !important; }
+}
+@media (min-width: 768px) and (max-width: 1100px) {
+  body.yoga-site header > div:first-child { padding-inline: 16px; gap: 12px; }
+  body.yoga-site header > div:first-child > a, body.yoga-site header nav a, body.yoga-site header .ja-navtrigger { font-size: 12.5px !important; }
+  body.yoga-site header > div:first-child > nav { gap: 10px !important; }
+}
+
+/* 講師紹介: soft, full "blob" frame on every screen size; moon sits on the name's line, at the right */
+.sh-about .sh-curve { width: min(100%, 520px); max-width: none; aspect-ratio: 1 / 1.08; justify-self: center; margin-inline: auto; border-radius: 42% 58% 50% 50% / 36% 40% 60% 64%; box-shadow: 0 8px 20px rgba(58, 50, 40, .18); }
+.sh-about .sh-curve img { object-position: 50% 20%; }
+.sh-about__namerow { position: relative; }
+.sh-about__namerow .deco--moon { right: 0; top: 50%; transform: translateY(-50%); width: clamp(90px, 10vw, 150px); }
+@media (max-width: 900px) {
+  .sh-about .sh-curve { width: min(86%, 340px); }
+}
+
+/* Type weight: every piece of text matches the footer (700); emphasis steps up to 900.
+   Real 700/800/900 faces are loaded in YogaLayout, so this is not faux bold. */
+body.yoga-site, body.yoga-site *, body.yoga-site *::before, body.yoga-site *::after { font-weight: 700 !important; }
+body.yoga-site :is(h1, h2, h3, h4, blockquote, strong, b, em.sh-key, .sh-num, .sh-name, .sh-role, .sh-label--section, .sh-band__title, .sh-formats__name, .sh-steps strong, .sh-btn, .ja-eyebrow) { font-weight: 900 !important; }

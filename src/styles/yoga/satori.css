@@ -1,0 +1,121 @@
+/* satori.css — shared SATORI tokens and quality-floor rules (see ../CLAUDE.md).
+ * Loaded last on every /ja and /en page. Tokens mirror CLAUDE.md §3 so new
+ * work can reference them instead of scattering hex values. */
+
+:root {
+  /* Main surfaces */
+  --color-ivory-cream: #F5EDDF;
+  --color-warm-beige: #E8D9C2;
+  --color-sand-beige: #D9C4A3;
+  --color-paper: #FBF7EF;
+
+  /* Greens */
+  --color-deep-olive: #596044;
+  --color-sage: #7E8764;
+  --color-light-sage: #AEB394;
+
+  /* Warm earth tones */
+  --color-warm-brown: #8A6043;
+  --color-camel-brown: #B17B55;
+  --color-soft-terracotta: #C98B67;
+
+  /* Accent */
+  --color-antique-gold: #B99755;
+
+  /* Text and borders */
+  --color-text-primary: #40392F;
+  --color-text-secondary: #716858;
+  --color-text-muted: #8B8172;
+  --color-border: rgba(89, 96, 68, 0.22);
+  --color-border-warm: rgba(138, 96, 67, 0.20);
+
+  /* Semantic surfaces */
+  --color-page: var(--color-paper);
+  --color-surface: var(--color-ivory-cream);
+  --color-surface-sage: #EEF0E6;
+  --color-surface-sand: #F2E6D4;
+  --color-surface-terracotta: #F4E5DA;
+
+  /* Interaction */
+  --color-link: var(--color-deep-olive);
+  --color-link-hover: var(--color-warm-brown);
+  --color-focus: var(--color-sage);
+
+  --content-max: 1200px;
+  --content-reading: 760px;
+  --page-gutter: clamp(1.25rem, 5vw, 5rem);
+  --section-space: clamp(4rem, 8vw, 8rem);
+}
+
+/* Tailwind brand ramp (styles-*.css) re-pointed at the tokens above */
+:root {
+  --color-white: var(--color-paper);
+  --color-black: var(--color-text-primary);
+  --color-brand-espresso: var(--color-text-primary);
+  --color-brand-moss: var(--color-warm-brown);
+  --color-brand-tan: var(--color-sand-beige);
+  --color-brand-cream: var(--color-warm-beige);
+  --color-brand-clay: var(--color-soft-terracotta);
+}
+.bg-paper { background-color: var(--color-paper); }
+.bg-paper\/95 { background-color: color-mix(in srgb, var(--color-paper) 95%, transparent); }
+
+/* Keyboard focus: one visible, on-palette ring everywhere */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+::selection {
+  background: var(--color-sand-beige);
+  color: var(--color-text-primary);
+}
+
+/* Skip link (added to each page) */
+.satori-skip {
+  position: fixed;
+  left: 16px;
+  top: -100px;
+  z-index: 200;
+  background: var(--color-paper);
+  color: var(--color-text-primary);
+  padding: 12px 20px;
+  border: 1px solid var(--color-border-warm);
+}
+.satori-skip:focus {
+  top: 12px;
+}
+
+html {
+  scroll-padding-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Small text on beige and sage: primary text colour keeps AA (4.5:1) */
+.cmp-label,
+main label.font-mono,
+body.ja-sunlit main p[class*="opacity"] {
+  color: var(--color-text-primary);
+  opacity: 1;
+}
+.brand-dark a.inline-flex:not([class*="bg-"]) {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+}
+.brand-dark a.inline-flex.text-brand-cream {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+}
+.brand-dark a.inline-flex.text-brand-cream:hover {
+  background: var(--color-text-primary);
+  color: var(--color-paper);
+}

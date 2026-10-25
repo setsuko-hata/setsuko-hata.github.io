@@ -1,0 +1,46 @@
+/* ---------- Mobile menu (rendered by components/yoga/Header.astro) ---------- */
+.yoga-mobile-nav { position: fixed; top: 0; left: 0; width: 0; height: 0; z-index: 45; }
+.yoga-mobile-nav__scrim {
+  position: fixed; inset: 0; z-index: 1;
+  background: var(--color-ivory-cream);
+  opacity: 0; transition: opacity .34s ease;
+}
+.yoga-mobile-nav__panel {
+  position: fixed; inset: 0; z-index: 2; overflow-y: auto;
+  min-height: 100dvh; padding: 96px 26px 40px;
+  display: flex; flex-direction: column; gap: 8px;
+  color: var(--color-text-primary);
+  opacity: 0; pointer-events: none; transition: opacity .34s ease;
+}
+.yoga-mobile-nav.is-open .yoga-mobile-nav__scrim { opacity: 1; }
+.yoga-mobile-nav.is-open .yoga-mobile-nav__panel { opacity: 1; pointer-events: auto; }
+.yoga-mobile-nav nav { display: flex; flex-direction: column; gap: 2px; }
+.yoga-mobile-nav a { color: var(--color-text-primary); text-decoration: none; }
+.yoga-mobile-nav__link {
+  padding: 16px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text-primary) 14%, transparent);
+}
+.yoga-mobile-nav__group {
+  display: block; padding: 16px 0 6px;
+  font-size: 16px; letter-spacing: .14em;
+}
+.yoga-mobile-nav__child {
+  padding: 13px 0 13px 18px; opacity: .86;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text-primary) 14%, transparent);
+}
+.yoga-mobile-nav a[aria-current="page"] { color: var(--color-warm-brown); }
+
+/* Header sits on the open menu's ground while the menu is showing */
+.yoga-header.is-menu-open {
+  background-color: var(--color-ivory-cream) !important;
+  color: var(--color-text-primary) !important;
+  border-bottom-color: transparent !important;
+}
+.yoga-header.is-menu-open a { color: var(--color-text-primary) !important; }
+
+
+/* Headings on dark bands stay light */
+section[class*="brand-dark"] h1,
+section[class*="brand-dark"] h2,
+section[class*="brand-dark"] h3,
+section[class*="brand-dark"] h4 { color: var(--color-paper) !important; }
