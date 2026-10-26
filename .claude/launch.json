@@ -20,6 +20,15 @@
       ],
       "port": 4323,
       "autoPort": true
+    },
+    {
+      "name": "frontend-design-static",
+      "runtimeExecutable": "/Users/harukaichi/.nvm/versions/node/v18.18.2/bin/node",
+      "runtimeArgs": [
+        "/private/tmp/claude-501/-Users-harukaichi--claude-spares-spare-IeOWGx/4271f128-1957-4d64-bfd6-1d47359314db/scratchpad/serve.js",
+        "/Users/harukaichi/Documents/GitHub/setsuko-hata.github.io/frontend-design"
+      ],
+      "port": 4330
     }
   ]
 }

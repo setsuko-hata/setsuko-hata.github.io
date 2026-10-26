@@ -2,6 +2,21 @@
 import YogaLayout from '../../../layouts/YogaLayout.astro';
 import '../../../styles/yoga/pages/offerings.css';
 import '../../../styles/yoga/calendar.css';
+
+const plans = [
+  { no: '①', name: '対面のみ', price: '7,000', online: null },
+  { no: '②', name: '対面＋オンライン2回', price: '10,000', online: '月2回' },
+  { no: '③', name: '対面＋オンライン4回', price: '13,000', online: '月4回' },
+];
+const mondaySessions = [
+  { time: '19:30〜20:10', name: '健康セミナー', length: '40分' },
+  { time: '20:20〜21:00', name: '瞑想', length: '40分' },
+];
+const inPersonRates = [
+  { format: 'グループ対面', price: '4,000' },
+  { format: 'セミプライベート対面', price: '6,000' },
+  { format: 'プライベート対面', price: '12,000' },
+];
 ---
 <YogaLayout title="クラス・月額会員 | Setsuko Hata Yoga"
   description="単発参加と月額会員の比較、対面クラス・オンラインクラス・特別プログラム・大阪限定会員・SATORIN メンバーシップのご案内。"
@@ -63,20 +78,15 @@ import '../../../styles/yoga/calendar.css';
             <div class="mt-12">
               <p class="font-mono text-[13px] uppercase tracking-[0.22em] text-brand-moss ja-sublabel">クラスの様子</p>
               <figure class="mt-5" style="max-width:100%">
-<<<<<<< Updated upstream:public/hatha-yoga/ja/offerings.html
-                <div style="overflow:hidden;border:1px solid rgba(138,96,67,.45);background:#E8D9C2">
-                  <img src="../assets/gallery/osaka-1400.jpg" alt="大阪クラスの様子" loading="lazy" width="1440" height="782" style="display:block;width:100%;height:auto;object-fit:cover" />
-=======
                 <div style="overflow:hidden;border:1px solid color-mix(in srgb, var(--color-warm-brown) 45%, transparent);background:var(--color-warm-beige)">
                   <img src="/hatha-yoga/assets/gallery/osaka-1400.jpg" alt="大阪クラスの様子" loading="lazy" width="1440" height="782" style="display:block;width:100%;height:auto;object-fit:cover" />
->>>>>>> Stashed changes:src/pages/hatha-yoga/ja/offerings.astro
                 </div>
                 <figcaption class="mt-4 text-base leading-loose text-brand-espresso/85">はじめての方も、無理のない範囲で。呼吸に合わせて、ゆっくりと身体を動かしていきます。</figcaption>
               </figure>
             </div>
             <div class="mt-12 grid gap-5 sm:grid-cols-2">
               <div class="ja-card sc-rise bg-white flex flex-col justify-center px-7 py-9 lg:px-9 lg:py-10"><p class="text-base text-brand-espresso/70">対面クラス（約75分）</p><p class="ja-price mt-2 font-display text-4xl lg:text-5xl">4,000円</p></div>
-              <div class="ja-card sc-rise bg-white flex flex-col justify-center px-7 py-9 lg:px-9 lg:py-10"><p class="text-base text-brand-espresso/70">オンライン（約60分）</p><p class="ja-price mt-2 font-display text-4xl lg:text-5xl">3,000円</p></div>
+              <div class="ja-card sc-rise bg-white flex flex-col justify-center px-7 py-9 lg:px-9 lg:py-10"><p class="text-base text-brand-espresso/70">夜のオンライン（40分）<br />健康セミナー・瞑想</p><p class="ja-price mt-2 font-display text-4xl lg:text-5xl">2,000円</p></div>
             </div>
             <div class="mt-14 grid gap-12 md:grid-cols-2 md:gap-16">
               <div>
@@ -211,37 +221,20 @@ import '../../../styles/yoga/calendar.css';
         <section id="special" class="scroll-mt-24 layer-paper wash-soft wash-sage">
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10">
             <h2 class="font-display text-3xl leading-[1.3] md:text-5xl">特別プログラム</h2>
-            <p class="mt-8 max-w-2xl text-base leading-loose text-brand-espresso/85">自身の生命エネルギーを太陽のサイクルと調和させていく、本格的でパワフルなハタヨガです。身体・心・エネルギーのすべてのレベルに働きかけ、内側から健やかさと活力を育み、人生そのものの質を高めていきます。</p>
-            <p class="mt-4 max-w-2xl text-base leading-loose text-brand-espresso/75">※ 単発のお申し込みのみとなります。月額会員の割引対象外です。</p>
-            <div class="mt-12"><article class="sp-card">
-              <div class="sp-card__art" aria-hidden="true"><svg><use href="#sun" /></svg></div>
-              <div class="sp-card__main">
-                <p class="sp-en">Surya Kriya</p>
-                <h3 class="sp-name">スーリヤ・クリヤ<span>（スーリヤ・シャクティ付き）</span></h3>
-                <div class="sp-groups">
-                  <div class="sp-group">
-                    <svg class="sp-group__icon" aria-hidden="true"><use href="#sprout" /></svg>
-                    <ul class="sp-chips"><li>筋力・柔軟性・持久力の向上</li><li>体力と生命エネルギー（活力）の向上</li><li>代謝を活性化し、健康を促進</li><li>身体の軽さと安定感を育む</li></ul>
-                  </div>
-                  <div class="sp-group">
-                    <svg class="sp-group__icon" aria-hidden="true"><use href="#moon" /></svg>
-                    <ul class="sp-chips"><li>内側のエネルギーバランスを整える</li><li>ホルモンバランスをサポートする</li><li>深い集中力と精神的な安定を育む</li><li>深い静けさと至福に満ちた内なる状態へ導く</li><li>瞑想をより深いレベルへ導く</li><li>ストレスや不安を和らげ、心身の調和をもたらす</li></ul>
-                  </div>
-                </div>
-                <p class="sp-price"><b>60,000円</b><span>（税込）</span></p>
+            <div class="mt-10 ja-card sc-rise bg-white px-7 py-8 md:px-10 md:py-11">
+              <p class="sp-en">Surya Kriya</p>
+              <h3 class="mt-2 font-display text-2xl leading-snug md:text-4xl">スーリヤ・クリヤ</h3>
+              <p class="mt-2 font-display text-lg text-brand-moss md:text-xl">（スーリヤ・シャクティ付き）</p>
+              <div class="mt-8 border-t border-brand-espresso/10 pt-8">
+                <p class="max-w-3xl text-base leading-loose text-brand-espresso/85">自身の生命エネルギーを太陽のサイクルと調和させていく、本格的でパワフルなハタヨガです。身体・心・エネルギーのすべてのレベルに働きかけ、内側から健やかさと活力を育み、人生そのものの質を高めていきます。</p>
+                <p class="mt-4 max-w-3xl text-base leading-loose text-brand-espresso/75">※ 単発のお申し込みのみとなります。月額会員の割引対象外です。</p>
               </div>
-<<<<<<< Updated upstream:public/hatha-yoga/ja/offerings.html
-              <div class="sc-rise ja-band ja-band-card" style="background:#FBF8EE;border-radius:6px;;padding:40px 36px" data-lt="1">
-                <h3 class="font-display text-2xl leading-snug text-brand-espresso md:text-3xl">Surya Kriya<br /><span class="text-xl md:text-2xl">スーリヤ・クリヤ</span></h3>
-                <p class="mt-6 font-display text-3xl text-brand-espresso">30,000円<span class="ml-1 text-base">（税込）</span></p>
-                <p class="mt-3 text-sm leading-relaxed text-brand-espresso/70">※ Surya Shakti受講済みの方のみご参加いただけます。</p>
-                <ul class="mt-5 space-y-3"><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso"><span aria-hidden="true" style="color:#6B5744">─</span><span>内側のエネルギーバランスを整える</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso"><span aria-hidden="true" style="color:#6B5744">─</span><span>ホルモンバランスをサポートする</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso"><span aria-hidden="true" style="color:#6B5744">─</span><span>深い集中力と精神的な安定を育む</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso"><span aria-hidden="true" style="color:#6B5744">─</span><span>深い静けさと至福に満ちた内なる状態へ導く</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso"><span aria-hidden="true" style="color:#6B5744">─</span><span>瞑想をより深いレベルへ導く</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso"><span aria-hidden="true" style="color:#6B5744">─</span><span>ストレスや不安を和らげ、心身の調和をもたらす</span></li></ul>
+              <div class="mt-10 border-t border-brand-espresso/10 pt-8">
+                <p class="font-mono text-[13px] uppercase tracking-[0.22em] text-brand-moss ja-sublabel">期待できること</p>
+                <ul class="sp-benefits mt-5"><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso/85"><span aria-hidden="true" class="text-brand-moss">─</span><span>筋力・柔軟性・持久力の向上</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso/85"><span aria-hidden="true" class="text-brand-moss">─</span><span>体力と生命エネルギー（活力）の向上</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso/85"><span aria-hidden="true" class="text-brand-moss">─</span><span>代謝を活性化し、健康を促進</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso/85"><span aria-hidden="true" class="text-brand-moss">─</span><span>身体の軽さと安定感を育む</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso/85"><span aria-hidden="true" class="text-brand-moss">─</span><span>内側のエネルギーバランスを整える</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso/85"><span aria-hidden="true" class="text-brand-moss">─</span><span>ホルモンバランスをサポートする</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso/85"><span aria-hidden="true" class="text-brand-moss">─</span><span>深い集中力と精神的な安定を育む</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso/85"><span aria-hidden="true" class="text-brand-moss">─</span><span>深い静けさと至福に満ちた内なる状態へ導く</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso/85"><span aria-hidden="true" class="text-brand-moss">─</span><span>瞑想をより深いレベルへ導く</span></li><li class="flex gap-3 text-sm leading-relaxed text-brand-espresso/85"><span aria-hidden="true" class="text-brand-moss">─</span><span>ストレスや不安を和らげ、心身の調和をもたらす</span></li></ul>
               </div>
-            </div></div>
-=======
-            </article>
+              <p class="sp-price"><b>60,000円</b><span>（税込）</span></p>
             </div>
->>>>>>> Stashed changes:src/pages/hatha-yoga/ja/offerings.astro
             <div class="mt-10"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeVjPhVjYziIatrZLVkluYZ4vvhXAZD64f9h8pjhA7ZhsgBSQ/viewform?usp=dialog" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss">特別プログラムに申し込む</a></div>
           </div>
         </section>
@@ -250,11 +243,7 @@ import '../../../styles/yoga/calendar.css';
             </div>
           </div>
         </section>
-<<<<<<< Updated upstream:public/hatha-yoga/ja/offerings.html
-        <section id="calendar" class="scroll-mt-24" style="background:#F5EFDF">
-=======
         <section id="calendar" class="scroll-mt-24 layer-paper wash-soft wash-gold" style="background:var(--color-ivory-cream)">
->>>>>>> Stashed changes:src/pages/hatha-yoga/ja/offerings.astro
           <div class="mx-auto w-full max-w-6xl px-6 py-14 md:px-10 md:py-20">
             <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss">カレンダー</p>
             <h2 class="mt-4 font-display text-3xl leading-[1.3] md:text-5xl">開催スケジュール</h2>
@@ -262,13 +251,8 @@ import '../../../styles/yoga/calendar.css';
             <div class="mt-10"><div data-hy-cal data-label="開催スケジュール" data-feed="https://script.google.com/macros/s/AKfycbwqXPOLnB8nzrbWNHWtcW-gKD5FG5I38xDpfoxLzVR-OQ0GM_D3w_RFjyIrIYKHDcbGIA/exec" data-sources='[{"key":"online","label":"オンラインクラス","tone":"sage"},{"key":"inperson","label":"対面クラス","tone":"clay"},{"key":"special","label":"特別プログラム","tone":"honey"}]'></div></div>
           </div>
         </section>
-<<<<<<< Updated upstream:public/hatha-yoga/ja/offerings.html
-        <section id="pricing" class="scroll-mt-24" style="position:relative;background:#E8D9C2;overflow:hidden">
-          <div aria-hidden="true" style="position:absolute;right:-150px;top:-100px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(180,190,148,.5) 0%,rgba(180,190,148,0) 70%);pointer-events:none"></div>
-=======
         <section id="pricing" class="scroll-mt-24 layer-paper wash-soft wash-sage" style="position:relative;background:var(--color-warm-beige);overflow:hidden">
           <div aria-hidden="true" style="position:absolute;right:-150px;top:-100px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb, var(--color-light-sage) 50%, transparent) 0%,transparent 70%);pointer-events:none"></div>
->>>>>>> Stashed changes:src/pages/hatha-yoga/ja/offerings.astro
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10">
             <h2 class="max-w-2xl font-display text-3xl leading-[1.3] md:text-4xl">クラス価格</h2>
             <p class="mt-5 max-w-3xl text-base leading-loose text-brand-espresso/85">ご参加方法は三つ。ご都合に合わせて一回ごとにお申し込みいただく単発参加と、平日朝のオンライン SATORIN メンバーシップ、対面クラス中心の大阪限定 月額会員です。</p>
@@ -286,7 +270,7 @@ import '../../../styles/yoga/calendar.css';
                 </button>
                 <button type="button" role="tab" id="tab-osaka-pay" aria-controls="panel-osaka-pay" aria-selected="false" data-tab="osaka-pay" class="ja-navitem font-display">
                   <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c0 8.5-4.6 13-11 13H5.5C5.5 9.2 11 4 20 4z"/><path d="M4 21c1.8-5.4 5-9 9.5-11"/></svg>
-                  <span><span class="ja-nav-label block">月額会員（大阪限定）</span></span>
+                  <span><span class="ja-nav-label block">大阪メンバーシップ</span></span>
                   <svg class="ja-nav-caret" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
                 </button>
               </nav>
@@ -295,11 +279,28 @@ import '../../../styles/yoga/calendar.css';
                   <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss ja-eyebrow">単発参加</p>
                   <h3 class="mt-6 font-display text-2xl leading-snug md:text-4xl">一回ごとのお申し込み</h3>
                   <p class="mt-5 max-w-2xl text-base leading-loose text-brand-espresso/85">対面クラス・オンラインクラスは一回ごとのお申し込みが可能です。ご都合に合わせて、お好きなクラスにご参加ください。</p>
-                  <dl class="mt-10 grid gap-6 sm:grid-cols-2">
-                    <div class="ja-card sc-rise bg-white flex flex-col justify-center px-7 py-9 lg:px-9 lg:py-10"><dt class="text-base text-brand-espresso/70">対面クラス</dt><dd class="ja-price mt-2 font-display text-4xl lg:text-5xl">4,000円</dd></div>
-                    <div class="ja-card sc-rise bg-white flex flex-col justify-center px-7 py-9 lg:px-9 lg:py-10"><dt class="text-base text-brand-espresso/70">オンライン</dt><dd class="ja-price mt-2 font-display text-4xl lg:text-5xl">3,000円</dd></div>
-                  </dl>
-                  <p class="mt-8 text-base leading-loose text-brand-espresso/75">※ 単発参加は対面クラス・オンラインクラスのみのお取り扱いです。特別プログラムは単発のお申し込みのみで、月額会員の割引対象外となります。</p>
+                  <div class="rate-block">
+                    <div class="rate-block__head"><h4 class="rate-block__title">対面クラス</h4><span class="rate-chip">1回・75分</span></div>
+                    <table class="rate-table">
+                      <thead><tr><th scope="col">参加形式</th><th scope="col">料金（1回）</th></tr></thead>
+                      <tbody>
+                        {inPersonRates.map((r) => (<tr><th scope="row">{r.format}</th><td><span class="rate-amount">{r.price}</span>円</td></tr>))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="rate-block">
+                    <div class="rate-block__head"><h4 class="rate-block__title">オンライン単発参加</h4><span class="rate-chip">1回・40分</span></div>
+                    <div class="online-single">
+                      <p class="online-single__name">夜のオンラインセッション</p>
+                      <p class="online-single__what">内容：健康セミナー・瞑想<br />朝ヨガは含まれません。</p>
+                      <div class="rate-duo">
+                        <div class="rate-duo__cell"><p class="rate-duo__label">通常料金</p><p class="rate-duo__price"><span class="rate-amount">2,000</span>円</p></div>
+                        <div class="rate-duo__cell rate-duo__cell--member"><p class="rate-duo__label">SATORIN メンバー料金</p><p class="rate-duo__price"><span class="rate-amount">1,500</span>円</p></div>
+                      </div>
+                      <p class="online-single__links"><a href="#online-schedule" class="border-b border-brand-espresso pb-0.5 hover:opacity-70">開催時間を見る</a><a href="#online" class="border-b border-brand-espresso pb-0.5 hover:opacity-70">SATORIN メンバーシップについて</a></p>
+                    </div>
+                  </div>
+                  <p class="mt-10 text-base leading-loose text-brand-espresso/75">※ 単発参加は対面クラス・オンラインクラスのみのお取り扱いです。特別プログラムは単発のお申し込みのみで、月額会員の割引対象外となります。</p>
                   <div class="mt-10"><a href="https://docs.google.com/forms/d/1rKoOxcGQyew2a_d341eduWZ4QuhbK7R3YloP14Z6s8w/viewform" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss">クラスを予約する</a></div>
                 </div>
                 <div id="panel-online-pay" role="tabpanel" aria-labelledby="tab-online-pay" hidden class="px-6 py-10 md:px-10 md:py-12" style="background:#FBF8EE;border:1px solid rgba(62,50,39,.14)">
@@ -308,9 +309,10 @@ import '../../../styles/yoga/calendar.css';
                   <p class="mt-5 max-w-3xl text-base leading-loose text-brand-espresso/85">平日朝のオンライン朝ヨガ・呼吸法・瞑想のコミュニティ。全国・海外どこからでも参加でき、一緒に実践する仲間と習慣にしていきます。2026年10月19日スタート。</p>
                   <div id="online" class="mt-10 scroll-mt-24" style="background:#F5EFDF;border:1px solid rgba(138,96,67,.4);border-radius:4px;padding:14px 34px 24px">
                     <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)"><p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">①　目覚め｜朝ヨガ</p><p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 5,500円</p><p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">平日朝ヨガ（月〜金 7:00〜8:00）月20回受け放題 ＋ 月1回の交流会</p></div>
-                    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)"><p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">②　整う｜ヨガ＆瞑想（おすすめ）</p><p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 11,000円</p><p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">目覚め ＋ 水曜夜の健康セミナー月4回・瞑想セッション月4回</p></div>
-                    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)"><p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">③　花ひらく｜パーソナル</p><p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 20,000円</p><p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">整う ＋ 1:1コーチング 月1回</p></div>
-                    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)"><p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">④　輝く｜プレミアム</p><p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 35,000円</p><p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">整う ＋ 1:1コーチング 月3回</p></div>
+                    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)"><p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">②　ナイトプラン｜安らぎ</p><p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 5,500円</p><p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">月曜夜の健康セミナー月4回・瞑想セッション月4回 ＋ 月1回の交流会</p></div>
+                    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)"><p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">③　整う｜ヨガ＆瞑想（おすすめ）</p><p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 11,000円</p><p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">目覚め ＋ 月曜夜の健康セミナー月4回・瞑想セッション月4回</p></div>
+                    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)"><p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">④　花ひらく｜パーソナル</p><p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 20,000円</p><p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">整う ＋ 1:1コーチング 月1回</p></div>
+                    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)"><p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">⑤　輝く｜プレミアム</p><p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 35,000円</p><p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">整う ＋ 1:1コーチング 月3回</p></div>
                   </div>
                   <div class="mt-8 space-y-2 text-base leading-loose text-brand-espresso/75">
                     <p>※ 先行受付特典：2026年10月18日（日）23:59（日本時間）までのお申込みで、入会金（10,000円）無料・特別価格（表示は特別価格）。</p>
@@ -321,28 +323,37 @@ import '../../../styles/yoga/calendar.css';
                 </div>
                 <div id="panel-osaka-pay" role="tabpanel" aria-labelledby="tab-osaka-pay" hidden class="px-6 py-10 md:px-10 md:py-12" style="background:#FBF8EE;border:1px solid rgba(62,50,39,.14)">
                   <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss ja-eyebrow">月額会員（大阪限定）</p>
-                  <h3 class="mt-6 font-display text-2xl leading-snug md:text-4xl">大阪限定　月額会員</h3>
+                  <h3 class="mt-6 font-display text-2xl leading-snug md:text-4xl">大阪メンバーシップ</h3>
                   <p class="mt-5 max-w-3xl text-base leading-loose text-brand-espresso/85">対面クラスを中心に、本格ハタヨガを継続する会員プラン。ヨガ科学に基づく学びと、仲間とのつながりの中で、心身・エネルギーを整える習慣を育てていきます。</p>
-                  <div id="membership" class="mt-10 scroll-mt-24" style="background:#F5EFDF;border:1px solid rgba(138,96,67,.4);border-radius:4px;padding:14px 34px 24px">
-                    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)">
-                      <p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">①　月4回プラン（対面＋オンライン）</p>
-                      <p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 10,000円</p>
-                      <p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">対面クラス 月2回 ／ オンラインクラス 月2回</p>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)">
-                      <p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">②　対面受け放題プラン</p>
-                      <p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 15,000円</p>
-                      <p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">対面ヨガ 月4回 ＋ 対面瞑想 月4回（全8回受け放題）</p>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;padding:22px 0;border-bottom:1px solid rgba(62,50,39,.12)">
-                      <p class="font-display" style="margin:0;flex:1 1 260px;font-size:20px;line-height:1.5">③　ヨガ・瞑想受け放題プラン</p>
-                      <p class="font-display ja-price" style="margin:0;font-size:26px;line-height:1.2">月額 20,000円</p>
-                      <p style="margin:0;flex:1 1 100%;font-size:15px;line-height:1.85;color:#6B5744">対面 全8回 ＋ オンライン 全6回 すべて受け放題</p>
+                  <span id="membership" class="scroll-mt-24" aria-hidden="true"></span>
+                  <div class="plans mt-10">
+                    <div class="plans__grid">
+                      {plans.map((pl) => (
+                        <article class="plan">
+                          <p class="plan__no">プラン{pl.no}</p>
+                          <p class="plan__name">{pl.name}</p>
+                          <p class="plan__price"><span class="plan__unit">月額</span><span class="rate-amount">{pl.price}</span>円</p>
+                          <dl class="plan__rows">
+                            <div><dt>対面クラス</dt><dd class="is-on">月2回</dd></div>
+                            <div><dt>健康セミナー<small>オンライン</small></dt>{pl.online ? <dd class="is-on">{pl.online}</dd> : <dd class="is-off" aria-label="なし">―</dd>}</div>
+                            <div><dt>瞑想<small>オンライン</small></dt>{pl.online ? <dd class="is-on">{pl.online}</dd> : <dd class="is-off" aria-label="なし">―</dd>}</div>
+                          </dl>
+                        </article>
+                      ))}
                     </div>
                   </div>
                   <div class="mt-8 space-y-2 text-base leading-loose text-brand-espresso/75">
                     <p>※ 基本は毎週一つの曜日を決めてご参加ください。参加できない日は事前連絡で振替可能です。</p>
                     <p>※ 月4回プランで対面ヨガに参加できない場合は、瞑想クラスへの振替も可能です。</p>
+                  </div>
+                  <div id="online-schedule" class="rate-block scroll-mt-24">
+                    <div class="rate-block__head"><h4 class="rate-block__title">オンラインクラスのスケジュール</h4></div>
+                    <div class="timetable">
+                      <p class="timetable__day">毎週月曜日<span>オンライン</span></p>
+                      <ul class="timetable__list">
+                        {mondaySessions.map((m) => (<li><p class="timetable__time">{m.time}</p><p class="timetable__name">{m.name}<span>{m.length}</span></p></li>))}
+                      </ul>
+                    </div>
                   </div>
                   <div class="mt-12 max-w-3xl">
                     <h4 class="font-display text-2xl md:text-3xl">会員限定特典</h4>
@@ -353,63 +364,14 @@ import '../../../styles/yoga/calendar.css';
                     <p class="mt-5 font-display text-2xl">カタリーナホール玉造　3階</p>
                     <p class="mt-2 text-base leading-loose text-brand-espresso/85">大阪府大阪市天王寺区玉造元町3-1</p>
                   </div>
-                  <div class="mt-10"><a href="/hatha-yoga/ja/contact/" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss">大阪限定会員に申し込む</a></div>
+                  <div class="mt-10"><a href="/hatha-yoga/ja/contact/" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss">大阪メンバーシップに申し込む</a></div>
                 </div>
               </div>
             </div>
             <div class="mt-20 border-t border-brand-espresso/20 pt-16 cmp-wrap">
-<<<<<<< Updated upstream:public/hatha-yoga/ja/offerings.html
-            <style>
-              .cmp-wrap{position:relative;isolation:isolate}
-              .cmp-bg{position:absolute;pointer-events:none;z-index:0}
-              .cmp-head{position:relative;z-index:1;text-align:center;max-width:760px;margin:0 auto}
-              .cmp-rule{display:flex;align-items:center;justify-content:center;gap:18px}
-              .cmp-rule span{display:block;height:1px;width:74px;background:rgba(90,106,60,.5)}
-              .cmp-script{font-family:Newsreader,serif;font-style:italic;color:#8A6043;letter-spacing:.02em}
-              .cmp-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:44px}
-              @media(min-width:920px){
-                .cmp-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;align-items:start}
-                .cmp-card--a{margin-top:64px}
-                .cmp-card--b{margin-top:0}
-                .cmp-card--c{margin-top:104px}
-              }
-              .cmp-card{position:relative;background:#FAF6EA;border:1px solid rgba(138,96,67,.34);border-radius:230px 230px 24px 24px;overflow:hidden;box-shadow:0 46px 76px -56px rgba(62,50,39,.55);transition:transform .55s cubic-bezier(.2,.7,.2,1),box-shadow .55s}
-              .cmp-card:hover{transform:translateY(-7px);box-shadow:0 56px 86px -54px rgba(62,50,39,.6)}
-              .cmp-crown{position:relative;z-index:2;padding:46px 26px 34px;text-align:center;border-radius:230px 230px 58% 58%/230px 230px 26% 26%}
-              .cmp-photo{position:relative;margin-top:-30px;height:256px;background-size:cover;background-position:center;border-radius:0 0 46% 46%/0 0 16% 16%}
-              @media(min-width:920px){.cmp-photo{height:290px}}
-              .cmp-photo::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(62,50,39,.24) 0%,rgba(62,50,39,0) 42%)}
-              .cmp-body{padding:34px 30px 40px}
-              @media(min-width:920px){.cmp-body{padding:38px 34px 44px}}
-              .cmp-row + .cmp-row{margin-top:24px;padding-top:24px;border-top:1px solid rgba(138,96,67,.38)}
-              .cmp-label{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#596044}
-              .cmp-label i{display:block;height:1px;width:20px;background:#596044;opacity:.7}
-              .cmp-val{margin-top:9px;font-size:17px;line-height:1.85;color:#3E3227}
-              .cmp-card--a{--ac:#596044;--ln:rgba(89,96,68,.38)}
-              .cmp-card--b{--ac:#9A4E2C;--ln:rgba(154,78,44,.4);background:#F8E9DC;border-color:rgba(154,78,44,.5)}
-              .cmp-card--b .cmp-crown{background:#E6B79A!important;background-image:none!important}
-              .cmp-card--b .cmp-crown p{color:#3A1E10!important}
-              .cmp-card--b .cmp-script{color:#9A4E2C}
-              .cmp-card--c{--ac:#7A6420;--ln:rgba(122,100,32,.4);background:#F7F0D2;border-color:rgba(122,100,32,.5)}
-              .cmp-card--c .cmp-crown{background:#E8D88E!important;background-image:none!important}
-              .cmp-card--c .cmp-crown p{color:#3A3010!important}
-              .cmp-card--c .cmp-script{color:#7A6420}
-              .cmp-card .cmp-label{color:var(--ac)}
-              .cmp-card .cmp-label i{background:var(--ac)}
-              .cmp-card .cmp-row + .cmp-row{border-top-color:var(--ln)}
-              .cmp-tag{position:absolute;z-index:3;top:18px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.24em;padding:4px 12px;border-radius:99px;border:1px solid currentColor}
-              .cmp-foot{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:20px;margin-top:72px}
-              .cmp-sprig{filter:saturate(.85)}
-              @media(max-width:919px){.cmp-sprig{display:none}}
-              .cmp-foot span{display:block;height:1px;width:min(150px,18vw);background:rgba(138,96,67,.55)}
-            </style>
-            <svg aria-hidden="true" width="0" height="0" style="position:absolute" focusable="false"><defs><g id="bot-fern"><path d="M16 208 C 70 168 136 122 214 44" fill="none" stroke="#BFAC84" stroke-width="1.6" stroke-linecap="round"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(32.6 195.8) rotate(-83.8) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(42.5 188.5) rotate(17.6) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(52.7 181) rotate(-97) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(63.1 173.2) rotate(10.8) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(73.8 165.2) rotate(-91.1) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(84.7 156.9) rotate(23) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(95.8 148.3) rotate(-85.5) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(107.2 139.3) rotate(15.4) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(118.8 129.9) rotate(-99.7) scale(0.23 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(130.7 120.1) rotate(7.7) scale(0.23 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(142.8 109.9) rotate(-94.6) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(155.2 99.2) rotate(19.2) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(167.8 88) rotate(-89.6) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(180.6 76.2) rotate(11.1) scale(0.16 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(193.7 63.9) rotate(-104.2) scale(0.16 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(207 50.9) rotate(3) scale(0.16 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(214 44) rotate(-45) scale(0.16 0.53)"/></g><g id="bot-spray"><path d="M110 236 C 112 180 104 126 86 58" fill="none" stroke="#7E8764" stroke-width="2" stroke-linecap="round"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(110.3 219.2) rotate(-128.7) scale(0.9 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(109.8 198.4) rotate(-48.5) scale(0.8 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(108.4 177.5) rotate(-144.3) scale(0.8 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(106.1 156.2) rotate(-58.6) scale(0.7 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(102.9 134.4) rotate(-143.5) scale(0.7 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(98.7 111.9) rotate(-52.2) scale(0.6 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(93.6 88.5) rotate(-141.8) scale(0.6 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(87.6 64.1) rotate(-60.5) scale(0.5 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(86 58) rotate(-104.8) scale(0.5 0.7)"/><path d="M112 232 C 142 190 170 152 196 104" fill="none" stroke="#AEB39A" stroke-width="1.7" stroke-linecap="round"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" opacity="0.92" transform="translate(124.5 214.6) rotate(-94.9) scale(0.7 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" opacity="0.92" transform="translate(139 194.2) rotate(-8.8) scale(0.6 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" opacity="0.92" transform="translate(153.1 173.7) rotate(-107.3) scale(0.6 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" opacity="0.92" transform="translate(167 152.9) rotate(-16.7) scale(0.5 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" opacity="0.92" transform="translate(180.5 131.2) rotate(-105) scale(0.5 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" opacity="0.92" transform="translate(193.7 108.3) rotate(-9.6) scale(0.4 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" opacity="0.92" transform="translate(196 104) rotate(-61.6) scale(0.4 0.7)"/></g><g id="bot-berry"><path d="M92 240 C 96 194 96 154 92 116" fill="none" stroke="#D9C4A3" stroke-width="1.5" stroke-linecap="round"/><path d="M92 116 Q 44.3 106.9 22.9 79.3" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="22.9" cy="79.3" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="35.5" cy="80.4" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="43.4" cy="95.8" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><path d="M92 116 Q 49.9 85.9 41.5 49.5" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="41.5" cy="49.5" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="53" cy="56.5" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="54.3" cy="74.4" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="69.2" cy="77.8" r="3.7" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><path d="M92 116 Q 66.6 71.2 74.2 34.9" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="74.2" cy="34.9" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="81.6" cy="46" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="75.2" cy="62.7" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><path d="M92 116 Q 88 68.4 108.6 40.7" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="108.6" cy="40.7" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="110.9" cy="53" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="98.3" cy="64.6" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="105.6" cy="77.1" r="3.7" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><path d="M92 116 Q 106.2 77.1 132.4 62.8" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="132.4" cy="62.8" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="130.4" cy="73.6" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="115" cy="77.5" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><path d="M92 116 Q 115.6 92.2 139.7 90.6" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="139.7" cy="90.6" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="135.1" cy="98.7" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="121.4" cy="94.8" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="119.9" cy="106.8" r="3.7" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/></g><g id="bot-bouquet"><path d="M300 470 C 292 392 272 318 236 246" fill="none" stroke="#7E8764" stroke-width="2.4" stroke-linecap="round"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" transform="translate(297.8 451.4) rotate(-137.8) scale(1 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" transform="translate(294.1 425.7) rotate(-53.4) scale(1 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" transform="translate(289.3 400.3) rotate(-153.2) scale(0.9 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" transform="translate(283.6 375.1) rotate(-63.5) scale(0.9 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" transform="translate(276.9 350.2) rotate(-152.3) scale(0.8 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" transform="translate(269.1 325.5) rotate(-57.1) scale(0.7 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" transform="translate(260.3 301) rotate(-151.5) scale(0.7 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" transform="translate(250.3 276.6) rotate(-67.5) scale(0.6 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" transform="translate(239.2 252.5) rotate(-167.4) scale(0.6 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB39A" transform="translate(236 246) rotate(-116.6) scale(0.6 0.7)"/><path d="M300 470 C 336 404 380 352 440 300" fill="none" stroke="#A5836C" stroke-width="2.2" stroke-linecap="round"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#B4907A" transform="translate(313.3 446.8) rotate(-97.5) scale(0.9 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#B4907A" transform="translate(330 420.8) rotate(-11.7) scale(0.9 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#B4907A" transform="translate(348 396.1) rotate(-101.8) scale(0.8 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#B4907A" transform="translate(367.3 372.3) rotate(-10.7) scale(0.7 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#B4907A" transform="translate(388.1 349.3) rotate(-90.4) scale(0.6 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#B4907A" transform="translate(410.5 326.9) rotate(5.5) scale(0.6 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#B4907A" transform="translate(434.6 304.7) rotate(-80.1) scale(0.5 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#B4907A" transform="translate(440 300) rotate(-40.9) scale(0.5 0.7)"/><path d="M298 462 C 248 404 172 364 74 336" fill="none" stroke="#BFAC84" stroke-width="1.6" stroke-linecap="round"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(278.9 441.9) rotate(-185.5) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(266.6 430.7) rotate(-83.3) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(253.5 420.1) rotate(-205) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(239.6 409.9) rotate(-95.8) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(225.1 400.2) rotate(-203.7) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(209.8 391) rotate(-87.5) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(193.7 382.2) rotate(-201.8) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(177 373.9) rotate(-98.7) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(159.5 366) rotate(-219.4) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(141.4 358.6) rotate(-109.3) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(122.5 351.5) rotate(-216.3) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(103 344.8) rotate(-99.2) scale(0.16 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(82.8 338.6) rotate(-212.7) scale(0.16 0.46)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(74 336) rotate(-164.1) scale(0.16 0.46)"/><path d="M300 466 C 330 378 364 300 392 214" fill="none" stroke="#D9C4A3" stroke-width="1.5" stroke-linecap="round"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(314.7 424.5) rotate(-115.8) scale(0.31 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(322.2 403.9) rotate(-17.6) scale(0.31 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(329.9 383.5) rotate(-127.5) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(337.6 363.3) rotate(-23.4) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(345.2 343.2) rotate(-121.1) scale(0.23 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(352.9 323.2) rotate(-11) scale(0.23 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(360.5 303.1) rotate(-115.2) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(367.9 283) rotate(-17.8) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(375.3 262.8) rotate(-128.5) scale(0.16 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(382.5 242.4) rotate(-25.2) scale(0.16 0.46)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(389.5 221.7) rotate(-123.7) scale(0.16 0.46)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(392 214) rotate(-72) scale(0.16 0.46)"/><path d="M300 468 C 288 386 282 306 288 238" fill="none" stroke="#D9C4A3" stroke-width="1.4" stroke-linecap="round"/><path d="M288 238 Q 234 227.7 209.6 196.3" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="209.6" cy="196.3" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="223.7" cy="198.3" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="233.2" cy="214.4" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><path d="M288 238 Q 240 203.6 230.4 162.1" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="230.4" cy="162.1" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="243" cy="170.6" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="245.4" cy="190" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="261.4" cy="194.9" r="3.7" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><path d="M288 238 Q 259 186.9 267.6 145.4" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="267.6" cy="145.4" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="275.5" cy="158.3" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="269.5" cy="176.9" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><path d="M288 238 Q 283.5 184.1 306.7 152.8" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="306.7" cy="152.8" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="308.7" cy="166.6" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="295.7" cy="179.8" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="302.7" cy="193.9" r="3.7" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><path d="M288 238 Q 303.7 194.8 332.8 178.9" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="332.8" cy="178.9" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="330.1" cy="190.7" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="314.1" cy="195.5" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><path d="M288 238 Q 313.3 212.5 339.2 210.8" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="339.2" cy="210.8" r="4.4" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="334.1" cy="219.1" r="4.2" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="319.8" cy="215.5" r="3.9" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="317.7" cy="227.8" r="3.7" fill="#F0E8D4" stroke="#D9C4A3" stroke-width="1"/></g></defs></svg>
-            <svg class="cmp-bg" aria-hidden="true" viewBox="0 0 600 600" style="left:-210px;top:120px;width:min(520px,60vw);opacity:.5"><path d="M300 30 C 470 30 570 170 540 320 C 512 462 380 570 240 552 C 92 533 20 400 34 268 C 48 132 140 30 300 30 Z" fill="#DDE1CE" /></svg>
-=======
             
             <svg aria-hidden="true" width="0" height="0" style="position:absolute" focusable="false"><defs><g id="bot-fern"><path d="M16 208 C 70 168 136 122 214 44" fill="none" stroke="#AEB394" stroke-width="1.6" stroke-linecap="round"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(32.6 195.8) rotate(-83.8) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(42.5 188.5) rotate(17.6) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(52.7 181) rotate(-97) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(63.1 173.2) rotate(10.8) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(73.8 165.2) rotate(-91.1) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(84.7 156.9) rotate(23) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(95.8 148.3) rotate(-85.5) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(107.2 139.3) rotate(15.4) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(118.8 129.9) rotate(-99.7) scale(0.23 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(130.7 120.1) rotate(7.7) scale(0.23 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(142.8 109.9) rotate(-94.6) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(155.2 99.2) rotate(19.2) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(167.8 88) rotate(-89.6) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(180.6 76.2) rotate(11.1) scale(0.16 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(193.7 63.9) rotate(-104.2) scale(0.16 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(207 50.9) rotate(3) scale(0.16 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(214 44) rotate(-45) scale(0.16 0.53)"/></g><g id="bot-spray"><path d="M110 236 C 112 180 104 126 86 58" fill="none" stroke="#7E8764" stroke-width="2" stroke-linecap="round"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(110.3 219.2) rotate(-128.7) scale(0.9 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(109.8 198.4) rotate(-48.5) scale(0.8 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(108.4 177.5) rotate(-144.3) scale(0.8 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(106.1 156.2) rotate(-58.6) scale(0.7 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(102.9 134.4) rotate(-143.5) scale(0.7 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(98.7 111.9) rotate(-52.2) scale(0.6 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(93.6 88.5) rotate(-141.8) scale(0.6 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(87.6 64.1) rotate(-60.5) scale(0.5 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#7E8764" transform="translate(86 58) rotate(-104.8) scale(0.5 0.7)"/><path d="M112 232 C 142 190 170 152 196 104" fill="none" stroke="#AEB394" stroke-width="1.7" stroke-linecap="round"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" opacity="0.92" transform="translate(124.5 214.6) rotate(-94.9) scale(0.7 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" opacity="0.92" transform="translate(139 194.2) rotate(-8.8) scale(0.6 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" opacity="0.92" transform="translate(153.1 173.7) rotate(-107.3) scale(0.6 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" opacity="0.92" transform="translate(167 152.9) rotate(-16.7) scale(0.5 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" opacity="0.92" transform="translate(180.5 131.2) rotate(-105) scale(0.5 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" opacity="0.92" transform="translate(193.7 108.3) rotate(-9.6) scale(0.4 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" opacity="0.92" transform="translate(196 104) rotate(-61.6) scale(0.4 0.7)"/></g><g id="bot-berry"><path d="M92 240 C 96 194 96 154 92 116" fill="none" stroke="#D9C4A3" stroke-width="1.5" stroke-linecap="round"/><path d="M92 116 Q 44.3 106.9 22.9 79.3" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="22.9" cy="79.3" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="35.5" cy="80.4" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="43.4" cy="95.8" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><path d="M92 116 Q 49.9 85.9 41.5 49.5" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="41.5" cy="49.5" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="53" cy="56.5" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="54.3" cy="74.4" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="69.2" cy="77.8" r="3.7" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><path d="M92 116 Q 66.6 71.2 74.2 34.9" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="74.2" cy="34.9" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="81.6" cy="46" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="75.2" cy="62.7" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><path d="M92 116 Q 88 68.4 108.6 40.7" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="108.6" cy="40.7" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="110.9" cy="53" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="98.3" cy="64.6" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="105.6" cy="77.1" r="3.7" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><path d="M92 116 Q 106.2 77.1 132.4 62.8" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="132.4" cy="62.8" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="130.4" cy="73.6" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="115" cy="77.5" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><path d="M92 116 Q 115.6 92.2 139.7 90.6" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="139.7" cy="90.6" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="135.1" cy="98.7" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="121.4" cy="94.8" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="119.9" cy="106.8" r="3.7" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/></g><g id="bot-bouquet"><path d="M300 470 C 292 392 272 318 236 246" fill="none" stroke="#7E8764" stroke-width="2.4" stroke-linecap="round"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" transform="translate(297.8 451.4) rotate(-137.8) scale(1 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" transform="translate(294.1 425.7) rotate(-53.4) scale(1 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" transform="translate(289.3 400.3) rotate(-153.2) scale(0.9 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" transform="translate(283.6 375.1) rotate(-63.5) scale(0.9 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" transform="translate(276.9 350.2) rotate(-152.3) scale(0.8 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" transform="translate(269.1 325.5) rotate(-57.1) scale(0.7 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" transform="translate(260.3 301) rotate(-151.5) scale(0.7 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" transform="translate(250.3 276.6) rotate(-67.5) scale(0.6 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" transform="translate(239.2 252.5) rotate(-167.4) scale(0.6 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#AEB394" transform="translate(236 246) rotate(-116.6) scale(0.6 0.7)"/><path d="M300 470 C 336 404 380 352 440 300" fill="none" stroke="#B17B55" stroke-width="2.2" stroke-linecap="round"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#C98B67" transform="translate(313.3 446.8) rotate(-97.5) scale(0.9 0.9)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#C98B67" transform="translate(330 420.8) rotate(-11.7) scale(0.9 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#C98B67" transform="translate(348 396.1) rotate(-101.8) scale(0.8 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#C98B67" transform="translate(367.3 372.3) rotate(-10.7) scale(0.7 0.8)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#C98B67" transform="translate(388.1 349.3) rotate(-90.4) scale(0.6 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#C98B67" transform="translate(410.5 326.9) rotate(5.5) scale(0.6 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#C98B67" transform="translate(434.6 304.7) rotate(-80.1) scale(0.5 0.7)"/><path d="M0 0 C 22 -18 64 -22 100 -3 C 66 20 24 19 0 0 Z" fill="#C98B67" transform="translate(440 300) rotate(-40.9) scale(0.5 0.7)"/><path d="M298 462 C 248 404 172 364 74 336" fill="none" stroke="#AEB394" stroke-width="1.6" stroke-linecap="round"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(278.9 441.9) rotate(-185.5) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(266.6 430.7) rotate(-83.3) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(253.5 420.1) rotate(-205) scale(0.39 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(239.6 409.9) rotate(-95.8) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(225.1 400.2) rotate(-203.7) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(209.8 391) rotate(-87.5) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(193.7 382.2) rotate(-201.8) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(177 373.9) rotate(-98.7) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(159.5 366) rotate(-219.4) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(141.4 358.6) rotate(-109.3) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(122.5 351.5) rotate(-216.3) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(103 344.8) rotate(-99.2) scale(0.16 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(82.8 338.6) rotate(-212.7) scale(0.16 0.46)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" transform="translate(74 336) rotate(-164.1) scale(0.16 0.46)"/><path d="M300 466 C 330 378 364 300 392 214" fill="none" stroke="#D9C4A3" stroke-width="1.5" stroke-linecap="round"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(314.7 424.5) rotate(-115.8) scale(0.31 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(322.2 403.9) rotate(-17.6) scale(0.31 0.68)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(329.9 383.5) rotate(-127.5) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(337.6 363.3) rotate(-23.4) scale(0.31 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(345.2 343.2) rotate(-121.1) scale(0.23 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(352.9 323.2) rotate(-11) scale(0.23 0.61)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(360.5 303.1) rotate(-115.2) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(367.9 283) rotate(-17.8) scale(0.23 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(375.3 262.8) rotate(-128.5) scale(0.16 0.53)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(382.5 242.4) rotate(-25.2) scale(0.16 0.46)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(389.5 221.7) rotate(-123.7) scale(0.16 0.46)"/><path d="M0 0 C 20 -22 64 -24 100 0 C 64 24 20 22 0 0 Z" fill="#D9C4A3" opacity="0.92" transform="translate(392 214) rotate(-72) scale(0.16 0.46)"/><path d="M300 468 C 288 386 282 306 288 238" fill="none" stroke="#D9C4A3" stroke-width="1.4" stroke-linecap="round"/><path d="M288 238 Q 234 227.7 209.6 196.3" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="209.6" cy="196.3" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="223.7" cy="198.3" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="233.2" cy="214.4" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><path d="M288 238 Q 240 203.6 230.4 162.1" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="230.4" cy="162.1" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="243" cy="170.6" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="245.4" cy="190" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="261.4" cy="194.9" r="3.7" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><path d="M288 238 Q 259 186.9 267.6 145.4" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="267.6" cy="145.4" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="275.5" cy="158.3" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="269.5" cy="176.9" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><path d="M288 238 Q 283.5 184.1 306.7 152.8" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="306.7" cy="152.8" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="308.7" cy="166.6" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="295.7" cy="179.8" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="302.7" cy="193.9" r="3.7" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><path d="M288 238 Q 303.7 194.8 332.8 178.9" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="332.8" cy="178.9" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="330.1" cy="190.7" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="314.1" cy="195.5" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><path d="M288 238 Q 313.3 212.5 339.2 210.8" fill="none" stroke="#D9C4A3" stroke-width="1.2" stroke-linecap="round"/><circle cx="339.2" cy="210.8" r="4.4" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="334.1" cy="219.1" r="4.2" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="319.8" cy="215.5" r="3.9" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/><circle cx="317.7" cy="227.8" r="3.7" fill="#F2E6D4" stroke="#D9C4A3" stroke-width="1"/></g></defs></svg>
             <svg class="cmp-bg" aria-hidden="true" viewBox="0 0 600 600" style="left:-210px;top:120px;width:min(520px,60vw);opacity:.5"><path d="M300 30 C 470 30 570 170 540 320 C 512 462 380 570 240 552 C 92 533 20 400 34 268 C 48 132 140 30 300 30 Z" fill="#E8D9C2" /></svg>
->>>>>>> Stashed changes:src/pages/hatha-yoga/ja/offerings.astro
             <svg class="cmp-bg" aria-hidden="true" viewBox="0 0 600 600" style="right:-240px;bottom:-60px;width:min(560px,64vw);opacity:.45"><path d="M300 40 C 486 40 560 200 536 340 C 512 480 372 566 232 544 C 96 522 26 386 44 254 C 62 122 148 40 300 40 Z" fill="#E8D9C2" /></svg>
             <div aria-hidden="true" class="cmp-bg" style="right:8%;top:-40px;width:min(300px,36vw);height:300px;border-radius:50%;background:radial-gradient(circle,rgba(208,138,94,.22) 0%,rgba(208,138,94,0) 68%)"></div>
             <svg class="cmp-bg cmp-sprig" aria-hidden="true" viewBox="0 0 240 260" style="right:-20px;top:-70px;width:min(180px,20vw);opacity:.42;transform:rotate(14deg)"><use href="#bot-fern"/></svg>
@@ -420,52 +382,36 @@ import '../../../styles/yoga/calendar.css';
               <p class="mt-6 text-base leading-loose" style="color:#443F2C">ヨガとともに、心と体がよろこぶ日常を。</p>
               <p class="cmp-script mt-4" style="font-size:20px">Find your best practice</p>
             </div>
-            <div class="cmp-grid mt-16 md:mt-20">
-              <article class="cmp-card cmp-card--a">
-                <div class="cmp-crown ja-band ja-band-sage" style="background:#DDE1CE" data-lt="1">
-                  <p class="font-display" style="font-size:30px;letter-spacing:.14em;color:#3E3227">単発参加</p>
-                  <p class="mt-2 text-[15px]" style="color:#463A22;letter-spacing:.14em">一回ごとに</p>
-                </div>
-                <div class="cmp-body">
-                  <p class="cmp-script" style="font-size:17px">Try it first</p>
-                  <div class="mt-6">
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>料金</div><p class="cmp-val">対面 4,000円<br />オンライン 3,000円</p></div>
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>内容</div><p class="cmp-val">ヨガ・瞑想・健康セミナーを都度参加</p></div>
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>対象エリア</div><p class="cmp-val">大阪・東京・オンライン</p></div>
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>こんな方に</div><p class="cmp-val">まず一度試したい方</p></div>
-                  </div>
-                </div>
-              </article>
-              <article class="cmp-card cmp-card--b">
-                <div class="cmp-crown ja-band ja-band-sage" style="background:#DDE1CE" data-lt="1">
-                  <p class="font-display" style="font-size:30px;letter-spacing:.14em;color:#3E3227">月額会員</p>
-                  <p class="mt-2 text-[15px]" style="color:#463A22;letter-spacing:.14em">大阪限定</p>
-                </div>
-                <div class="cmp-body">
-                  <p class="cmp-script" style="font-size:17px">A weekly rhythm</p>
-                  <div class="mt-6">
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>料金</div><p class="cmp-val">月額 10,000円 〜 20,000円</p></div>
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>内容</div><p class="cmp-val">対面・オンラインの3つのプラン<br /><span style="font-size:15px;opacity:.75">（月4回〜受け放題）</span></p></div>
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>対象エリア</div><p class="cmp-val">大阪</p></div>
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>こんな方に</div><p class="cmp-val">曜日を決めて習慣にしたい方</p></div>
-                  </div>
-                </div>
-              </article>
-              <article class="cmp-card cmp-card--c">
-                <div class="cmp-crown ja-band ja-band-sage" style="background:#DDE1CE" data-lt="1">
-                  <p class="font-display" style="font-size:30px;letter-spacing:.14em;color:#33301F">SATORIN</p>
-                  <p class="mt-2 text-[15px]" style="color:#463A22;letter-spacing:.14em">メンバーシップ</p>
-                </div>
-                <div class="cmp-body">
-                  <p class="cmp-script" style="font-size:17px">From anywhere</p>
-                  <div class="mt-6">
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>料金</div><p class="cmp-val">月額 5,500円 〜 35,000円<br /><span style="font-size:15px">（先行特典価格）</span></p></div>
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>内容</div><p class="cmp-val">平日朝7時のオンライン朝ヨガ（月20回）ほか4プラン</p></div>
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>対象エリア</div><p class="cmp-val">全国・海外</p></div>
-                    <div class="cmp-row"><div class="cmp-label font-mono"><i></i>こんな方に</div><p class="cmp-val">どこからでも続けたい方</p></div>
-                  </div>
-                </div>
-              </article>
+            <div class="cmp-table-wrap mt-14 md:mt-16">
+              <table class="cmp-table">
+                <thead>
+                  <tr>
+                    <th scope="col"><span class="cmp-th-main">単発参加</span><span class="cmp-th-sub">一回ごとに</span></th>
+                    <th scope="col"><span class="cmp-th-main">月額会員</span><span class="cmp-th-sub">大阪限定</span></th>
+                    <th scope="col"><span class="cmp-th-main">SATORIN</span><span class="cmp-th-sub">メンバーシップ</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="cmp-group"><th colspan="3" scope="colgroup">料金</th></tr>
+                  <tr>
+                    <td data-label="単発参加">対面 4,000円〜（75分）<br />オンライン 2,000円（40分）</td>
+                    <td data-label="月額会員">月額 7,000円 〜 13,000円</td>
+                    <td data-label="SATORIN メンバーシップ">月額 5,500円 〜 35,000円<br /><span class="cmp-note">（先行特典価格）</span></td>
+                  </tr>
+                  <tr class="cmp-group"><th colspan="3" scope="colgroup">内容</th></tr>
+                  <tr>
+                    <td data-label="単発参加">ヨガ・瞑想・健康セミナーを都度参加</td>
+                    <td data-label="月額会員">対面のみ／対面＋オンラインの3つのプラン</td>
+                    <td data-label="SATORIN メンバーシップ">平日朝7時のオンライン朝ヨガ（月20回）、夜の健康セミナー・瞑想、1:1コーチングなど全5プラン</td>
+                  </tr>
+                  <tr class="cmp-group"><th colspan="3" scope="colgroup">対象エリア</th></tr>
+                  <tr>
+                    <td data-label="単発参加">大阪・東京・オンライン</td>
+                    <td data-label="月額会員">大阪</td>
+                    <td data-label="SATORIN メンバーシップ">全国・海外</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="cmp-foot"><span></span><p class="font-display text-lg" style="color:#443F2C;letter-spacing:.1em">どのプランも、あなたのペースで。</p><span></span></div>
             <p class="mt-16 mx-auto max-w-2xl text-center text-[15px] leading-loose text-brand-espresso/70" style="position:relative;z-index:1">※ 単発参加は対面クラス・オンラインクラスのみのお取り扱いです。特別プログラム（スーリヤ・シャクティ／スーリヤ・クリヤ）は単発のお申し込みのみで、月額会員の割引対象外となります。</p>
@@ -551,227 +497,9 @@ import '../../../styles/yoga/calendar.css';
             </div>
           </div>
         </section>
-<<<<<<< Updated upstream:public/hatha-yoga/ja/offerings.html
-      </main>
-      <footer class=" ja-band ja-band-foot" data-lt="1">
-        <div class="mx-auto w-full max-w-7xl px-6 md:px-10 grid gap-14 py-20 md:grid-cols-[1.6fr_1fr_1fr]">
-          <div>
-            <p class="font-mono text-[13px] uppercase tracking-[0.28em] opacity-70">Setsuko Hata</p>
-            <p class="mt-1 font-display text-2xl text-brand-espresso">Yoga Studio</p>
-            <p class="mt-6 max-w-xs text-sm leading-relaxed opacity-80">本格的なハタヨガを、日常へ。</p>
-          </div>
-          <div>
-            <p class="font-mono text-[13px] uppercase tracking-[0.22em] text-brand-moss">サイトマップ</p>
-            <ul class="mt-5 space-y-2.5 text-sm">
-              <li><a href="./" class="opacity-80 hover:opacity-100">ホーム</a></li><li><a href="./about" class="opacity-80 hover:opacity-100">秦 節子｜SETSUKO HATA</a></li><li><a href="./hatha-yoga" class="opacity-80 hover:opacity-100">ハタヨガとは</a></li><li><a href="./hatha-types" class="opacity-80 hover:opacity-100">ハタヨガの種類</a></li><li><a href="./offerings" class="opacity-80 hover:opacity-100">クラス・月額会員</a></li><li><a href="./prepare" class="opacity-80 hover:opacity-100">ご参加の準備</a></li><li><a href="./wellness" class="opacity-80 hover:opacity-100">企業・健康経営</a></li><li><a href="./schools" class="opacity-80 hover:opacity-100">学校・教育機関</a></li><li><a href="./contact" class="opacity-80 hover:opacity-100">お問い合わせ</a></li>
-            </ul>
-          </div>
-          <div>
-            <p class="font-mono text-[13px] uppercase tracking-[0.22em] text-brand-moss">お問い合わせ</p>
-            <ul class="mt-5 space-y-2.5 text-sm">
-              <li class="opacity-80">秦 節子</li>
-              <li><a href="mailto:yoga@setsukohata.com" class="opacity-80 hover:opacity-100">yoga@setsukohata.com</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="border-t border-brand-espresso/15">
-          <div class="mx-auto w-full max-w-7xl px-6 md:px-10 flex flex-col gap-2 py-6 text-sm opacity-60 md:flex-row md:justify-between">
-            <p>© 2026 Setsuko Hata Yoga Studio. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-    <script>
-      (function () {
-        var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-tab]'));
-        function group(id) {
-          var btn = document.querySelector('[data-tab="' + id + '"]');
-          return btn ? Array.prototype.slice.call(btn.closest('[role="tablist"]').querySelectorAll('[data-tab]')) : [];
-        }
-        function select(id, scroll) {
-          group(id).forEach(function (t) {
-            var on = t.dataset.tab === id;
-            t.setAttribute('aria-selected', on ? 'true' : 'false');
-            document.getElementById('panel-' + t.dataset.tab).hidden = !on;
-          });
-          if (scroll) {
-            var top = document.querySelector('[data-tab="' + id + '"]').closest('[role="tablist"]').getBoundingClientRect().top + window.pageYOffset - 96;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-          }
-        }
-        tabs.forEach(function (t) {
-          t.addEventListener('click', function () { select(t.dataset.tab, true); });
-        });
-        function fromHash(scroll) {
-          var id = location.hash.slice(1);
-          if (!id) return;
-          var el = document.getElementById(id);
-          if (!el) return;
-          var p = el.closest('[role="tabpanel"]');
-          while (p) { select(p.id.replace('panel-', ''), false); p = p.parentElement.closest('[role="tabpanel"]'); }
-          if (scroll) requestAnimationFrame(function () {
-            window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 96, behavior: 'smooth' });
-          });
-        }
-        fromHash(false);
-        window.addEventListener('hashchange', function () { fromHash(true); });
-        document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-          a.addEventListener('click', function (e) {
-            var el = document.getElementById(a.getAttribute('href').slice(1));
-            if (!el) return;
-            e.preventDefault();
-            var p = el.closest('[role="tabpanel"]');
-            while (p) { select(p.id.replace('panel-', ''), false); p = p.parentElement.closest('[role="tabpanel"]'); }
-            window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 96, behavior: 'smooth' });
-          });
-        });
-      })();
-    </script>
-    <script>
-      (function () {
-        var btn = document.getElementById('ja-menu-btn');
-        var wrap = document.getElementById('ja-mobile-nav');
-        if (!btn || !wrap) return;
-        var panel = wrap.querySelector('[data-panel]');
-        var scrim = wrap.querySelector('[data-scrim]');
-        var list = wrap.querySelector('nav');
-        var head = btn.closest('header');
-        head.querySelectorAll('nav[aria-label="Primary"] > a, nav[aria-label="Primary"] > [data-navdrop]').forEach(function (a) {
-          if (a.hasAttribute('data-navdrop')) {
-            var t = a.querySelector('.ja-navtrigger');
-            var h = document.createElement('div');
-            h.className = 'font-display text-xl';
-            h = document.createElement(t && t.getAttribute('data-href') ? 'a' : 'div'); if (t && t.getAttribute('data-href')) h.href = t.getAttribute('data-href'); h.className = 'font-display text-xl'; h.textContent = t ? t.textContent.trim() : '';
-            h.style.cssText = 'padding:16px 0 6px;color:#8A6043;font-size:16px;letter-spacing:.14em;text-transform:none;text-decoration:none;display:block';
-            list.appendChild(h);
-            a.querySelectorAll('.ja-navdrop-menu a').forEach(function (s) {
-              var sc = document.createElement('a');
-              sc.href = s.getAttribute('href');
-              sc.textContent = s.textContent.trim();
-              sc.className = 'text-base';
-              sc.style.cssText = 'padding:13px 0 13px 18px;border-bottom:1px solid rgba(62,50,39,.14);color:#3E3227;opacity:.86;text-decoration:none';
-              list.appendChild(sc);
-            });
-            return;
-          }
-          var c = document.createElement('a');
-          c.href = a.getAttribute('href');
-          c.textContent = a.textContent;
-          var on = a.hasAttribute('aria-current');
-          if (on) c.setAttribute('aria-current', 'page');
-          c.className = 'font-display text-xl';
-          c.style.cssText = 'padding:16px 0;border-bottom:1px solid rgba(62,50,39,.14);color:' + (on ? '#8A6043' : '#3E3227') + ';text-decoration:none';
-          list.appendChild(c);
-        });
-        var open = false;
-        function set(v) {
-          open = v;
-          btn.setAttribute('aria-expanded', String(v));
-          btn.setAttribute('aria-label', v ? 'メニューを閉じる' : 'メニューを開く');
-          var b1 = btn.querySelector('[data-bar="1"]'), b2 = btn.querySelector('[data-bar="2"]'), b3 = btn.querySelector('[data-bar="3"]');
-          b1.style.transform = v ? 'translateY(8px) rotate(45deg)' : '';
-          b2.style.opacity = v ? '0' : '1';
-          b3.style.transform = v ? 'translateY(-8px) rotate(-45deg)' : '';
-          document.documentElement.style.overflow = v ? 'hidden' : '';
-          head.querySelectorAll('a [class*="text-brand-espresso"], a[class*="text-brand-espresso"]').forEach(function (el) {
-            if (v) el.style.setProperty('color', '#3E3227', 'important'); else el.style.removeProperty('color');
-          });
-          if (v) {
-            head.style.setProperty('background-color', '#F5EFDF', 'important');
-            head.style.setProperty('color', '#3E3227', 'important');
-            head.style.setProperty('border-bottom-color', 'transparent', 'important');
-          } else {
-            head.style.removeProperty('background-color');
-            head.style.removeProperty('color');
-            head.style.removeProperty('border-bottom-color');
-          }
-          if (v) {
-            wrap.hidden = false;
-            requestAnimationFrame(function () { panel.style.opacity = '1'; panel.style.pointerEvents = 'auto'; scrim.style.opacity = '1'; });
-          } else {
-            panel.style.opacity = '0';
-            panel.style.pointerEvents = 'none';
-            scrim.style.opacity = '0';
-            setTimeout(function () { if (!open) wrap.hidden = true; }, 340);
-          }
-        }
-        btn.addEventListener('click', function () { set(!open); });
-        scrim.addEventListener('click', function () { set(false); });
-        list.addEventListener('click', function (e) { if (e.target.tagName === 'A') set(false); });
-        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) set(false); });
-        window.addEventListener('resize', function () { if (open && window.innerWidth >= 768) set(false); });
-      })();
-    </script>
-    <script>
-      (function () {
-        document.querySelectorAll('[data-navdrop]').forEach(function (wrap) {
-        var btn = wrap.querySelector('.ja-navtrigger');
-        var t;
-        function set(v) {
-          wrap.toggleAttribute('data-open', v);
-          btn.setAttribute('aria-expanded', String(v));
-        }
-        btn.addEventListener('click', function (e) { e.stopPropagation(); set(btn.getAttribute('aria-expanded') !== 'true'); });
-        wrap.addEventListener('mouseenter', function () { clearTimeout(t); set(true); });
-        wrap.addEventListener('mouseleave', function () { t = setTimeout(function () { set(false); }, 140); });
-        wrap.addEventListener('focusout', function (e) { if (!wrap.contains(e.relatedTarget)) set(false); });
-        document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) set(false); });
-        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
-        wrap.querySelectorAll('.ja-navdrop-menu a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
-        });
-      })();
-    </script>
-    <script>
-      (function () {
-        if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        document.documentElement.classList.add('js');
-        setTimeout(function () { document.querySelectorAll('.sc-rise').forEach(function (el) { el.classList.add('is-in'); }); }, 2500);
-        var io = new IntersectionObserver(function (es) {
-          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
-        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-        document.querySelectorAll('.sc-rise').forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
-      })();
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-      (function () {
-        var gallerySwiper = null;
-        function initGallery() {
-          var el = document.querySelector('.ja-gallery');
-          if (gallerySwiper || !el || !el.offsetWidth || !window.Swiper) return;
-          gallerySwiper = new Swiper(el, {
-          slidesPerView: 1,
-          loop: true,
-          speed: 600,
-          autoplay: { delay: 5000, disableOnInteraction: false },
-          keyboard: { enabled: true },
-          navigation: { nextEl: '.ja-gallery .swiper-button-next', prevEl: '.ja-gallery .swiper-button-prev' },
-          pagination: { el: '.ja-gallery .swiper-pagination', clickable: true },
-          });
-        }
-        var tries = 0;
-        var poll = setInterval(function () {
-          initGallery();
-          if (gallerySwiper || ++tries > 60) clearInterval(poll);
-        }, 250);
-        initGallery();
-        document.querySelectorAll('[data-tab]').forEach(function (b) {
-          b.addEventListener('click', function () {
-            requestAnimationFrame(function () {
-              initGallery();
-              if (gallerySwiper) gallerySwiper.update();
-            });
-          });
-        });
-      })();
-    </script>
-  <script>document.querySelectorAll('.ja-navtrigger[data-href]').forEach(function(b){b.addEventListener('click',function(){location.href=b.getAttribute('data-href')})});</script></body>
-</html>
-=======
 </YogaLayout>
 <script>
   import '../../../scripts/yoga/calendar.js';
   import '../../../scripts/yoga/offerings-tabs.js';
   import '../../../scripts/yoga/offerings-gallery.js';
 </script>
->>>>>>> Stashed changes:src/pages/hatha-yoga/ja/offerings.astro

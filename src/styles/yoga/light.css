@@ -1,0 +1,117 @@
+/* light.css: "sunlit" lightening pass for the Hatha Yoga pages.
+ *
+ * Loaded last by YogaLayout, so it overrides the earlier yoga styles
+ * (several of which force all text to bold 700/900). To undo the whole pass,
+ * delete this file and its import in src/layouts/YogaLayout.astro.
+ *
+ * The doubled `.yoga-site.yoga-site.yoga-site` only raises specificity so these
+ * rules beat the long `body.yoga-site main .x .y` selectors in home.css. */
+
+/* ---------- Text colors: soft browns instead of near-black ---------- */
+body.yoga-site,
+body.yoga-site.ja-home {
+  --yl-head: #3e352b;   /* headings */
+  --yl-text: #4a4136;   /* body copy */
+  --yl-soft: #6b6152;   /* secondary copy, still >= 4.5:1 on cream */
+  --yl-gold: #8a6a2c;   /* small gold text */
+  --yl-line: rgba(138, 106, 44, .32);
+  /* Gold accent. Too light for text on cream: use it for fills, washes and
+     decoration, and --yl-gold-deep for lines and icons that sit on it. */
+  --color-gold-accent: #e5c365;
+  --yl-gold-deep: #a8842f;
+  --color-text-primary: var(--yl-text);
+  --color-text-secondary: var(--yl-soft);
+  --color-brand-espresso: var(--yl-text);
+  /* Sections outside .main-look had these undefined, so their text fell back to pure black. */
+  --ja-ink: var(--yl-text);
+  --ja-ink-70: var(--yl-text);
+  color: var(--yl-text);
+}
+
+/* inline colors on the Japanese home page */
+body.yoga-site main [style*="#2A1D14"],
+body.yoga-site main [style*="#2a1d14"] { color: var(--yl-text) !important; }
+
+body.yoga-site.yoga-site.yoga-site :is(h1, h2, h3, h4, blockquote, .sh-name, .jh__title) { color: var(--yl-head) !important; }
+
+/* ---------- Weights: regular body, medium headings ---------- */
+body.yoga-site.yoga-site.yoga-site,
+body.yoga-site.yoga-site.yoga-site *,
+body.yoga-site.yoga-site.yoga-site *::before,
+body.yoga-site.yoga-site.yoga-site *::after { font-weight: 400 !important; }
+
+body.yoga-site.yoga-site.yoga-site :is(
+  h1, h2, h3, h4, blockquote, .sh-name, .sh-band__title, .sh-formats__name,
+  .sh-steps strong, .sh-label--section, .sh-role, .ja-eyebrow, .jh__title
+) { font-weight: 500 !important; }
+
+body.yoga-site.yoga-site.yoga-site :is(strong, b, em.sh-key, .sh-num, .sh-btn, .jh__btn) { font-weight: 500 !important; }
+body.yoga-site.yoga-site.yoga-site .sh-creds .sh-num { font-weight: 700 !important; }
+
+/* header nav reads a touch firmer than body copy */
+body.yoga-site.yoga-site.yoga-site :is(header, #yoga-mobile-nav) :is(a, button) { font-weight: 500 !important; }
+body.yoga-site header,
+body.yoga-site header :is(a, button) { color: var(--yl-head); }
+body.yoga-site footer,
+body.yoga-site footer * { color: var(--yl-text); }
+
+/* header booking button (English pages): the header color rule above would
+   otherwise paint its white label dark on dark */
+body.yoga-site header a.bg-brand-espresso {
+  background: var(--color-deep-olive);
+  color: var(--color-paper);
+  border-radius: 999px;
+}
+body.yoga-site header a.bg-brand-espresso:hover { background: #4b5139; }
+
+/* ---------- Hero: warmer light, olive pill buttons ---------- */
+body.ja-home .jh__arch img { filter: saturate(.92) brightness(1.07) sepia(.1); }
+body.ja-home .jh__arch picture::after {
+  background:
+    linear-gradient(262deg, rgba(250, 244, 230, .96) 0%, rgba(250, 244, 230, .9) 38%, rgba(250, 244, 230, .62) 50%, rgba(250, 244, 230, 0) 64%),
+    linear-gradient(200deg, rgba(255, 222, 168, .28) 0%, rgba(255, 222, 168, 0) 55%);
+}
+body.ja-home .jh::before { border-color: var(--yl-line); }
+body.ja-home .jh__title { letter-spacing: .08em; }
+body.ja-home .jh__lead { color: var(--yl-text); border-top-color: var(--yl-line); }
+body.ja-home .jh__sub { color: var(--yl-gold); }
+
+body.ja-home .jh__btn { border-radius: 999px; letter-spacing: .12em; gap: 22px; }
+body.ja-home .jh__btn--solid { background: var(--color-deep-olive); color: var(--color-paper) !important; box-shadow: 0 12px 24px -16px rgba(89, 96, 68, .7); }
+body.ja-home .jh__btn--solid::after { content: "\2192"; font-family: "Inter Tight", "Inter", sans-serif; letter-spacing: 0; }
+body.ja-home .jh__btn--solid:hover { background: #4b5139; }
+body.ja-home .jh__btn--line { background: rgba(251, 247, 239, .75); border-color: color-mix(in srgb, var(--color-deep-olive) 55%, transparent); color: var(--color-deep-olive); }
+
+@media (max-width: 900px) {
+  body.ja-home .jh__arch picture::after { background: linear-gradient(180deg, rgba(248, 242, 227, .85) 0%, rgba(248, 242, 227, 0) 30%); }
+}
+
+/* ---------- Photo title band: softer shadow ---------- */
+body.yoga-site.yoga-site.yoga-site main .sh-band .sh-band__title { text-shadow: 0 1px 12px rgba(40, 32, 20, .55); }
+body.yoga-site .sh-band__title::before,
+body.yoga-site .sh-band__title::after { height: 1px; box-shadow: none; }
+
+/* ---------- Effects columns: gold tints, outline icons, hairline borders ---------- */
+/* Each card keeps its original hue (sage / sand / terracotta) but is washed out
+   to the same soft, sunlit tint level as the gold accent, with a hint of gold. */
+body.yoga-site .sh-column { --tone: var(--color-deep-olive); --wash: color-mix(in srgb, var(--color-gold-accent) 8%, color-mix(in srgb, var(--color-light-sage) 26%, var(--color-paper))); }
+body.yoga-site .sh-column:nth-child(2) { --tone: var(--color-warm-brown); --wash: color-mix(in srgb, var(--color-gold-accent) 8%, color-mix(in srgb, var(--color-sand-beige) 38%, var(--color-paper))); }
+body.yoga-site .sh-column:nth-child(3) { --tone: var(--color-camel-brown); --wash: color-mix(in srgb, var(--color-gold-accent) 8%, color-mix(in srgb, var(--color-soft-terracotta) 18%, var(--color-paper))); }
+body.yoga-site .sh-column { border-width: 1px; border-color: color-mix(in srgb, var(--tone) 40%, transparent); }
+body.yoga-site .sh-column__ring {
+  background: color-mix(in srgb, var(--color-paper) 70%, transparent);
+  border: 1px solid var(--color-antique-gold);
+}
+body.yoga-site .sh-column__ring .sh-icon { color: var(--tone); }
+
+/* ---------- Cards and photos: soft and light ---------- */
+body.yoga-site .sh-format {
+  border-color: color-mix(in srgb, var(--color-warm-brown) 12%, transparent);
+  box-shadow: 0 18px 36px -28px rgba(89, 70, 40, .45);
+}
+body.yoga-site .sh-curve { box-shadow: 0 14px 34px -22px rgba(58, 50, 40, .35) !important; }
+body.yoga-site .sh-steps__n { border-color: var(--color-antique-gold); color: var(--yl-gold); }
+
+/* small decorative marks: lighter */
+body.yoga-site .deco-corner--b { --deco-color: var(--sl-sage); --deco-opacity: .2; }
+body.yoga-site .deco--moon { --deco-color: var(--sl-sage); }

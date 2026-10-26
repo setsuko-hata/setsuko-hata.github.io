@@ -17,11 +17,14 @@ body.yoga-site :is(main .main-look, main.main-look) .bg-brand-cream\/70 {
 body.yoga-site :is(main .main-look, main.main-look) .bg-brand-moss {
   background-color: var(--ja-sage) !important;
 }
-body.yoga-site :is(main .main-look, main.main-look) .bg-brand-moss.brand-dark .bg-brand-moss {
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .bg-brand-moss.brand-dark
+  .bg-brand-moss {
   background-color: transparent !important;
 }
 body.yoga-site :is(main .main-look, main.main-look) .bg-brand-espresso {
-  background-color: #E8D9C2 !important;
+  background-color: #e8d9c2 !important;
 }
 /* the olive footer ground is lighter than the old espresso — lift the muted text */
 
@@ -70,7 +73,9 @@ body.yoga-site :is(main .main-look, main.main-look) p.ja-sublabel {
 }
 /* Latin kickers (Contact / Classes / Surya Shakti …) and footnotes keep the
    small mono voice, just warmed and un-cramped. */
-body.yoga-site :is(main .main-look, main.main-look) p.font-mono:not(.ja-eyebrow):not(.ja-sublabel) {
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  p.font-mono:not(.ja-eyebrow):not(.ja-sublabel) {
   letter-spacing: 0.18em;
   font-size: 13px;
 }
@@ -78,7 +83,7 @@ body.yoga-site :is(main .main-look, main.main-look) p.font-mono:not(.ja-eyebrow)
 /* labels sitting on a dark band */
 body.yoga-site .main-look .brand-dark p.ja-eyebrow,
 body.yoga-site .main-look .brand-dark p.ja-sublabel {
-  color: #E8D9C2 !important;
+  color: #e8d9c2 !important;
 }
 body.yoga-site .main-look .brand-dark p.ja-eyebrow::after {
   background: rgba(245, 239, 223, 0.3);
@@ -98,13 +103,17 @@ body.yoga-site .main-look a.inline-flex {
   border-radius: 2px;
 }
 /* Outline buttons run filled by default and invert on hover */
-body.yoga-site :is(main .main-look, main.main-look) a.inline-flex[class*="border-brand-espresso"] {
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  a.inline-flex[class*="border-brand-espresso"] {
   background-color: var(--color-brand-espresso);
   border-color: var(--color-brand-espresso);
-  color: #F5EFDF;
+  color: #f5efdf;
 }
-body.yoga-site :is(main .main-look, main.main-look) a.inline-flex[class*="border-brand-espresso"]:hover {
-  background-color: #F5EFDF;
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  a.inline-flex[class*="border-brand-espresso"]:hover {
+  background-color: #f5efdf;
   color: var(--color-brand-espresso);
 }
 
@@ -120,19 +129,23 @@ body.yoga-site .main-look .bg-brand-espresso.text-white:hover {
 /* Exclusion is deliberately a substring match so it covers the whole family
    (text-white, text-white/90, hover:text-white). The warming rules below use
    [class~=] so they never paint a hover-variant class at rest. */
-body.yoga-site :is(main .main-look, main.main-look) p:not([class*="text-white"]):not([class*="text-brand"]),
-body.yoga-site :is(main .main-look, main.main-look) li:not([class*="text-white"]):not([class*="text-brand"]) {
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  p:not([class*="text-white"]):not([class*="text-brand"]),
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  li:not([class*="text-white"]):not([class*="text-brand"]) {
   color: var(--ja-ink-70);
 }
 body.yoga-site :is(main .main-look, main.main-look) .brand-dark p,
 body.yoga-site :is(main .main-look, main.main-look) .brand-dark li,
 body.yoga-site :is(main .main-look, main.main-look) .brand-dark blockquote {
-  color: #F5EFDF !important;
+  color: #f5efdf !important;
 }
 /* [class~=] matches the exact class token, so variant-prefixed utilities like
    hover:text-white are not caught (a [class*=] substring match was). */
 body.yoga-site :is(main .main-look, main.main-look) [class~="text-white"] {
-  color: #F5EFDF;
+  color: #f5efdf;
 }
 body.yoga-site :is(main .main-look, main.main-look) [class~="text-white/70"] {
   color: rgba(245, 239, 223, 0.72);
@@ -154,7 +167,7 @@ body.yoga-site :is(main .main-look, main.main-look) p.leading-loose {
 body.yoga-site .main-look .brand-dark p,
 body.yoga-site .main-look .brand-dark li,
 body.yoga-site .main-look .brand-dark blockquote {
-  color: #F5EFDF;
+  color: #f5efdf;
 }
 body.yoga-site .main-look .brand-dark .opacity-80,
 body.yoga-site .main-look .brand-dark .text-white\/85,
@@ -193,16 +206,24 @@ body.yoga-site :is(main .main-look, main.main-look) .bg-brand-cream\/70 {
 }
 
 /* Cards: warm surfaces with a hairline instead of a bare top border */
-body.yoga-site :is(main .main-look, main.main-look) .border-t.border-brand-espresso\/20 {
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .border-t.border-brand-espresso\/20 {
   border-top: none !important;
   background: var(--ja-page);
   border-radius: 3px;
   padding: 2rem 2rem 2.25rem !important;
 }
-body.yoga-site :is(main .main-look, main.main-look) .border-t.border-brand-espresso\/20 h3 {
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .border-t.border-brand-espresso\/20
+  h3 {
   margin-bottom: 0.25rem;
 }
-body.yoga-site :is(main .main-look, main.main-look) .border-t.border-brand-espresso\/20 h3::after {
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .border-t.border-brand-espresso\/20
+  h3::after {
   content: "";
   display: block;
   width: 34px;
@@ -215,23 +236,32 @@ body.yoga-site :is(main .main-look, main.main-look) .grid.gap-px {
   background: transparent !important;
 }
 /* translucent card surfaces only make sense on a dark band */
-body.yoga-site :is(main .main-look, main.main-look) .brand-dark .grid.gap-px > div {
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .brand-dark
+  .grid.gap-px
+  > div {
   background: rgba(245, 239, 223, 0.14) !important;
   border: 1px solid rgba(245, 239, 223, 0.24);
   border-radius: 3px;
 }
 /* on a light band the same markup needs an opaque warm surface */
 body.yoga-site :is(main .main-look, main.main-look) .grid.gap-px > div {
-  background: #F5EFDF !important;
+  background: #f5efdf !important;
   border: 1px solid rgba(138, 96, 67, 0.34);
   border-radius: 3px;
 }
 
 /* Emoji glyphs in the programme cards are off-brand — drop them */
-body.yoga-site :is(main .main-look, main.main-look) p[aria-hidden="true"].text-3xl {
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  p[aria-hidden="true"].text-3xl {
   display: none;
 }
-body.yoga-site :is(main .main-look, main.main-look) p[aria-hidden="true"].text-3xl + h3 {
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  p[aria-hidden="true"].text-3xl
+  + h3 {
   margin-top: 0 !important;
 }
 
@@ -272,18 +302,17 @@ body.yoga-site :is(main .main-look, main.main-look) a.opacity-80:hover {
   }
 }
 
-
 /* Header: switch to hamburger below 1024px (prebuilt CSS has no lg: variants) */
 
 /* keep header row above the menu scrim */
 
-
 /* Header: クラス dropdown */
 
-
 /* ── Unified CTA buttons (same style as the home page, all /ja pages) ──── */
-body.yoga-site :is(main .main-look, main.main-look) a.inline-flex:not(.ja-btn-ghost) {
-  background-color: #8A6043 !important;
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  a.inline-flex:not(.ja-btn-ghost) {
+  background-color: #8a6043 !important;
   background-image: none !important;
   border: 0 !important;
   color: #ffffff !important;
@@ -291,41 +320,54 @@ body.yoga-site :is(main .main-look, main.main-look) a.inline-flex:not(.ja-btn-gh
   font-size: 14px !important;
   letter-spacing: 0.14em !important;
   text-transform: none !important;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
-body.yoga-site :is(main .main-look, main.main-look) a.inline-flex:not(.ja-btn-ghost):hover {
-  background-color: #6F4B33 !important;
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  a.inline-flex:not(.ja-btn-ghost):hover {
+  background-color: #6f4b33 !important;
   color: #ffffff !important;
 }
 body.yoga-site :is(main .main-look, main.main-look) a.ja-btn-ghost {
   background: transparent !important;
-  border: 1px solid #8A6043 !important;
-  color: #8A6043 !important;
+  border: 1px solid #8a6043 !important;
+  color: #8a6043 !important;
   border-radius: 2px;
   font-size: 14px !important;
   letter-spacing: 0.14em !important;
   text-transform: none !important;
-  transition: background-color .3s ease, color .3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 body.yoga-site :is(main .main-look, main.main-look) a.ja-btn-ghost:hover {
-  background: #8A6043 !important;
+  background: #8a6043 !important;
   color: #ffffff !important;
 }
 /* On a dark band the primary CTA inverts (as on the home page's olive band) */
-body.yoga-site :is(main .main-look, main.main-look) .brand-dark a.inline-flex:not(.ja-btn-ghost) {
-  background-color: #F5EFDF !important;
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .brand-dark
+  a.inline-flex:not(.ja-btn-ghost) {
+  background-color: #f5efdf !important;
   color: #3e3227 !important;
 }
-body.yoga-site :is(main .main-look, main.main-look) .brand-dark a.inline-flex:not(.ja-btn-ghost):hover {
-  background-color: #E8D9C2 !important;
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .brand-dark
+  a.inline-flex:not(.ja-btn-ghost):hover {
+  background-color: #e8d9c2 !important;
   color: #3e3227 !important;
 }
 body.yoga-site :is(main .main-look, main.main-look) .brand-dark a.ja-btn-ghost {
   border-color: rgba(245, 239, 223, 0.7) !important;
-  color: #F5EFDF !important;
+  color: #f5efdf !important;
 }
-body.yoga-site :is(main .main-look, main.main-look) .brand-dark a.ja-btn-ghost:hover {
-  background: #F5EFDF !important;
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .brand-dark
+  a.ja-btn-ghost:hover {
+  background: #f5efdf !important;
   color: #3e3227 !important;
 }
 
@@ -339,13 +381,21 @@ body.yoga-site :is(main .main-look, main.main-look) .text-\[13px\] {
 body.yoga-site .main-look .ja-card {
   background: #ffffff;
   border: 1px solid rgba(138, 96, 67, 0.32);
-  border-top: 3px solid #7E8764;
+  border-top: 3px solid #7e8764;
   border-radius: 6px;
-  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.3s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.3s ease;
 }
-body.yoga-site .main-look .ja-card:nth-child(4n + 2) { border-top-color: #b17b55; }
-body.yoga-site .main-look .ja-card:nth-child(4n + 3) { border-top-color: #C98B67; }
-body.yoga-site .main-look .ja-card:nth-child(4n + 4) { border-top-color: #596044; }
+body.yoga-site .main-look .ja-card:nth-child(4n + 2) {
+  border-top-color: #b17b55;
+}
+body.yoga-site .main-look .ja-card:nth-child(4n + 3) {
+  border-top-color: #c98b67;
+}
+body.yoga-site .main-look .ja-card:nth-child(4n + 4) {
+  border-top-color: #596044;
+}
 body.yoga-site .main-look .ja-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 26px 44px -26px rgba(62, 50, 39, 0.42);
@@ -360,23 +410,40 @@ body.yoga-site .main-look .ja-icon {
   flex: none;
   transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
-body.yoga-site .main-look .ja-card:hover .ja-icon { transform: scale(1.08) rotate(-4deg); }
-body.yoga-site .main-look .ja-portrait { width: 100%; max-width: 230px; margin-inline: auto; }
-@media (min-width: 768px) { body.yoga-site .main-look .ja-portrait { max-width: none; } }
-body.yoga-site .main-look .sc-rise { opacity: 1; transform: none; }
+body.yoga-site .main-look .ja-card:hover .ja-icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+body.yoga-site .main-look .ja-portrait {
+  width: 100%;
+  max-width: 230px;
+  margin-inline: auto;
+}
+@media (min-width: 768px) {
+  body.yoga-site .main-look .ja-portrait {
+    max-width: none;
+  }
+}
+body.yoga-site .main-look .sc-rise {
+  opacity: 1;
+  transform: none;
+}
 @media (prefers-reduced-motion: reduce) {
-  body.yoga-site .main-look .ja-card:hover { transform: none; }
+  body.yoga-site .main-look .ja-card:hover {
+    transform: none;
+  }
 }
 /* body copy floors — no type below 15px on the redesigned pages */
-body.yoga-site :is(main .main-look, main.main-look) .text-xs { font-size: 15px !important; }
+body.yoga-site :is(main .main-look, main.main-look) .text-xs {
+  font-size: 15px !important;
+}
 body.yoga-site :is(main .main-look, main.main-look) p.text-sm,
 body.yoga-site :is(main .main-look, main.main-look) li.text-sm,
 body.yoga-site :is(main .main-look, main.main-look) span.text-sm,
-body.yoga-site :is(main .main-look, main.main-look) dd.text-sm { font-size: 15px !important; }
-
+body.yoga-site :is(main .main-look, main.main-look) dd.text-sm {
+  font-size: 15px !important;
+}
 
 /* Header: keep the primary nav on a single line (desktop) */
-
 
 /* ── About hero: portrait stays beside the intro text ─────────────────── */
 body.yoga-site .main-look .ja-hero-split {
@@ -386,20 +453,31 @@ body.yoga-site .main-look .ja-hero-split {
   gap: clamp(20px, 4vw, 56px);
 }
 @media (max-width: 560px) {
-  body.yoga-site .main-look .ja-hero-split { grid-template-columns: 1fr; gap: 34px; }
+  body.yoga-site .main-look .ja-hero-split {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
 }
 
 /* ── Organic photo frames (forest-walk story) ─────────────────────────── */
-body.yoga-site .main-look .ja-figure { position: relative; margin: 4px 0 22px; }
+body.yoga-site .main-look .ja-figure {
+  position: relative;
+  margin: 4px 0 22px;
+}
 body.yoga-site .main-look .ja-figure .ja-figure-inner {
   position: relative;
   z-index: 2;
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  background: #E8D9C2;
-  box-shadow: 0 30px 54px -30px rgba(62, 50, 39, .45);
+  background: #e8d9c2;
+  box-shadow: 0 30px 54px -30px rgba(62, 50, 39, 0.45);
 }
-body.yoga-site .main-look .ja-figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
+body.yoga-site .main-look .ja-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 body.yoga-site .main-look .ja-figure figcaption {
   position: relative;
   z-index: 3;
@@ -415,8 +493,8 @@ body.yoga-site .main-look .ja-figure::before {
   position: absolute;
   z-index: 1;
   inset: 8% -13% -9% 12%;
-  background: #CBD0B8;
-  opacity: .85;
+  background: #cbd0b8;
+  opacity: 0.85;
 }
 /* thin hand-drawn-looking outline, offset the other way */
 body.yoga-site .main-look .ja-figure::after {
@@ -424,14 +502,27 @@ body.yoga-site .main-look .ja-figure::after {
   position: absolute;
   z-index: 0;
   inset: -8% 10% 9% -12%;
-  border: 1px solid rgba(62, 50, 39, .5);
+  border: 1px solid rgba(62, 50, 39, 0.5);
 }
-body.yoga-site .main-look .ja-figure[data-shape="a"] .ja-figure-inner { border-radius: 62% 38% 46% 54% / 50% 58% 42% 50%; }
-body.yoga-site .main-look .ja-figure[data-shape="a"]::before { border-radius: 44% 56% 62% 38% / 58% 44% 56% 42%; }
-body.yoga-site .main-look .ja-figure[data-shape="a"]::after { border-radius: 58% 42% 38% 62% / 44% 60% 40% 56%; }
-body.yoga-site .main-look .ja-figure[data-shape="b"] .ja-figure-inner { border-radius: 42% 58% 60% 40% / 56% 44% 56% 44%; }
-body.yoga-site .main-look .ja-figure[data-shape="b"]::before { border-radius: 60% 40% 42% 58% / 44% 58% 42% 56%; background: #F0CFAE; }
-body.yoga-site .main-look .ja-figure[data-shape="b"]::after { border-radius: 46% 54% 58% 42% / 60% 42% 58% 40%; }
+body.yoga-site .main-look .ja-figure[data-shape="a"] .ja-figure-inner {
+  border-radius: 62% 38% 46% 54% / 50% 58% 42% 50%;
+}
+body.yoga-site .main-look .ja-figure[data-shape="a"]::before {
+  border-radius: 44% 56% 62% 38% / 58% 44% 56% 42%;
+}
+body.yoga-site .main-look .ja-figure[data-shape="a"]::after {
+  border-radius: 58% 42% 38% 62% / 44% 60% 40% 56%;
+}
+body.yoga-site .main-look .ja-figure[data-shape="b"] .ja-figure-inner {
+  border-radius: 42% 58% 60% 40% / 56% 44% 56% 44%;
+}
+body.yoga-site .main-look .ja-figure[data-shape="b"]::before {
+  border-radius: 60% 40% 42% 58% / 44% 58% 42% 56%;
+  background: #f0cfae;
+}
+body.yoga-site .main-look .ja-figure[data-shape="b"]::after {
+  border-radius: 46% 54% 58% 42% / 60% 42% 58% 40%;
+}
 
 body.yoga-site .main-look .ja-fig-left,
 body.yoga-site .main-look .ja-fig-right {
@@ -448,12 +539,18 @@ body.yoga-site .main-look .ja-fig-right {
   margin-left: clamp(22px, 3.6vw, 46px);
   shape-outside: ellipse(56% 52% at 56% 50%);
 }
-body.yoga-site .main-look .ja-fig-right figcaption { text-align: right; }
-body.yoga-site .main-look .ja-story { overflow: visible; }
-body.yoga-site .main-look .ja-story > p { text-wrap: pretty; }
+body.yoga-site .main-look .ja-fig-right figcaption {
+  text-align: right;
+}
+body.yoga-site .main-look .ja-story {
+  overflow: visible;
+}
+body.yoga-site .main-look .ja-story > p {
+  text-wrap: pretty;
+}
 @media (max-width: 720px) {
   body.yoga-site .main-look .ja-fig-left,
-body.yoga-site .main-look .ja-fig-right {
+  body.yoga-site .main-look .ja-fig-right {
     float: none;
     width: min(100%, 320px);
     margin: 30px auto 34px;
@@ -461,70 +558,185 @@ body.yoga-site .main-look .ja-fig-right {
   }
 }
 
-
 /* ── Light-only palette: bands replace former dark sections ───────────── */
 
-body.yoga-site .main-look .ja-band-sand { background: #E8D9C2 !important; }
-body.yoga-site .main-look .ja-band-foot { background: #E8D9C2 !important; border-top: 1px solid rgba(138,96,67,.22); }
-body.yoga-site .main-look .ja-band-card { background: #FBF8EE !important; border: 1px solid rgba(138,96,67,.25); border-radius: 6px; }
+body.yoga-site .main-look .ja-band-sand {
+  background: #e8d9c2 !important;
+}
+body.yoga-site .main-look .ja-band-foot {
+  background: #e8d9c2 !important;
+  border-top: 1px solid rgba(138, 96, 67, 0.22);
+}
+body.yoga-site .main-look .ja-band-card {
+  background: #fbf8ee !important;
+  border: 1px solid rgba(138, 96, 67, 0.25);
+  border-radius: 6px;
+}
 body.yoga-site .main-look .ja-band h1,
 body.yoga-site .main-look .ja-band h2,
 body.yoga-site .main-look .ja-band h3,
-body.yoga-site .main-look .ja-band h4 { color: #3A3228 !important; }
+body.yoga-site .main-look .ja-band h4 {
+  color: #3a3228 !important;
+}
 body.yoga-site .main-look .ja-band p,
 body.yoga-site .main-look .ja-band li,
 body.yoga-site .main-look .ja-band blockquote,
 body.yoga-site .main-look .ja-band dd,
-body.yoga-site .main-look .ja-band dt { color: #4F4538; }
+body.yoga-site .main-look .ja-band dt {
+  color: #4f4538;
+}
 body.yoga-site .main-look .ja-band p.ja-eyebrow,
-body.yoga-site .main-look .ja-band p.ja-sublabel { color: #8A6043 !important; }
-body.yoga-site .main-look .ja-band p.ja-eyebrow::after { background: rgba(138,96,67,.35); }
-body.yoga-site .main-look .ja-band a:not(.inline-flex):not([style*="background"]) { color: #3A3228; }
-body.yoga-site .main-look .ja-band-foot a { color: #4F4538; }
-body.yoga-site .main-look .ja-band-foot .font-display { color: #3A3228; }
-body.yoga-site :is(main .main-look, main.main-look) .ja-band a.inline-flex:not(.ja-btn-ghost) { background-color: #8A6043 !important; color: #fff !important; }
-body.yoga-site :is(main .main-look, main.main-look) .ja-band a.inline-flex:not(.ja-btn-ghost):hover { background-color: #6F4B33 !important; }
-body.yoga-site :is(main .main-look, main.main-look) .ja-band a.ja-btn-ghost { border-color: #8A6043 !important; color: #8A6043 !important; }
-body.yoga-site :is(main .main-look, main.main-look) .ja-band a.ja-btn-ghost:hover { background: #8A6043 !important; color: #fff !important; }
+body.yoga-site .main-look .ja-band p.ja-sublabel {
+  color: #8a6043 !important;
+}
+body.yoga-site .main-look .ja-band p.ja-eyebrow::after {
+  background: rgba(138, 96, 67, 0.35);
+}
+body.yoga-site
+  .main-look
+  .ja-band
+  a:not(.inline-flex):not([style*="background"]) {
+  color: #3a3228;
+}
+body.yoga-site .main-look .ja-band-foot a {
+  color: #4f4538;
+}
+body.yoga-site .main-look .ja-band-foot .font-display {
+  color: #3a3228;
+}
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .ja-band
+  a.inline-flex:not(.ja-btn-ghost) {
+  background-color: #8a6043 !important;
+  color: #fff !important;
+}
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .ja-band
+  a.inline-flex:not(.ja-btn-ghost):hover {
+  background-color: #6f4b33 !important;
+}
+body.yoga-site :is(main .main-look, main.main-look) .ja-band a.ja-btn-ghost {
+  border-color: #8a6043 !important;
+  color: #8a6043 !important;
+}
+body.yoga-site
+  :is(main .main-look, main.main-look)
+  .ja-band
+  a.ja-btn-ghost:hover {
+  background: #8a6043 !important;
+  color: #fff !important;
+}
 body.yoga-site .main-look .ja-band .opacity-60,
 body.yoga-site .main-look .ja-band .opacity-70,
-body.yoga-site .main-look .ja-band .opacity-80 { opacity: 1 !important; }
-body.yoga-site .main-look .ja-band .opacity-70 { color: #6B5F4E; }
+body.yoga-site .main-look .ja-band .opacity-80 {
+  opacity: 1 !important;
+}
+body.yoga-site .main-look .ja-band .opacity-70 {
+  color: #6b5f4e;
+}
 /* hero photo scrims: ivory wash instead of dark */
 
 /* bold all text */
 body.yoga-site .main-look *,
-body.yoga-site .main-look{font-weight:700 !important}
+body.yoga-site .main-look {
+  font-weight: 700 !important;
+}
 
 /* ---- main-branch tokens, scoped so the rest of the page keeps the current ones ---- */
 .main-look {
-  --color-brand-espresso: #3A3228; --color-brand-moss: #8A6043; --color-brand-tan: #D9C4A3; --color-brand-cream: #E8D9C2; --color-brand-clay: #C98B67;
-  --ja-page: #F5EFDF; --ja-page-2: #E8D9C2;
-  --ja-sage: #DDE1CE; --ja-sage-mid: #AEB39A; --ja-sage-deep: #7E8764; --ja-olive: #596044;
-  --ja-ink: #3e3227; --ja-ink-70: #6b5744;
+  --color-brand-espresso: #3a3228;
+  --color-brand-moss: #8a6043;
+  --color-brand-tan: #d9c4a3;
+  --color-brand-cream: #e8d9c2;
+  --color-brand-clay: #c98b67;
+  --ja-page: #f5efdf;
+  --ja-page-2: #e8d9c2;
+  --ja-sage: #dde1ce;
+  --ja-sage-mid: #aeb39a;
+  --ja-sage-deep: #7e8764;
+  --ja-olive: #596044;
+  --ja-ink: #3e3227;
+  --ja-ink-70: #6b5744;
 }
-.main-look > section { position: relative; }
+.main-look > section {
+  position: relative;
+}
 
 /* wavy section edges from the main page */
-body.yoga-site .main-look .ja-wave-t::before, body.yoga-site .main-look .ja-wave-b::after { content: ""; position: absolute; left: 0; right: 0; height: clamp(40px,5vw,72px); pointer-events: none; z-index: 1; background-repeat: no-repeat; background-size: 100% 100%; display: block !important; }
-body.yoga-site .main-look .ja-wave-t::before { top: -1px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V28C1230 78 1000 6 720 36S250 80 0 30Z' fill='%23F5EFDF'/%3E%3C/svg%3E"); }
-body.yoga-site .main-look .ja-wave-b::after { bottom: -1px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80' preserveAspectRatio='none'%3E%3Cpath d='M0 80H1440V50C1200 4 960 74 700 44S220 0 0 46Z' fill='%23F5EFDF'/%3E%3C/svg%3E"); }
-body.yoga-site .main-look #hatha { padding-top: 72px !important; padding-bottom: 72px !important; }
+body.yoga-site .main-look .ja-wave-t::before,
+body.yoga-site .main-look .ja-wave-b::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(40px, 5vw, 72px);
+  pointer-events: none;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: block !important;
+}
+body.yoga-site .main-look .ja-wave-t::before {
+  top: -1px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V28C1230 78 1000 6 720 36S250 80 0 30Z' fill='%23F5EFDF'/%3E%3C/svg%3E");
+}
+body.yoga-site .main-look .ja-wave-b::after {
+  bottom: -1px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80' preserveAspectRatio='none'%3E%3Cpath d='M0 80H1440V50C1200 4 960 74 700 44S220 0 0 46Z' fill='%23F5EFDF'/%3E%3C/svg%3E");
+}
+body.yoga-site .main-look #hatha {
+  padding-top: 72px !important;
+  padding-bottom: 72px !important;
+}
 /* the main page painted the area under the wave cream */
-
 
 /* ---- undo the shared ja-sunlit overrides inside the main-look block ---- */
 body.ja-sunlit.yoga-site .main-look h1,
 body.ja-sunlit.yoga-site .main-look h2,
-body.ja-sunlit.yoga-site .main-look h3 { font-family: "Shippori Mincho", "Newsreader", ui-serif, serif !important; letter-spacing: .01em !important; color: #3A3228 !important; text-wrap: balance; }
-body.ja-sunlit.yoga-site .main-look [data-screen-label="ヒーロー"] h1 { font-size: clamp(38px, 6vw, 66px) !important; line-height: 1.18 !important; color: #33301F !important; }
-body.ja-sunlit.yoga-site .main-look #hatha h2 { font-size: clamp(30px, 4vw, 42px) !important; line-height: 1.35 !important; }
-body.ja-sunlit.yoga-site .main-look .font-mono { font-family: "IBM Plex Mono", ui-monospace, monospace !important; text-transform: uppercase !important; }
-body.ja-sunlit.yoga-site .main-look [data-screen-label="ヒーロー"] p.font-mono { letter-spacing: .34em !important; font-size: 12px !important; line-height: 1.5 !important; }
-body.ja-sunlit.yoga-site .main-look [data-screen-label="開催案内バナー"] p.font-mono { letter-spacing: .3em !important; font-size: 12px !important; line-height: 1.5 !important; }
-body.ja-sunlit.yoga-site .main-look p, body.ja-sunlit.yoga-site .main-look li { line-height: inherit; }
+body.ja-sunlit.yoga-site .main-look h3 {
+  font-family: "Shippori Mincho", "Newsreader", ui-serif, serif !important;
+  letter-spacing: 0.01em !important;
+  color: #3a3228 !important;
+  text-wrap: balance;
+}
+body.ja-sunlit.yoga-site .main-look [data-screen-label="ヒーロー"] h1 {
+  font-size: clamp(38px, 6vw, 66px) !important;
+  line-height: 1.18 !important;
+  color: #33301f !important;
+}
+body.ja-sunlit.yoga-site .main-look #hatha h2 {
+  font-size: clamp(30px, 4vw, 42px) !important;
+  line-height: 1.35 !important;
+}
+body.ja-sunlit.yoga-site .main-look .font-mono {
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+  text-transform: uppercase !important;
+}
+body.ja-sunlit.yoga-site .main-look [data-screen-label="ヒーロー"] p.font-mono {
+  letter-spacing: 0.34em !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+body.ja-sunlit.yoga-site
+  .main-look
+  [data-screen-label="開催案内バナー"]
+  p.font-mono {
+  letter-spacing: 0.3em !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+body.ja-sunlit.yoga-site .main-look p,
+body.ja-sunlit.yoga-site .main-look li {
+  line-height: inherit;
+}
 /* sections keep their own spacing from the markup */
-body.yoga-site .main-look #hatha p { line-height: 2.05; }
+body.yoga-site .main-look #hatha p {
+  line-height: 2.05;
+}
 
-/* banner green = the circle behind はじめに (sage #AEB39A at 55% over the page cream) */
-body.yoga-site .main-look .ja-band-sage { background: #CECEB9 !important; }
+/* banner green = the circle behind はじめに (sage #aeb39A at 55% over the page cream) */
+body.yoga-site .main-look .ja-band-sage {
+  background: #ceceb9 !important;
+}

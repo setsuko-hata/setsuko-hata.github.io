@@ -11,6 +11,7 @@ import '../styles/yoga/home.css';
 import '../styles/yoga/main-look.css';
 import '../styles/yoga/sunlit.css';
 import '../styles/yoga/shell.css';
+import '../styles/yoga/light.css';
 
 interface Props {
   title: string;
@@ -31,6 +32,7 @@ interface Props {
   alternateHref?: string;
   /** Preload the responsive hero image (home pages). */
   preloadHero?: boolean;
+  heroImage?: string;
   noindex?: boolean;
 }
 
@@ -47,6 +49,7 @@ const {
   themeColor = '#F5EDDF',
   alternateHref,
   preloadHero = false,
+  heroImage = 'hero',
   noindex = false,
 } = Astro.props;
 
@@ -88,8 +91,8 @@ const enUrl = locale === 'en' ? canonical : alternate;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,700;6..72,800&family=Inter+Tight:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;700&family=Shippori+Mincho:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
     />
-    {preloadHero && <link rel="preload" as="image" href="/hatha-yoga/assets/hero.webp" type="image/webp" media="(min-width: 901px)" />}
-    {preloadHero && <link rel="preload" as="image" href="/hatha-yoga/assets/hero-900.webp" type="image/webp" media="(max-width: 900px)" />}
+    {preloadHero && <link rel="preload" as="image" href={`/hatha-yoga/assets/${heroImage}.webp`} type="image/webp" media="(min-width: 901px)" />}
+    {preloadHero && <link rel="preload" as="image" href={`/hatha-yoga/assets/${heroImage}-900.webp`} type="image/webp" media="(max-width: 900px)" />}
     <slot name="head" />
   </head>
   <body class:list={['yoga-site', 'ja-sunlit', bodyClass]}>
