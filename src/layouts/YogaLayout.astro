@@ -12,6 +12,7 @@ import '../styles/yoga/main-look.css';
 import '../styles/yoga/sunlit.css';
 import '../styles/yoga/shell.css';
 import '../styles/yoga/light.css';
+import '../styles/yoga/ja-sunny.css';
 
 interface Props {
   title: string;
@@ -103,6 +104,7 @@ const enUrl = locale === 'en' ? canonical : alternate;
       <main class:list={['flex-1', { 'main-look': mainLook }]} id="main-content" tabindex="-1">
         <slot />
       </main>
+      {locale === 'ja' && <div class="jd-foot" aria-hidden="true"></div>}
       <Footer locale={locale} />
     </div>
     <script>

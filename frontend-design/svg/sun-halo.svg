@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" role="img" aria-hidden="true">
+  <!-- Soft sun. Four separate bands, none touching: core (r34), ring (r52), dotted ring (r70), rays (r88 to r102/112). -->
+  <circle cx="130" cy="130" r="34" fill="#B99755"/>
+  <circle cx="130" cy="130" r="52" fill="none" stroke="#B99755" stroke-width="1.6"/>
+  <circle cx="130" cy="130" r="70" fill="none" stroke="#B99755" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="0.1 10.9"/>
+  <path d="M130.0 42.0L130.0 18.0 M174.0 53.8L181.0 41.7 M206.2 86.0L218.3 79.0 M218.0 130.0L242.0 130.0 M206.2 174.0L218.3 181.0 M174.0 206.2L181.0 218.3 M130.0 218.0L130.0 242.0 M86.0 206.2L79.0 218.3 M53.8 174.0L41.7 181.0 M42.0 130.0L18.0 130.0 M53.8 86.0L41.7 79.0 M86.0 53.8L79.0 41.7" fill="none" stroke="#B99755" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

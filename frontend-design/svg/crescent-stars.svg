@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-hidden="true">
+  <!-- Crescent moon with three four-point stars (concave Bézier sides). -->
+  <path fill="#596044" d="M126 22C72 26 32 72 38 124C44 176 96 206 150 192C108 184 78 150 80 108C82 70 100 40 126 22Z"/>
+  <g fill="#B99755">
+    <path transform="translate(168 62)" d="M0-16C2-5 5-2 16 0 5 2 2 5 0 16-2 5-5 2-16 0-5-2-2-5 0-16Z"/>
+    <path transform="translate(188 118) scale(.6)" d="M0-16C2-5 5-2 16 0 5 2 2 5 0 16-2 5-5 2-16 0-5-2-2-5 0-16Z"/>
+    <path transform="translate(150 150) scale(.45)" d="M0-16C2-5 5-2 16 0 5 2 2 5 0 16-2 5-5 2-16 0-5-2-2-5 0-16Z"/>
+  </g>
+</svg>

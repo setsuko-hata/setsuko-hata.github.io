@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 240" preserveAspectRatio="none" role="img" aria-hidden="true">
+  <!-- Large corner swells (left and right), flat at the bottom edge. -->
+  <path fill="#7E8764" d="M0 30C90 52 200 126 320 188S520 240 610 240H0Z"/>
+  <path fill="#7E8764" d="M1440 64C1332 86 1224 148 1104 204S908 240 836 240H1440Z"/>
+</svg>
