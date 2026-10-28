@@ -1,0 +1,19 @@
+---
+/** 料金 as its own section under a city's classes: 単発参加, plus 月額会員 for 大阪. */
+import { IN_PERSON_RATES } from '../../../data/classes';
+import OsakaMembership from './OsakaMembership.astro';
+
+interface Props { id: string; eyebrow: string; membership?: boolean; tone?: string; }
+const { id, eyebrow, membership = false, tone = '' } = Astro.props;
+---
+<section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
+  <div class="cl-wrap">
+    <div class="cl-head">
+      <p class="cl-eyebrow">{eyebrow}</p>
+      <h2>料金</h2>
+      <span class="cl-head__rule" aria-hidden="true"></span>
+    </div>
+    <p class="cl-lead cl-singleprice">単発参加　　<span class="rate-amount">{IN_PERSON_RATES[0].price}</span>円</p>
+    {membership && <OsakaMembership id="osaka-membership" />}
+  </div>
+</section>

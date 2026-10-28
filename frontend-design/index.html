@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setsuko Hata Yoga | サドグル公認ハタヨガ講師</title>
+<meta name="description" content="本物のヨガでなりたい自分へ。インドで何千年も受け継がれてきたハタヨガの科学で身体と心を思いのままに。サドグル公認ハタヨガ講師・秦節子。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Noto+Sans+JP:wght@400;500&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F7F0E3; --paper:#FBF7EC;
+  --sage:#536447; --sage-deep:#3F4E36;
+  --gold:#D9B94F; --gold-deep:#8A6A1F;
+  --terra:#C78F78; --terra-soft:#F0DCCF;
+  --leaf:#A9B49A; --leaf-pale:#E4E9D8;
+  --ink:#302F25; --muted:#5E5A4C;
+  --mincho:'Shippori Mincho','Noto Serif JP',serif;
+  --sans:'Noto Sans JP','Hiragino Sans',sans-serif;
+  --en:'Cormorant Garamond',Lora,serif;
+  --gutter:clamp(20px,4vw,40px); --max:1120px; --r:20px;
+  --ease:cubic-bezier(.22,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:2;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sage);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+h1,h2,h3{font-family:var(--mincho);font-weight:500;line-height:1.5;letter-spacing:.04em}
+h2{font-size:clamp(25px,3.1vw,34px)}
+.en{font-family:var(--en);font-style:italic;color:var(--gold-deep);font-size:clamp(20px,2vw,24px);line-height:1.3}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px 14px;z-index:99}
+.ic{width:1em;height:1em;fill:none;stroke:currentColor;flex:none}
+
+/* ---------- decoration (existing assets) ---------- */
+.mask{position:absolute;pointer-events:none;background-color:var(--c,var(--sage));opacity:var(--o,.14);-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
+.mask--sprig{--src:url(svg/sprig.svg);aspect-ratio:160/260;width:clamp(70px,9vw,120px)}
+.mask--sun{--src:url(svg/sun-halo.svg);--c:var(--gold);--o:.5;aspect-ratio:1;width:clamp(120px,16vw,210px)}
+.mask--moon{--src:url(svg/crescent-stars.svg);aspect-ratio:1;width:clamp(100px,12vw,160px)}
+.mask--spray{--src:url(svg/branch-spray.svg);aspect-ratio:480/220;width:clamp(180px,26vw,360px)}
+.wc{position:absolute;pointer-events:none;z-index:0;bottom:0}
+.wc--l{left:-4vw}.wc--r{right:-4vw}
+.wc img{width:clamp(220px,26vw,380px)}
+.wc--r img{-webkit-mask-image:linear-gradient(to right,transparent,#000 45%);mask-image:linear-gradient(to right,transparent,#000 45%)}
+.wc--l img{-webkit-mask-image:linear-gradient(to left,transparent,#000 45%);mask-image:linear-gradient(to left,transparent,#000 45%)}
+.leafc{position:absolute;pointer-events:none;width:clamp(120px,15vw,210px)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 28px;border-radius:999px;font-size:15px;line-height:1.4;text-decoration:none;letter-spacing:.05em;border:1px solid transparent;transition:background .25s,color .25s,border-color .25s,transform .25s var(--ease)}
+.btn .ic{width:18px;height:18px;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--ease)}
+.btn:hover .ic{transform:translateX(3px)}
+.btn--sage{background:var(--sage);color:#fff}
+.btn--sage:hover{background:var(--sage-deep)}
+.btn--gold{background:var(--gold);color:var(--ink);font-weight:500}
+.btn--gold:hover{background:#E3C867}
+.btn--line{border-color:var(--sage);color:var(--sage);background:rgba(255,255,255,.4)}
+.btn--line:hover{background:var(--sage);color:#fff}
+
+/* ---------- header ---------- */
+.hd{position:sticky;top:0;z-index:30;background:rgba(247,240,227,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(83,100,71,.15)}
+.hd__in{max-width:1240px;margin:0 auto;padding:10px var(--gutter);display:flex;align-items:center;gap:22px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--en);font-weight:500;font-size:19px;letter-spacing:.2em;line-height:1.15;color:var(--sage)}
+.logo .ic{width:34px;height:34px;stroke-width:1.1}
+.nav{margin-left:auto;display:flex;gap:clamp(12px,1.5vw,22px);font-size:13.5px;line-height:1.4}
+.nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;transition:border-color .25s,color .25s}
+.nav a:hover,.nav a[aria-current]{border-color:var(--gold);color:var(--sage)}
+.hd .btn{padding:9px 20px;font-size:13.5px}
+.menu{display:none;margin-left:auto;background:none;border:1px solid var(--sage);border-radius:999px;padding:7px 16px;font:inherit;font-size:13px;color:var(--sage);cursor:pointer}
+@media(max-width:1000px){
+  .nav,.hd .btn{display:none}.menu{display:block}
+  .hd.open .nav{display:flex;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--cream);padding:6px var(--gutter) 14px;border-bottom:1px solid rgba(83,100,71,.2)}
+  .hd.open .nav a{padding:10px 0;border-bottom:1px solid rgba(83,100,71,.15)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden}
+.hero__img{width:100%;height:clamp(460px,52vw,680px);object-fit:cover;object-position:50% 72%}
+.hero__panel{position:absolute;right:max(var(--gutter),calc((100vw - var(--max))/2 + var(--gutter)));top:50%;transform:translateY(-50%);width:min(430px,42vw);padding:30px 34px 32px;background:rgba(247,240,227,.93);border-radius:var(--r);animation:rise 1.1s .1s var(--ease) both}
+.hero h1{font-size:clamp(27px,3vw,38px);line-height:1.5;letter-spacing:.06em}
+.hero__lead{margin-top:12px;font-size:15.5px;line-height:1.95}
+.hero__sub{margin-top:4px;font-family:var(--mincho);color:var(--sage);font-size:15px;letter-spacing:.1em}
+.hero__act{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+.hero .leafc{left:0;top:0;transform:none}
+@keyframes rise{from{opacity:0;transform:translateY(calc(-50% + 14px))}to{opacity:1;transform:translateY(-50%)}}
+@media(max-width:900px){
+  .hero__img{height:clamp(300px,64vw,440px)}
+  .hero__panel{position:relative;right:auto;top:auto;transform:none;width:auto;margin:-36px var(--gutter) 0;padding:24px 22px 26px;animation-name:rise-m}
+  @keyframes rise-m{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+
+/* ---------- venues ---------- */
+.venues{position:relative;padding:34px 0 30px;text-align:center;overflow:hidden}
+.venues__t{font-family:var(--mincho);font-size:clamp(18px,2.2vw,24px);line-height:1.7}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0 4px}
+.chips span{padding:4px 16px;font-size:14px;line-height:1.8;border:1px solid rgba(83,100,71,.35);background:rgba(255,255,255,.55);border-radius:999px}
+.chips span.on{background:var(--gold);border-color:var(--gold);font-weight:500}
+.venues__n{font-size:15px}
+
+/* ---------- generic sections ---------- */
+section{position:relative;overflow-x:clip}
+.sec{padding:clamp(40px,5vw,60px) 0}
+.pale{background:var(--leaf-pale)}
+
+/* intro */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:start}
+.intro h2{font-size:clamp(28px,3.6vw,38px)}
+.intro__big{font-family:var(--mincho);font-size:clamp(20px,2.2vw,25px);line-height:1.6;margin-top:10px}
+.intro p+p{margin-top:0}
+.intro__r{font-family:var(--mincho);font-size:clamp(18px,2vw,22px);line-height:1.8;padding-left:22px;border-left:2px solid var(--gold)}
+.intro__r p+p{font-family:var(--sans);font-size:15px;line-height:2;margin-top:12px}
+@media(max-width:820px){.intro{grid-template-columns:1fr}}
+
+/* quote */
+.quote{text-align:center}
+.quote .wrap{max-width:820px}
+.quote blockquote{font-family:var(--mincho);font-size:clamp(20px,2.4vw,27px);line-height:1.85}
+.quote .ic.div{width:150px;height:19px;color:var(--gold-deep);margin:12px auto 8px;stroke-width:1}
+.quote__v{color:var(--sage);line-height:2.1}
+.quote__t{margin-top:6px;font-family:var(--mincho);font-size:19px}
+.quote__t b{font-weight:600;background:linear-gradient(transparent 62%,rgba(217,185,79,.55) 62%)}
+
+/* about */
+.about__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.about__img{position:relative}
+.about__img img{position:relative;width:100%;aspect-ratio:4/4.6;object-fit:cover;object-position:50% 20%;border-radius:var(--r)}
+.about__img .mask{right:-5%;top:-9%;z-index:0}
+.about__img .lotus{position:absolute;left:-6%;bottom:-8%;width:34%;opacity:.9;z-index:2;pointer-events:none}
+.about h2{font-size:clamp(30px,4vw,42px);letter-spacing:.12em}
+.role{font-family:var(--mincho);color:var(--sage);font-size:17px;margin-top:2px}
+.creds{list-style:none;margin:12px 0 18px}
+.creds li{font-size:15px;line-height:1.85;padding:6px 0;border-bottom:1px solid rgba(83,100,71,.2)}
+.creds b{font-family:var(--mincho);font-weight:500;font-size:24px;color:var(--sage);margin-right:3px}
+@media(max-width:820px){.about__grid{grid-template-columns:1fr}.about__img{max-width:360px}}
+
+/* steps */
+.steps-sec{padding-bottom:clamp(60px,7vw,90px)}
+.head-c{text-align:center}
+.lead{margin-top:4px}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:26px;position:relative}
+.steps::before{content:"";position:absolute;left:12%;right:12%;top:25px;border-top:1px dashed rgba(83,100,71,.45)}
+.steps li{position:relative;text-align:center;padding:0 6px;font-size:14.5px;line-height:1.85}
+.steps i{display:grid;place-items:center;width:52px;height:52px;margin:0 auto 8px;border-radius:50%;background:var(--cream);border:1.5px solid var(--sage);font:normal 500 22px var(--en);color:var(--sage)}
+.steps b{display:block;font-family:var(--mincho);font-weight:500;font-size:17px;line-height:1.5;margin-bottom:2px}
+.acts{margin-top:24px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+@media(max-width:820px){.steps{grid-template-columns:1fr 1fr}.steps::before{display:none}}
+@media(max-width:480px){.steps{grid-template-columns:1fr;text-align:left}.steps li{display:flex;gap:14px;text-align:left}.steps i{margin:0;flex:none}}
+
+/* classes */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+.card{display:flex;flex-direction:column;background:#fff;border-radius:var(--r);overflow:hidden;text-decoration:none;border:1px solid rgba(83,100,71,.15);transition:transform .3s var(--ease),border-color .3s}
+.card:hover{transform:translateY(-3px);border-color:var(--sage)}
+.card img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.card__b{display:flex;align-items:center;gap:14px;padding:16px 20px 18px}
+.card__b .ic{width:34px;height:34px;color:var(--sage);stroke-width:1.2}
+.card small{display:block;font-family:var(--en);font-style:italic;font-size:17px;color:var(--gold-deep);line-height:1.2}
+.card strong{font-family:var(--mincho);font-weight:500;font-size:16.5px;line-height:1.6}
+.card .go{margin-left:auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--sage);display:grid;place-items:center;color:var(--sage);transition:background .25s,color .25s}
+.card:hover .go{background:var(--sage);color:#fff}
+.card .go .ic{width:16px;height:16px;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.trial__p b{font-family:var(--mincho);font-weight:500;background:linear-gradient(transparent 62%,rgba(217,185,79,.55) 62%)}
+@media(max-width:820px){.cards{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
+
+/* benefits */
+.ben{background:linear-gradient(180deg,var(--cream),var(--paper))}
+.ben__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,60px);align-items:center}
+.ben__img{position:relative}
+.ben__img img{width:100%;aspect-ratio:4/4.6;object-fit:cover;object-position:50% 40%;border-radius:var(--r)}
+.ben__img .mask{left:-8%;bottom:-8%;z-index:2}
+.ben__list{display:grid;gap:14px;margin-top:14px}
+.eff{display:grid;grid-template-columns:60px 1fr;gap:6px 16px;align-items:start;padding-bottom:14px;border-bottom:1px solid rgba(83,100,71,.18)}
+.eff:last-child{border:0;padding:0}
+.ring{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--sage);display:grid;place-items:center;background:var(--leaf-pale);color:var(--sage)}
+.ring .ic{width:30px;height:30px;stroke-width:1.2}
+.eff h3{font-size:19px;align-self:center}
+.eff ul{grid-column:2;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 18px;font-size:14.5px;line-height:1.85}
+.eff li{padding-left:14px;position:relative}
+.eff li::before{content:"";position:absolute;left:0;top:.95em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.eff__h{display:flex;align-items:center;gap:16px;grid-column:1/-1}
+.eff__h~ul{grid-column:1/-1;margin-left:72px}
+@media(max-width:820px){.ben__grid{grid-template-columns:1fr}.ben__img{max-width:380px}.eff ul{grid-template-columns:1fr}.eff__h~ul{margin-left:0}}
+
+/* program */
+.prog{background:var(--paper);padding-bottom:clamp(70px,8vw,110px)}
+.grid3{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px;align-items:end;margin-top:24px}
+.grid3 img{width:100%;object-fit:cover;border-radius:var(--r)}
+.grid3 .a{aspect-ratio:4/5;object-position:30% 100%}
+.grid3 .b{aspect-ratio:4/5.4;object-position:50% 60%}
+.grid3 .c{aspect-ratio:4/5;object-position:80% 50%}
+.prog__t{max-width:760px;margin:24px auto 0;text-align:center}
+.prog h3{font-size:clamp(22px,2.6vw,28px)}
+.prog h3 span{font-size:.6em;color:var(--muted);margin-left:6px}
+.pchips{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:12px 0 14px}
+.pchips li{padding:3px 16px;font-size:14.5px;line-height:1.9;border:1px solid rgba(83,100,71,.35);border-radius:999px;background:var(--leaf-pale)}
+.where{margin-top:10px;color:var(--sage);font-family:var(--mincho);font-size:15px;letter-spacing:.08em}
+@media(max-width:700px){.grid3{grid-template-columns:1fr 1fr}.grid3 .b{grid-column:1/-1;order:-1;aspect-ratio:4/3}.grid3 .a,.grid3 .c{aspect-ratio:1}}
+
+/* footer */
+.ft{background:var(--sage);color:var(--cream);padding:34px 0 22px;position:relative;overflow:hidden}
+.ft::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--gold);opacity:.8}
+.ft__in{display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;align-items:flex-start}
+.ft .logo{color:var(--cream)}.ft .logo .ic{color:var(--gold)}
+.ft p{font-size:14px;line-height:1.9;margin-top:6px}
+.ft ul{list-style:none;display:grid;grid-template-columns:repeat(3,auto);gap:2px 32px;font-size:14px;line-height:1.9}
+.ft a{text-decoration:none}.ft a:hover{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.ft small{display:block;margin-top:18px;font-size:12.5px;opacity:.85}
+.ft .lotus{position:absolute;right:-30px;bottom:-40px;width:200px;opacity:.14;pointer-events:none;filter:brightness(2)}
+@media(max-width:700px){.ft ul{grid-template-columns:1fr 1fr}}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+
+<header class="hd" id="top">
+  <div class="hd__in">
+    <a class="logo" href="#top" aria-label="Setsuko Hata Yoga ホーム"><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="svg/satori-sprite.svg#sprout"/></svg><span>SETSUKO<br>HATA</span></a>
+    <nav class="nav" id="nav" aria-label="メインメニュー">
+      <a href="#top" aria-current="page">ホーム</a>
+      <a href="#about">秦 節子</a>
+      <a href="#benefits">ハタヨガ</a>
+      <a href="#trial">クラス</a>
+      <a href="#">法人・団体向け</a>
+      <a href="#">学校・教育機関向け</a>
+      <a href="#">お問い合わせ</a>
+    </nav>
+    <a class="btn btn--gold" href="https://docs.google.com/forms/d/1rKoOxcGQyew2a_d341eduWZ4QuhbK7R3YloP14Z6s8w/viewform" target="_blank" rel="noreferrer">体験レッスンを予約</a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="nav">メニュー</button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 1. HERO -->
+<section class="hero" aria-labelledby="h1">
+  <img class="hero__img" src="img/hero-stream.jpg" alt="木漏れ日の庭園で、小川のほとりに立ち空を見上げる秦節子" width="1184" height="896" fetchpriority="high">
+  <img class="leafc" src="deco/leaf-branch.webp" alt="" aria-hidden="true" width="1264" height="1264">
+  <div class="hero__panel">
+    <p class="en" lang="en">Live with awareness</p>
+    <h1 id="h1">本物のヨガで<br>なりたい自分へ</h1>
+    <p class="hero__lead">インドで何千年も受け継がれてきたハタヨガの科学で、身体と心を思いのままに。</p>
+    <p class="hero__sub">あなたの可能性を最大限に開花</p>
+    <div class="hero__act">
+      <a class="btn btn--gold" href="https://docs.google.com/forms/d/1rKoOxcGQyew2a_d341eduWZ4QuhbK7R3YloP14Z6s8w/viewform" target="_blank" rel="noreferrer">体験レッスンを予約する<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn--line" href="#benefits">ハタヨガとは</a>
+    </div>
+  </div>
+</section>
+
+<!-- venues -->
+<section class="venues" aria-label="開催案内">
+  <div class="wrap">
+    <p class="venues__t">大阪・東京での対面クラス ＆ 全国オンラインクラス開催中</p>
+    <div class="chips"><span>大阪 対面クラス</span><span>東京 対面クラス</span><span class="on">全国オンライン</span></div>
+    <p class="venues__n">初めての方も、全国どこからでもご参加いただけます。</p>
+  </div>
+  <div class="wc wc--r" aria-hidden="true"><img src="deco/wave-terracotta.webp" alt="" style="opacity:.55;width:clamp(160px,18vw,260px)"></div>
+  <div class="wc wc--l" aria-hidden="true"><img src="deco/wave-sage.webp" alt="" style="opacity:.7;width:clamp(160px,18vw,260px)"></div>
+</section>
+
+<!-- intro -->
+<section class="sec" id="hatha">
+  <span class="mask mask--sprig" style="right:1%;top:14px" aria-hidden="true"></span>
+  <div class="wrap intro">
+    <div>
+      <h2>本当はもっと<br>できるはずなのに。</h2>
+      <p style="margin-top:14px">疲れが抜けない。肩や首のこわばり。眠りの浅さ。ストレスや慢性的な不調。心と体のバランスの乱れ。</p>
+      <p class="intro__big">体も心も、思い通りにならない。</p>
+    </div>
+    <div class="intro__r">
+      <p>それは、あなたがまだ本来の生命の力を出しきれていないだけです。</p>
+      <p>ヨガというと、身体を柔らかくするための運動やストレッチを思い浮かべる方も多いかもしれません。しかしヨガの本当の意味は「ユニオン」。自分の生命が大宇宙と繋がること。</p>
+    </div>
+  </div>
+</section>
+
+<!-- quote: ハタヨガとは -->
+<section class="sec quote pale" aria-label="ハタヨガとは" style="padding:clamp(34px,4vw,48px) 0">
+  <div class="wrap">
+    <blockquote>ヨガは生命を心身・エネルギーのレベルから変革し、私たちの生命の可能性を開いていく科学です。</blockquote>
+    <svg class="ic div" viewBox="0 0 160 20" aria-hidden="true"><use href="svg/satori-sprite.svg#divider"/></svg>
+    <p class="quote__v">エネルギーに満ちた、健やかな身体。至福に満ちた、心。<br>そして、生命そのものが躍動しはじめる。</p>
+    <p class="quote__t">その道を示したのが、<b>ハタヨガ</b>です。</p>
+  </div>
+</section>
+
+<!-- 2. INSTRUCTOR -->
+<section class="sec about" id="about">
+  <div class="wrap about__grid">
+    <div class="about__img">
+      <span class="mask mask--sun" aria-hidden="true"></span>
+      <picture><source type="image/webp" srcset="img/setsuko-about.webp"><img src="img/setsuko-about.jpg" alt="合掌する秦節子" loading="lazy" width="800" height="1000"></picture>
+      <img class="lotus" src="deco/lotus.webp" alt="" aria-hidden="true">
+    </div>
+    <div>
+      <h2>秦節子</h2>
+      <p class="role">サドグル公認ハタヨガ講師</p>
+      <ul class="creds">
+        <li><b>1</b>年半南インドのIsha Foundation にてヨガと瞑想を修行</li>
+        <li><b>1,750</b>時間のハタヨガ講師資格トレーニングを修了</li>
+        <li>日本ではわずか<b>6</b>名のサドグル公認ハタヨガ講師の一人</li>
+        <li>インドへ渡る前は<b>13</b>年間アメリカでプロのジャズシンガー・作曲家として活動</li>
+      </ul>
+      <a class="btn btn--sage" href="#">講師紹介を見る<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. GETTING STARTED -->
+<section class="sec pale steps-sec" id="first">
+  <div class="wrap head-c">
+    <h2>ヨガがはじめての方も、<br>安心してご参加いただけます。</h2>
+    <p class="lead">まずは体験クラスから。心地よい変化を感じてみませんか？</p>
+    <ol class="steps">
+      <li><i aria-hidden="true">1</i><span><b>クラスを選ぶ</b>ご希望のクラスをお選びください。</span></li>
+      <li><i aria-hidden="true">2</i><span><b>予約する</b>オンラインまたはLINEから簡単に予約できます。</span></li>
+      <li><i aria-hidden="true">3</i><span><b>参加する</b>リラックスできる服装でお越しください。</span></li>
+      <li><i aria-hidden="true">4</i><span><b>続ける</b>継続することで、より深い変化を感じられます。</span></li>
+    </ol>
+    <div class="acts"><a class="btn btn--sage" href="#">はじめての方へ<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+  <div class="wc wc--l" aria-hidden="true"><img src="deco/wave-sage.webp" alt="" style="width:clamp(160px,20vw,300px)"></div>
+  <div class="wc wc--r" aria-hidden="true"><img src="deco/wave-hills.webp" alt="" style="width:clamp(180px,22vw,320px)"></div>
+</section>
+
+<!-- 4. CLASSES -->
+<section class="sec head-c trial" id="trial">
+  <div class="wrap">
+    <h2>まずは体験クラスに参加してみませんか？</h2>
+    <p class="trial__p lead">きっとあなたの<b>人生を変える第一歩</b>になるはずです。</p>
+    <div class="cards" style="text-align:left">
+      <a class="card" href="#">
+        <img src="img/forest-nature.jpg" alt="" loading="lazy" width="1100" height="1375" style="object-position:50% 35%">
+        <span class="card__b"><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="svg/satori-sprite.svg#breath"/></svg><span><small lang="en">In Studio</small><strong>大阪・東京<br>通常対面クラス</strong></span><span class="go"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a>
+      <a class="card" href="#">
+        <img src="img/mountain-sunrays-web.jpg" alt="" loading="lazy" width="1600" height="1065">
+        <span class="card__b"><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="svg/satori-sprite.svg#sunarc"/></svg><span><small lang="en">On Tour</small><strong>全国各地<br>出張・特別対面クラス</strong></span><span class="go"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a>
+      <a class="card" href="#">
+        <img src="img/olive-branch.jpg" alt="" loading="lazy" width="1066" height="1600" style="object-position:50% 40%">
+        <span class="card__b"><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="svg/satori-sprite.svg#ripple"/></svg><span><small lang="en">Online</small><strong>オンライン<br>オンラインクラス</strong></span><span class="go"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a>
+    </div>
+    <div class="acts">
+      <a class="btn btn--gold" href="https://docs.google.com/forms/d/1rKoOxcGQyew2a_d341eduWZ4QuhbK7R3YloP14Z6s8w/viewform" target="_blank" rel="noreferrer">体験クラスに申し込む<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn--line" href="#">詳しくはこちら</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. BENEFITS -->
+<section class="sec ben" id="benefits">
+  <span class="mask mask--moon" style="right:1%;top:10px;--c:var(--leaf);--o:.4" aria-hidden="true"></span>
+  <div class="wrap ben__grid">
+    <div class="ben__img">
+      <img src="img/sun.jpg" alt="木々の間から差し込む朝の光" loading="lazy" width="800" height="1421" style="object-position:50% 30%">
+    </div>
+    <div>
+      <h2>ハタヨガで得られる具体的効果</h2>
+      <div class="ben__list">
+        <div class="eff"><div class="eff__h"><span class="ring"><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="svg/satori-sprite.svg#sprout"/></svg></span><h3>身体</h3></div>
+          <ul><li>姿勢・柔軟性の向上</li><li>代謝・筋力の向上</li><li>内臓機能の向上</li><li>自律神経・ホルモンバランスが整う</li></ul></div>
+        <div class="eff"><div class="eff__h"><span class="ring"><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="svg/satori-sprite.svg#moon"/></svg></span><h3>心</h3></div>
+          <ul><li>心の平穏さ・至福感を築く</li><li>集中力・思考力の向上</li><li>想像力・判断力の向上</li><li>深い瞑想状態へ入りやすくなる</li></ul></div>
+        <div class="eff"><div class="eff__h"><span class="ring"><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="svg/satori-sprite.svg#sun"/></svg></span><h3>エネルギー</h3></div>
+          <ul><li>エネルギー・生命力の向上</li><li>睡眠の質の向上</li><li>慢性疲労・ストレスの緩和</li><li>あらゆる慢性不調の緩和</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PROGRAM / LIFESTYLE -->
+<section class="sec prog" id="program">
+  <span class="mask mask--spray" style="right:0;top:0;transform:scaleX(-1)" aria-hidden="true"></span>
+  <div class="wrap">
+    <h2 class="head-c">太陽と調和する　本格ハタヨガプログラム</h2>
+    <div class="grid3">
+      <img class="a" src="img/hero-stream.jpg" alt="" loading="lazy" width="1184" height="896">
+      <picture><source type="image/webp" srcset="img/practice.webp"><img class="b" src="img/practice.jpg" alt="芝生の上のマットで練習する秦節子" loading="lazy" width="1000" height="1500"></picture>
+      <img class="c" src="img/mountain-sunrays-web.jpg" alt="" loading="lazy" width="1600" height="1065">
+    </div>
+    <div class="prog__t">
+      <p class="en" lang="en">Surya Kriya</p>
+      <h3>スーリヤクリヤ<span>（スーリヤシャクティ付き）</span></h3>
+      <ul class="pchips">
+        <li>筋力・柔軟性・持久力を高める</li>
+        <li>活力と代謝を向上させる</li>
+        <li>ホルモンバランスと集中力を整える</li>
+        <li>至福と深い瞑想へ導く</li>
+      </ul>
+      <p>自分自身の生命を太陽のサイクルと調和させる、パワフルな伝統的ハタヨガ。身体・心・エネルギーのすべてを整え、健やかで活力に満ちた状態へ導きます。</p>
+      <p class="where">東京・麻布十番　　大阪・玉造にて開催</p>
+      <div class="acts"><a class="btn btn--sage" href="#">プログラム詳細を見る<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+  <div class="wc wc--l" aria-hidden="true"><img src="deco/wave-terracotta.webp" alt="" style="opacity:.6;width:clamp(160px,20vw,300px)"></div>
+  <div class="wc wc--r" aria-hidden="true"><img src="deco/wave-sage.webp" alt="" style="opacity:.8;width:clamp(180px,22vw,320px)"></div>
+</section>
+</main>
+
+<!-- 7. FOOTER -->
+<footer class="ft">
+  <img class="lotus" src="deco/lotus.webp" alt="" aria-hidden="true">
+  <div class="wrap">
+    <div class="ft__in">
+      <div>
+        <a class="logo" href="#top"><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><use href="svg/satori-sprite.svg#sprout"/></svg><span>SETSUKO HATA</span></a>
+        <p>本格的なハタヨガを、日常へ。<br>yoga@setsukohata.com</p>
+      </div>
+      <ul>
+        <li><a href="#top">ホーム</a></li><li><a href="#about">秦 節子</a></li><li><a href="#benefits">ハタヨガとは</a></li>
+        <li><a href="#trial">クラス・月額会員</a></li><li><a href="#first">ご参加の準備</a></li><li><a href="#">企業・健康経営</a></li>
+        <li><a href="#">学校・教育機関</a></li><li><a href="#">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <small>© Setsuko Hata. All rights reserved.</small>
+  </div>
+</footer>
+
+<script>
+  const hd=document.querySelector('.hd'),b=document.querySelector('.menu');
+  b.addEventListener('click',()=>{const o=hd.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{hd.classList.remove('open');b.setAttribute('aria-expanded',false)}));
+</script>
+</body>
+</html>

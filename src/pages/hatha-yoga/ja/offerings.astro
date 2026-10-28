@@ -1,0 +1,141 @@
+---
+import YogaLayout from '../../../layouts/YogaLayout.astro';
+import { VENUES } from '../../../data/classes';
+import InPerson from '../../../components/yoga/classes/InPerson.astro';
+import RegularClass from '../../../components/yoga/classes/RegularClass.astro';
+import Fees from '../../../components/yoga/classes/Fees.astro';
+import OsakaCourse from '../../../components/yoga/classes/OsakaCourse.astro';
+import SuryaKriya from '../../../components/yoga/classes/SuryaKriya.astro';
+import Satorin from '../../../components/yoga/classes/Satorin.astro';
+import ClassDialogs from '../../../components/yoga/classes/ClassDialogs.astro';
+import { yogaHref } from '../../../data/yoga';
+import '../../../styles/yoga/pages/offerings.css';
+import '../../../styles/yoga/pages/classes.css';
+import '../../../styles/yoga/calendar.css';
+
+/* The page is split by place. Each tab lists only what is offered there. */
+const cities = [
+  { id: 'osaka', name: '大阪' },
+  { id: 'tokyo', name: '東京' },
+  { id: 'online', name: 'オンライン' },
+];
+---
+<YogaLayout title="クラス | Setsuko Hata Yoga"
+  description="秦 節子のハタヨガクラス。大阪・東京の対面クラスと月額会員、スーリヤ・クリヤ、オンラインの SATORIN メンバーシップのご案内。"
+  locale="ja"
+  active="classes"
+  bodyClass="page-offerings"
+>
+        <section class="cl-hero cl-hero--tabs" data-screen-label="Hero">
+          <div class="cl-wrap cl-hero__grid">
+            <div class="cl-hero__photo"><img src="/hatha-yoga/assets/gallery/meditation-1400.jpg" alt="瞑想クラスの様子" decoding="async" /></div>
+            <div class="cl-hero__text">
+              <p class="cl-hero__en">Classes</p>
+              <h1>クラス</h1>
+              <p class="cl-hero__lead">大阪・東京の対面クラスと、全国・海外から参加できるオンラインクラス。参加したい場所を選ぶと、そこで受けられるクラスをご覧いただけます。</p>
+              <p class="cl-hero__note">大阪・東京以外での出張クラスは<a class="cl-link" href="#calendar" data-cal-filter="inperson">開催スケジュール</a>をご確認ください。はじめての方は<a class="cl-link" href={yogaHref('ja', 'path')}>本格ハタヨガへの道</a>もご覧ください。</p>
+            </div>
+          </div>
+          <div class="cl-wrap">
+            <div id="cities" class="cl-tabs scroll-mt-24" role="tablist" aria-label="開催場所">
+              {cities.map((c, i) => (
+                <a class="cl-city-tab" role="tab" id={`tab-${c.id}`} href={`#${c.id}`} aria-controls={c.id} aria-selected={i === 0 ? 'true' : 'false'} data-city-tab={c.id}>{c.name}</a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div id="osaka" class="cl-city" role="tabpanel" aria-labelledby="tab-osaka" data-city-panel>
+          <div class="cl-city__inner">
+            <OsakaCourse id="osaka-course" tone="cl-section--cream" />
+            <RegularClass id="osaka-regular" />
+            <Fees id="osaka-fees" eyebrow="大阪｜対面" membership tone="cl-section--cream" />
+            <SuryaKriya id="osaka-surya" />
+            <Satorin id="osaka-satorin" tone="cl-section--cream" fullHref="#online-satorin" />
+          </div>
+        </div>
+
+        <div id="tokyo" class="cl-city" role="tabpanel" aria-labelledby="tab-tokyo" data-city-panel>
+          <div class="cl-city__inner">
+            <InPerson id="tokyo-inperson" eyebrow="東京" title="対面クラス（単発）"
+              lead="東京・三田のスタジオで、ヨガクラスと瞑想クラスを単発で開催しています。開催日は開催スケジュールをご確認ください。" />
+            <Fees id="tokyo-fees" eyebrow="東京｜対面" tone="cl-section--cream" />
+            <SuryaKriya id="tokyo-surya" />
+            <Satorin id="tokyo-satorin" tone="cl-section--cream" fullHref="#online-satorin" />
+          </div>
+        </div>
+
+        <div id="online" class="cl-city" role="tabpanel" aria-labelledby="tab-online" data-city-panel>
+          <div class="cl-city__inner">
+            <Satorin id="online-satorin" full tone="cl-section--cream" />
+          </div>
+        </div>
+
+        <section id="calendar" class="cl-section cl-section--sage scroll-mt-24" data-screen-label="Class Calendar">
+          <div class="cl-wrap">
+            <div class="cl-head">
+              <p class="cl-eyebrow">カレンダー</p>
+              <h2>開催スケジュール</h2>
+              <span class="cl-head__rule" aria-hidden="true"></span>
+            </div>
+            <p class="cl-lead">オンライン・対面クラス・スーリヤ・クリヤの開催日を、ひとつのカレンダーでご覧いただけます。種類で絞り込むこともできます。</p>
+            <div class="cl-calendar"><div class="mt-10"><div data-hy-cal data-label="開催スケジュール" data-feed="https://script.google.com/macros/s/AKfycbwqXPOLnB8nzrbWNHWtcW-gKD5FG5I38xDpfoxLzVR-OQ0GM_D3w_RFjyIrIYKHDcbGIA/exec" data-keywords='[{"key":"kw-osaka","label":"大阪","kw":"大阪"},{"key":"kw-tokyo","label":"東京","kw":"東京"}]' data-sources='[{"key":"online","label":"オンライン（SATORIN）","tone":"sage"},{"key":"inperson","label":"対面クラス","tone":"clay"},{"key":"special","label":"スーリヤ・クリヤ","tone":"honey"}]'></div></div></div>
+          </div>
+        </section>
+
+        <section id="guide" class="cl-section cl-section--cream scroll-mt-24" data-screen-label="ご案内">
+          <div class="cl-wrap">
+            <div class="cl-head">
+              <p class="cl-eyebrow">ご案内</p>
+              <h2>会場・お支払い・キャンセル・持ち物</h2>
+              <span class="cl-head__rule" aria-hidden="true"></span>
+            </div>
+            <p class="cl-lead">通常対面クラス・スーリヤ・クリヤのご案内です。</p>
+            <dl class="cl-guide">
+              <div data-venue-row><dt>会場</dt><dd class="cl-venues">
+                {VENUES.map((v) => (
+                  <div class="cl-venues__item" data-venue-city={v.city}>
+                    <p class="cl-venues__name"><span class="cl-venues__area">{v.area}</span>{v.name}{v.note && <span class="cl-venues__note">{v.note}</span>}</p>
+                    {v.lines.map((l) => <p>{l}</p>)}
+                    {v.access && <p>{v.access}</p>}
+                    {v.map && <p><a class="cl-link" href={v.map} target="_blank" rel="noreferrer">地図を見る</a></p>}
+                  </div>
+                ))}
+              </dd></div>
+              <div><dt>お支払い</dt><dd><p>PayPay、当日現金</p></dd></div>
+              <div data-guide-for="osaka tokyo"><dt>キャンセル</dt><dd><p>前日：受講料の50％</p><p>当日：受講料の100％</p></dd></div>
+              <div data-guide-for="online" hidden><dt>返金・休学・退会について</dt><dd>
+                <p>お支払い済みの月の受講料は、ご返金いたしかねます。あらかじめご了承ください。</p>
+                <p>休学・退会をご希望の方は、希望する月の前月25日までに、メールにてご連絡ください。件名は、ご希望に応じて「休学の手続き」または「退会の手続き」としてください。</p>
+                <p>お手続きには日数を要するため、期限を過ぎてご連絡いただいた場合、ご希望の月の休学・退会に間に合わず、その月の受講料が請求される場合がございます。お早めにご連絡くださいますようお願いいたします。</p>
+              </dd></div>
+              <div><dt>当日</dt><dd><p>開始10分前までにお越しください。開始5分前までにお着替えをお済ませください（スタジオ内でお着替えいただけます）。</p></dd></div>
+              <div><dt>お食事</dt><dd><p>しっかりした食事は4時間、軽食・果物は2時間半、ジュース・お茶は1時間半あけてください。お水は制限ありません。</p></dd></div>
+              <div><dt>持ち物</dt><dd><p>お水、動きやすい綿100％の服装</p></dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section id="contact" class="cl-section cl-section--sand scroll-mt-24" data-screen-label="お問い合わせ">
+          <div class="cl-wrap">
+            <div class="cl-head">
+              <p class="cl-eyebrow">お問い合わせ</p>
+              <h2>どのクラスが合うか、ご相談ください。</h2>
+              <span class="cl-head__rule" aria-hidden="true"></span>
+            </div>
+            <p class="cl-lead">オンラインと対面のどちらが合うか、月額会員と単発参加のどちらがよいか。ご一緒に考えます。</p>
+            <div class="cl-actions">
+              <a href="/hatha-yoga/ja/contact/" class="cl-btn">お問い合わせ</a>
+              <a href="mailto:yoga@setsukohata.com" class="cl-link">yoga@setsukohata.com</a>
+            </div>
+          </div>
+        </section>
+
+        <ClassDialogs />
+</YogaLayout>
+<script>
+  import '../../../scripts/yoga/calendar.js';
+  import '../../../scripts/yoga/class-dialogs.js';
+  import '../../../scripts/yoga/class-cities.js';
+  import '../../../scripts/yoga/plan-gallery.js';
+</script>

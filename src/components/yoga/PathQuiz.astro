@@ -1,0 +1,130 @@
+---
+// "Find your starting point" quiz on the 本格ハタヨガへの道 page.
+// Recommends SATORIN (online), 対面クラス (大阪・東京) or スーリヤ・クリヤ.
+// It opens small (one 診断を始めよう button) that reveals the questions.
+// Without JS the quiz stays hidden and the map below is the whole page.
+// Logic lives in scripts/yoga/path-quiz.js; each option's data-* drive the scoring.
+import { SURYA_KRIYA_FORM_URL, SATORIN_PAGE_URL, NEXT_FREE_TRIAL, yogaHref } from '../../data/yoga';
+
+const trialHref = NEXT_FREE_TRIAL.url || yogaHref('ja', 'offerings', 'calendar');
+const trialDates = NEXT_FREE_TRIAL.dates || '日程は近日公開';
+const trialExternal = /^https?:/.test(trialHref);
+
+// score: points toward スーリヤ・クリヤ (3 or more = スーリヤ・クリヤ).
+// surya: this answer alone means スーリヤ・クリヤ.
+const questions = [
+  {
+    id: 'exp', title: 'これまでのヨガの経験は？',
+    options: [
+      { label: 'はじめて', score: 0 },
+      { label: '少しだけある', score: 1 },
+      { label: '続けている・続けていた', score: 2 },
+    ],
+  },
+  {
+    id: 'seek', title: 'いま、いちばん求めているものは？',
+    options: [
+      { label: '毎日の習慣にして、健康になりたい', score: 0 },
+      { label: '一緒に続けられる仲間がほしい', score: 0 },
+      { label: '内面を見つめ、もっと深く探求したい', score: 2 },
+    ],
+  },
+  {
+    id: 'bond', title: 'いちばん近いものは？',
+    options: [
+      { label: '秦 節子から勧められた', surya: true },
+      { label: 'スーリヤ・クリヤに惹かれるものを感じる', surya: true },
+      { label: 'サドグルやイシャ・ヨガを知っている', score: 2 },
+      { label: 'どれもあてはまらない', score: 0 },
+    ],
+  },
+  {
+    // Asked only when the answers so far don't point to スーリヤ・クリヤ.
+    id: 'place', title: '通いやすいのは？',
+    options: [
+      { label: '大阪・東京で、対面で受けたい', route: 'inperson' },
+      { label: '自宅から、オンラインで気軽に', route: 'satorin' },
+    ],
+  },
+];
+
+const results = [
+  {
+    id: 'satorin', en: 'Online', name: 'オンライン SATORIN', target: 'fl-upa1',
+    text: 'ご自宅から、毎日の習慣づくりに。オンラインで仲間とつながりながら、はじめての方も無理なく続けられます。',
+    links: [{ label: 'SATORINを見る', href: SATORIN_PAGE_URL }],
+  },
+  {
+    id: 'inperson', en: 'In person', name: '対面クラス（大阪・東京）', target: 'fl-upa1',
+    text: '先生や仲間と同じ場で、直接学べます。習慣づくりや健康のために、まずは対面のクラスから始めましょう。',
+    links: [
+      { label: '大阪のクラス', href: yogaHref('ja', 'offerings', 'osaka') },
+      { label: '東京のクラス', href: yogaHref('ja', 'offerings', 'tokyo') },
+    ],
+  },
+  {
+    id: 'surya', en: 'Surya Kriya', name: 'スーリヤ・クリヤ', target: 'fl-surya',
+    text: '内なる探求を深めたいあなたへ。太陽のサイクルと生命のリズムを調和させる、本格的なハタヨガの伝授から始めましょう。',
+    links: [{ label: 'スーリヤ・クリヤを予約する', href: SURYA_KRIYA_FORM_URL, external: true }],
+  },
+];
+---
+<section class="cl-section pq-section" data-screen-label="診断" aria-labelledby="pq-title">
+  <div class="cl-wrap">
+    <div class="pq" data-quiz hidden>
+      <p class="pq__en">Find your starting point</p>
+      <h2 id="pq-title" class="pq__title">あなたにおすすめの始め方</h2>
+      <p class="pq__lead">どこから始めればいいか迷ったら、3〜4つの質問で、あなたに合う最初の一歩をご提案します。</p>
+
+      <div class="pq__intro" data-quiz-intro>
+        <div class="pq__choices">
+          <button type="button" class="cl-btn" data-quiz-start>診断を始めよう</button>
+        </div>
+      </div>
+
+      <div data-quiz-panel hidden>
+      <div class="pq__body" data-quiz-questions>
+        <p class="pq__progress" data-quiz-progress>質問 1</p>
+        {questions.map((q, i) => (
+          <div class="pq-q" role="group" aria-labelledby={`pq-q-${q.id}`} data-quiz-q={q.id} hidden={i > 0}>
+            <h3 id={`pq-q-${q.id}`} class="pq-q__title" tabindex="-1">{q.title}</h3>
+            <div class="pq-q__options">
+              {q.options.map((o) => (
+                <button type="button" class="pq-opt"
+                  data-score={'score' in o ? o.score : undefined}
+                  data-surya={'surya' in o ? '' : undefined}
+                  data-route={'route' in o ? o.route : undefined}>{o.label}</button>
+              ))}
+            </div>
+          </div>
+        ))}
+        <button type="button" class="cl-btn pq__back-btn" data-quiz-back hidden>戻る</button>
+      </div>
+
+      <div class="pq__result" data-quiz-result hidden>
+        {results.map((r) => (
+          <article class="pq-res" data-result={r.id} data-target={r.target} hidden>
+            <p class="pq-res__label">あなたの始まりは</p>
+            <p class="pq-res__en">{r.en}</p>
+            <h3 class="pq-res__name" tabindex="-1">{r.name}</h3>
+            <p class="pq-res__text">{r.text}</p>
+            {r.id === 'satorin' && <p class="pq-res__trial">
+              <span class="pq-res__trial-label">まずは無料体験から</span>
+              <span class="pq-res__trial-dates">次回：{trialDates}</span>
+              <a class="cl-link" href={trialHref} {...(trialExternal ? { target: '_blank', rel: 'noreferrer' } : {})}>無料体験の詳細</a>
+            </p>}
+            <div class="pq-res__actions">
+              {r.links.map((l) => (
+                <a class="cl-btn" href={l.href} {...(l.external ? { target: '_blank', rel: 'noreferrer' } : {})}>{l.label}</a>
+              ))}
+            </div>
+          </article>
+        ))}
+        <button type="button" class="pq__back" data-quiz-restart>もう一度診断する</button>
+      </div>
+
+      <a class="pq__skip cl-link" href="#path-map">診断せずに流れ全体を見る</a>
+      </div>
+    </div>
+  </div>
+</section>

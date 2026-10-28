@@ -1,0 +1,40 @@
+---
+import { FOOTER, type Locale } from '../../data/yoga';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const f = FOOTER[locale];
+const year = new Date().getFullYear();
+---
+
+<footer class="ja-band ja-band-foot" data-lt="1">
+  <div class="mx-auto w-full max-w-7xl px-6 md:px-10 grid gap-14 py-20 md:grid-cols-[1.6fr_1fr_1fr]">
+    <div>
+      <p class="font-mono text-[13px] uppercase tracking-[0.28em] opacity-70">Setsuko Hata</p>
+      <p class="mt-1 font-display text-2xl text-brand-espresso">Yoga Studio</p>
+      <p class="mt-6 max-w-xs text-sm leading-relaxed opacity-80">{f.tagline}</p>
+    </div>
+    <div>
+      <p class="font-mono text-[13px] uppercase tracking-[0.22em] text-brand-moss">{f.siteHeading}</p>
+      <ul class="mt-5 space-y-2.5 text-sm">
+        {f.links.map((link) => <li><a href={link.href} class="opacity-80 transition-opacity hover:opacity-100">{link.label}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <p class="font-mono text-[13px] uppercase tracking-[0.22em] text-brand-moss">{f.contactHeading}</p>
+      <ul class="mt-5 space-y-2.5 text-sm">
+        <li class="opacity-80">{f.contactName}</li>
+        {f.contactEmail && <li><a href={`mailto:${f.contactEmail}`} class="opacity-80 hover:opacity-100">{f.contactEmail}</a></li>}
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-brand-espresso/15">
+    <div class="mx-auto w-full max-w-7xl px-6 md:px-10 flex flex-col gap-2 py-6 text-sm opacity-60 md:flex-row md:justify-between">
+      <p>© {year} Setsuko Hata Yoga Studio. {f.rights}</p>
+      {f.places && <p class="font-mono uppercase tracking-[0.2em]">{f.places}</p>}
+    </div>
+  </div>
+</footer>

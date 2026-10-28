@@ -1,0 +1,118 @@
+/* hy-calendar.css — soft, earthy schedule calendar. Light, warm tints only. */
+.hy-cal {
+  --c-deep: var(--color-deep-olive); --c-mid: var(--color-sage); --c-tint: var(--color-surface-sage); --c-tint2: color-mix(in srgb, var(--color-surface-sage) 45%, var(--color-paper)); --c-ink: var(--color-deep-olive);
+  --paper: var(--color-paper); --sand: var(--color-warm-beige); --line: rgba(142, 85, 48, .22); --text: var(--yl-text); --muted: var(--yl-soft);
+  container: hycal / inline-size;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 6px; color: var(--text);
+  font-family: "Zen Kaku Gothic New", "Inter Tight", system-ui, sans-serif; position: relative; overflow: hidden;
+  box-shadow: 0 24px 50px -36px rgba(120, 90, 50, .5);
+}
+.hy-cal--clay  { --c-deep: #A3593A; --c-mid: #C98B67; --c-tint: #F6E3D5; --c-tint2: #FBF0E6; --c-ink: #7C4228; }
+.hy-cal--honey { --c-deep: #8A6A2C; --c-mid: #C4A263; --c-tint: #F4E8CF; --c-tint2: #FAF3E2; --c-ink: #6B5020; }
+.hy-cal::before { content: ""; position: absolute; right: -90px; top: -90px; width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, var(--c-tint) 0%, rgba(255, 255, 255, 0) 70%); pointer-events: none; }
+:where(.hy-cal) button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+.hy-cal button:focus-visible { outline: 2px solid var(--c-deep); outline-offset: 2px; }
+
+.hy-cal__head { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: 12px 14px; padding: 26px 28px 18px; }
+.hy-cal__leaf { width: 34px; height: 34px; color: var(--c-mid); flex: none; }
+.hy-cal__title { flex: 1; min-width: 150px; margin: 0; font-family: "Shippori Mincho", "Newsreader", serif; font-weight: 500; font-size: 34px; line-height: 1.2; letter-spacing: .04em; color: var(--text); }
+.hy-cal__year { font-size: 16px; letter-spacing: .14em; color: var(--c-deep); margin-right: 10px; }
+.hy-cal__nav { display: flex; gap: 6px; }
+.hy-cal__btn { min-width: 40px; height: 40px; padding: 0 12px; border-radius: 3px; background: #fff; box-shadow: 0 0 0 1px var(--line); font-size: 20px; line-height: 1; color: var(--c-ink); transition: background-color .25s, box-shadow .25s; }
+.hy-cal__btn--t { font-size: 14px; letter-spacing: .1em; }
+.hy-cal__btn:hover { background: var(--c-tint2); box-shadow: 0 0 0 1px var(--c-mid); }
+.hy-cal__seg { display: flex; background: var(--sand); border-radius: 3px; padding: 3px; }
+.hy-cal__seg button { padding: 8px 18px; border-radius: 2px; font-size: 14px; letter-spacing: .1em; color: var(--muted); transition: background-color .25s, color .25s; }
+.hy-cal__seg button[aria-pressed="true"] { background: #fff; color: var(--c-ink); box-shadow: 0 1px 6px -2px rgba(100, 70, 40, .3); }
+
+.hy-cal__body { padding: 0 20px 6px; position: relative; }
+.hy-cal.is-in .hy-cal__body { animation: hyFade .45s var(--ease, ease) both; }
+@keyframes hyFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.hy-cal__dow { display: grid; grid-template-columns: repeat(7, 1fr); background: var(--sand); border-radius: 4px 4px 0 0; }
+.hy-cal__dow div { padding: 10px 6px; text-align: center; font-size: 13px; letter-spacing: .2em; color: var(--c-ink); }
+.hy-cal__dow .is-sun { color: #A3593A; }
+.hy-cal__dow .is-sat { color: #5F7080; }
+.hy-cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-top: 0; border-radius: 0 0 4px 4px; overflow: hidden; }
+.hy-cal__day { min-height: 170px; background: var(--paper); padding: 8px 4px; display: flex; flex-direction: column; gap: 5px; min-width: 0; cursor: pointer; transition: background-color .25s; }
+.hy-cal__day:hover { background: #fff; }
+.hy-cal__day.is-out { background: #F6F0E2; }
+.hy-cal__day.is-out .hy-cal__num { opacity: .4; }
+.hy-cal__day.is-out .hy-cal__ev { opacity: .6; }
+.hy-cal__day.has-ev { background: var(--c-tint2); }
+.hy-cal__num { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; font-size: 14px; color: var(--text); }
+.hy-cal__day.is-today .hy-cal__num { background: var(--c-deep); color: #fff; }
+.hy-cal__day.is-sel { box-shadow: inset 0 0 0 2px var(--c-mid); }
+
+.hy-cal__evs { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.hy-cal__ev { display: block; width: 100%; text-align: left; padding: 5px 5px; border-radius: 3px; background: var(--c-tint); border-left: 3px solid var(--c-deep); color: var(--c-ink); font-size: 12px; line-height: 1.4; transition: transform .25s, background-color .25s; }
+.hy-cal__ev:hover { background: #fff; box-shadow: 0 0 0 1px var(--c-mid); transform: translateY(-1px); }
+.hy-cal__ev-t { display: inline-block; white-space: nowrap; margin-bottom: 3px; padding: 1px 4px; border-radius: 2px; background: var(--c-deep); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .02em; }
+.hy-cal__ev-t:empty { display: none; }
+.hy-cal__ev-n { display: block; font-size: 13px; font-weight: 500; overflow-wrap: anywhere; }
+.hy-cal__ev.is-past { opacity: .8; }
+.hy-cal__more { font-size: 12px; color: var(--muted); padding: 0 4px; }
+.hy-cal__dots, .hy-cal__daylist { display: none; }
+
+.hy-cal__list { display: flex; flex-direction: column; gap: 18px; padding: 4px 0 10px; max-height: min(640px, 70vh); overflow-y: auto; overscroll-behavior: contain; }
+.hy-cal__lday { display: grid; grid-template-columns: 84px 1fr; gap: 16px; }
+.hy-cal__ldate { align-self: start; text-align: center; padding: 10px 0; background: #fff; border: 1px solid var(--line); border-radius: 4px; }
+.hy-cal__ldate b { display: block; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: 30px; line-height: 1.1; }
+.hy-cal__ldate small { font-size: 12px; letter-spacing: .08em; color: var(--muted); }
+.hy-cal__ldate.is-today { background: var(--c-deep); color: #fff; border-color: var(--c-deep); }
+.hy-cal__ldate.is-today small { color: rgba(255, 255, 255, .88); }
+.hy-cal__lcards { display: flex; flex-direction: column; gap: 8px; }
+.hy-cal__card { display: block; width: 100%; text-align: left; padding: 14px 18px; border-radius: 4px; background: var(--c-tint); border-left: 4px solid var(--c-deep); color: var(--c-ink); transition: transform .25s, background-color .25s; }
+.hy-cal__card:hover { background: #fff; transform: translateX(3px); box-shadow: 0 0 0 1px var(--c-mid); }
+.hy-cal__card-t { display: inline-block; padding: 2px 9px; border-radius: 2px; background: var(--c-deep); color: #fff; font-size: 14px; font-weight: 700; letter-spacing: .04em; }
+.hy-cal__card-n { display: block; margin-top: 2px; font-family: "Shippori Mincho", serif; font-size: 18px; color: var(--text); }
+.hy-cal__card-l { display: block; margin-top: 2px; font-size: 13px; color: var(--muted); }
+.hy-cal__empty, .hy-cal__none { padding: 48px 16px; text-align: center; color: var(--muted); font-size: 15px; line-height: 2; }
+.hy-cal__tz { margin: 0; padding: 8px 28px 20px; font-size: 12px; letter-spacing: .08em; color: var(--muted); text-align: right; }
+
+/* filter tabs */
+.hy-cal__filters { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 28px 16px; position: relative; }
+.hy-cal__sel { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; letter-spacing: .08em; color: var(--muted); }
+.hy-cal__sel select { appearance: none; -webkit-appearance: none; padding: 9px 38px 9px 18px; border: 0; border-radius: 999px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236B635A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 16px center; box-shadow: 0 0 0 1px var(--line); color: var(--text); font: inherit; font-size: 14px; letter-spacing: .06em; cursor: pointer; }
+.hy-cal__sel select:hover { box-shadow: 0 0 0 1.5px var(--c-mid, var(--line)); }
+.hy-cal__sel select:focus-visible { outline: 2px solid var(--color-deep-olive); outline-offset: 2px; }
+.hy-cal__m-src { display: inline-block; margin-bottom: 8px; padding: 2px 10px; border-radius: 999px; background: var(--c-deep); color: #fff; font-size: 12px; letter-spacing: .08em; }
+
+/* modal */
+.hy-cal__scrim { --c-deep: #5E6A47; --c-tint: #E9ECDA; --c-ink: #46503A; position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 16px; background: rgba(110, 85, 55, .32); backdrop-filter: blur(3px); animation: hyFade .25s ease both; }
+.hy-cal__scrim.hy-cal--clay  { --c-deep: #A3593A; --c-tint: #F6E3D5; --c-ink: #7C4228; }
+.hy-cal__scrim.hy-cal--honey { --c-deep: #8A6A2C; --c-tint: #F4E8CF; --c-ink: #6B5020; }
+.hy-cal__modal { width: min(460px, 100%); max-height: 88vh; overflow: auto; background: #FBF8EE; border-radius: 6px; box-shadow: 0 30px 70px -28px rgba(80, 55, 30, .6); font-family: "Zen Kaku Gothic New", system-ui, sans-serif; color: #3e3227; }
+.hy-cal__m-head { padding: 26px 28px 20px; background: var(--c-tint); border-bottom: 3px solid var(--c-deep); color: var(--c-ink); }
+.hy-cal__m-head h4 { margin: 0; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: 24px; line-height: 1.4; color: #3e3227; }
+.hy-cal__m-head p { margin: 10px 0 0; font-size: 15px; line-height: 1.8; }
+.hy-cal__m-head b { font-size: 19px; font-weight: 500; }
+.hy-cal__m-body { padding: 18px 28px 24px; font-size: 15px; line-height: 2; }
+.hy-cal__m-loc { margin: 0 0 8px; color: #6b5744; }
+.hy-cal__m-desc { margin: 0 0 14px; white-space: pre-line; word-break: break-all; }
+.hy-cal__m-desc a { color: var(--c-deep); text-decoration: underline; text-underline-offset: 3px; }
+.hy-cal__close { display: block; margin: 8px 0 0 auto; padding: 10px 26px; border-radius: 3px; background: var(--c-deep); color: #fff; font: inherit; font-size: 14px; letter-spacing: .14em; cursor: pointer; border: 0; }
+.hy-cal__close:hover { opacity: .9; }
+
+@container hycal (max-width: 700px) {
+  .hy-cal__head { padding: 20px 16px 14px; }
+  .hy-cal__filters { padding: 0 16px 12px; gap: 6px; }
+  .hy-cal__sel select { padding: 8px 34px 8px 14px; font-size: 13px; }
+  .hy-cal__title { font-size: 26px; }
+  .hy-cal__body { padding: 0 8px 4px; }
+  .hy-cal__day { min-height: 64px; padding: 5px 2px; align-items: center; gap: 3px; }
+  .hy-cal__evs { display: none; }
+  .hy-cal__dots { display: flex; gap: 3px; min-height: 6px; }
+  .hy-cal__dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--c-deep); }
+  .hy-cal__daylist { display: block; margin-top: 14px; padding: 14px; background: #fff; border: 1px solid var(--line); border-radius: 4px; }
+  .hy-cal__daylist-h { margin: 0 0 8px; font-family: "Shippori Mincho", serif; font-size: 17px; }
+  .hy-cal__row { display: block; width: 100%; text-align: left; padding: 10px 12px; margin-top: 6px; border-radius: 3px; background: var(--c-tint); border-left: 3px solid var(--c-deep); color: var(--c-ink); }
+  .hy-cal__row-t { display: inline-block; padding: 1px 8px; border-radius: 2px; background: var(--c-deep); color: #fff; font-size: 13px; font-weight: 700; }
+  .hy-cal__row-n { display: block; font-size: 15px; font-weight: 500; }
+  .hy-cal__lday { grid-template-columns: 64px 1fr; gap: 12px; }
+  .hy-cal__tz { padding: 8px 16px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hy-cal *, .hy-cal__scrim, .hy-cal__scrim * { animation: none !important; transition: none !important; }
+}

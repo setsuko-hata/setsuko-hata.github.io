@@ -1,0 +1,125 @@
+/* path.css: the 本格ハタヨガへの道 page (ja/path): starting-point quiz and the course flow chart.
+ * Reuses the cl-* layout from classes.css; colours are tokens from satori.css. */
+
+.page-path .cl-hero { padding-block: clamp(48px, 7vw, 96px) clamp(110px, 14vw, 200px); }
+
+.pt-support { max-width: 720px; margin: 0 auto; padding: 22px 28px; text-align: center; background: var(--color-ivory-cream); border: 1px solid var(--color-antique-gold); border-radius: 12px; }
+.pt-support p { margin: 0; font-size: 15px; line-height: 2; color: var(--yl-text); }
+.pt-support .pt-support__en { font-family: "Inter", sans-serif; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--yl-gold); }
+.pt-support .pt-support__title { margin: 4px 0 6px; font-family: "Shippori Mincho", serif; font-size: 20px; color: var(--yl-head); }
+
+/* ---------- ヨガ講座・研修の流れ (the course flow; lines drawn by path-flow.js) ---------- */
+.fl-head { max-width: 680px; margin: 0 auto clamp(32px, 4vw, 48px); text-align: center; }
+.fl-head p { margin: 0; }
+.fl-head__en { font-family: "Inter", sans-serif; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--yl-gold); }
+.fl-head__title { margin: 6px 0 10px; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: clamp(22px, 3vw, 28px); line-height: 1.5; color: var(--yl-head); }
+.fl-head__lead { font-size: 15px; line-height: 2; color: var(--yl-text); }
+
+.fl { position: relative; display: grid; gap: 56px; margin-bottom: clamp(40px, 5vw, 64px); }
+.fl-lines { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+.fl-lines path { fill: none; stroke: color-mix(in srgb, var(--color-deep-olive) 70%, var(--color-paper)); stroke-width: 2; stroke-linejoin: round; }
+.fl-start-note { grid-column: 1 / -1; margin: 0 0 -24px; text-align: center; font-size: 14px; letter-spacing: .12em; color: var(--yl-gold); }
+.fl-col { display: grid; gap: 56px; align-content: start; }
+.fl-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.fl-col > .fl-card { width: min(100%, 380px); justify-self: center; }
+
+/* A card is one link (its title's ::after covers the card); its buttons sit above that layer. */
+.fl-card { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 120px; padding: 22px 16px; text-align: center; background: var(--color-paper); border: 2px solid color-mix(in srgb, var(--color-sage) 45%, var(--color-paper)); border-radius: 16px; transition: border-color .2s var(--ease-standard, ease), box-shadow .2s; }
+.fl-card p { margin: 0; }
+.fl-card:has(.fl-card__link:hover) { border-color: var(--color-sage); box-shadow: 0 14px 30px -22px color-mix(in srgb, var(--yl-head) 55%, transparent); }
+.fl-card__mode { font-size: 14px; font-weight: 600; letter-spacing: .08em; color: var(--color-deep-olive); }
+.fl-card__name { margin: 2px 0 0; font-family: "Shippori Mincho", serif; font-weight: 600; line-height: 1.5; color: var(--yl-head); }
+body.yoga-site .main-look a.fl-card__link, a.fl-card__link { color: var(--yl-head); text-decoration: none; }
+.fl-card__link::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 16px; }
+.fl-card__link:focus-visible { outline: none; }
+.fl-card__link:focus-visible::after { outline: 2px solid var(--color-deep-olive); outline-offset: 3px; }
+.fl-card__meta { font-size: 14px; line-height: 1.8; color: var(--yl-text); }
+.fl-card__meta:first-of-type { margin-top: 6px !important; }
+.fl-pair .fl-card { padding-inline: 12px; }
+.fl-card__price { margin-top: 4px !important; font-family: "Shippori Mincho", serif; font-size: 18px; color: var(--yl-head); }
+.fl-card__price small { font-size: 13px; margin-left: 2px; }
+.fl-card__actions { position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 14px; }
+.cl-btn.fl-btn { gap: 10px; padding: 8px 18px; font-size: 13px; letter-spacing: .04em; }
+
+.fl-start { position: absolute; top: -12px; left: 16px; z-index: 2; padding: 2px 12px; border-radius: 999px; background: var(--color-deep-olive); color: var(--color-paper); font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .16em; }
+.fl-card.is-recommended .fl-start { display: none; }
+.fl-card--start { min-height: 200px; padding-block: 28px 22px; }
+#fl-upa1 { background: color-mix(in srgb, var(--color-gold-accent) 20%, var(--color-paper)); border-color: var(--color-antique-gold); }
+.fl-card--surya { background: color-mix(in srgb, var(--color-light-sage) 22%, var(--color-paper)); border-color: color-mix(in srgb, var(--color-sage) 70%, var(--color-paper)); }
+body.yoga-site .fl h3.fl-card__name { font-size: clamp(19px, 2.2vw, 22px) !important; line-height: 1.5 !important; }
+body.yoga-site .fl .fl-card--start h3.fl-card__name { font-size: clamp(22px, 2.6vw, 27px) !important; }
+
+@media (min-width: 900px) {
+  .fl { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(64px, 8vw, 120px); }
+  .fl-col { gap: 64px; }
+  .fl-col > .fl-card { width: min(100%, 400px); }
+  .fl-pair { gap: 24px; }
+}
+
+.pt-support { margin-top: 8px; }
+.pt-tag { padding: 1px 12px; border-radius: 999px; background: var(--color-deep-olive); color: var(--color-paper); font-size: 12px; letter-spacing: .08em; }
+
+.pt-note { margin: 40px auto 0; text-align: center; }
+.pt-actions { justify-content: center; }
+
+/* ---------- Starting-point quiz (PathQuiz.astro, path-quiz.js) ---------- */
+.pq-section { padding-bottom: 0; }
+.pq { max-width: 760px; margin: 0 auto; padding: clamp(28px, 4vw, 44px) clamp(20px, 4vw, 48px); text-align: center; background: var(--color-ivory-cream); border: 1px solid var(--color-antique-gold); border-radius: 16px; box-shadow: 0 18px 40px -30px color-mix(in srgb, var(--yl-head) 55%, transparent); }
+.pq[hidden], .pq [hidden] { display: none !important; }
+.pq p { margin: 0; }
+.pq__en, .pq-res__en { font-family: "Inter", sans-serif; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--yl-gold); }
+.pq__title { margin: 6px 0 8px; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: clamp(22px, 3vw, 28px); line-height: 1.5; color: var(--yl-head); }
+.pq__lead { font-size: 15px; line-height: 2; color: var(--yl-text); }
+.pq__body, .pq__result { margin-top: clamp(22px, 3vw, 32px); padding-top: clamp(22px, 3vw, 32px); border-top: 1px solid var(--yl-line); }
+.pq__progress { font-family: "Inter", "Noto Sans JP", sans-serif; font-size: 13px; letter-spacing: .2em; color: var(--yl-gold); }
+.pq-q__title { margin: 6px 0 18px; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: clamp(19px, 2.4vw, 22px); line-height: 1.6; color: var(--yl-head); }
+.pq-q__title:focus, .pq-res__name:focus { outline: none; }
+.pq-q__options { display: grid; gap: 10px; max-width: 520px; margin: 0 auto; }
+.pq-opt { width: 100%; padding: 14px 20px; border: 1.5px solid var(--color-antique-gold); border-radius: 12px; background: var(--color-paper); color: var(--yl-head); font: inherit; font-size: 16px; line-height: 1.6; text-align: left; cursor: pointer; transition: background-color .2s var(--ease-standard, ease), border-color .2s; }
+.pq-opt:hover { background: color-mix(in srgb, var(--color-gold-accent) 18%, var(--color-paper)); border-color: var(--yl-gold-deep); }
+.pq-opt:focus-visible, .pq__back:focus-visible { outline: 2px solid var(--color-deep-olive); outline-offset: 3px; }
+.pq__back { margin-top: 18px; padding: 6px 4px; border: 0; background: none; color: var(--color-deep-olive); font: inherit; font-size: 14px; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--color-antique-gold); }
+.pq__back-btn { margin-top: 22px; padding: 11px 26px; }
+.pq__skip { display: inline-block; margin-top: 22px; font-size: 14px; }
+
+.pq-res__label { font-size: 14px; letter-spacing: .12em; color: var(--yl-soft); }
+.pq-res__en { margin-top: 10px !important; }
+.pq-res__name { margin: 2px 0 10px; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: clamp(26px, 3.6vw, 34px); line-height: 1.4; color: var(--yl-head); }
+.pq-res__text { max-width: 560px; margin: 0 auto !important; font-size: 15px; line-height: 2; color: var(--yl-text); }
+.pq-res__trial { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 4px 16px; max-width: 560px; margin: 20px auto 0 !important; padding: 14px 18px; background: var(--color-paper); border: 1px dashed var(--color-antique-gold); border-radius: 12px; font-size: 14px; color: var(--yl-text); }
+.pq-res__trial-label { font-weight: 600; color: var(--yl-head); }
+.pq-res__trial .cl-link { font-size: 14px; }
+.pq-res__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 22px; }
+
+/* Map card the quiz picked */
+.fl-card:focus { outline: none; }
+.fl-card:focus-visible { outline: 2px solid var(--color-deep-olive); outline-offset: 4px; }
+.fl-card.is-recommended { border-color: var(--yl-gold-deep); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-gold-accent) 55%, transparent), 0 14px 30px -24px color-mix(in srgb, var(--yl-head) 50%, transparent); }
+.pt-rec { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); padding: 3px 14px; border-radius: 999px; background: var(--color-gold-accent); color: var(--yl-head); font-size: 12px; font-weight: 600; letter-spacing: .08em; white-space: nowrap; }
+.pt-map { scroll-margin-top: 80px; }
+/* sunlit.css sets every h3 with !important; keep the quiz's own sizes. */
+body.yoga-site .pq h3.pq-q__title { font-size: clamp(19px, 2.4vw, 22px) !important; }
+body.yoga-site .pq h3.pq-res__name { font-size: clamp(26px, 3.6vw, 34px) !important; line-height: 1.4 !important; }
+.pq__intro { margin-top: 18px; }
+.pq .pq__ask { font-family: "Shippori Mincho", serif; font-size: 18px; color: var(--yl-head); }
+.pq__choices { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 14px; }
+.pq__choices .cl-btn { padding: 11px 26px; }
+
+/* No arrows on this page's buttons. */
+.page-path .cl-btn::after { content: none; }
+/* Keep the flow close under the quiz box (beats the site-wide main > section !important padding). */
+body.page-path main > section.pq-section { padding-bottom: 0 !important; }
+body.page-path main > section.fl-section { padding-top: clamp(40px, 5vw, 64px) !important; }
+
+/* Before the quiz starts it is a slim banner: text left, button right. It opens into the full box once started. */
+.pq:has(> .pq__intro:not([hidden])) { display: grid; grid-template-columns: 1fr auto; column-gap: 32px; align-items: center; max-width: 960px; padding: 20px 32px; text-align: left; }
+.pq:has(> .pq__intro:not([hidden])) > :not(.pq__intro) { grid-column: 1; }
+body.yoga-site .pq:has(> .pq__intro:not([hidden])) h2.pq__title { margin: 2px 0 !important; font-size: clamp(19px, 2.2vw, 22px) !important; line-height: 1.5 !important; }
+.pq:has(> .pq__intro:not([hidden])) .pq__lead { font-size: 14px; line-height: 1.8; }
+.pq:has(> .pq__intro:not([hidden])) > .pq__intro { grid-column: 2; grid-row: 1 / span 3; margin: 0; }
+.pq:has(> .pq__intro:not([hidden])) .pq__choices { margin: 0; }
+@media (max-width: 640px) {
+  .pq:has(> .pq__intro:not([hidden])) { grid-template-columns: 1fr; padding: 20px; text-align: center; }
+  .pq:has(> .pq__intro:not([hidden])) > .pq__intro { grid-column: 1; grid-row: auto; margin-top: 14px; }
+  .pq:has(> .pq__intro:not([hidden])) .pq__choices { justify-content: center; }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 240" preserveAspectRatio="none" role="img" aria-hidden="true">
+  <!-- Smaller corner swells that overlap the large ones. -->
+  <path fill="#596044" d="M0 112C104 122 208 172 306 212S432 240 486 240H0Z"/>
+  <path fill="#596044" d="M1440 136C1352 148 1262 188 1172 220S1064 240 1018 240H1440Z"/>
+</svg>

@@ -22,8 +22,8 @@ Blur test: the page must read as light beige, cream and soft green.
 | Ivory Cream `--ja-page` | `#F5EFDF` | page ground, header, cards' base |
 | Warm Beige `--ja-page-2` | `#E8D9C2` | alternating band, footer |
 | Sand Beige | `#D9C4A3` | borders, tabs, quiet fills |
-| Pale Sage `--ja-sage` | `#DDE1CE` | tinted section band (tint of `#AEB39A`) |
-| Light Sage | `#AEB39A` | decorative fills, blobs, rules |
+| Pale Sage `--ja-sage` | `#DDE1CE` | tinted section band (tint of `#aeb39A`) |
+| Light Sage | `#aeb39A` | decorative fills, blobs, rules |
 | Sage Green | `#7E8764` | borders, icons, card top-rules |
 | Deep Olive | `#596044` | accent only — tiny icons, thin lines |
 | Warm Brown `--color-brand-moss` | `#8A6043` | eyebrows, buttons, hover — small |

@@ -1,0 +1,106 @@
+---
+/** 大阪: 木・土 3回対面クラス. Card order: facts → for whom → schedule → steps → price → participation → booking. */
+import { OSAKA_COURSE_FORM_URL } from '../../../data/yoga';
+import { OSAKA_COURSE as c } from '../../../data/classes';
+
+interface Props { id: string; tone?: string; }
+const { id, tone = '' } = Astro.props;
+// Times that differ from the usual one get underlined so the change is obvious.
+const times = c.schedule.flatMap((m) => m.courses.map((k) => k.time).filter(Boolean));
+const usual = times.sort((a, b) => times.filter((t) => t === b).length - times.filter((t) => t === a).length)[0];
+---
+<section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
+  <div class="cl-wrap">
+    <div class="cl-headrow">
+      <div class="cl-head oc-head">
+        <p class="cl-head__sub">{c.subtitle}</p>
+        <h2 class="oc-title">{c.title}</h2>
+        <p class="oc-heading">{c.heading}</p>
+        <p class="oc-tagline"><span>{c.tagline}</span></p>
+        <span class="cl-head__rule" aria-hidden="true"></span>
+      </div>
+      <div class="cl-actions">
+        <a href={OSAKA_COURSE_FORM_URL} target="_blank" rel="noreferrer" class="cl-btn">予約する</a>
+        <a href="#calendar" data-cal-filter="inperson" class="cl-btn cl-btn--ghost">開催スケジュール</a>
+      </div>
+    </div>
+    <div class="oc-intro">
+      <div class="oc-intro__text">
+        <div class="cl-leadgroup">{c.description.map((t) => <p class="cl-lead">{t}</p>)}</div>
+        <blockquote class="oc-quote"><p>{c.quote}</p></blockquote>
+      </div>
+      <img class="oc-intro__photo" src="/hatha-yoga/assets/gallery/osaka-1400.jpg" alt="大阪での対面ヨガクラスの様子" width="1400" height="1050" loading="lazy" decoding="async" />
+    </div>
+
+    <div class="cl-panel cl-panel--compact oc">
+      <section class="oc-sec" aria-labelledby={`${id}-for`}>
+        <h3 class="oc-h" id={`${id}-for`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#heart" /></svg>こんな方におすすめ</h3>
+        <ul class="oc-for">{c.forWhom.map((f) => <li>{f}</li>)}</ul>
+      </section>
+
+      <section class="oc-sec" aria-labelledby={`${id}-sched`}>
+        <h3 class="oc-h" id={`${id}-sched`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#calendar" /></svg>日程<small>各コース全3回</small></h3>
+        <div class="oc-sched">
+          {c.schedule.map((m) => (
+            <div class="oc-sched__month">
+              <span class="oc-sched__m">{m.month}</span>
+              <div class="oc-sched__courses">
+                {m.courses.map((k) => (
+                  <p class="oc-sched__course">
+                    <b>{k.day}曜</b>
+                    <small class={k.time && k.time !== usual ? 'oc-sched__time--diff' : ''}>{k.time || '時間は後日お知らせします'}</small>
+                    <span class="oc-sched__dates">{k.dates.map((d) => <span>{d}</span>)}</span>
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="oc-footnote">{c.scheduleNote.map((t) => <p>{t}</p>)}</div>
+      </section>
+
+      <section class="oc-sec" aria-labelledby={`${id}-learn`}>
+        <h3 class="oc-h" id={`${id}-learn`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#sprout" /></svg>3回で学べること</h3>
+        <ol class="oc-steps">
+          {c.sessions.map((s) => (
+            <li class="oc-steps__item">
+              <span class="oc-steps__no" aria-hidden="true">{s.no}</span>
+              <span class="oc-steps__text"><span class="oc-steps__part"><span class="oc-sr">第{s.no}回 </span>{s.name}</span>{s.focus}</span>
+            </li>
+          ))}
+        </ol>
+        <p class="oc-note">{c.sessionsNote}</p>
+      </section>
+
+      <section class="oc-sec" aria-labelledby={`${id}-price`}>
+        <h3 class="oc-h" id={`${id}-price`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#coin" /></svg>料金</h3>
+        <div class="oc-prices">
+          {c.prices.map((p) => (
+            <div class={`oc-price${p.recommended ? ' oc-price--rec' : ''}`}>
+              {p.recommended && <span class="oc-price__badge">おすすめ</span>}
+              <p class="oc-price__name">{p.name}</p>
+              <p class="oc-price__amount"><span class="rate-amount">{p.amount}</span>{p.unit}</p>
+              <p class="oc-price__note">{p.note}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="oc-sec" aria-labelledby={`${id}-join`}>
+        <h3 class="oc-h" id={`${id}-join`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#mat" /></svg>ご参加について</h3>
+        <dl class="oc-info">
+          {c.notes.map((n) => (
+            <div><dt>{n.label}</dt><dd>{n.key ? <mark class="cl-mark">{n.text}</mark> : n.text}</dd></div>
+          ))}
+          <div><dt>会場</dt><dd>{c.venue}<br /><span class="oc-info__addr">{c.address}</span><br /><a class="cl-link" href={c.map} target="_blank" rel="noreferrer">地図を見る</a></dd></div>
+          <div><dt>お支払い</dt><dd>{c.payment}</dd></div>
+        </dl>
+      </section>
+
+      <div class="oc-cta">
+        <p class="oc-cta__quote">{c.closing}</p>
+        <a href={OSAKA_COURSE_FORM_URL} target="_blank" rel="noreferrer" class="cl-btn">このクラスを予約する</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,166 @@
+/* ja-sunlit.css — shared look for every Japanese page (home included).
+ *  1. one heading scale and typeface everywhere
+ *  2. lively section tints: layered token gradients (light pooling in a corner,
+ *     a warm glow opposite), never a flat fill and never a repeated photo
+ *  3. stronger accents for plans and charts
+ * Colours come only from the tokens in satori.css. Scoped to body.ja-sunlit. */
+
+body.ja-sunlit {
+  background: var(--color-ivory-cream);
+  --sl-gold-line: color-mix(in srgb, var(--color-antique-gold) 55%, transparent);
+
+  /* recipes reused by hero, bands and footer */
+  --tint-hero:
+    radial-gradient(ellipse 55% 85% at 92% 8%, color-mix(in srgb, var(--color-gold-accent) 55%, transparent), transparent 62%),
+    radial-gradient(ellipse 50% 75% at 4% 100%, color-mix(in srgb, var(--color-sand-beige) 50%, transparent), transparent 66%),
+    radial-gradient(ellipse 45% 60% at 22% 0%, color-mix(in srgb, var(--color-light-sage) 55%, transparent), transparent 62%),
+    linear-gradient(165deg, var(--color-ivory-cream), var(--color-warm-beige));
+  --tint-sage:
+    radial-gradient(ellipse 60% 90% at 6% 10%, color-mix(in srgb, var(--color-light-sage) 55%, transparent), transparent 64%),
+    radial-gradient(ellipse 50% 80% at 96% 100%, color-mix(in srgb, var(--color-gold-accent) 45%, transparent), transparent 66%),
+    linear-gradient(172deg, var(--color-surface-sage), color-mix(in srgb, var(--color-gold-accent) 18%, var(--color-surface-sage)));
+  --tint-sand:
+    radial-gradient(ellipse 55% 85% at 94% 6%, color-mix(in srgb, var(--color-gold-accent) 50%, transparent), transparent 64%),
+    radial-gradient(ellipse 55% 80% at 4% 96%, color-mix(in srgb, var(--color-antique-gold) 30%, transparent), transparent 66%),
+    linear-gradient(168deg, var(--color-surface-sand), var(--color-warm-beige));
+  --tint-foot:
+    radial-gradient(ellipse 50% 100% at 8% 100%, color-mix(in srgb, var(--color-light-sage) 40%, transparent), transparent 66%),
+    radial-gradient(ellipse 45% 90% at 94% 0%, color-mix(in srgb, var(--color-gold-accent) 40%, transparent), transparent 62%),
+    linear-gradient(180deg, var(--color-warm-beige), var(--color-sand-beige));
+}
+
+/* ── 1. Headings: one family, one scale ──────────────────────────────── */
+body.ja-sunlit h1,
+body.ja-sunlit h2,
+body.ja-sunlit h3,
+body.ja-sunlit h4 {
+  font-family: "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif !important;
+  font-weight: 400 !important;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+body.ja-sunlit h1 { font-size: clamp(2.1rem, 4.4vw, 3.8rem) !important; line-height: 1.4 !important; letter-spacing: 0.07em !important; }
+body.ja-sunlit h2 { font-size: clamp(1.6rem, 2.7vw, 2.5rem) !important; line-height: 1.55 !important; letter-spacing: 0.05em !important; }
+body.ja-sunlit h3 { font-size: clamp(1.2rem, 1.7vw, 1.55rem) !important; line-height: 1.6 !important; letter-spacing: 0.04em !important; }
+body.ja-sunlit h4 { font-size: clamp(1.05rem, 1.3vw, 1.2rem) !important; line-height: 1.7 !important; letter-spacing: 0.04em !important; }
+
+body.ja-sunlit main p,
+body.ja-sunlit main li,
+body.ja-sunlit main dd { line-height: 2.05; font-weight: 400; }
+body.ja-sunlit main .font-mono,
+body.ja-sunlit footer .font-mono {
+  font-family: "Newsreader", "Shippori Mincho", serif;
+  text-transform: none !important;
+  letter-spacing: 0.13em;
+}
+body.ja-sunlit main a { transition: background-color 0.2s ease, color 0.2s ease; }
+
+/* ── decoration that fights the system ───────────────────────────────── */
+body.ja-sunlit main > section:not(.yoga-hero-photo) > svg[aria-hidden],
+body.ja-sunlit main > section > div[aria-hidden="true"][style*="radial-gradient"],
+body.ja-sunlit .ja-wave-t::before,
+body.ja-sunlit .ja-wave-b::after { display: none !important; }
+body.ja-sunlit .yoga-hero-photo > svg { display: block !important; }
+body.ja-sunlit .ja-hero-blob { border-radius: 4px !important; box-shadow: none !important; }
+body.ja-sunlit main > section:first-child [style*="border-radius:56%"] {
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  border-color: var(--color-antique-gold) !important;
+}
+
+/* ── 2. Lively tints ─────────────────────────────────────────────────── */
+body.ja-sunlit main > section:first-child:not(.yoga-hero-photo):not([style*="url("]),
+body.ja-sunlit main > section[data-screen-label="Hero"]:not(.yoga-hero-photo) {
+  background: var(--tint-hero) !important;
+  border-bottom: 1px solid var(--sl-gold-line);
+}
+body.ja-sunlit .ja-band-sage { background: var(--tint-sage) !important; }
+body.ja-sunlit .ja-band-sand { background: var(--tint-sand) !important; }
+body.ja-sunlit .ja-band-foot,
+body.ja-sunlit footer {
+  background: var(--tint-foot) !important;
+  border-top: 1px solid var(--sl-gold-line);
+}
+/* photo heroes keep their photograph; the wash on top stays light */
+body.ja-sunlit main > section.ja-band-sage[data-screen-label="Hero"]:has(> img),
+body.ja-sunlit main > section.ja-band-sage[data-screen-label="Hero"]:has(> picture) {
+  background: var(--color-surface-sage) !important;
+}
+
+/* hero copy centred when the hero has no side figure */
+body.ja-sunlit main > section.ja-band:first-child > div,
+body.ja-sunlit main > section[data-screen-label="Hero"]:not(:has(.ja-hero-split, .ja-hero-grid)) > div { text-align: center; }
+body.ja-sunlit main > section.ja-band:first-child h1,
+body.ja-sunlit main > section.ja-band:first-child p,
+body.ja-sunlit main > section[data-screen-label="Hero"]:not(:has(.ja-hero-split, .ja-hero-grid)) :is(h1, h2, h3, p) { margin-inline: auto; }
+body.ja-sunlit main > section:first-child p.ja-eyebrow { justify-content: center; }
+body.ja-sunlit main > section:first-child p.ja-eyebrow::after { display: none; }
+body.ja-sunlit main > section.ja-band:first-child .flex.flex-wrap,
+body.ja-sunlit main > section[data-screen-label="Hero"]:not(:has(.ja-hero-split, .ja-hero-grid)) .flex.flex-wrap { justify-content: center; }
+
+/* cards: a gentle top-lit tint with a gold rule, so they read as lit surfaces */
+body.ja-sunlit .ja-band-card,
+body.ja-sunlit .sc-card,
+body.ja-sunlit main .grid.gap-px > div,
+body.ja-sunlit main .border-t.border-brand-espresso\/20 {
+  background: linear-gradient(172deg, var(--color-paper), color-mix(in srgb, var(--color-surface-sand) 70%, var(--color-paper))) !important;
+  border: 0 !important;
+  border-top: 2px solid var(--color-antique-gold) !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+body.ja-sunlit main picture img,
+body.ja-sunlit main .overflow-hidden { border-radius: 4px; box-shadow: none; }
+
+/* rules and accents */
+body.ja-sunlit main p.ja-eyebrow::after { background: var(--sl-gold-line); }
+body.ja-sunlit .border-brand-espresso\/15,
+body.ja-sunlit .border-brand-espresso\/20 { border-color: color-mix(in srgb, var(--color-antique-gold) 40%, transparent) !important; }
+body.ja-sunlit ::selection { background: var(--color-sand-beige); color: var(--color-text-primary); }
+
+/* ── 3. Plans: three lit panels, each with its own accent ────────────── */
+body.ja-sunlit #membership {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 18px;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+body.ja-sunlit #membership > div {
+  display: flex !important;
+  flex-direction: column;
+  gap: 10px !important;
+  padding: 28px 26px 30px !important;
+  border: 0 !important;
+  border-top: 4px solid var(--color-deep-olive) !important;
+  border-radius: 2px;
+  background: var(--tint-sage);
+}
+body.ja-sunlit #membership > div:nth-child(2) { border-top-color: var(--color-warm-brown) !important; background: var(--tint-sand); }
+body.ja-sunlit #membership > div:nth-child(3) {
+  border-top-color: var(--color-antique-gold) !important;
+  background:
+    radial-gradient(ellipse 70% 90% at 92% 6%, color-mix(in srgb, var(--color-soft-terracotta) 38%, transparent), transparent 66%),
+    linear-gradient(168deg, var(--color-surface-terracotta), var(--color-warm-beige));
+}
+body.ja-sunlit #membership > div { min-width: 0; }
+body.ja-sunlit #membership > div > p { min-width: 0; flex: none !important; }
+body.ja-sunlit #membership > div > p:first-child { font-size: 1.05rem !important; }
+body.ja-sunlit #membership .ja-price {
+  font-size: clamp(1.45rem, 2.1vw, 1.9rem) !important;
+  color: var(--color-deep-olive);
+  overflow-wrap: anywhere;
+  letter-spacing: 0.04em;
+  margin: 6px 0 4px !important;
+}
+body.ja-sunlit #membership > div:nth-child(2) .ja-price,
+body.ja-sunlit #membership > div:nth-child(3) .ja-price { color: var(--color-warm-brown); }
+
+/* tab sublabels (対象年齢) must clear AA on the tinted tab surface */
+body.ja-sunlit .ja-tablist .ja-tab span.font-mono { color: var(--color-text-primary) !important; opacity: 1 !important; }
+
+@media (max-width: 700px) {
+  body.ja-sunlit main > section:first-child:not(.yoga-hero-photo) { padding-top: 120px !important; padding-bottom: 56px !important; }
+  body.ja-sunlit h1 { letter-spacing: 0.04em !important; }
+}

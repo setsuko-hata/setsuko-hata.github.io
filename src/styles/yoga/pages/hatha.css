@@ -1,0 +1,112 @@
+/* hatha.css: the ハタヨガとは page (ja/hatha-yoga).
+ * Sections alternate text and photographs, with a centred sun/moon band, a full-bleed
+ * split holding the gold sun/moon emblem, and a gold CTA. Colours come from satori.css tokens only.
+ * The global section rhythm in warm.css/sunlit.css uses !important, so the few rules that
+ * must beat it do too. */
+
+body.page-hatha { --hy-serif: "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif; --hy-latin: "Newsreader", "Shippori Mincho", serif; }
+
+body.page-hatha main > section.hy { position: relative; overflow: hidden; padding: clamp(56px, 7vw, 96px) 0 !important; background: var(--color-paper); border: 0; }
+body.page-hatha main > section.hy > div { padding-left: 0; padding-right: 0; }
+body.page-hatha .hy-wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: clamp(20px, 4vw, 40px) !important; position: relative; }
+
+/* type */
+body.page-hatha .hy h1,
+body.page-hatha .hy h2 { margin: 0; font-family: var(--hy-serif) !important; font-weight: 400 !important; color: var(--yl-head); text-wrap: balance; }
+body.page-hatha .hy h2 { font-size: clamp(1.45rem, 2.3vw, 1.95rem) !important; line-height: 1.6 !important; letter-spacing: .08em !important; }
+body.page-hatha .hy-eyebrow { margin: 12px 0 0; font-family: var(--hy-latin); font-size: 13px; letter-spacing: .24em; text-transform: uppercase; color: var(--yl-gold); line-height: 1.6 !important; }
+body.page-hatha .hy-body { margin-top: 28px; }
+body.page-hatha .hy-body p { margin: 0; font-size: 15.5px; line-height: 2.15 !important; letter-spacing: .04em; color: var(--yl-text); }
+body.page-hatha .hy-body p + p { margin-top: 18px; }
+
+/* short gold rule under each heading */
+body.page-hatha .hy-head::after { content: ""; display: block; width: 40px; height: 1px; margin-top: 22px; background: var(--color-antique-gold); }
+
+/* ── Hero: the sun/moon window photo with a warm paper wash from the left ── */
+body.page-hatha main > section.hy-hero { margin-top: 80px; min-height: clamp(380px, 46vw, 580px); display: flex; align-items: center; background: var(--color-ivory-cream); isolation: isolate; }
+body.page-hatha .hy-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; z-index: -2; }
+body.page-hatha .hy-hero__shade { position: absolute; inset: 0; z-index: -1; background:
+  linear-gradient(90deg, color-mix(in srgb, var(--color-paper) 94%, transparent) 0%, color-mix(in srgb, var(--color-ivory-cream) 80%, transparent) 32%, color-mix(in srgb, var(--color-warm-beige) 22%, transparent) 58%, transparent 78%),
+  linear-gradient(0deg, color-mix(in srgb, var(--color-paper) 55%, transparent) 0%, transparent 30%); }
+body.page-hatha .hy-hero__copy { max-width: 460px; text-align: left; }
+body.page-hatha .hy-hero__copy :is(h1, p) { margin-inline: 0 !important; }
+body.page-hatha .hy-hero .hy-eyebrow { margin: 0; }
+body.page-hatha .hy-hero h1 { margin-top: 18px; font-size: clamp(2.2rem, 4.6vw, 3.6rem) !important; line-height: 1.35 !important; letter-spacing: .1em !important; }
+body.page-hatha .hy-hero__lead { margin: 26px 0 0; font-size: 15.5px; line-height: 2.1 !important; letter-spacing: .05em; color: var(--yl-text); }
+@media (max-width: 899px) {
+  body.page-hatha main > section.hy-hero { align-items: flex-end; min-height: 520px; }
+  body.page-hatha .hy-hero__img { object-position: 50% 30%; }
+  body.page-hatha .hy-hero__shade { background: linear-gradient(0deg, var(--color-paper) 0%, color-mix(in srgb, var(--color-ivory-cream) 90%, transparent) 42%, color-mix(in srgb, var(--color-ivory-cream) 20%, transparent) 75%, transparent 100%); }
+}
+
+/* ── Text / photo splits ── */
+body.page-hatha .hy-split__grid { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 900px) {
+  body.page-hatha .hy-split__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; }
+  body.page-hatha .hy-split--reverse .hy-split__grid { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+}
+body.page-hatha .hy-split--reverse { background: var(--color-paper); }
+body.page-hatha .hy-photo { margin: 0; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 2px; box-shadow: 0 18px 36px -26px color-mix(in srgb, var(--yl-head) 60%, transparent); }
+body.page-hatha .hy-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+body.page-hatha .hy-photo--tall { aspect-ratio: 4 / 5; max-height: 620px; }
+body.page-hatha .hy-photo--tall img { object-position: 50% 62%; }
+body.page-hatha .hy-sprig { position: absolute; left: clamp(-20px, 1vw, 20px); bottom: -10px; width: clamp(90px, 10vw, 140px); opacity: .55; transform: rotate(18deg); pointer-events: none; }
+@media (max-width: 899px) {
+  body.page-hatha .hy-split--reverse .hy-photo { order: 2; }
+  body.page-hatha .hy-sprig { display: none; }
+}
+
+/* ── Statement band ── */
+body.page-hatha main > section.hy-band { background: linear-gradient(180deg, var(--color-ivory-cream), color-mix(in srgb, var(--color-ivory-cream) 70%, var(--color-light-sage))); border-block: 1px solid color-mix(in srgb, var(--color-antique-gold) 25%, transparent); }
+body.page-hatha .hy-band__inner { text-align: center; }
+body.page-hatha .hy-emblem { display: flex; align-items: center; justify-content: center; gap: 22px; margin-bottom: 26px; }
+body.page-hatha .hy-emblem__line { width: clamp(40px, 8vw, 96px); height: 1px; background: color-mix(in srgb, var(--color-antique-gold) 70%, transparent); }
+body.page-hatha .hy-emblem__ring { display: flex; align-items: center; justify-content: center; gap: 2px; width: 76px; height: 76px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--color-antique-gold) 60%, transparent); background: var(--color-paper); }
+body.page-hatha .hy-emblem__sun { width: 34px; height: 34px; color: var(--yl-gold-deep); }
+body.page-hatha .hy-emblem__moon { width: 20px; height: 20px; color: var(--color-sage); }
+body.page-hatha .hy-band h2 { font-size: clamp(1.3rem, 2vw, 1.65rem) !important; letter-spacing: .12em !important; }
+body.page-hatha .hy-band p { margin: 22px auto 0; max-width: 46em; font-size: 15px; line-height: 2.2 !important; letter-spacing: .05em; color: var(--yl-text); }
+
+/* ── Ha and Tha: text panel + gold emblem ── */
+body.page-hatha main > section.hy-bleed { padding: 0 !important; display: grid; background: var(--color-warm-beige); }
+@media (min-width: 900px) { body.page-hatha main > section.hy-bleed { grid-template-columns: 57% 43%; } }
+body.page-hatha .hy-bleed__text { display: flex; align-items: center; justify-content: flex-end; padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 56px) !important; background: linear-gradient(120deg, var(--color-ivory-cream), color-mix(in srgb, var(--color-warm-beige) 60%, var(--color-ivory-cream))); }
+body.page-hatha .hy-bleed__inner { width: 100%; max-width: 560px; }
+body.page-hatha .hy-bleed__sub { margin: 24px 0 0; font-family: var(--hy-serif); font-size: clamp(1.05rem, 1.5vw, 1.2rem); line-height: 1.95 !important; letter-spacing: .06em; color: var(--color-deep-olive); }
+body.page-hatha .hy-bleed__art { margin: 0; display: grid; place-items: center; padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 48px); background: radial-gradient(circle at 50% 50%, var(--color-ivory-cream) 0%, var(--color-warm-beige) 100%); }
+/* multiply drops the emblem's own parchment ground into the band colour */
+body.page-hatha .hy-bleed__art img { display: block; width: min(100%, 420px); height: auto; mix-blend-mode: multiply; clip-path: circle(48.6% at 50% 50%); }
+@media (max-width: 899px) {
+  body.page-hatha .hy-bleed__text { justify-content: center; }
+  body.page-hatha .hy-bleed__inner { max-width: 1120px; }
+  body.page-hatha .hy-bleed__art img { width: min(76%, 340px); }
+}
+
+@media (max-width: 899px) { body.page-hatha .hy-br { display: none; } }
+
+/* ── CTA ── */
+body.page-hatha main > section.hy-cta { background: linear-gradient(180deg, var(--color-ivory-cream), var(--color-warm-beige)); text-align: center; }
+body.page-hatha .hy-cta__leaf { position: absolute; width: clamp(180px, 22vw, 320px); opacity: .18; filter: blur(1.5px) saturate(.6); pointer-events: none; }
+body.page-hatha .hy-cta__leaf--l { left: -40px; top: -30px; transform: rotate(-10deg); }
+body.page-hatha .hy-cta__leaf--r { right: -50px; bottom: -40px; transform: scaleX(-1) rotate(-20deg); }
+body.page-hatha .hy .hy-cta__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem) !important; letter-spacing: .12em !important; }
+body.page-hatha .hy-cta__sub { margin: 14px 0 0; font-size: 14px; letter-spacing: .08em; color: var(--yl-soft); }
+body.page-hatha .hy-cta__actions { display: flex; flex-direction: column; align-items: center; gap: 18px; margin-top: 32px; }
+body.page-hatha .hy-btn { display: inline-flex; align-items: center; gap: 22px; padding: 15px 36px; border-radius: 999px; background: var(--color-gold-accent); color: var(--yl-head); font-size: 15px; font-weight: 500; letter-spacing: .1em; text-decoration: none; box-shadow: 0 10px 22px -14px color-mix(in srgb, var(--yl-gold-deep) 80%, transparent); transition: background-color .25s ease, transform .25s ease; }
+body.page-hatha .hy-btn:hover { background: var(--color-antique-gold); color: var(--yl-head); }
+body.page-hatha .hy-btn::after,
+body.page-hatha .hy-link::after { content: "→"; font-family: "Inter", sans-serif; font-weight: 400; }
+body.page-hatha .hy-link { display: inline-flex; gap: 18px; font-size: 14.5px; letter-spacing: .12em; color: var(--color-deep-olive); text-decoration: none; }
+body.page-hatha .hy-link:hover { color: var(--color-warm-brown); }
+body.page-hatha .hy-btn:focus-visible,
+body.page-hatha .hy-link:focus-visible { outline: 2px solid var(--color-deep-olive); outline-offset: 3px; }
+
+/* phones */
+@media (max-width: 560px) {
+  body.page-hatha .hy-band p br { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-hatha .hy-btn { transition: none; }
+}
+

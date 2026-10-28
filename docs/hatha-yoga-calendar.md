@@ -1,6 +1,6 @@
 # Hatha Yoga calendar
 
-The schedule on `/hatha-yoga/ja/offerings` is one reusable, hand-built calendar (no Google iframe) with filter tabs 全部 / オンラインクラス / 対面クラス / 特別プログラム. Light, warm, earthy: no dark fills.
+The schedule on `/hatha-yoga/ja/offerings` is one reusable, hand-built calendar (no Google iframe) with two dropdown filters, 場所 (大阪 / 東京, matched against the event title via `data-keywords`) and 種類 (one per `data-sources` entry); they combine. Light, warm, earthy: no dark fills.
 
 ## How it works
 
@@ -8,19 +8,19 @@ The schedule on `/hatha-yoga/ja/offerings` is one reusable, hand-built calendar 
 Google Calendar (owned by events@setsukohata.com)
    │  read live by a Google Apps Script web app (apps-script/calendar-feed.gs)
    ▼
-JSON feed  ──►  hy-calendar.js (in the browser) renders month / list views
+JSON feed  ──►  calendar.js (in the browser) renders month / list views
 ```
 
 Nothing is saved in the repo or built at deploy time: every page load asks the feed, which reads the calendars as their owner and caches for 120 seconds. Edits in Google Calendar show up within about 2 minutes.
 
 | Piece | Path |
 |---|---|
-| Component (JS) | `public/hatha-yoga/assets/hy-calendar.js` |
-| Component (CSS) | `public/hatha-yoga/assets/hy-calendar.css` |
+| Component (JS) | `src/scripts/yoga/calendar.js` |
+| Component (CSS) | `src/styles/yoga/calendar.css` |
 | Feed script (Google-side) | `apps-script/calendar-feed.gs` |
-| Mount point | `<section id="calendar">` in `public/hatha-yoga/ja/offerings.html` |
+| Mount point | `<section id="calendar">` in `src/pages/hatha-yoga/ja/offerings.astro` |
 
-`public/hatha-yoga/` is served verbatim by Astro: edit these files directly, no build step for the component. There is no GitHub Action for the calendar.
+The component is bundled by Astro (imported by `offerings.astro`), so changes ship with the normal build. There is no GitHub Action for the calendar.
 
 ## The mount point
 
@@ -33,14 +33,9 @@ Nothing is saved in the repo or built at deploy time: every page load asks the f
 
 - `data-feed`: the Apps Script web app URL (public by design, like the signup form's). The page requests `?cal=<keys>`.
 - `data-sources`: one entry per category: `key` (matches `CALENDARS` in the script), `label` (tab text), `tone` (`sage`, `clay`, `honey`; add tones in `hy-calendar.css` as `.hy-cal--NAME`, plus its popup twin, and in `TONES` in the JS). Optional `ics`: a path to a `.ics` file used only if the feed fails.
-- With more than one source the component adds the 全部 tab and a tab per source (coloured dot = legend), colours events by category, and names the category in the popup and list view. A single `data-ics` + `data-tone` gives a plain calendar with no tabs.
+- With more than one source the component adds the 種類 dropdown, colours events by category, and names the category in the popup and list view. A single `data-ics` + `data-tone` gives a plain calendar with no tabs.
 
-Load the component once in the page `<head>`:
-```html
-<link rel="stylesheet" href="../assets/hy-calendar.css?v=N" />
-<script src="../assets/hy-calendar.js?v=N" defer></script>
-```
-GitHub Pages caches assets ~10 minutes, so bump `?v=N` whenever the component or the mount-point attributes change (stale JS + new HTML shows "カレンダーを読み込めませんでした").
+The component is imported once, by the offerings page (`import '../../../scripts/yoga/calendar.js'` and `calendar.css`). Bundled assets get content-hashed filenames, so no `?v=N` cache-busting is needed any more.
 
 Never embed Google's iframe or write a second calendar implementation.
 
@@ -51,7 +46,7 @@ Never embed Google's iframe or write a second calendar implementation.
 
 ## Features
 
-- Filter tabs, month grid and list view (月 / 一覧), prev / next / 今日, tap an event for details.
+- Place and type dropdowns, month grid and list view (月 / 一覧), prev / next / 今日, tap an event for details.
 - Narrow containers (under 700px, measured on the calendar itself) switch to coloured dots and tapping a day lists that day's classes.
 - Wide layout shows a start–end time badge and the title on every event.
 - Times always display in JST regardless of visitor timezone.
@@ -77,7 +72,7 @@ The feed reads about 2 months back and 13 months ahead, with repeats already exp
 ## If the calendar shows an error
 
 - The page asks the feed with an 8s timeout; if it fails and a source has no `ics` fallback the page shows "カレンダーを読み込めませんでした". Open the feed URL directly to see whether the script is failing (Apps Script → Executions shows errors; a Google-side permission change on the calendars is the usual cause).
-- Old browser cache: bump `?v=N`.
+- Old browser cache: not an issue; bundled files are content-hashed.
 
 ## Notes
 

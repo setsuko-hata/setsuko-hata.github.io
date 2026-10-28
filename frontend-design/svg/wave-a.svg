@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none" role="img" aria-hidden="true">
+  <!-- Flowing wave, layer A (deepest). Anchored to the bottom edge; flip vertically for a top edge. -->
+  <path fill="#596044" d="M0 96C150 40 290 28 460 78C640 132 760 150 940 100C1100 56 1260 36 1440 84V200H0Z"/>
+</svg>

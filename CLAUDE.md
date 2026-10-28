@@ -6,15 +6,37 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Static Astro 4 site for setsukohata.com — a bilingual (Japanese-primary, English-secondary) personal site for Setsuko Hata (秦 節子), jazz singer / composer / Hatha Yoga teacher. Astro builds Home (`src/pages/index.astro`), About (`src/pages/about.astro`), and Music (`src/pages/music.astro`, the jazz-singer page, nav label 音楽, also linked from the Home "Explore Music" card).
 
-`/hatha-yoga` is a separate, prebuilt static export (its own CSS, fonts, JA/EN pages, no JS) living in `public/hatha-yoga/`, so Astro copies it verbatim into the build. Edit those HTML files directly; don't convert them to Astro components or restyle them with `global.css`. Its own `sitemap.xml` still points at the old higgsfield.app domain — the root `public/sitemap.xml` is the one that counts.
+`/hatha-yoga` is part of the Astro build too, under `src/pages/hatha-yoga/{ja,en}/` (URLs `/hatha-yoga/ja/about/`, `/hatha-yoga/en/`; `/hatha-yoga` redirects to `/hatha-yoga/ja/`). Its pages use `src/layouts/YogaLayout.astro` and the components in `src/components/yoga/` (`Header`, `Footer`, `Sprite`); nav and footer links, URLs and the booking form link live in `src/data/yoga.ts`. Styles are the `src/styles/yoga/*.css` set (imported in order by `YogaLayout.astro`; per-page extras in `styles/yoga/pages/`; the palette below applies to every page), behaviour is in `src/scripts/yoga/`. Static images stay in `public/hatha-yoga/assets/`. Page bodies are still the legacy Tailwind-class markup (the compiled `tailwind.css` has no build step, so only utility classes already in it work). The design brief is `docs/hatha-yoga/design-system.md`.
 
-### Hatha Yoga JA header nav
+### Hatha Yoga palette
 
-The Japanese pages' header nav is one shared component, `public/hatha-yoga/assets/ja-nav.js` (menu list at the top of the file). Each `ja/*.html` has an empty `<nav aria-label="Primary" data-ja-nav data-active="…">` followed by the script tag; bump `?v=N` on all pages after editing. Don't paste nav markup back into pages. The mobile menu is built by each page's inline script from this nav, and the footer link lists are still per-page.
+This palette applies to **every Hatha Yoga page, Japanese and English**. It is defined once, in the `:root` block of `src/styles/yoga/satori.css`; the older token families (`--ja-*`, `--sl-*`, `--color-brand-*`) are aliases of it there. Never hard-code a hex in a page or stylesheet: use the token (`var(--color-deep-olive)`), so a palette change is a one-file edit. `sunny.css` (loaded last, rules prefixed `:root:root` for specificity) holds the sunlit card/gradient rules and watercolor decorations, and defines no colors of its own.
+
+| Group | Name | Hex | Token | Used for |
+|---|---|---|---|---|
+| Grounds | Sunlit Paper | `#FDF7EA` | `--color-paper` | Page background |
+| | Warm Cream | `#F9EED7` | `--color-ivory-cream` | Soft sections |
+| | Sun-Warmed Sand | `#F2DDB4` | `--color-warm-beige` | Warmer bands |
+| | Golden Grass | `#E6C58A` | `--color-sand-beige` | Sand accents |
+| Greens | Fresh Leaf | `#B7C97A` | `--color-light-sage` | Light green fills, the 身体 card |
+| | Leaf Green | `#6F8F3A` | `--color-sage` | Bright green accents |
+| | Forest Shade | `#44582A` | `--color-deep-olive` | Buttons and links |
+| Earth | Sunset Clay | `#DE8A5E` | `--color-soft-terracotta` | Terracotta fills, the エネルギー card |
+| | Baked Clay | `#C0703F` | `--color-camel-brown` | Warmer accents |
+| | Cedar | `#8E5530` | `--color-warm-brown` | Brown buttons on inner pages, icons |
+| Gold | Sun Gold | `#E5C365` | `--color-gold-accent` | The accent: the 心 card, small highlights |
+| | Honey | `#D9A93F` | `--color-antique-gold` | Card borders, fine lines |
+| | Deep Honey | `#A87A1E` | `--yl-gold-deep` | Icons and lines that sit on gold |
+
+Gold is the second main colour; clay is a small accent placed next to gold or beige, never straight against green. Small gold text uses `--yl-gold` (`#85601A`), not Sun Gold or Honey, for contrast. Text colours are `--yl-head` / `--yl-text` / `--yl-soft` (warm browns). The 11 per-category calendar tones in `calendar.js` are the one deliberate exception to the palette.
+
+### Hatha Yoga nav
+
+Edit the menu in `NAV` in `src/data/yoga.ts`; each page passes `active="<nav item id>"` to `YogaLayout`. Don't paste nav markup into pages. The mobile menu is rendered by `Header.astro` and driven by `scripts/yoga/nav.ts`.
 
 ### Hatha Yoga calendars
 
-The class schedule uses one reusable calendar component, `public/hatha-yoga/assets/hy-calendar.{js,css}`, fed live by a Google Apps Script (`apps-script/calendar-feed.gs`, deployed separately in events@setsukohata.com's Google account). Never embed Google's iframe or write a new calendar; see `docs/hatha-yoga-calendar.md` for the mount point, adding a category, redeploying the script and cache-busting `?v=N`. Keep it light and earthy: no dark fills.
+The class schedule uses one reusable calendar component, `src/scripts/yoga/calendar.js` + `src/styles/yoga/calendar.css`, fed live by a Google Apps Script (`apps-script/calendar-feed.gs`, deployed separately in events@setsukohata.com's Google account). Never embed Google's iframe or write a new calendar; see `docs/hatha-yoga-calendar.md` for the mount point, adding a category and redeploying the script. Keep it light and earthy: no dark fills.
 
 ## Deployment
 

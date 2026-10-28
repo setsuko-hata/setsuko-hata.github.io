@@ -1,0 +1,119 @@
+/* satori-layers.css: reusable, separate visual layers.
+ *
+ *   1. paper   .layer-paper        ivory paper-grain photo, multiplied at low opacity
+ *   2. wash    .wash-sage|gold|terra|olive   soft radial/linear colour fades
+ *   3. deco    .deco + .deco--*    editable SVG accents (masks, so they recolour from CSS)
+ *
+ * The three layers are separate pseudo-elements / elements, never one flattened image.
+ * They sit between the section background and its content (z-index -1 inside an isolated
+ * stacking context), so they cannot cover text or photographs, and pointer-events are off.
+ *
+ * Tweak globally with the variables below, or per section by overriding them inline.
+ */
+
+:root {
+  /* paper */
+  --paper-img: url("/hatha-yoga/assets/textures/paper-ivory.jpg");
+  --paper-opacity: .22;           /* 0 = off. Keep under .5 so Japanese text stays crisp */
+
+  /* washes: 1 = as designed, 0 = off, 1.6 = noticeably stronger */
+  --wash-strength: 1.5;
+
+  /* decorations */
+  --deco-opacity: .14;
+  --deco-color: var(--sl-olive);
+}
+
+/* ---- 1. paper + 2. wash ------------------------------------------------ */
+.layer-paper {
+  position: relative;
+  isolation: isolate;
+}
+.layer-paper::before,
+.layer-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.layer-paper::before {
+  background: var(--paper-img) center / cover no-repeat;
+  mix-blend-mode: multiply;
+  opacity: var(--paper-opacity);
+}
+.layer-paper--grain { --paper-img: url("/hatha-yoga/assets/textures/paper-grain.jpg"); }
+
+/* wash colour = one token per layer; position = --wx / --wy (percent) */
+.layer-paper::after {
+  --wx: 8%;
+  --wy: 0%;
+  --a1: calc(var(--wash-strength) * 20%);
+  --a2: calc(var(--wash-strength) * 12%);
+  background:
+    radial-gradient(ellipse 62% 78% at var(--wx) var(--wy), color-mix(in srgb, var(--wash-1, var(--sl-sage)) var(--a1), transparent), transparent 72%),
+    radial-gradient(ellipse 54% 70% at calc(100% - var(--wx)) 100%, color-mix(in srgb, var(--wash-2, var(--sl-gold)) var(--a2), transparent), transparent 74%),
+    linear-gradient(172deg, color-mix(in srgb, var(--sl-ivory) calc(var(--wash-strength) * 35%), transparent), transparent 55%);
+}
+.wash-sage  { --wash-1: var(--sl-sage);  --wash-2: var(--sl-gold); }
+.wash-gold  { --wash-1: var(--sl-gold);  --wash-2: var(--sl-sage); --wx: 92%; }
+.wash-terra { --wash-1: var(--sl-terra); --wash-2: var(--sl-gold); --wx: 90%; }
+.wash-olive { --wash-1: var(--sl-olive); --wash-2: var(--sl-sage); --wx: 4%; }
+.wash-soft  { --wash-strength: .6; }
+
+/* ---- 3. SVG decorations (masks: colour and opacity come from CSS) ------- */
+.deco {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--deco-color);
+  opacity: var(--deco-opacity);
+  -webkit-mask: var(--deco-src) center / contain no-repeat;
+  mask: var(--deco-src) center / contain no-repeat;
+}
+.deco--sprig  { --deco-src: url("/images/decorative/sprig.svg");           aspect-ratio: 160 / 260; width: clamp(80px, 11vw, 150px); }
+.deco--branch { --deco-src: url("/images/decorative/branch-spray.svg");    aspect-ratio: 480 / 220; width: clamp(200px, 30vw, 420px); }
+.deco--sun    { --deco-src: url("/images/decorative/sun-halo.svg");        aspect-ratio: 1; width: clamp(130px, 18vw, 240px); --deco-color: var(--sl-gold); }
+.deco--moon   { --deco-src: url("/images/decorative/crescent-stars.svg");  aspect-ratio: 1; width: clamp(110px, 14vw, 190px); }
+
+/* waves sit on a section edge: full width, fluid height, never wider than the section */
+.deco-wave {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: clamp(64px, 9vw, 140px);
+  max-width: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--deco-color);
+  opacity: var(--deco-opacity);
+  -webkit-mask: var(--deco-src) 0 0 / 100% 100% no-repeat;
+  mask: var(--deco-src) 0 0 / 100% 100% no-repeat;
+}
+.deco-wave--bottom { bottom: -1px; }
+.deco-wave--top    { top: -1px; transform: scaleY(-1); }
+.wave-a { --deco-src: url("/images/decorative/wave-a.svg"); --deco-color: var(--sl-olive); --deco-opacity: .10; }
+.wave-b { --deco-src: url("/images/decorative/wave-b.svg"); --deco-color: var(--sl-sage);  --deco-opacity: .16; }
+.wave-c { --deco-src: url("/images/decorative/wave-c.svg"); --deco-color: var(--sl-gold);  --deco-opacity: .20; }
+.wave-terra { --deco-color: var(--sl-terra); --deco-opacity: .10; }
+
+/* sections that host waves must never scroll sideways */
+.layer-paper { overflow-x: clip; }
+
+/* ---- motion: nothing here animates; keep it that way under reduced motion -- */
+@media (prefers-reduced-motion: reduce) {
+  .deco, .deco-wave, .layer-paper::before, .layer-paper::after { animation: none !important; transition: none !important; }
+}
+
+/* ---- space budget tokens (see CLAUDE.md section 15) ---- */
+:root {
+  --space-section: clamp(32px, 4.5vw, 64px);
+  --media-thumb: 88px;       /* phone thumbnails in card rows */
+  --media-band-max: 240px;   /* full-width photo bands */
+  --icon-card-max: 56px;
+}
+
+/* corner swells: sit inside a section, heavier in the bottom corners, never a separate band */
+.deco-corner { position: absolute; left: 0; bottom: -1px; width: 100%; height: clamp(110px, 15vw, 200px); z-index: -1; pointer-events: none; background-color: var(--deco-color); opacity: var(--deco-opacity); -webkit-mask: var(--deco-src) center bottom / 100% 100% no-repeat; mask: var(--deco-src) center bottom / 100% 100% no-repeat; max-width: 100%; }
+.deco-corner--a { --deco-src: url("/images/decorative/corner-a.svg"); --deco-color: var(--sl-sage); --deco-opacity: .42; }
+.deco-corner--b { --deco-src: url("/images/decorative/corner-b.svg"); --deco-color: var(--sl-olive); --deco-opacity: .26; }

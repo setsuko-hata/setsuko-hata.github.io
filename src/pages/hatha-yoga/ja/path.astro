@@ -1,0 +1,116 @@
+---
+// The path into Hatha Yoga: starting-point quiz on top, the course flow (ヨガ講座・研修の流れ) below.
+// Two starting points side by side: ウパヨガ1 (対面・オンライン) and スーリヤ・クリヤ.
+// ウパヨガ1 → 2 → 3 → 4 → スーリヤ・クリヤ → アンガマルダナ or ヨガアーサナ.
+// Each card's title links to its section on ハタヨガの種類 and covers the whole card. Each card's data-next names the card(s) it leads to;
+// scripts/yoga/path-flow.js draws the connecting lines from that.
+import YogaLayout from '../../../layouts/YogaLayout.astro';
+import PathQuiz from '../../../components/yoga/PathQuiz.astro';
+import { SURYA_KRIYA_FORM_URL, SATORIN_PAGE_URL, yogaHref } from '../../../data/yoga';
+import '../../../styles/yoga/pages/classes.css';
+import '../../../styles/yoga/pages/path.css';
+
+const offerings = yogaHref('ja', 'offerings');
+const types = (hash: string) => yogaHref('ja', 'hatha-types', hash);
+const contact = yogaHref('ja', 'contact');
+
+const upaSteps = [
+  { id: 'fl-upa2', name: 'ウパヨガ 2', next: 'fl-upa3' },
+  { id: 'fl-upa3', name: 'ウパヨガ 3', next: 'fl-upa4' },
+  { id: 'fl-upa4', name: 'ウパヨガ 4', next: 'fl-surya' },
+];
+const advanced = [
+  { id: 'fl-angamardana', name: 'アンガマルダナ', hash: 'anga', price: '70,000' },
+  { id: 'fl-yogasana', name: 'ヨガアーサナ', hash: 'asana', price: '80,000' },
+];
+---
+<YogaLayout title="本格ハタヨガへの道 | Setsuko Hata Yoga"
+  description="対面・オンラインのウパヨガ1〜4から、スーリヤ・クリヤ、アンガマルダナ・ヨガアーサナへ。秦 節子と歩む本格ハタヨガの道のり。"
+  locale="ja"
+  active="hatha"
+  bodyClass="page-offerings page-path"
+>
+  <section class="cl-hero" data-screen-label="Hero">
+    <div class="cl-wrap">
+      <p class="cl-hero__en">The path of Hatha Yoga</p>
+      <h1>本格ハタヨガへの道</h1>
+      <p class="cl-hero__lead">無料の体験から、あなたのペースで。進む道は、あなたが選べます。</p>
+    </div>
+    <svg class="cl-wave cl-wave--bottom" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true"><path class="w1" d="M0 90 C120 110 190 190 340 215 C420 228 480 250 520 300 L0 300 Z"/><path class="w2" d="M0 170 C90 180 150 235 250 255 C300 265 340 280 370 300 L0 300 Z"/><path class="w3" d="M300 300 C430 210 600 270 780 215 C900 180 990 225 1060 215 L1060 300 Z"/><path class="w4" d="M560 300 C680 262 810 296 940 258 L940 300 Z"/><path class="w5" d="M860 300 C960 255 1080 235 1200 160 L1200 300 Z"/></svg>
+  </section>
+
+  <PathQuiz />
+
+  <section id="path-map" class="cl-section fl-section" data-screen-label="道のり" aria-labelledby="fl-title">
+    <div class="cl-wrap">
+      <div class="fl-head">
+        <p class="fl-head__en">The flow</p>
+        <h2 id="fl-title" class="fl-head__title">ヨガ講座・研修の流れ</h2>
+        <p class="fl-head__lead">はじまりは、ウパヨガ1（対面・オンライン）かスーリヤ・クリヤ。ウパヨガは2・3・4を経てスーリヤ・クリヤへ、その先はアンガマルダナまたはヨガアーサナへと進みます。各講座をタップすると、詳しい説明をご覧いただけます。</p>
+      </div>
+
+      <div class="fl" data-flow>
+        <svg class="fl-lines" data-flow-lines aria-hidden="true"></svg>
+        <p class="fl-start-note">どちらからでも始められます</p>
+
+        <div class="fl-col fl-col--upa">
+          <article id="fl-upa1" class="fl-card fl-card--start" tabindex="-1" data-next="fl-upa2">
+            <span class="fl-start">START</span>
+            <p class="fl-card__mode">対面・オンライン</p>
+            <h3 class="fl-card__name"><a class="fl-card__link" href={types('upa')}>ウパヨガ 1</a></h3>
+            <p class="fl-card__meta">対面：各1時間15分</p>
+            <p class="fl-card__meta">オンライン（SATORIN）：1時間</p>
+            <div class="fl-card__actions">
+              <a class="cl-btn fl-btn" href={offerings}>対面クラスを見る</a>
+              <a class="cl-btn cl-btn--ghost fl-btn" href={SATORIN_PAGE_URL}>SATORINを見る</a>
+            </div>
+          </article>
+          {upaSteps.map((s) => (
+            <article id={s.id} class="fl-card fl-card--step" data-next={s.next}>
+              <p class="fl-card__mode">対面</p>
+              <h3 class="fl-card__name"><a class="fl-card__link" href={types('upa')}>{s.name}</a></h3>
+              <p class="fl-card__meta">各1時間15分</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="fl-col fl-col--surya">
+          <article id="fl-surya" class="fl-card fl-card--start fl-card--surya" tabindex="-1" data-next="fl-angamardana fl-yogasana">
+            <span class="fl-start">START</span>
+            <p class="fl-card__mode">対面</p>
+            <h3 class="fl-card__name"><a class="fl-card__link" href={types('surya')}>スーリヤ・クリヤ</a></h3>
+            <p class="fl-card__meta">7時間・伝授：2日間</p>
+            <p class="fl-card__price">60,000<small>円</small></p>
+            <div class="fl-card__actions">
+              <a class="cl-btn fl-btn" href={SURYA_KRIYA_FORM_URL} target="_blank" rel="noreferrer">予約する</a>
+            </div>
+          </article>
+          <div class="fl-pair">
+            {advanced.map((c) => (
+              <article id={c.id} class="fl-card">
+                <p class="fl-card__mode">対面</p>
+                <h3 class="fl-card__name"><a class="fl-card__link" href={types(c.hash)}>{c.name}</a></h3>
+                <p class="fl-card__meta">12時間・伝授：4日間</p>
+                <p class="fl-card__price">{c.price}<small>円</small></p>
+                <div class="fl-card__actions">
+                  <a class="cl-btn cl-btn--ghost fl-btn" href={contact}>お問い合わせ</a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-support">
+        <p class="pt-support__en">Support</p>
+        <p class="pt-support__title">一度の伝授から、一生涯の実践へ</p>
+        <p>受講後1年間、年2回の個別復習・修正を無料でサポート。その後も一生涯、実践をサポートします。</p>
+      </div>
+    </div>
+  </section>
+</YogaLayout>
+
+<script>
+  import '../../../scripts/yoga/path-quiz.js';
+  import '../../../scripts/yoga/path-flow.js';
+</script>
