@@ -145,12 +145,21 @@
     var srcOf = {}; sources.forEach(function (x) { srcOf[x.key] = x; });
     var label = root.dataset.label || 'カレンダー';
     var now = parts(nowJ());
-    var st = { y: now.y, m: now.m, view: 'month', sel: startOfDay(nowJ()), vev: [], filter: 'all', loaded: false, failed: false, shown: [] };
+    var st = { y: now.y, m: now.m, view: 'month', sel: startOfDay(nowJ()), vev: [], place: 'all', type: 'all', loaded: false, failed: false, shown: [] };
     root.classList.add('hy-cal', 'hy-cal--' + tone);
     root.setAttribute('role', 'region');
     root.setAttribute('aria-label', label);
 
-    function vevs() { return st.filter === 'all' ? st.vev : st.vev.filter(function (e) { return e.src === st.filter; }); }
+    // Title-keyword filters (e.g. 大阪 / 東京) sit after the per-source ones: data-keywords='[{"key","label","kw"}]'.
+    var kws = root.dataset.keywords ? JSON.parse(root.dataset.keywords) : [];
+    var kwOf = {}; kws.forEach(function (x) { kwOf[x.key] = x; });
+    // Two dropdowns that combine: 場所 (title keyword) and 種類 (calendar source).
+    function vevs() {
+      var k = kwOf[st.place];
+      return st.vev.filter(function (e) {
+        return (!k || e.title.indexOf(k.kw) >= 0) && (st.type === 'all' || e.src === st.type);
+      });
+    }
     function monthRange() {
       var first = wall(st.y, st.m, 1), gridStart = first - parts(first).w * D;
       return { first: first, gridStart: gridStart, gridEnd: gridStart + 42 * D };
@@ -202,13 +211,15 @@
       return n ? h : '<p class="hy-cal__empty">これからの予定は、決まり次第お知らせします。</p>';
     }
 
+    function select(name, label, allLabel, items, value) {
+      return '<label class="hy-cal__sel"><span>' + label + '</span><select data-sel="' + name + '" aria-label="' + label + '"><option value="all">' + allLabel + '</option>' +
+        items.map(function (x) { return '<option value="' + esc(x.key) + '"' + (value === x.key ? ' selected' : '') + '>' + esc(x.label) + '</option>'; }).join('') + '</select></label>';
+    }
     function filters() {
-      if (!multi) return '';
-      var all = [{ key: 'all', label: '全部' }].concat(sources);
-      return '<div class="hy-cal__filters" role="tablist" aria-label="カレンダーの種類">' + all.map(function (x) {
-        var c = x.key !== 'all' && TONES[x.tone];
-        return '<button type="button" role="tab" class="hy-cal__f" data-f="' + esc(x.key) + '" aria-selected="' + (st.filter === x.key) + '"' + (c ? ' style="--c-deep:' + c[0] + ';--c-tint:' + c[1] + ';--c-ink:' + c[2] + '"' : '') + '>' + (c ? '<i aria-hidden="true"></i>' : '') + esc(x.label) + '</button>';
-      }).join('') + '</div>';
+      if (!multi && !kws.length) return '';
+      return '<div class="hy-cal__filters">' +
+        (kws.length ? select('place', '場所', 'すべて', kws, st.place) : '') +
+        (multi ? select('type', '種類', 'すべて', sources, st.type) : '') + '</div>';
     }
 
     function render() {
@@ -265,15 +276,28 @@
         root.classList.remove('is-in'); render(); requestAnimationFrame(function () { root.classList.add('is-in'); });
         return;
       }
-      var f = t.closest('[data-f]');
-      if (f) { st.filter = f.dataset.f; render(); return; }
       var v = t.closest('[data-v]');
       if (v) { st.view = v.dataset.v; render(); return; }
       var day = t.closest('[data-day]');
       if (day) { st.sel = +day.dataset.day; render(); }
     });
 
+    root.addEventListener('change', function (ev) {
+      var sel = ev.target.closest('[data-sel]');
+      if (!sel) return;
+      st[sel.dataset.sel] = sel.value; render();
+      var again = root.querySelector('[data-sel="' + sel.dataset.sel + '"]'); if (again) again.focus();
+    });
+
     render();
+    // Lets a [data-cal-filter] button elsewhere on the page pick a calendar filter.
+    root.__hySetFilter = function (k) {
+      if (k === 'all') { st.place = 'all'; st.type = 'all'; }
+      else if (kwOf[k]) { st.place = k; st.type = 'all'; }
+      else if (srcOf[k]) { st.type = k; st.place = 'all'; }
+      else return;
+      render();
+    };
     // Live feed (Apps Script). A source with an `ics` path falls back to that file if the feed fails.
     function loadFeed() {
       if (!feedUrl) return Promise.resolve(null);
@@ -304,6 +328,17 @@
     });
   }
 
-  function boot() { document.querySelectorAll('[data-hy-cal]').forEach(init); }
+  function boot() {
+    document.querySelectorAll('[data-hy-cal]').forEach(init);
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-cal-filter]');
+      var cal = document.querySelector('[data-hy-cal]');
+      if (!b || !cal || !cal.__hySetFilter) return;
+      e.preventDefault();
+      cal.__hySetFilter(b.dataset.calFilter);
+      var t = document.getElementById('calendar') || cal;
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 96, behavior: 'smooth' });
+    });
+  }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

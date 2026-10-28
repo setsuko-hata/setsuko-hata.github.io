@@ -1,23 +1,5 @@
-gi/* ja-warm.css — warm/cozy palette + layout refinements for the Japanese pages.
+/* ja-warm.css — warm/cozy palette + layout refinements for the Japanese pages.
  * Loaded only by /ja/*.html, after styles-Q1zC6xcO.css. Nothing here touches /en. */
-
-:root {
-  /* Warm re-cast of the brand ramp (was olive/grey-heavy) */
-  --color-brand-espresso: #3a3228; /* warm charcoal — text */
-  --color-brand-moss: #8a6043; /* warm brown — small accents only */
-  --color-brand-tan: #d9c4a3; /* sand */
-  --color-brand-cream: #e8d9c2; /* warm beige */
-  --color-brand-clay: #c98b67; /* terracotta hairline */
-
-  --ja-page: #f5efdf; /* page ground */
-  --ja-page-2: #e8d9c2; /* alternating band */
-  --ja-sage: #dde1ce;
-  --ja-sage-mid: #aeb39a;
-  --ja-sage-deep: #7e8764;
-  --ja-olive: #596044; /* one cool-but-warm green for variety */
-  --ja-ink: #3e3227;
-  --ja-ink-70: #6b5744;
-}
 
 /* ── Grounds ─────────────────────────────────────────────────────────── */
 html,
@@ -25,7 +7,7 @@ body {
   background: var(--ja-page);
   color: var(--ja-ink);
 }
-/* the hard-coded #F5EFDF sections become the warmer cream */
+/* the hard-coded var(--color-ivory-cream) sections become the warmer cream */
 [class*="f5efe6"] {
   background-color: var(--ja-page) !important;
 }
@@ -43,10 +25,10 @@ main .bg-brand-moss.brand-dark .bg-brand-moss {
   background-color: transparent !important;
 }
 main .bg-brand-espresso {
-  background-color: #e8d9c2 !important;
+  background-color: var(--color-warm-beige) !important;
 }
 footer.bg-brand-espresso {
-  background-color: #e8d9c2 !important;
+  background-color: var(--color-warm-beige) !important;
 }
 /* the olive footer ground is lighter than the old espresso — lift the muted text */
 footer .opacity-60 {
@@ -59,7 +41,7 @@ footer .opacity-80 {
   opacity: 0.92 !important;
 }
 footer .text-brand-tan {
-  color: #8a6043 !important;
+  color: var(--color-warm-brown) !important;
 }
 footer .border-t {
   border-color: rgba(245, 239, 223, 0.22) !important;
@@ -127,7 +109,7 @@ main > section:first-child p.font-mono:not(.ja-eyebrow):not(.ja-sublabel) {
 /* labels sitting on a dark band */
 .brand-dark p.ja-eyebrow,
 .brand-dark p.ja-sublabel {
-  color: #e8d9c2 !important;
+  color: var(--color-warm-beige) !important;
 }
 .brand-dark p.ja-eyebrow::after {
   background: rgba(245, 239, 223, 0.3);
@@ -172,10 +154,10 @@ header a[href*="docs.google.com"] {
 main a.inline-flex[class*="border-brand-espresso"] {
   background-color: var(--color-brand-espresso);
   border-color: var(--color-brand-espresso);
-  color: #f5efdf;
+  color: var(--color-ivory-cream);
 }
 main a.inline-flex[class*="border-brand-espresso"]:hover {
-  background-color: #f5efdf;
+  background-color: var(--color-ivory-cream);
   color: var(--color-brand-espresso);
 }
 
@@ -205,12 +187,12 @@ main li:not([class*="text-white"]):not([class*="text-brand"]) {
 main .brand-dark p,
 main .brand-dark li,
 main .brand-dark blockquote {
-  color: #f5efdf !important;
+  color: var(--color-ivory-cream) !important;
 }
 /* [class~=] matches the exact class token, so variant-prefixed utilities like
    hover:text-white are not caught (a [class*=] substring match was). */
 main [class~="text-white"] {
-  color: #f5efdf;
+  color: var(--color-ivory-cream);
 }
 main [class~="text-white/70"] {
   color: rgba(245, 239, 223, 0.72);
@@ -232,7 +214,7 @@ main p.leading-loose {
 .brand-dark p,
 .brand-dark li,
 .brand-dark blockquote {
-  color: #f5efdf;
+  color: var(--color-ivory-cream);
 }
 .brand-dark .opacity-80,
 .brand-dark .text-white\/85,
@@ -316,7 +298,7 @@ main .brand-dark .grid.gap-px > div {
 }
 /* on a light band the same markup needs an opaque warm surface */
 main .grid.gap-px > div {
-  background: #f5efdf !important;
+  background: var(--color-ivory-cream) !important;
   border: 1px solid rgba(138, 96, 67, 0.34);
   border-radius: 3px;
 }
@@ -518,7 +500,7 @@ header > div:first-child {
   min-width: 190px;
   display: flex;
   flex-direction: column;
-  background: #f5efdf;
+  background: var(--color-ivory-cream);
   border: 1px solid rgba(138, 96, 67, 0.34);
   box-shadow: 0 18px 40px -24px rgba(67, 52, 43, 0.45);
   padding: 6px 0;
@@ -569,7 +551,7 @@ header nav .ja-navdrop-menu a:hover {
 
 /* ── Unified CTA buttons (same style as the home page, all /ja pages) ──── */
 main a.inline-flex:not(.ja-btn-ghost) {
-  background-color: #8a6043 !important;
+  background-color: var(--color-warm-brown) !important;
   background-image: none !important;
   border: 0 !important;
   color: #ffffff !important;
@@ -585,8 +567,8 @@ main a.inline-flex:not(.ja-btn-ghost):hover {
 }
 main a.ja-btn-ghost {
   background: transparent !important;
-  border: 1px solid #8a6043 !important;
-  color: #8a6043 !important;
+  border: 1px solid var(--color-warm-brown) !important;
+  color: var(--color-warm-brown) !important;
   border-radius: 2px;
   font-size: 14px !important;
   letter-spacing: 0.14em !important;
@@ -596,25 +578,25 @@ main a.ja-btn-ghost {
     color 0.3s ease;
 }
 main a.ja-btn-ghost:hover {
-  background: #8a6043 !important;
+  background: var(--color-warm-brown) !important;
   color: #ffffff !important;
 }
 /* On a dark band the primary CTA inverts (as on the home page's olive band) */
 main .brand-dark a.inline-flex:not(.ja-btn-ghost) {
-  background-color: #f5efdf !important;
-  color: #3e3227 !important;
+  background-color: var(--color-ivory-cream) !important;
+  color: var(--yl-text) !important;
 }
 main .brand-dark a.inline-flex:not(.ja-btn-ghost):hover {
-  background-color: #e8d9c2 !important;
-  color: #3e3227 !important;
+  background-color: var(--color-warm-beige) !important;
+  color: var(--yl-text) !important;
 }
 main .brand-dark a.ja-btn-ghost {
   border-color: rgba(245, 239, 223, 0.7) !important;
-  color: #f5efdf !important;
+  color: var(--color-ivory-cream) !important;
 }
 main .brand-dark a.ja-btn-ghost:hover {
-  background: #f5efdf !important;
-  color: #3e3227 !important;
+  background: var(--color-ivory-cream) !important;
+  color: var(--yl-text) !important;
 }
 
 /* Never render body copy at the 12px xs step */
@@ -627,20 +609,20 @@ main .text-\[13px\] {
 .ja-card {
   background: #ffffff;
   border: 1px solid rgba(138, 96, 67, 0.32);
-  border-top: 3px solid #7e8764;
+  border-top: 3px solid var(--color-sage);
   border-radius: 6px;
   transition:
     transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
     box-shadow 0.3s ease;
 }
 .ja-card:nth-child(4n + 2) {
-  border-top-color: #b17b55;
+  border-top-color: var(--color-camel-brown);
 }
 .ja-card:nth-child(4n + 3) {
-  border-top-color: #c98b67;
+  border-top-color: var(--color-soft-terracotta);
 }
 .ja-card:nth-child(4n + 4) {
-  border-top-color: #596044;
+  border-top-color: var(--color-deep-olive);
 }
 .ja-card:hover {
   transform: translateY(-4px);
@@ -753,7 +735,7 @@ main dd.text-sm {
   z-index: 2;
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  background: #e8d9c2;
+  background: var(--color-warm-beige);
   box-shadow: 0 30px 54px -30px rgba(62, 50, 39, 0.45);
 }
 .ja-figure img {
@@ -844,17 +826,17 @@ main dd.text-sm {
 
 /* ── Light-only palette: bands replace former dark sections ───────────── */
 .ja-band-sage {
-  background: #dde1ce !important;
+  background: var(--color-surface-sage) !important;
 }
 .ja-band-sand {
-  background: #e8d9c2 !important;
+  background: var(--color-warm-beige) !important;
 }
 .ja-band-foot {
-  background: #e8d9c2 !important;
+  background: var(--color-warm-beige) !important;
   border-top: 1px solid rgba(138, 96, 67, 0.22);
 }
 .ja-band-card {
-  background: #fbf8ee !important;
+  background: var(--color-paper) !important;
   border: 1px solid rgba(138, 96, 67, 0.25);
   border-radius: 6px;
 }
@@ -862,7 +844,7 @@ main dd.text-sm {
 .ja-band h2,
 .ja-band h3,
 .ja-band h4 {
-  color: #3a3228 !important;
+  color: var(--yl-text) !important;
 }
 .ja-band p,
 .ja-band li,
@@ -873,33 +855,33 @@ main dd.text-sm {
 }
 .ja-band p.ja-eyebrow,
 .ja-band p.ja-sublabel {
-  color: #8a6043 !important;
+  color: var(--color-warm-brown) !important;
 }
 .ja-band p.ja-eyebrow::after {
   background: rgba(138, 96, 67, 0.35);
 }
 .ja-band a:not(.inline-flex):not([style*="background"]) {
-  color: #3a3228;
+  color: var(--yl-text);
 }
 .ja-band-foot a {
   color: #4f4538;
 }
 .ja-band-foot .font-display {
-  color: #3a3228;
+  color: var(--yl-text);
 }
 main .ja-band a.inline-flex:not(.ja-btn-ghost) {
-  background-color: #8a6043 !important;
+  background-color: var(--color-warm-brown) !important;
   color: #fff !important;
 }
 main .ja-band a.inline-flex:not(.ja-btn-ghost):hover {
   background-color: #6f4b33 !important;
 }
 main .ja-band a.ja-btn-ghost {
-  border-color: #8a6043 !important;
-  color: #8a6043 !important;
+  border-color: var(--color-warm-brown) !important;
+  color: var(--color-warm-brown) !important;
 }
 main .ja-band a.ja-btn-ghost:hover {
-  background: #8a6043 !important;
+  background: var(--color-warm-brown) !important;
   color: #fff !important;
 }
 .ja-band .opacity-60,

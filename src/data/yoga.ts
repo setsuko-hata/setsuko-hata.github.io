@@ -7,7 +7,28 @@ export const YOGA_BASE = '/hatha-yoga';
 export const BOOKING_FORM_URL =
   'https://docs.google.com/forms/d/1rKoOxcGQyew2a_d341eduWZ4QuhbK7R3YloP14Z6s8w/viewform';
 
+/** SATORIN online membership: plans are booked (and cancelled) on STORES. */
+export const SATORIN_BOOKING_URL = 'https://setsuko-hata-yoga.stores.jp/reserve/honten-kf004n/products';
+
+export const SATORIN_PAGE_URL = '/satorin/';
+
+/** 大阪 木・土 3回対面クラス booking form. */
+export const OSAKA_COURSE_FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSe-ok_VpxnJaCQyp_05M7fhVDxjMnSJGUv1HKzx_PLA9mZiHg/viewform';
+
+/** Surya Kriya application form. */
+export const SURYA_KRIYA_FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSeVjPhVjYziIatrZLVkluYZ4vvhXAZD64f9h8pjhA7ZhsgBSQ/viewform?usp=dialog';
+
 export const CONTACT_EMAIL = 'yoga@setsukohata.com';
+
+/**
+ * Next free trial, shown in the の道 quiz result and map.
+ * Fill in `dates` (e.g. '11月8日（土）〜11月22日（土）') when a trial period is set;
+ * leave it '' to show 日程は近日公開. Set `url` to the trial's booking page, or
+ * leave '' to link to the class calendar.
+ */
+export const NEXT_FREE_TRIAL = { dates: '', url: '' };
 
 /** Absolute, trailing-slash URL of a page in the section ('' = locale home). */
 export const yogaHref = (locale: Locale, page = '', hash = '') =>
@@ -35,6 +56,7 @@ export const NAV: Record<Locale, NavItem[]> = {
       items: [
         { id: 'hatha-yoga', label: 'ハタヨガとは', href: ja('hatha-yoga') },
         { id: 'hatha-types', label: 'ハタヨガの種類', href: ja('hatha-types') },
+        { id: 'path', label: '本格ハタヨガへの道', href: ja('path') },
       ],
     },
     {
@@ -42,11 +64,9 @@ export const NAV: Record<Locale, NavItem[]> = {
       label: 'クラス',
       href: ja('offerings'),
       items: [
-        { label: '初めての方へ', href: ja('offerings', 'trial') },
-        { label: '対面クラス', href: ja('offerings', 'inperson') },
-        { label: 'オンラインクラス', href: ja('offerings', 'online-class') },
-        { label: '特別プログラム', href: ja('offerings', 'special') },
-        { label: 'クラス価格', href: ja('offerings', 'pricing') },
+        { label: '大阪', href: ja('offerings', 'osaka') },
+        { label: '東京', href: ja('offerings', 'tokyo') },
+        { label: 'オンライン', href: ja('offerings', 'online') },
       ],
     },
     {
@@ -87,8 +107,8 @@ export const FOOTER = {
       { label: '秦 節子｜SETSUKO HATA', href: ja('about') },
       { label: 'ハタヨガとは', href: ja('hatha-yoga') },
       { label: 'ハタヨガの種類', href: ja('hatha-types') },
-      { label: 'クラス・月額会員', href: ja('offerings') },
-      { label: 'ご参加の準備', href: ja('prepare') },
+      { label: '本格ハタヨガへの道', href: ja('path') },
+      { label: 'クラス', href: ja('offerings') },
       { label: '企業・健康経営', href: ja('wellness') },
       { label: '学校・教育機関', href: ja('schools') },
       { label: 'お問い合わせ', href: ja('contact') },

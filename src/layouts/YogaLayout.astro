@@ -12,7 +12,7 @@ import '../styles/yoga/main-look.css';
 import '../styles/yoga/sunlit.css';
 import '../styles/yoga/shell.css';
 import '../styles/yoga/light.css';
-import '../styles/yoga/ja-sunny.css';
+import '../styles/yoga/sunny.css';
 
 interface Props {
   title: string;
@@ -47,7 +47,7 @@ const {
   ogTitle = title,
   ogDescription = description,
   image = '/hatha-yoga/assets/hero.jpg',
-  themeColor = '#F5EDDF',
+  themeColor = '#FDF7EA',
   alternateHref,
   preloadHero = false,
   heroImage = 'hero',
@@ -104,7 +104,7 @@ const enUrl = locale === 'en' ? canonical : alternate;
       <main class:list={['flex-1', { 'main-look': mainLook }]} id="main-content" tabindex="-1">
         <slot />
       </main>
-      {locale === 'ja' && <div class="jd-foot" aria-hidden="true"></div>}
+      <div class="jd-foot" aria-hidden="true"></div>
       <Footer locale={locale} />
     </div>
     <script>

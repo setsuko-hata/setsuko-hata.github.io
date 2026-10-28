@@ -3,7 +3,7 @@
  * Loaded only by /ja/*.html, after styles-Q1zC6xcO.css. Nothing here touches /en. */
 
 /* ── Grounds ─────────────────────────────────────────────────────────── */
-/* the hard-coded #F5EFDF sections become the warmer cream */
+/* the hard-coded var(--color-ivory-cream) sections become the warmer cream */
 body.yoga-site .main-look [class*="f5efe6"] {
   background-color: var(--ja-page) !important;
 }
@@ -24,7 +24,7 @@ body.yoga-site
   background-color: transparent !important;
 }
 body.yoga-site :is(main .main-look, main.main-look) .bg-brand-espresso {
-  background-color: #e8d9c2 !important;
+  background-color: var(--color-warm-beige) !important;
 }
 /* the olive footer ground is lighter than the old espresso — lift the muted text */
 
@@ -83,7 +83,7 @@ body.yoga-site
 /* labels sitting on a dark band */
 body.yoga-site .main-look .brand-dark p.ja-eyebrow,
 body.yoga-site .main-look .brand-dark p.ja-sublabel {
-  color: #e8d9c2 !important;
+  color: var(--color-warm-beige) !important;
 }
 body.yoga-site .main-look .brand-dark p.ja-eyebrow::after {
   background: rgba(245, 239, 223, 0.3);
@@ -108,12 +108,12 @@ body.yoga-site
   a.inline-flex[class*="border-brand-espresso"] {
   background-color: var(--color-brand-espresso);
   border-color: var(--color-brand-espresso);
-  color: #f5efdf;
+  color: var(--color-ivory-cream);
 }
 body.yoga-site
   :is(main .main-look, main.main-look)
   a.inline-flex[class*="border-brand-espresso"]:hover {
-  background-color: #f5efdf;
+  background-color: var(--color-ivory-cream);
   color: var(--color-brand-espresso);
 }
 
@@ -140,12 +140,12 @@ body.yoga-site
 body.yoga-site :is(main .main-look, main.main-look) .brand-dark p,
 body.yoga-site :is(main .main-look, main.main-look) .brand-dark li,
 body.yoga-site :is(main .main-look, main.main-look) .brand-dark blockquote {
-  color: #f5efdf !important;
+  color: var(--color-ivory-cream) !important;
 }
 /* [class~=] matches the exact class token, so variant-prefixed utilities like
    hover:text-white are not caught (a [class*=] substring match was). */
 body.yoga-site :is(main .main-look, main.main-look) [class~="text-white"] {
-  color: #f5efdf;
+  color: var(--color-ivory-cream);
 }
 body.yoga-site :is(main .main-look, main.main-look) [class~="text-white/70"] {
   color: rgba(245, 239, 223, 0.72);
@@ -167,7 +167,7 @@ body.yoga-site :is(main .main-look, main.main-look) p.leading-loose {
 body.yoga-site .main-look .brand-dark p,
 body.yoga-site .main-look .brand-dark li,
 body.yoga-site .main-look .brand-dark blockquote {
-  color: #f5efdf;
+  color: var(--color-ivory-cream);
 }
 body.yoga-site .main-look .brand-dark .opacity-80,
 body.yoga-site .main-look .brand-dark .text-white\/85,
@@ -247,7 +247,7 @@ body.yoga-site
 }
 /* on a light band the same markup needs an opaque warm surface */
 body.yoga-site :is(main .main-look, main.main-look) .grid.gap-px > div {
-  background: #f5efdf !important;
+  background: var(--color-ivory-cream) !important;
   border: 1px solid rgba(138, 96, 67, 0.34);
   border-radius: 3px;
 }
@@ -312,7 +312,7 @@ body.yoga-site :is(main .main-look, main.main-look) a.opacity-80:hover {
 body.yoga-site
   :is(main .main-look, main.main-look)
   a.inline-flex:not(.ja-btn-ghost) {
-  background-color: #8a6043 !important;
+  background-color: var(--color-warm-brown) !important;
   background-image: none !important;
   border: 0 !important;
   color: #ffffff !important;
@@ -330,8 +330,8 @@ body.yoga-site
 }
 body.yoga-site :is(main .main-look, main.main-look) a.ja-btn-ghost {
   background: transparent !important;
-  border: 1px solid #8a6043 !important;
-  color: #8a6043 !important;
+  border: 1px solid var(--color-warm-brown) !important;
+  color: var(--color-warm-brown) !important;
   border-radius: 2px;
   font-size: 14px !important;
   letter-spacing: 0.14em !important;
@@ -341,7 +341,7 @@ body.yoga-site :is(main .main-look, main.main-look) a.ja-btn-ghost {
     color 0.3s ease;
 }
 body.yoga-site :is(main .main-look, main.main-look) a.ja-btn-ghost:hover {
-  background: #8a6043 !important;
+  background: var(--color-warm-brown) !important;
   color: #ffffff !important;
 }
 /* On a dark band the primary CTA inverts (as on the home page's olive band) */
@@ -349,26 +349,26 @@ body.yoga-site
   :is(main .main-look, main.main-look)
   .brand-dark
   a.inline-flex:not(.ja-btn-ghost) {
-  background-color: #f5efdf !important;
-  color: #3e3227 !important;
+  background-color: var(--color-ivory-cream) !important;
+  color: var(--yl-text) !important;
 }
 body.yoga-site
   :is(main .main-look, main.main-look)
   .brand-dark
   a.inline-flex:not(.ja-btn-ghost):hover {
-  background-color: #e8d9c2 !important;
-  color: #3e3227 !important;
+  background-color: var(--color-warm-beige) !important;
+  color: var(--yl-text) !important;
 }
 body.yoga-site :is(main .main-look, main.main-look) .brand-dark a.ja-btn-ghost {
   border-color: rgba(245, 239, 223, 0.7) !important;
-  color: #f5efdf !important;
+  color: var(--color-ivory-cream) !important;
 }
 body.yoga-site
   :is(main .main-look, main.main-look)
   .brand-dark
   a.ja-btn-ghost:hover {
-  background: #f5efdf !important;
-  color: #3e3227 !important;
+  background: var(--color-ivory-cream) !important;
+  color: var(--yl-text) !important;
 }
 
 /* Never render body copy at the 12px xs step */
@@ -381,20 +381,20 @@ body.yoga-site :is(main .main-look, main.main-look) .text-\[13px\] {
 body.yoga-site .main-look .ja-card {
   background: #ffffff;
   border: 1px solid rgba(138, 96, 67, 0.32);
-  border-top: 3px solid #7e8764;
+  border-top: 3px solid var(--color-sage);
   border-radius: 6px;
   transition:
     transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
     box-shadow 0.3s ease;
 }
 body.yoga-site .main-look .ja-card:nth-child(4n + 2) {
-  border-top-color: #b17b55;
+  border-top-color: var(--color-camel-brown);
 }
 body.yoga-site .main-look .ja-card:nth-child(4n + 3) {
-  border-top-color: #c98b67;
+  border-top-color: var(--color-soft-terracotta);
 }
 body.yoga-site .main-look .ja-card:nth-child(4n + 4) {
-  border-top-color: #596044;
+  border-top-color: var(--color-deep-olive);
 }
 body.yoga-site .main-look .ja-card:hover {
   transform: translateY(-4px);
@@ -469,7 +469,7 @@ body.yoga-site .main-look .ja-figure .ja-figure-inner {
   z-index: 2;
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  background: #e8d9c2;
+  background: var(--color-warm-beige);
   box-shadow: 0 30px 54px -30px rgba(62, 50, 39, 0.45);
 }
 body.yoga-site .main-look .ja-figure img {
@@ -561,14 +561,14 @@ body.yoga-site .main-look .ja-story > p {
 /* ── Light-only palette: bands replace former dark sections ───────────── */
 
 body.yoga-site .main-look .ja-band-sand {
-  background: #e8d9c2 !important;
+  background: var(--color-warm-beige) !important;
 }
 body.yoga-site .main-look .ja-band-foot {
-  background: #e8d9c2 !important;
+  background: var(--color-warm-beige) !important;
   border-top: 1px solid rgba(138, 96, 67, 0.22);
 }
 body.yoga-site .main-look .ja-band-card {
-  background: #fbf8ee !important;
+  background: var(--color-paper) !important;
   border: 1px solid rgba(138, 96, 67, 0.25);
   border-radius: 6px;
 }
@@ -576,7 +576,7 @@ body.yoga-site .main-look .ja-band h1,
 body.yoga-site .main-look .ja-band h2,
 body.yoga-site .main-look .ja-band h3,
 body.yoga-site .main-look .ja-band h4 {
-  color: #3a3228 !important;
+  color: var(--yl-text) !important;
 }
 body.yoga-site .main-look .ja-band p,
 body.yoga-site .main-look .ja-band li,
@@ -587,7 +587,7 @@ body.yoga-site .main-look .ja-band dt {
 }
 body.yoga-site .main-look .ja-band p.ja-eyebrow,
 body.yoga-site .main-look .ja-band p.ja-sublabel {
-  color: #8a6043 !important;
+  color: var(--color-warm-brown) !important;
 }
 body.yoga-site .main-look .ja-band p.ja-eyebrow::after {
   background: rgba(138, 96, 67, 0.35);
@@ -596,19 +596,19 @@ body.yoga-site
   .main-look
   .ja-band
   a:not(.inline-flex):not([style*="background"]) {
-  color: #3a3228;
+  color: var(--yl-text);
 }
 body.yoga-site .main-look .ja-band-foot a {
   color: #4f4538;
 }
 body.yoga-site .main-look .ja-band-foot .font-display {
-  color: #3a3228;
+  color: var(--yl-text);
 }
 body.yoga-site
   :is(main .main-look, main.main-look)
   .ja-band
   a.inline-flex:not(.ja-btn-ghost) {
-  background-color: #8a6043 !important;
+  background-color: var(--color-warm-brown) !important;
   color: #fff !important;
 }
 body.yoga-site
@@ -618,14 +618,14 @@ body.yoga-site
   background-color: #6f4b33 !important;
 }
 body.yoga-site :is(main .main-look, main.main-look) .ja-band a.ja-btn-ghost {
-  border-color: #8a6043 !important;
-  color: #8a6043 !important;
+  border-color: var(--color-warm-brown) !important;
+  color: var(--color-warm-brown) !important;
 }
 body.yoga-site
   :is(main .main-look, main.main-look)
   .ja-band
   a.ja-btn-ghost:hover {
-  background: #8a6043 !important;
+  background: var(--color-warm-brown) !important;
   color: #fff !important;
 }
 body.yoga-site .main-look .ja-band .opacity-60,
@@ -644,22 +644,6 @@ body.yoga-site .main-look {
   font-weight: 700 !important;
 }
 
-/* ---- main-branch tokens, scoped so the rest of the page keeps the current ones ---- */
-.main-look {
-  --color-brand-espresso: #3a3228;
-  --color-brand-moss: #8a6043;
-  --color-brand-tan: #d9c4a3;
-  --color-brand-cream: #e8d9c2;
-  --color-brand-clay: #c98b67;
-  --ja-page: #f5efdf;
-  --ja-page-2: #e8d9c2;
-  --ja-sage: #dde1ce;
-  --ja-sage-mid: #aeb39a;
-  --ja-sage-deep: #7e8764;
-  --ja-olive: #596044;
-  --ja-ink: #3e3227;
-  --ja-ink-70: #6b5744;
-}
 .main-look > section {
   position: relative;
 }
@@ -698,7 +682,7 @@ body.ja-sunlit.yoga-site .main-look h2,
 body.ja-sunlit.yoga-site .main-look h3 {
   font-family: "Shippori Mincho", "Newsreader", ui-serif, serif !important;
   letter-spacing: 0.01em !important;
-  color: #3a3228 !important;
+  color: var(--yl-text) !important;
   text-wrap: balance;
 }
 body.ja-sunlit.yoga-site .main-look [data-screen-label="ヒーロー"] h1 {
@@ -736,7 +720,7 @@ body.yoga-site .main-look #hatha p {
   line-height: 2.05;
 }
 
-/* banner green = the circle behind はじめに (sage #aeb39A at 55% over the page cream) */
+/* banner green = the circle behind はじめに (sage var(--color-light-sage) at 55% over the page cream) */
 body.yoga-site .main-look .ja-band-sage {
   background: #ceceb9 !important;
 }

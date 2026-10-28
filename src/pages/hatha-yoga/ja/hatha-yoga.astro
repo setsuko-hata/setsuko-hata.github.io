@@ -1,102 +1,141 @@
 ---
 import YogaLayout from '../../../layouts/YogaLayout.astro';
+import { BOOKING_FORM_URL, yogaHref } from '../../../data/yoga';
+import '../../../styles/yoga/pages/hatha.css';
 ---
 <YogaLayout title="ハタヨガとは | Setsuko Hata Yoga"
   description="ヨガとは、『ユニオン』ー自身の生命と宇宙が一体になった状態のこと。ハタヨガの科学について。"
   locale="ja"
   active="hatha-yoga"
   alternateHref="/hatha-yoga/en/"
+  bodyClass="page-hatha"
+  mainLook={false}
 >
+  <!-- Hero: sun and moon window -->
+  <section class="hy hy-hero yoga-hero-photo" data-screen-label="バナー">
+    <picture>
+      <source type="image/webp" media="(max-width: 900px)" srcset="/hatha-yoga/assets/threshold-1000.webp" />
+      <source type="image/webp" srcset="/hatha-yoga/assets/threshold.webp" />
+      <source type="image/jpeg" media="(max-width: 900px)" srcset="/hatha-yoga/assets/threshold-1000.jpg" />
+      <img src="/hatha-yoga/assets/threshold.jpg" alt="日と月が向かい合う円窓と、積まれた石" class="hy-hero__img" fetchpriority="high" width="1600" height="1067" />
+    </picture>
+    <div class="hy-hero__shade" aria-hidden="true"></div>
+    <div class="hy-wrap">
+      <div class="hy-hero__copy">
+        <p class="hy-eyebrow">Hatha Yoga</p>
+        <h1>ハタヨガとは</h1>
+        <p class="hy-hero__lead">「ハ」は太陽、「タ」は月。私たちの内側にある二つのエネルギーを整える科学です。</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- Union -->
+  <section class="hy hy-split" data-screen-label="ユニオン">
+    <img class="hy-sprig" src="/hatha-yoga/assets/deco/leaf-sprig.webp" alt="" aria-hidden="true" loading="lazy" />
+    <div class="hy-wrap hy-split__grid">
+      <div class="hy-text sc-rise">
+        <div class="hy-head">
+          <h2>ヨガとは、『ユニオン』ー自身の生命と宇宙が一体になった状態のこと。</h2>
+        </div>
+        <div class="hy-body">
+          <p>ヨガは、ポーズを取ったり身体を柔軟にすることではありません。</p>
+          <p>ヨガとは何かを「する」ものではないのです。<br />自身の生命と宇宙が一体になった状態、その状態そのものを、ヨガと呼びます。</p>
+        </div>
+      </div>
+      <figure class="hy-photo sc-rise">
+        <picture>
+          <source type="image/webp" srcset="/hatha-yoga/assets/sun.webp" />
+          <img src="/hatha-yoga/assets/sun.jpg" alt="木漏れ日" loading="lazy" width="800" height="1421" style="object-position:50% 30%" />
+        </picture>
+      </figure>
+    </div>
+  </section>
 
-        <section class="relative isolate flex min-h-[88vh] items-end overflow-hidden ja-band ja-band-sage" data-lt="1">
-          <picture>
-            <source type="image/webp" media="(max-width: 900px)" srcset="/hatha-yoga/assets/threshold-1000.webp" />
-            <source type="image/webp" srcset="/hatha-yoga/assets/threshold.webp" />
-            <source type="image/jpeg" media="(max-width: 900px)" srcset="/hatha-yoga/assets/threshold-1000.jpg" />
-            <img src="/hatha-yoga/assets/threshold.jpg" alt="日と月が向かい合う円窓と、積まれた石" class="absolute inset-0 -z-10 h-full w-full object-cover object-center" fetchpriority="high" width="1600" height="1067" />
-          </picture>
-          <div aria-hidden="true" class="absolute inset-0 -z-10" style="background:linear-gradient(to top,color-mix(in srgb, var(--color-ivory-cream) 96%, transparent) 0%,color-mix(in srgb, var(--color-ivory-cream) 88%, transparent) 55%,color-mix(in srgb, var(--color-ivory-cream) 30%, transparent) 100%)"></div>
-          <div class="mx-auto w-full max-w-7xl px-6 pb-20 md:px-10 md:pb-28">
-            <div class="motion-safe:animate-[brand-fade-up_1200ms_ease-out]">
-              <p class="font-mono uppercase tracking-[0.4em]" style="color:var(--color-text-primary) !important">Hatha Yoga</p>
-              <h1 class="mt-8 font-display text-5xl leading-[1.1] md:text-7xl md:leading-[1.05]" style="color:var(--color-text-primary) !important">ハタヨガとは</h1>
-              <p class="mt-8 max-w-xl text-base leading-loose" style="color:var(--color-text-primary) !important">「ハ」は太陽、「タ」は月。私たちの内側にある二つのエネルギーを整える科学です。</p>
-            </div>
-          </div>
-          <svg aria-hidden="true" viewBox="0 0 1440 140" preserveAspectRatio="none" style="position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(60px,8vw,110px);display:block;pointer-events:none;z-index:1"><path d="M0 66 C 240 22 430 116 700 96 C 980 76 1180 24 1440 58 L1440 140 L0 140 Z" fill="#F5EDDF" opacity=".5" /><path d="M0 96 C 250 58 450 130 720 110 C 1000 90 1200 46 1440 86 L1440 140 L0 140 Z" fill="#F5EDDF" /></svg>
-        </section>
-        <section class="scroll-mt-24" style="position:relative;background:var(--color-ivory-cream);overflow:hidden" data-screen-label="ユニオン">
-          <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
-            <div class="grid gap-12 md:grid-cols-2 md:gap-16">
-              <div class="sc-rise group relative isolate flex min-h-[420px] items-center overflow-hidden md:min-h-[600px]" style="border-radius:6px">
-                <picture>
-                  <source type="image/webp" srcset="/hatha-yoga/assets/sun.webp" />
-                  <img src="/hatha-yoga/assets/sun.jpg" alt="木漏れ日" loading="lazy" width="800" height="1421" class="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.04]" />
-                </picture>
-                <div aria-hidden="true" class="absolute inset-0 -z-10" style="background:linear-gradient(140deg,color-mix(in srgb, var(--color-text-primary) 50%, transparent) 0%,color-mix(in srgb, var(--color-text-primary) 62%, transparent) 100%)"></div>
-                <p class="max-w-md px-8 py-16 text-left font-display text-2xl leading-[1.75] text-white md:px-14 md:text-[2rem] md:leading-[1.7]">ヨガとは、『ユニオン』ー自身の生命と宇宙が一体になった状態のこと。</p>
-              </div>
-              <div class="flex items-center">
-                <div class="max-w-xl space-y-8 text-lg leading-[2.1] text-brand-espresso/80"><p>ヨガは、ポーズを取ったり身体を柔軟にすることではありません。</p><p><strong style="color:var(--color-text-primary);font-size:1.12em;background:linear-gradient(transparent 62%,color-mix(in srgb, var(--color-soft-terracotta) 32%, transparent) 62%)">ヨガとは</strong>何かを「する」ものではないのです。<br />自身の生命と宇宙が一体になった状態、その状態そのものを、ヨガと呼びます。</p></div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section style="position:relative;background:var(--color-warm-beige);overflow:hidden" data-screen-label="超越">
-          <div aria-hidden="true" style="position:absolute;right:-150px;top:-110px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb, var(--color-light-sage) 50%, transparent) 0%,transparent 70%);pointer-events:none"></div>
-          <div class="mx-auto w-full max-w-4xl px-6 text-center md:px-10" style="position:relative">
-            <p class="font-display text-2xl leading-[1.9] md:text-4xl md:leading-[1.8]">あらゆる自己のアイデンティティーを超越し、<br class="hidden md:block" />ただ一つの生命として宇宙と一体化する。</p>
-            <div class="mx-auto my-14 h-px w-24" style="background:var(--color-soft-terracotta)" aria-hidden="true"></div>
-            <p class="mx-auto max-w-xl text-lg leading-[2.1] text-brand-espresso/80">その状態を意識的に作っていく。<br />それを可能にするのが、ハタヨガの科学です。</p>
-          </div>
-        </section>
-        <section style="position:relative;background:var(--color-ivory-cream);overflow:hidden" data-screen-label="距離">
-          <svg aria-hidden="true" viewBox="0 0 600 600" style="position:absolute;left:-190px;top:40px;width:min(460px,54vw);opacity:.4;pointer-events:none"><path d="M300 30 C 470 30 570 170 540 320 C 512 462 380 570 240 552 C 92 533 20 400 34 268 C 48 132 140 30 300 30 Z" fill="#E8D9C2" /></svg>
-          <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
-            <div class="grid gap-14 md:grid-cols-12 md:gap-16">
-              <p class="font-display text-2xl leading-[1.7] md:col-span-7 md:text-[1.9rem]">ハタヨガの実践をすると、自分という意識と、身体と心のあいだに距離を作っていくことができます。</p>
-              <div class="md:col-span-4 md:col-start-9">
-                <div class="h-px w-full" aria-hidden="true" style="background:color-mix(in srgb, var(--color-warm-brown) 60%, transparent)"></div>
-                <p class="mt-8 text-lg leading-[2.1] text-brand-espresso/80">この距離ができてはじめて、身体も心も、自分の思い通りに使えるようになる。そこから、生命の可能性は開花しはじめます。</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class=" ja-band ja-band-sand" style="position:relative;background:var(--color-warm-beige);overflow:hidden" data-screen-label="ハとタ" data-lt="1">
-          <div aria-hidden="true" style="position:absolute;right:-140px;top:-140px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb, var(--color-warm-beige) 35%, transparent) 0%,transparent 70%);pointer-events:none"></div>
-          <div aria-hidden="true" style="position:absolute;left:-120px;bottom:-160px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb, var(--color-soft-terracotta) 35%, transparent) 0%,transparent 70%);pointer-events:none"></div>
-          <div class="mx-auto w-full max-w-4xl px-6 text-center md:px-10" style="position:relative">
-            <p class="font-display text-3xl leading-[1.6] text-brand-espresso md:text-5xl md:leading-[1.5]">ハタヨガの「ハ」は太陽、「タ」は月。</p>
-            <p class="mt-10 font-display text-xl leading-[1.9] md:text-2xl" style="color:var(--color-text-primary)">私たちの内側にある、太陽と月。陽と陰。二つのエネルギーを意味します。</p>
-            <div class="mx-auto my-14 h-px w-24" style="background:var(--color-soft-terracotta)" aria-hidden="true"></div>
-            <p class="mx-auto max-w-2xl text-lg leading-[2.1] text-brand-espresso">心身のあらゆる不調は、この二つのエネルギーのバランスが崩れることから始まります。しかし本来、健康とは手に入れるものではなく、私たちがはじめから持っている状態です。</p>
-          </div>
-        </section>
-        <section style="background:var(--color-warm-beige)" data-screen-label="太陽と月">
-          <div class="mx-auto w-full max-w-6xl px-6 md:px-10">
-            <div class="grid gap-12 md:grid-cols-2 md:gap-16">
-              <div class="sc-rise group relative isolate flex min-h-[420px] items-center overflow-hidden md:min-h-[600px]" style="border-radius:6px">
-                <picture>
-                  <source type="image/webp" srcset="/hatha-yoga/assets/moon.webp" />
-                  <img src="/hatha-yoga/assets/moon.jpg" alt="夜空の満月" loading="lazy" width="800" height="1422" class="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.04]" />
-                </picture>
-                <div aria-hidden="true" class="absolute inset-0 -z-10" style="background:linear-gradient(140deg,color-mix(in srgb, var(--color-text-primary) 50%, transparent) 0%,color-mix(in srgb, var(--color-text-primary) 62%, transparent) 100%)"></div>
-                <p class="max-w-md px-8 py-16 text-left font-display text-2xl leading-[1.75] text-white md:px-14 md:text-[2rem] md:leading-[1.7]">ハタヨガは、自分の中の太陽と月のバランスを整える科学です。</p>
-              </div>
-              <div class="flex items-center">
-                <div class="max-w-xl space-y-8 text-lg leading-[2.1] text-brand-espresso/80"><p>エネルギーの調和が戻れば、自然と本来の健康なあり方へと戻っていく。<br />それを土台に、あなたの生命の無限大の可能性を開いていく。</p></div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="scroll-mt-24" style="position:relative;background:linear-gradient(155deg,var(--color-surface-sand) 0%,var(--color-warm-beige) 48%,var(--color-warm-beige) 100%);overflow:hidden;text-align:center" data-screen-label="ヨガの道">
-          <div aria-hidden="true" style="position:absolute;right:-140px;top:-140px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb, var(--color-soft-terracotta) 32%, transparent) 0%,transparent 70%);pointer-events:none"></div>
-          <div aria-hidden="true" style="position:absolute;left:-120px;bottom:-160px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb, var(--color-sage) 30%, transparent) 0%,transparent 70%);pointer-events:none"></div>
-          <div class="mx-auto w-full max-w-4xl px-6 md:px-10" style="position:relative">
-            <p class="font-display text-4xl leading-[1.4] md:text-6xl" style="color:var(--color-text-primary)">これがヨガの道なのです。</p>
-            <p class="mx-auto mt-8 max-w-xl text-base leading-loose" style="color:var(--color-text-primary)">まずは一度、通常のクラスをそのまま体験していただけます。</p>
-            <div class="mt-12" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center"><a href="https://docs.google.com/forms/d/1rKoOxcGQyew2a_d341eduWZ4QuhbK7R3YloP14Z6s8w/viewform" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss">体験レッスンを予約する</a><a href="/hatha-yoga/ja/offerings/" class="ja-btn-ghost inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium">クラスを見る</a></div>
-          </div>
-        </section>
+  <!-- Transcendence band -->
+  <section class="hy hy-band" data-screen-label="超越">
+    <div class="hy-wrap hy-band__inner sc-rise">
+      <div class="hy-emblem" aria-hidden="true">
+        <span class="hy-emblem__line"></span>
+        <span class="hy-emblem__ring">
+          <svg class="hy-emblem__sun"><use href="#sun" /></svg>
+          <svg class="hy-emblem__moon"><use href="#moon" /></svg>
+        </span>
+        <span class="hy-emblem__line"></span>
+      </div>
+      <h2>あらゆる自己のアイデンティティーを超越し、<br class="hy-br" />ただ一つの生命として宇宙と一体化する。</h2>
+      <p>その状態を意識的に作っていく。<br />それを可能にするのが、ハタヨガの科学です。</p>
+    </div>
+  </section>
+
+  <!-- Distance -->
+  <section class="hy hy-split hy-split--reverse" data-screen-label="距離">
+    <div class="hy-wrap hy-split__grid">
+      <figure class="hy-photo hy-photo--tall sc-rise">
+        <picture>
+          <source type="image/webp" srcset="/hatha-yoga/assets/photos/garden-path.webp" />
+          <img src="/hatha-yoga/assets/photos/garden-path.jpg" alt="石灯籠と飛び石の続く日本庭園の小径" loading="lazy" width="1024" height="1536" />
+        </picture>
+      </figure>
+      <div class="hy-text sc-rise">
+        <div class="hy-head">
+          <h2>ハタヨガの実践をすると、自分という意識と、身体と心のあいだに距離を作っていくことができます。</h2>
+        </div>
+        <div class="hy-body">
+          <p>この距離ができてはじめて、身体も心も、自分の思い通りに使えるようになる。そこから、生命の可能性は開花しはじめます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ha and Tha: full-bleed split with the sun/moon emblem -->
+  <section class="hy hy-bleed" data-screen-label="ハとタ">
+    <div class="hy-bleed__text">
+      <div class="hy-bleed__inner sc-rise">
+        <div class="hy-head">
+          <h2>ハタヨガの「ハ」は太陽、「タ」は月。</h2>
+        </div>
+        <p class="hy-bleed__sub">私たちの内側にある、太陽と月。陽と陰。二つのエネルギーを意味します。</p>
+        <div class="hy-body">
+          <p>心身のあらゆる不調は、この二つのエネルギーのバランスが崩れることから始まります。しかし本来、健康とは手に入れるものではなく、私たちがはじめから持っている状態です。</p>
+        </div>
+      </div>
+    </div>
+    <figure class="hy-bleed__art">
+      <img src="/hatha-yoga/assets/deco/sun-moon-emblem.jpg" alt="雲のあいだで向かい合う太陽と三日月を描いた金色の円" loading="lazy" width="575" height="575" />
+    </figure>
+  </section>
+
+  <!-- Balance -->
+  <section class="hy hy-split" data-screen-label="太陽と月">
+    <div class="hy-wrap hy-split__grid">
+      <div class="hy-text sc-rise">
+        <div class="hy-head">
+          <h2>ハタヨガは、自分の中の太陽と月のバランスを整える科学です。</h2>
+        </div>
+        <div class="hy-body">
+          <p>エネルギーの調和が戻れば、自然と本来の健康なあり方へと戻っていく。<br />それを土台に、あなたの生命の無限大の可能性を開いていく。</p>
+        </div>
+      </div>
+      <figure class="hy-photo sc-rise">
+        <picture>
+          <source type="image/webp" srcset="/hatha-yoga/assets/moon.webp" />
+          <img src="/hatha-yoga/assets/moon.jpg" alt="夜空の満月" loading="lazy" width="800" height="1422" style="object-position:50% 44%" />
+        </picture>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="hy hy-cta" data-screen-label="ヨガの道">
+    <img class="hy-cta__leaf hy-cta__leaf--l" src="/hatha-yoga/assets/deco/leaf-branch.webp" alt="" aria-hidden="true" loading="lazy" />
+    <img class="hy-cta__leaf hy-cta__leaf--r" src="/hatha-yoga/assets/deco/leaf-branch.webp" alt="" aria-hidden="true" loading="lazy" />
+    <div class="hy-wrap hy-cta__inner sc-rise">
+      <h2 class="hy-cta__title">これがヨガの道なのです。</h2>
+      <p class="hy-cta__sub">まずは一度、通常のクラスをそのまま体験していただけます。</p>
+      <div class="hy-cta__actions">
+        <a class="hy-btn" href={BOOKING_FORM_URL} target="_blank" rel="noreferrer">体験レッスンを予約する</a>
+        <a class="hy-link" href={yogaHref('ja', 'offerings')}>クラスを見る</a>
+      </div>
+    </div>
+  </section>
 </YogaLayout>

@@ -1,0 +1,40 @@
+---
+/** Osaka-only monthly membership: plans, notes, benefits. Rendered inside the 料金 panel. */
+import { OSAKA_PLANS } from '../../../data/classes';
+import { OSAKA_COURSE_FORM_URL } from '../../../data/yoga';
+
+interface Props { id: string; }
+const { id } = Astro.props;
+---
+<div id={id} class="cl-subpart scroll-mt-24">
+  <h4 class="cl-subpart__title">月額会員<span class="cl-subpart__note">大阪限定</span></h4>
+  <p class="cl-lead">本格ハタヨガを継続する会員プランです。対面クラスは月2回。オンラインの健康セミナー・瞑想を組み合わせたプランもあります。</p>
+  <div class="plans">
+    <div class="plans__grid">
+      {OSAKA_PLANS.map((pl) => (
+        <article class="plan">
+          <p class="plan__no">プラン{pl.no}</p>
+          <p class="plan__name">{pl.name}</p>
+          <p class="plan__price"><span class="plan__unit">月額</span><span class="rate-amount">{pl.price}</span>円</p>
+          <dl class="plan__rows">
+            <div><dt>対面クラス</dt><dd class="is-on">月2回</dd></div>
+            <div><dt>健康セミナー<small>オンライン</small></dt>{pl.online ? <dd class="is-on">{pl.online}</dd> : <dd class="is-off" aria-label="なし">―</dd>}</div>
+            <div><dt>瞑想<small>オンライン</small></dt>{pl.online ? <dd class="is-on">{pl.online}</dd> : <dd class="is-off" aria-label="なし">―</dd>}</div>
+          </dl>
+        </article>
+      ))}
+    </div>
+  </div>
+  <div class="cl-fine">
+    <p>※ 基本は毎週一つの曜日を決めてご参加ください。参加できない日は事前連絡で振替可能です。</p>
+    <p>※ 月4回プランで対面ヨガに参加できない場合は、瞑想クラスへの振替も可能です。</p>
+  </div>
+  <p class="cl-minihead">会員特典</p>
+  <ul class="cl-dash">
+    <li>瞑想クラスなど各種クラスに会員価格が適用</li>
+    <li>スーリヤ・クリヤなど本格プログラムのフォーム確認・復習サポート</li>
+    <li>会員限定の交流会・コミュニティイベントへのご参加</li>
+    <li>ご自宅での実践を支える個別アドバイス</li>
+  </ul>
+  <div class="cl-actions"><a href={OSAKA_COURSE_FORM_URL} target="_blank" rel="noreferrer" class="cl-btn cl-btn--ghost">月額会員に申し込む</a></div>
+</div>

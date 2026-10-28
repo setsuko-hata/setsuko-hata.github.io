@@ -1,0 +1,56 @@
+---
+/** 大阪: 通常クラス (ヨガ・瞑想, about 75 min, drop-in). Prices live in Fees.astro. */
+import { OSAKA_COURSE_FORM_URL } from '../../../data/yoga';
+import { REGULAR_CLASS as c } from '../../../data/classes';
+
+interface Props { id: string; tone?: string; }
+const { id, tone = '' } = Astro.props;
+---
+<section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
+  <div class="cl-wrap">
+    <div class="cl-headrow">
+      <div class="cl-head">
+        <p class="cl-eyebrow">大阪｜対面</p>
+        <h2>{c.title}</h2>
+        <span class="cl-head__rule" aria-hidden="true"></span>
+      </div>
+      <div class="cl-actions">
+        <a href={OSAKA_COURSE_FORM_URL} target="_blank" rel="noreferrer" class="cl-btn">予約する</a>
+        <a href="#calendar" data-cal-filter="inperson" class="cl-btn cl-btn--ghost">開催スケジュール</a>
+      </div>
+    </div>
+    <p class="cl-lead">{c.description}</p>
+
+    <div class="cl-panel cl-panel--compact oc">
+      <section class="oc-sec" aria-labelledby={`${id}-classes`}>
+        <h3 class="oc-h" id={`${id}-classes`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#sprout" /></svg>クラスの内容</h3>
+        <div class="oc-classes">
+          {c.classes.map((k) => (
+            <div class="oc-price">
+              <p class="oc-price__name"><button type="button" class="cl-link" data-dialog={k.dialog}>{k.name}</button></p>
+              <p class="oc-price__note">{k.tagline}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="oc-sec" aria-labelledby={`${id}-for`}>
+        <h3 class="oc-h" id={`${id}-for`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#heart" /></svg>こんな方におすすめ</h3>
+        <ul class="oc-for">{c.forWhom.map((f) => <li>{f}</li>)}</ul>
+      </section>
+
+      <section class="oc-sec" aria-labelledby={`${id}-join`}>
+        <h3 class="oc-h" id={`${id}-join`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#mat" /></svg>ご参加について</h3>
+        <dl class="oc-info">
+          <div><dt>所要時間</dt><dd>{c.duration}</dd></div>
+          <div><dt>会場</dt><dd>{c.venue}<br /><a class="cl-link" href={c.map} target="_blank" rel="noreferrer">地図を見る</a></dd></div>
+          <div><dt>参加方法</dt><dd class="oc-ways">
+            <span class="oc-way"><small>単発参加</small><span><b class="rate-amount">4,000</b>円</span></span>
+            <a class="oc-way oc-way--link" href="#osaka-membership"><small>月額会員</small><span>プランを見る →</span></a>
+          </dd></div>
+        </dl>
+        <p class="cl-fine">お支払い・キャンセル・持ち物などは<a class="cl-link" href="#guide">ご案内</a>をご覧ください。</p>
+      </section>
+    </div>
+  </div>
+</section>

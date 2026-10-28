@@ -12,19 +12,12 @@
  */
 
 :root {
-  /* palette */
-  --sl-ivory: #F8F4EC;
-  --sl-sage: #7E8764;
-  --sl-olive: #596044;
-  --sl-gold: #B99755;
-  --sl-terra: #A84A47;
-
   /* paper */
   --paper-img: url("/hatha-yoga/assets/textures/paper-ivory.jpg");
-  --paper-opacity: .38;           /* 0 = off. Keep under .5 so Japanese text stays crisp */
+  --paper-opacity: .22;           /* 0 = off. Keep under .5 so Japanese text stays crisp */
 
   /* washes: 1 = as designed, 0 = off, 1.6 = noticeably stronger */
-  --wash-strength: 1;
+  --wash-strength: 1.5;
 
   /* decorations */
   --deco-opacity: .14;

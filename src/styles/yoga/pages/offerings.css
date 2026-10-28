@@ -155,7 +155,7 @@ body.page-offerings .plans__note { margin: 16px 0 0; font-size: 15px; line-heigh
 
 .cmp-table-wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto}
 .cmp-table{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0;background:var(--color-paper);border:1px solid color-mix(in srgb, var(--color-warm-brown) 34%, transparent);border-radius:24px;overflow:hidden;font-size:16px;line-height:1.85;color:var(--color-text-primary)}
-.cmp-table thead th,.cmp-table thead td{background:#DDE1CE;padding:26px 20px;text-align:center;vertical-align:middle;font-weight:400}
+.cmp-table thead th,.cmp-table thead td{background:var(--color-surface-sage);padding:26px 20px;text-align:center;vertical-align:middle;font-weight:400}
 .cmp-table thead th+th{border-left:1px solid color-mix(in srgb, var(--color-deep-olive) 25%, transparent)}
 .cmp-th-main{display:block;font-family:"Shippori Mincho",serif;font-size:22px;letter-spacing:.14em}
 .cmp-th-sub{display:block;margin-top:2px;font-size:14px;letter-spacing:.14em;color:#463A22}

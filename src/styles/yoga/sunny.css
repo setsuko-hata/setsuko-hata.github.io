@@ -1,0 +1,235 @@
+/* sunny.css: sunlit rules and watercolor decorations for every Hatha Yoga page.
+ * Colours come from the palette in satori.css; nothing here defines a colour.
+ * `:root:root` only matches the specificity the old `:root:root` scope had, so these
+ * rules keep beating the longer selectors in home.css. */
+/* colour washes: the "terra" wash becomes gold → golden grass */
+:root:root .wash-terra { --wash-1: var(--color-gold-accent); --wash-2: var(--color-sand-beige); }
+:root:root .wash-olive { --wash-2: var(--color-gold-accent); }
+
+/* third plan / membership tier: gold fading into apricot, not clay */
+:root:root body.page-offerings .plan:nth-child(3),
+:root:root body.ja-sunlit #membership > div:nth-child(3) {
+  background:
+    radial-gradient(ellipse 70% 90% at 92% 6%, color-mix(in srgb, var(--color-gold-accent) 45%, transparent), transparent 66%),
+    linear-gradient(168deg, var(--color-surface-terracotta), var(--color-warm-beige));
+}
+
+/* card top rules cycle olive → honey → deep honey, not olive → clay */
+:root:root body.yoga-site .main-look .ja-card:nth-child(4n + 2) { border-top-color: var(--color-antique-gold); }
+:root:root body.yoga-site .main-look .ja-card:nth-child(4n + 3) { border-top-color: var(--yl-gold-deep); }
+
+
+/* はじめに arched quote card: honey-cream instead of grey */
+:root:root .sh-mirror { background: color-mix(in srgb, var(--color-gold-accent) 22%, var(--color-paper)); border-color: var(--color-antique-gold); }
+
+/* buttons */
+/* solid buttons (white label) are Forest Shade; warm.css turned every .bg-brand-espresso beige, leaving cream text on sand */
+:root:root main .bg-brand-espresso.text-white { background-color: var(--color-deep-olive) !important; color: var(--color-paper) !important; }
+:root:root main .bg-brand-espresso.text-white:hover { background-color: var(--color-warm-brown) !important; }
+:root:root body.yoga-site :is(.sh-btn--primary, .jh__btn--solid):hover { background: #36461f; border-color: #36461f; }
+
+/* hero photo: full colour instead of the washed-out filter */
+:root:root body.ja-home .jh__arch img { filter: saturate(1.1) contrast(1.03) brightness(1.02); }
+:root:root body.ja-home .jh__arch picture::after {
+  background:
+    linear-gradient(262deg, rgba(253, 244, 222, .94) 0%, rgba(253, 244, 222, .86) 36%, rgba(253, 244, 222, .5) 49%, rgba(253, 244, 222, 0) 62%),
+    linear-gradient(200deg, rgba(255, 205, 120, .3) 0%, rgba(255, 205, 120, 0) 55%);
+}
+@media (max-width: 900px) {
+  :root:root body.ja-home .jh__arch picture::after { background: linear-gradient(180deg, rgba(253, 244, 222, .8) 0%, rgba(253, 244, 222, 0) 28%); }
+  :root:root body.ja-home .jh__inner { background: var(--color-ivory-cream); }
+}
+
+/* effects cards: real colour, not ghost tints */
+:root:root body.yoga-site .sh-column { --tone: var(--color-deep-olive); --wash: color-mix(in srgb, var(--color-light-sage) 52%, var(--color-paper)); }
+:root:root body.yoga-site .sh-column:nth-child(2) { --tone: var(--yl-gold-deep); --wash: color-mix(in srgb, var(--color-gold-accent) 55%, var(--color-paper)); }
+/* left to right: leaf green → sun gold → apricot clay (clay only ever sits next to gold) */
+:root:root body.yoga-site .sh-column:nth-child(3) { --tone: var(--color-warm-brown); --wash: color-mix(in srgb, var(--color-soft-terracotta) 26%, color-mix(in srgb, var(--color-gold-accent) 30%, var(--color-paper))); }
+:root:root body.yoga-site .sh-column { border-color: color-mix(in srgb, var(--tone) 50%, transparent); }
+:root:root body.yoga-site .sh-column__ring { background: var(--color-paper); border-color: var(--tone); }
+
+/* ---------- Cards (効果 + プログラム): clean, thin border, barely-there shadow ---------- */
+:root:root body.yoga-site .sh-columns { gap: 24px; }
+:root:root body.yoga-site .sh-column,
+:root:root body.yoga-site .sh-program--feature {
+  border: 1px solid color-mix(in srgb, var(--tone) 28%, var(--color-sand-beige));
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 1px 6px rgba(74, 59, 43, .05);
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+:root:root body.yoga-site .sh-program--feature {
+  --tone: var(--color-deep-olive);
+}
+/* plain cream ground (same as the 体験 cards); the three effect cards are told apart by text colour */
+:root:root body.yoga-site .sh-column,
+:root:root body.yoga-site .sh-program--feature { background: var(--color-paper); }
+:root:root body.yoga-site .sh-column { --ink-tone: #44582a; }
+:root:root body.yoga-site .sh-column:nth-child(2) { --ink-tone: var(--yl-gold); }
+:root:root body.yoga-site .sh-column:nth-child(3) { --ink-tone: #8e5530; }
+:root:root body.yoga-site .sh-column h3 { color: var(--ink-tone) !important; }
+:root:root body.yoga-site .sh-column li { color: color-mix(in srgb, var(--ink-tone) 80%, var(--color-text-primary, #4a3b2b)); }
+:root:root body.yoga-site .sh-column:hover,
+:root:root body.yoga-site .sh-program--feature:hover { box-shadow: 0 3px 12px rgba(74, 59, 43, .08); }
+/* photo beside the program card: slow 2.5% zoom on hover */
+:root:root body.yoga-site .sh-program__photo { overflow: hidden; }
+:root:root body.yoga-site .sh-program__photo img { transition: transform .5s var(--ease-standard, ease); }
+:root:root body.yoga-site .sh-program-row:hover .sh-program__photo img { transform: scale(1.025); }
+@media (prefers-reduced-motion: reduce) {
+  :root:root body.yoga-site .sh-column,
+  :root:root body.yoga-site .sh-program--feature,
+  :root:root body.yoga-site .sh-program__photo img { transition: none; }
+  :root:root body.yoga-site .sh-program-row:hover .sh-program__photo img { transform: none; }
+}
+
+/* ================= 2. Watercolor decorations =================
+ * <span class="jd jd--…" aria-hidden="true"> inside a section. They sit behind the
+ * section's content (z-index -1 in an isolated section) and never take clicks. */
+:root:root main section:has(> .jd) { position: relative; isolation: isolate; overflow-x: clip; }
+
+:root:root .jd {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--jd-img) center / contain no-repeat;
+}
+:root:root .jd--sage  { --jd-img: url("/hatha-yoga/assets/deco/wave-sage.webp"); }
+:root:root .jd--terra { --jd-img: url("/hatha-yoga/assets/deco/wave-terracotta.webp"); }
+:root:root .jd--hills { --jd-img: url("/hatha-yoga/assets/deco/wave-hills.webp"); }
+
+/* waves: full width along the section bottom, top edge fading into the page */
+:root:root .jd--wave {
+  left: 0; right: 0; bottom: -1px;
+  height: clamp(110px, 15vw, 230px);
+  background-size: cover;
+  background-position: center bottom;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 55%, #000 78%, rgba(0, 0, 0, .25) 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 55%, #000 78%, rgba(0, 0, 0, .25) 100%);
+  opacity: .8;
+}
+:root:root .jd--terra { opacity: .4; }  /* clay: a light touch only */
+:root:root .jd--flip { transform: scaleX(-1); }
+
+/* hero: the wave goes over the photo, under the copy */
+:root:root .jh .jd--hero { z-index: 2; opacity: .9; height: clamp(90px, 12vw, 190px); }
+:root:root body.ja-home .jh__wave { display: none; }
+
+/* leaves */
+:root:root .jd--branch { --jd-img: url("/hatha-yoga/assets/deco/leaf-branch.webp"); width: clamp(150px, 19vw, 280px); aspect-ratio: 1; top: -18px; }
+:root:root .jd--sprig  { --jd-img: url("/hatha-yoga/assets/deco/leaf-sprig.webp");  width: clamp(110px, 12vw, 180px); aspect-ratio: 1; }
+:root:root .jd--tl { left: -24px; }
+:root:root .jd--tr { right: -24px; transform: scaleX(-1); }
+
+/* lotus watermark */
+:root:root .jd--lotus { --jd-img: url("/hatha-yoga/assets/deco/lotus.webp"); width: clamp(220px, 28vw, 400px); aspect-ratio: 1; opacity: .4; }
+
+/* decorations these replace */
+:root:root .sh-about__waves,
+:root:root #trial .deco-corner,
+:root:root #program .deco--branch { display: none; }
+
+@media (max-width: 900px) {
+  :root:root .jd--branch { width: 130px; }
+  :root:root .jd--sprig { width: 96px; }
+  :root:root .jd--lotus { width: 200px; opacity: .3; }
+}
+
+/* ---------- every Japanese page: hills above the footer ---------- */
+/* .jd-foot is a div YogaLayout renders between <main> and the footer on ja pages.
+   It overlaps the last section's bottom padding; its top half is faded out. */
+:root:root .jd-foot {
+  position: relative;
+  z-index: 1;
+  height: clamp(130px, 18vw, 280px);
+  margin-top: calc(clamp(130px, 18vw, 280px) * -0.55);
+  pointer-events: none;
+  /* sage, not the green+clay hills: it lands on the beige footer */
+  background: url("/hatha-yoga/assets/deco/wave-sage.webp") center bottom / cover no-repeat;
+  opacity: .85;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 55%, #000 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 55%, #000 75%, transparent 100%);
+}
+:root:root body:not(.ja-home) main { position: relative; overflow-x: clip; }
+
+/* ---------- Watercolor corner sweep (ハタヨガとは quote) ----------
+ * Two curved shapes rising from the bottom-left corner, as in the SATORI reference.
+ * Each is the sage watercolor texture cut to an organic curve by an SVG mask; the
+ * mask's turbulence filter roughens the edge so it reads as paint, not a vector. */
+:root:root .jd--sweep {
+  left: 0;
+  bottom: 0;
+  width: min(24%, 380px);
+  height: min(64%, 520px);
+  background: var(--jd-img, url("/hatha-yoga/assets/deco/wave-sage.webp")) left bottom / auto 190% no-repeat;
+  -webkit-mask: var(--sweep) left bottom / 100% 100% no-repeat;
+  mask: var(--sweep) left bottom / 100% 100% no-repeat;
+}
+/* outer, lighter wash */
+:root:root .jd--sweep-a {
+  --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='3' seed='4'/><feDisplacementMap in='SourceGraphic' scale='16'/><feGaussianBlur stdDeviation='1.4'/></filter><path filter='url(%23f)' d='M-10 40 C 40 140 70 250 130 350 C 190 450 290 535 420 610 L -10 610 Z'/></svg>");
+  opacity: .5;
+}
+/* inner, deeper olive band */
+:root:root .jd--sweep-b {
+  --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.04' numOctaves='3' seed='9'/><feDisplacementMap in='SourceGraphic' scale='14'/><feGaussianBlur stdDeviation='1.2'/></filter><path filter='url(%23f)' d='M-10 250 C 40 320 90 400 160 470 C 215 525 280 570 350 610 L -10 610 Z'/></svg>");
+  filter: brightness(.82) saturate(1.15);
+  opacity: .72;
+}
+@media (max-width: 900px) {
+  :root:root .jd--sweep { width: 46%; height: 48%; }
+}
+/* right-corner sweep: mirror the whole thing (mask and texture flip together) */
+:root:root .jd--sweep.jd--right { left: auto; right: 0; transform: scaleX(-1); }
+/* clay sweep: lighter still, it is an accent */
+:root:root .jd--sweep-a.jd--terra { opacity: .32; }
+:root:root .jd--sweep-b.jd--terra { opacity: .45; }
+/* hero: over the photo, under the copy */
+:root:root .jh .jd--sweep { z-index: 2; }
+:root:root .jh .jd--sweep-a { opacity: .7; }
+:root:root .jh .jd--sweep-b { opacity: .85; }
+@media (max-width: 900px) {
+  /* hero stacks copy over photo: keep the sweep on the photo's bottom corner */
+  :root:root .jh .jd--sweep { width: 58%; height: 24%; }
+}
+/* 開催案内 banner: drop the old flat cream wave (a corner sweep replaces it) */
+:root:root body.yoga-site main .ja-wave-b::after { display: none !important; }
+
+/* ---------- Sweep shape variants ----------
+ * Add one to both spans of a pair, e.g. class="jd jd--sweep jd--sweep-a jd--v-tall".
+ * No variant = the original shape (used under 講師紹介). */
+/* tall: steep rise hugging the side edge */
+/* low: long, shallow sweep along the bottom */
+/* cross: inner band leans the other way, so the two cross like leaves */
+:root:root .jd--sweep.jd--v-cross { width: min(50%, 700px); height: min(34%, 220px); }  /* bottom hill + front wash */
+:root:root .jd--sweep-a.jd--v-cross { width: min(26%, 380px); height: min(76%, 460px); }  /* left hill */
+/* tall: side hill (a) + base hill (b), same family as v-cross */
+:root:root .jd--sweep-a.jd--v-tall { width: min(22%, 340px); height: min(60%, 520px); --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='2' seed='42'/><feDisplacementMap in='SourceGraphic' scale='9'/><feGaussianBlur stdDeviation='1.6'/></filter><path filter='url(%23f)' d='M-10 610 L -10 110 C 40 290 50 300 120 430 C 190 520 230 560 300 610 Z'/></svg>"); }
+:root:root .jd--sweep-b.jd--v-tall { width: min(44%, 620px); height: min(30%, 260px); --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='2' seed='43'/><feDisplacementMap in='SourceGraphic' scale='9'/><feGaussianBlur stdDeviation='1.6'/></filter><path filter='url(%23f)' d='M0 610 C 0 500 4 430 -4 300 C 240 570 270 560 385 610 Z'/></svg>"); }
+/* low: side hill (a) + base hill (b), same family as v-cross */
+:root:root .jd--sweep-a.jd--v-low { width: min(17%, 240px); height: min(92%, 270px); --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='2' seed='44'/><feDisplacementMap in='SourceGraphic' scale='9'/><feGaussianBlur stdDeviation='1.6'/></filter><path filter='url(%23f)' d='M-10 610 L -10 60 C 50 260 70 300 130 450 C 190 540 240 570 330 610 Z'/></svg>"); }
+:root:root .jd--sweep-b.jd--v-low { width: min(36%, 500px); height: min(52%, 150px); --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='2' seed='45'/><feDisplacementMap in='SourceGraphic' scale='9'/><feGaussianBlur stdDeviation='1.6'/></filter><path filter='url(%23f)' d='M0 610 C 3 520 -2 440 4 330 C 200 560 290 575 390 610 Z'/></svg>"); }
+/* arch: side hill (a) + base hill (b), same family as v-cross */
+:root:root .jd--sweep-a.jd--v-arch { width: min(20%, 300px); height: min(46%, 420px); --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='2' seed='46'/><feDisplacementMap in='SourceGraphic' scale='9'/><feGaussianBlur stdDeviation='1.6'/></filter><path filter='url(%23f)' d='M-10 610 L -10 130 C 35 330 30 330 95 450 C 170 530 215 555 275 610 Z'/></svg>"); }
+:root:root .jd--sweep-b.jd--v-arch { width: min(40%, 560px); height: min(22%, 200px); --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='2' seed='47'/><feDisplacementMap in='SourceGraphic' scale='9'/><feGaussianBlur stdDeviation='1.6'/></filter><path filter='url(%23f)' d='M0 610 C -2 500 6 450 -3 290 C 250 575 265 560 375 610 Z'/></svg>"); }
+/* lean: side hill (a) + base hill (b), same family as v-cross */
+:root:root .jd--sweep-a.jd--v-lean { width: min(22%, 320px); height: min(62%, 380px); --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='2' seed='48'/><feDisplacementMap in='SourceGraphic' scale='9'/><feGaussianBlur stdDeviation='1.6'/></filter><path filter='url(%23f)' d='M-10 610 L -10 100 C 45 310 38 270 105 430 C 180 520 225 545 295 610 Z'/></svg>"); }
+:root:root .jd--sweep-b.jd--v-lean { width: min(42%, 580px); height: min(26%, 180px); --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='2' seed='49'/><feDisplacementMap in='SourceGraphic' scale='9'/><feGaussianBlur stdDeviation='1.6'/></filter><path filter='url(%23f)' d='M0 610 C 1 490 -3 440 2 260 C 235 580 255 565 380 610 Z'/></svg>"); }
+@media (max-width: 900px) {
+  :root:root .jd--sweep-a.jd--v-tall { width: 34%; height: 50%; }
+  :root:root .jd--sweep-b.jd--v-tall { width: 66%; height: 22%; }
+  :root:root .jd--sweep-a.jd--v-low { width: 30%; height: 80%; }
+  :root:root .jd--sweep-b.jd--v-low { width: 62%; height: 44%; }
+  :root:root .jd--sweep-a.jd--v-arch { width: 34%; height: 40%; }
+  :root:root .jd--sweep-b.jd--v-arch { width: 66%; height: 20%; }
+  :root:root .jd--sweep-a.jd--v-lean { width: 34%; height: 46%; }
+  :root:root .jd--sweep-b.jd--v-lean { width: 66%; height: 22%; }
+}
+:root:root .jd--sweep-a.jd--v-cross { --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='2' seed='29'/><feDisplacementMap in='SourceGraphic' scale='9'/><feGaussianBlur stdDeviation='1.6'/></filter><path filter='url(%23f)' d='M-10 610 L -10 90 C 33 316 35 284 103 442 C 177 524 210 551 290 610 Z'/></svg>"); }
+:root:root .jd--sweep-b.jd--v-cross { --sweep: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'><filter id='f' x='-10%' y='-10%' width='120%' height='120%'><feTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='2' seed='30'/><feDisplacementMap in='SourceGraphic' scale='9'/><feGaussianBlur stdDeviation='1.6'/></filter><path filter='url(%23f)' d='M0 610 C -1 489 1 449 -5 270 C 232 577 248 561 372 610 Z'/></svg>"); }
+/* arch: full, rounded bulge */
+/* lean: straighter diagonal, low angle */
+@media (max-width: 900px) {
+  :root:root .jd--sweep.jd--v-cross { width: 70%; height: 24%; }
+  :root:root .jd--sweep-a.jd--v-cross { width: 36%; height: 58%; }
+  :root:root .jh .jd--sweep { width: 58%; height: 24%; }
+}

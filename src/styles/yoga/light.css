@@ -8,25 +8,7 @@
  * rules beat the long `body.yoga-site main .x .y` selectors in home.css. */
 
 /* ---------- Text colors: soft browns instead of near-black ---------- */
-body.yoga-site,
-body.yoga-site.ja-home {
-  --yl-head: #3e352b;   /* headings */
-  --yl-text: #4a4136;   /* body copy */
-  --yl-soft: #6b6152;   /* secondary copy, still >= 4.5:1 on cream */
-  --yl-gold: #8a6a2c;   /* small gold text */
-  --yl-line: rgba(138, 106, 44, .32);
-  /* Gold accent. Too light for text on cream: use it for fills, washes and
-     decoration, and --yl-gold-deep for lines and icons that sit on it. */
-  --color-gold-accent: #e5c365;
-  --yl-gold-deep: #a8842f;
-  --color-text-primary: var(--yl-text);
-  --color-text-secondary: var(--yl-soft);
-  --color-brand-espresso: var(--yl-text);
-  /* Sections outside .main-look had these undefined, so their text fell back to pure black. */
-  --ja-ink: var(--yl-text);
-  --ja-ink-70: var(--yl-text);
-  color: var(--yl-text);
-}
+body.yoga-site { color: var(--yl-text); }
 
 /* inline colors on the Japanese home page */
 body.yoga-site main [style*="#2A1D14"],
@@ -62,7 +44,7 @@ body.yoga-site header a.bg-brand-espresso {
   color: var(--color-paper);
   border-radius: 999px;
 }
-body.yoga-site header a.bg-brand-espresso:hover { background: #4b5139; }
+body.yoga-site header a.bg-brand-espresso:hover { background: color-mix(in srgb, var(--color-deep-olive) 82%, black); }
 
 /* ---------- Hero: warmer light, olive pill buttons ---------- */
 body.ja-home .jh__arch img { filter: saturate(.92) brightness(1.07) sepia(.1); }
@@ -79,7 +61,7 @@ body.ja-home .jh__sub { color: var(--yl-gold); }
 body.ja-home .jh__btn { border-radius: 999px; letter-spacing: .12em; gap: 22px; }
 body.ja-home .jh__btn--solid { background: var(--color-deep-olive); color: var(--color-paper) !important; box-shadow: 0 12px 24px -16px rgba(89, 96, 68, .7); }
 body.ja-home .jh__btn--solid::after { content: "\2192"; font-family: "Inter Tight", "Inter", sans-serif; letter-spacing: 0; }
-body.ja-home .jh__btn--solid:hover { background: #4b5139; }
+body.ja-home .jh__btn--solid:hover { background: color-mix(in srgb, var(--color-deep-olive) 82%, black); }
 body.ja-home .jh__btn--line { background: rgba(251, 247, 239, .75); border-color: color-mix(in srgb, var(--color-deep-olive) 55%, transparent); color: var(--color-deep-olive); }
 
 @media (max-width: 900px) {
