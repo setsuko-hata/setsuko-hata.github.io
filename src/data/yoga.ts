@@ -12,6 +12,11 @@ export const SATORIN_BOOKING_URL = 'https://setsuko-hata-yoga.stores.jp/reserve/
 
 export const SATORIN_PAGE_URL = '/satorin/';
 
+/** オンライン単発 (drop-in) sign-up links (Square). */
+export const ONLINE_MEDITATION_URL = 'https://square.link/u/uSdxkndi';
+export const ONLINE_SEMINAR_URL = 'https://square.link/u/rEebRXNd';
+export const ONLINE_BOTH_URL = 'https://square.link/u/v3I7OYtf';
+
 /** 大阪 木・土 3回対面クラス booking form. */
 export const OSAKA_COURSE_FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSe-ok_VpxnJaCQyp_05M7fhVDxjMnSJGUv1HKzx_PLA9mZiHg/viewform';
@@ -66,7 +71,8 @@ export const NAV: Record<Locale, NavItem[]> = {
       items: [
         { label: '大阪', href: ja('offerings', 'osaka') },
         { label: '東京', href: ja('offerings', 'tokyo') },
-        { label: 'オンライン', href: ja('offerings', 'online') },
+        { label: 'オンライン会員', href: ja('offerings', 'online') },
+        { label: 'オンライン単発', href: ja('offerings', 'online-single') },
       ],
     },
     {

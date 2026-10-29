@@ -1,12 +1,82 @@
 ---
 import YogaLayout from '../../../layouts/YogaLayout.astro';
+import { VENUES, IN_PERSON_RATES } from '../../../data/classes';
+import { CONTACT_EMAIL } from '../../../data/yoga';
+
+const SITE = 'https://setsukohata.com';
+const PAGE = `${SITE}/hatha-yoga/ja/`;
+
+// Venue addresses split for schema.org. Keep in step with VENUES in data/classes.ts.
+const PLACES = [
+  { name: 'カタリーナホール玉造', postalCode: '543-0014', locality: '大阪市天王寺区', street: '玉造元町3-1', region: '大阪府' },
+  { name: '大阪市教育会館', postalCode: '540-0006', locality: '大阪市中央区', street: '法円坂1-1-35 アネックスパル法円坂', region: '大阪府' },
+];
+const address = (p: (typeof PLACES)[number]) => ({
+  '@type': 'PostalAddress',
+  postalCode: p.postalCode,
+  addressRegion: p.region,
+  addressLocality: p.locality,
+  streetAddress: p.street,
+  addressCountry: 'JP',
+});
+const venueMap = (name: string) => VENUES.find((v) => v.name.startsWith(name))?.map;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['LocalBusiness', 'SportsActivityLocation'],
+      '@id': `${PAGE}#yoga`,
+      name: 'Setsuko Hata Yoga（秦 節子 ハタヨガ）',
+      alternateName: '秦節子 ハタヨガ',
+      description:
+        '大阪・東京で開催するハタヨガ教室。サドグル公認ハタヨガ講師・秦 節子が、伝統的なハタヨガ（ウパヨガ、スーリヤ・クリヤ、アンガマルダナ、ヨガアーサナ）を対面とオンラインで指導しています。',
+      url: PAGE,
+      image: `${SITE}/hatha-yoga/assets/og-image.jpg`,
+      email: CONTACT_EMAIL,
+      priceRange: `¥${IN_PERSON_RATES[0].price}〜`,
+      currenciesAccepted: 'JPY',
+      address: address(PLACES[0]),
+      hasMap: venueMap(PLACES[0].name),
+      location: PLACES.map((p) => ({ '@type': 'Place', name: p.name, address: address(p), hasMap: venueMap(p.name) })),
+      areaServed: [
+        { '@type': 'City', name: '大阪市' },
+        { '@type': 'AdministrativeArea', name: '大阪府' },
+        { '@type': 'City', name: '東京都' },
+      ],
+      knowsAbout: ['ハタヨガ', 'Hatha Yoga', 'ウパヨガ', 'スーリヤ・クリヤ', 'アンガマルダナ', 'ヨガアーサナ', '瞑想'],
+      founder: { '@id': `${SITE}/#person` },
+      employee: { '@id': `${SITE}/#person` },
+      sameAs: ['https://www.youtube.com/@SetsukoHataFlows', 'https://www.instagram.com/setsuko_hata/'],
+    },
+    {
+      '@type': 'Person',
+      '@id': `${SITE}/#person`,
+      name: '秦 節子',
+      alternateName: ['Setsuko Hata', '秦節子'],
+      jobTitle: 'サドグル公認ハタヨガ講師',
+      url: `${SITE}/`,
+      image: `${SITE}/assets/setsuko-portrait.jpg`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': PAGE,
+      url: PAGE,
+      name: 'ハタヨガ 大阪・東京｜サドグル公認ハタヨガ講師 秦 節子',
+      inLanguage: 'ja',
+      about: { '@id': `${PAGE}#yoga` },
+      isPartOf: { '@type': 'WebSite', name: '秦 節子 | Setsuko Hata', url: `${SITE}/` },
+    },
+  ],
+};
 ---
-<YogaLayout title="Setsuko Hata Yoga | サドグル公認ハタヨガ講師"
-  description="本物のヨガでなりたい自分へ。インドで何千年も受け継がれてきたハタヨガの科学で身体と心を思いのままに。サドグル公認ハタヨガ講師・秦節子。"
+<YogaLayout title="ハタヨガ 大阪・東京｜サドグル公認ハタヨガ講師 秦 節子 | Setsuko Hata Yoga"
+  description="大阪・東京のハタヨガ教室。サドグル公認ハタヨガ講師・秦 節子（Setsuko Hata）が、インドで1,750時間超の研鑽を積んだ伝統的なハタヨガを対面・オンラインで指導。ウパヨガからスーリヤ・クリヤまで。"
+  ogTitle="本物のヨガでなりたい自分へ｜大阪・東京のハタヨガ 秦 節子"
+  jsonLd={jsonLd}
   locale="ja"
   active="home"
   mainLook={false}
-  alternateHref="/hatha-yoga/en/"
   bodyClass="ja-home"
   preloadHero
   heroImage="hero-forest"

@@ -31,6 +31,10 @@
     document.querySelectorAll('[data-guide-for]').forEach(function (r) {
       r.hidden = r.dataset.guideFor.split(' ').indexOf(id) < 0;
     });
+    // Whole sections that don't apply to a tab (e.g. ご案内 for オンライン単発).
+    document.querySelectorAll('[data-hide-for]').forEach(function (s) {
+      s.hidden = s.dataset.hideFor.split(' ').indexOf(id) >= 0;
+    });
     var row = document.querySelector('[data-venue-row]');
     if (row) row.hidden = !shown;
   }

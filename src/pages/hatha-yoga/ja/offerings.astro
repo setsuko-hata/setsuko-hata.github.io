@@ -7,6 +7,7 @@ import Fees from '../../../components/yoga/classes/Fees.astro';
 import OsakaCourse from '../../../components/yoga/classes/OsakaCourse.astro';
 import SuryaKriya from '../../../components/yoga/classes/SuryaKriya.astro';
 import Satorin from '../../../components/yoga/classes/Satorin.astro';
+import OnlineSingle from '../../../components/yoga/classes/OnlineSingle.astro';
 import ClassDialogs from '../../../components/yoga/classes/ClassDialogs.astro';
 import { yogaHref } from '../../../data/yoga';
 import '../../../styles/yoga/pages/offerings.css';
@@ -17,10 +18,11 @@ import '../../../styles/yoga/calendar.css';
 const cities = [
   { id: 'osaka', name: '大阪' },
   { id: 'tokyo', name: '東京' },
-  { id: 'online', name: 'オンライン' },
+  { id: 'online', name: 'オンライン会員' },
+  { id: 'online-single', name: 'オンライン単発' },
 ];
 ---
-<YogaLayout title="クラス | Setsuko Hata Yoga"
+<YogaLayout title="クラス・料金｜大阪・東京のハタヨガ教室 | Setsuko Hata Yoga"
   description="秦 節子のハタヨガクラス。大阪・東京の対面クラスと月額会員、スーリヤ・クリヤ、オンラインの SATORIN メンバーシップのご案内。"
   locale="ja"
   active="classes"
@@ -71,6 +73,12 @@ const cities = [
           </div>
         </div>
 
+        <div id="online-single" class="cl-city" role="tabpanel" aria-labelledby="tab-online-single" data-city-panel>
+          <div class="cl-city__inner">
+            <OnlineSingle id="online-single-classes" tone="cl-section--cream" />
+          </div>
+        </div>
+
         <section id="calendar" class="cl-section cl-section--sage scroll-mt-24" data-screen-label="Class Calendar">
           <div class="cl-wrap">
             <div class="cl-head">
@@ -83,7 +91,7 @@ const cities = [
           </div>
         </section>
 
-        <section id="guide" class="cl-section cl-section--cream scroll-mt-24" data-screen-label="ご案内">
+        <section id="guide" class="cl-section cl-section--cream scroll-mt-24" data-screen-label="ご案内" data-hide-for="online-single">
           <div class="cl-wrap">
             <div class="cl-head">
               <p class="cl-eyebrow">ご案内</p>

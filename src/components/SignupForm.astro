@@ -16,7 +16,7 @@
             <path d="M66 11.8c1.6-1.6 1.6-3.2 0-4.8-1.6 1.6-1.6 3.2 0 4.8z" stroke-opacity="0.75"></path>
           </svg>
         </span>
-        <p class="signup-card__text" lang="ja">最新のクラス・音源・イベント情報をお届けします。</p>
+        <p class="signup-card__text" lang="ja">最新のクラス・音楽・イベント情報をお届けします。</p>
       </div>
     </div>
 
@@ -33,6 +33,11 @@
         <span class="field__label">Email *</span>
         <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" class="field__input" />
       </label>
+      <div class="signup-hp" aria-hidden="true">
+        <label>Leave this field empty
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
       <button type="submit" class="signup-submit">Subscribe</button>
       <div data-signup-msg role="status" aria-live="polite" class="signup-msg"></div>
     </form>
@@ -45,14 +50,25 @@
   const form = document.querySelector<HTMLFormElement>('[data-signup]');
   const button = form?.querySelector<HTMLButtonElement>('.signup-submit');
   const msg = form?.querySelector<HTMLElement>('[data-signup-msg]');
+  const loadedAt = Date.now();
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!form || !button || !msg) return;
 
+    // Bot defences: a filled honeypot or a sub-2s fill-in gets a fake success
+    // and is never sent. The Apps Script repeats these checks server-side.
+    const honeypot = form.querySelector<HTMLInputElement>('[name="website"]')?.value ?? '';
+    const elapsed = Date.now() - loadedAt;
+
     const firstName = (form.querySelector<HTMLInputElement>('[name="firstName"]')?.value ?? '').trim();
     const lastName = (form.querySelector<HTMLInputElement>('[name="lastName"]')?.value ?? '').trim();
     const email = (form.querySelector<HTMLInputElement>('[name="email"]')?.value ?? '').trim();
+
+    if (honeypot || elapsed < 2000) {
+      msg.textContent = `Thank you${firstName ? ', ' + firstName : ''} — ご登録ありがとうございます。`;
+      return;
+    }
 
     if (!endpoint) {
       console.warn('PUBLIC_SIGNUP_ENDPOINT is not set — signup was not recorded anywhere.');
@@ -71,7 +87,7 @@
       await fetch(endpoint, {
         method: 'POST',
         mode: 'no-cors',
-        body: JSON.stringify({ firstName, lastName, email }),
+        body: JSON.stringify({ firstName, lastName, email, website: honeypot, elapsed }),
       });
       msg.textContent = `Thank you${firstName ? ', ' + firstName : ''} — ご登録ありがとうございます。`;
       form.querySelectorAll<HTMLInputElement>('input').forEach((input) => { input.value = ''; });

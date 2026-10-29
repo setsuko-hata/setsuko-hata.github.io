@@ -210,6 +210,15 @@ main .cl-city[role="tabpanel"] { background: transparent; }
 .cl-satori-mini .cl-lead { margin-top: 0; }
 /* SATORIN "included" cards (after the SATORIN promotion page) */
 .cl-feats { margin-top: clamp(28px, 4vw, 44px); display: grid; gap: clamp(20px, 3vw, 32px); }
+.cl-actions--row { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.cl-actions--row .cl-btn { justify-content: center; white-space: nowrap; }
+@media (min-width: 800px) { .cl-actions--row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } }
+.cl-feats--duo { align-items: stretch; }
+@media (min-width: 800px) { .cl-feats--duo { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cl-feats--duo .cl-feat { grid-template-rows: auto 1fr; }
+.cl-feats--duo .cl-feat__en { flex-basis: 100%; }
+.cl-feats--duo .cl-feat__body { display: flex; flex-direction: column; }
+.cl-feats--duo .cl-feat__body .cl-feat__sched { margin-top: auto; }
 .cl-feat { display: grid; gap: 0; background: var(--color-paper); border: 1px solid var(--yl-line); border-top: 6px solid var(--color-deep-olive); border-radius: 12px; box-shadow: 0 2px 4px color-mix(in srgb, var(--yl-head) 6%, transparent), 0 24px 48px -24px color-mix(in srgb, var(--yl-head) 35%, transparent); transition: transform .3s var(--ease-standard, ease), box-shadow .3s; }
 .cl-feat:hover { transform: translateY(-4px); box-shadow: 0 2px 4px color-mix(in srgb, var(--yl-head) 8%, transparent), 0 32px 56px -24px color-mix(in srgb, var(--yl-head) 42%, transparent); }
 .cl-feat--gold { border-top-color: var(--color-antique-gold); }
