@@ -291,11 +291,17 @@
 
     render();
     // Lets a [data-cal-filter] button elsewhere on the page pick a calendar filter.
-    root.__hySetFilter = function (k) {
-      if (k === 'all') { st.place = 'all'; st.type = 'all'; }
-      else if (kwOf[k]) { st.place = k; st.type = 'all'; }
-      else if (srcOf[k]) { st.type = k; st.place = 'all'; }
-      else return;
+    // Takes one key, or several separated by spaces (e.g. "kw-tokyo inperson" = 東京 + 対面).
+    // Anything not named is reset to すべて.
+    root.__hySetFilter = function (keys) {
+      var place = 'all', type = 'all', ok = false;
+      String(keys).split(/\s+/).forEach(function (k) {
+        if (k === 'all') ok = true;
+        else if (kwOf[k]) { place = k; ok = true; }
+        else if (srcOf[k]) { type = k; ok = true; }
+      });
+      if (!ok) return;
+      st.place = place; st.type = type;
       render();
     };
     // Live feed (Apps Script). A source with an `ics` path falls back to that file if the feed fails.

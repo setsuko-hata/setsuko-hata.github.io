@@ -665,6 +665,15 @@ img {
   background: var(--gold-hover);
 }
 
+/* Honeypot: invisible to people and screen readers, tempting to bots. */
+.signup-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .signup-msg {
   grid-column: 1 / -1;
   font-size: 15px;
@@ -1341,45 +1350,6 @@ a.explore-card:hover .explore-card__overlay {
   margin: 0;
 }
 
-.origin__leaf {
-  position: absolute;
-  pointer-events: none;
-  z-index: 2;
-  filter: drop-shadow(0 5px 9px rgba(47, 42, 38, 0.16));
-}
-
-.origin__leaf--a {
-  top: -7%;
-  left: -5%;
-  width: 17%;
-  max-width: 128px;
-  transform: rotate(-28deg);
-}
-
-.origin__leaf--b {
-  top: 2%;
-  left: 8%;
-  width: 12%;
-  max-width: 92px;
-  transform: rotate(14deg);
-}
-
-.origin__leaf--c {
-  bottom: -8%;
-  right: 6%;
-  width: 19%;
-  max-width: 142px;
-  transform: rotate(168deg);
-}
-
-.origin__leaf--d {
-  bottom: 4%;
-  right: -6%;
-  width: 14%;
-  max-width: 104px;
-  transform: rotate(196deg);
-}
-
 .origin__frame {
   position: relative;
   overflow: hidden;
@@ -1771,17 +1741,6 @@ a.explore-card:hover .explore-card__overlay {
 .gallery__heading em {
   font-weight: 400;
   font-style: italic;
-}
-
-.gallery__caption {
-  font-family: var(--font-jp-sans);
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 2;
-  color: var(--muted);
-  margin: 0;
-  max-width: 26em;
-  text-wrap: pretty;
 }
 
 .gallery__mask {

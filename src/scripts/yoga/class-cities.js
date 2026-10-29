@@ -12,6 +12,14 @@
     membership: 'osaka-membership', special: 'osaka-surya', 'surya-kriya': 'osaka-surya',
   };
 
+  // Each tab sets the calendar's filter to its own place / type (e.g. 大阪 → 大阪 only).
+  // The calendar script may boot after this one, so wait for it.
+  function setCalendar(filter, tries) {
+    var cal = document.querySelector('[data-hy-cal]');
+    if (cal && cal.__hySetFilter) { cal.__hySetFilter(filter); return; }
+    if ((tries || 0) < 120) requestAnimationFrame(function () { setCalendar(filter, (tries || 0) + 1); });
+  }
+
   function select(id, focus) {
     tabs.forEach(function (t) {
       var on = t.dataset.cityTab === id;
@@ -20,6 +28,8 @@
       if (on && focus) t.focus();
     });
     panels.forEach(function (p) { p.hidden = p.id !== id; });
+    var tab = tabs.filter(function (t) { return t.dataset.cityTab === id; })[0];
+    if (tab && tab.dataset.calDefault) setCalendar(tab.dataset.calDefault);
     // ご案内 lists only the studios of the chosen city (online has no venue).
     var shown = 0;
     document.querySelectorAll('[data-venue-city]').forEach(function (v) {
@@ -30,6 +40,10 @@
     // Rows that apply to only some tabs (e.g. キャンセル for 対面, 返金・休学・退会 for オンライン).
     document.querySelectorAll('[data-guide-for]').forEach(function (r) {
       r.hidden = r.dataset.guideFor.split(' ').indexOf(id) < 0;
+    });
+    // Whole sections that don't apply to a tab (e.g. ご案内 for オンライン単発).
+    document.querySelectorAll('[data-hide-for]').forEach(function (s) {
+      s.hidden = s.dataset.hideFor.split(' ').indexOf(id) >= 0;
     });
     var row = document.querySelector('[data-venue-row]');
     if (row) row.hidden = !shown;

@@ -7,6 +7,7 @@ import Fees from '../../../components/yoga/classes/Fees.astro';
 import OsakaCourse from '../../../components/yoga/classes/OsakaCourse.astro';
 import SuryaKriya from '../../../components/yoga/classes/SuryaKriya.astro';
 import Satorin from '../../../components/yoga/classes/Satorin.astro';
+import OnlineSingle from '../../../components/yoga/classes/OnlineSingle.astro';
 import ClassDialogs from '../../../components/yoga/classes/ClassDialogs.astro';
 import { yogaHref } from '../../../data/yoga';
 import '../../../styles/yoga/pages/offerings.css';
@@ -15,12 +16,13 @@ import '../../../styles/yoga/calendar.css';
 
 /* The page is split by place. Each tab lists only what is offered there. */
 const cities = [
-  { id: 'osaka', name: '大阪' },
-  { id: 'tokyo', name: '東京' },
-  { id: 'online', name: 'オンライン' },
+  { id: 'osaka', name: '大阪', cal: 'kw-osaka' },
+  { id: 'tokyo', name: '東京', cal: 'kw-tokyo' },
+  { id: 'online', name: 'オンライン会員', cal: 'online' },
+  { id: 'online-single', name: 'オンライン単発', cal: 'online' },
 ];
 ---
-<YogaLayout title="クラス | Setsuko Hata Yoga"
+<YogaLayout title="クラス・料金｜大阪・東京のハタヨガ教室 | Setsuko Hata Yoga"
   description="秦 節子のハタヨガクラス。大阪・東京の対面クラスと月額会員、スーリヤ・クリヤ、オンラインの SATORIN メンバーシップのご案内。"
   locale="ja"
   active="classes"
@@ -33,13 +35,12 @@ const cities = [
               <p class="cl-hero__en">Classes</p>
               <h1>クラス</h1>
               <p class="cl-hero__lead">大阪・東京の対面クラスと、全国・海外から参加できるオンラインクラス。参加したい場所を選ぶと、そこで受けられるクラスをご覧いただけます。</p>
-              <p class="cl-hero__note">大阪・東京以外での出張クラスは<a class="cl-link" href="#calendar" data-cal-filter="inperson">開催スケジュール</a>をご確認ください。はじめての方は<a class="cl-link" href={yogaHref('ja', 'path')}>本格ハタヨガへの道</a>もご覧ください。</p>
             </div>
           </div>
           <div class="cl-wrap">
             <div id="cities" class="cl-tabs scroll-mt-24" role="tablist" aria-label="開催場所">
               {cities.map((c, i) => (
-                <a class="cl-city-tab" role="tab" id={`tab-${c.id}`} href={`#${c.id}`} aria-controls={c.id} aria-selected={i === 0 ? 'true' : 'false'} data-city-tab={c.id}>{c.name}</a>
+                <a class="cl-city-tab" role="tab" id={`tab-${c.id}`} href={`#${c.id}`} aria-controls={c.id} aria-selected={i === 0 ? 'true' : 'false'} data-city-tab={c.id} data-cal-default={c.cal}>{c.name}</a>
               ))}
             </div>
           </div>
@@ -57,7 +58,7 @@ const cities = [
 
         <div id="tokyo" class="cl-city" role="tabpanel" aria-labelledby="tab-tokyo" data-city-panel>
           <div class="cl-city__inner">
-            <InPerson id="tokyo-inperson" eyebrow="東京" title="対面クラス（単発）"
+            <InPerson id="tokyo-inperson" eyebrow="東京" title="対面クラス（単発）" calFilter="kw-tokyo inperson"
               lead="東京・三田のスタジオで、ヨガクラスと瞑想クラスを単発で開催しています。開催日は開催スケジュールをご確認ください。" />
             <Fees id="tokyo-fees" eyebrow="東京｜対面" tone="cl-section--cream" />
             <SuryaKriya id="tokyo-surya" />
@@ -68,6 +69,12 @@ const cities = [
         <div id="online" class="cl-city" role="tabpanel" aria-labelledby="tab-online" data-city-panel>
           <div class="cl-city__inner">
             <Satorin id="online-satorin" full tone="cl-section--cream" />
+          </div>
+        </div>
+
+        <div id="online-single" class="cl-city" role="tabpanel" aria-labelledby="tab-online-single" data-city-panel>
+          <div class="cl-city__inner">
+            <OnlineSingle id="online-single-classes" tone="cl-section--cream" />
           </div>
         </div>
 
@@ -83,7 +90,7 @@ const cities = [
           </div>
         </section>
 
-        <section id="guide" class="cl-section cl-section--cream scroll-mt-24" data-screen-label="ご案内">
+        <section id="guide" class="cl-section cl-section--cream scroll-mt-24" data-screen-label="ご案内" data-hide-for="online-single">
           <div class="cl-wrap">
             <div class="cl-head">
               <p class="cl-eyebrow">ご案内</p>

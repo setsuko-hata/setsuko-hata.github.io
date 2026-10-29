@@ -13,6 +13,7 @@ import SignupForm from '../components/SignupForm.astro';
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': 'https://setsukohata.com/#person',
     name: 'Setsuko Hata',
     alternateName: ['秦 節子', '秦節子'],
     url: 'https://setsukohata.com/',
@@ -29,13 +30,17 @@ import SignupForm from '../components/SignupForm.astro';
 >
   <section class="hero">
     <div class="hero__frame">
-      <img
-        fetchpriority="high"
-        decoding="async"
-        src="/assets/hero-stream.jpg"
-        alt="Setsuko Hata beside a mountain stream"
-        class="hero__img"
-      />
+      <picture>
+        <source type="image/webp" media="(max-width: 900px)" srcset="/assets/hero-stream-900.webp" />
+        <source type="image/webp" srcset="/assets/hero-stream.webp" />
+        <img
+          fetchpriority="high"
+          decoding="async"
+          src="/assets/hero-stream.jpg"
+          alt="Setsuko Hata beside a mountain stream"
+          class="hero__img"
+        />
+      </picture>
     </div>
     <div class="hero__overlay"></div>
 

@@ -1,0 +1,62 @@
+---
+/** オンライン単発: drop-in 瞑想会 and ヨガセミナー, no membership needed. */
+import { ONLINE_MEDITATION_URL, ONLINE_SEMINAR_URL, ONLINE_BOTH_URL, SATORIN_PAGE_URL } from '../../../data/yoga';
+import { SATORIN_EVENING } from '../../../data/classes';
+
+interface Props { id: string; tone?: string; }
+const { id, tone = '' } = Astro.props;
+
+const seminar = SATORIN_EVENING[0];
+const meditation = SATORIN_EVENING[1];
+---
+<section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
+  <div class="cl-wrap">
+    <div class="cl-head">
+      <p class="cl-eyebrow">オンライン単発</p>
+      <h2>瞑想会・ヨガセミナー</h2>
+      <span class="cl-head__rule" aria-hidden="true"></span>
+    </div>
+    <p class="cl-lead">メンバーでない方も、月曜夜のヨガセミナーと瞑想会に1回から、ご自宅からオンラインで参加いただけます。ひとつだけでも、続けて両方でも。</p>
+
+    <div class="cl-actions cl-actions--row">
+      <a href={ONLINE_SEMINAR_URL} target="_blank" rel="noreferrer" class="cl-btn">ヨガセミナーに申し込む</a>
+      <a href={ONLINE_MEDITATION_URL} target="_blank" rel="noreferrer" class="cl-btn">瞑想会に申し込む</a>
+      <a href={ONLINE_BOTH_URL} target="_blank" rel="noreferrer" class="cl-btn">両方に申し込む</a>
+    </div>
+
+    <div class="cl-feats cl-feats--duo">
+      <article class="cl-feat cl-feat--olive">
+        <header class="cl-feat__head">
+          <h3 class="cl-feat__title">ヨガセミナー</h3>
+          <p class="cl-feat__en">Yoga seminar</p>
+          <p class="cl-feat__when">{seminar.when}（40分）</p>
+        </header>
+        <div class="cl-feat__body">
+          <p class="cl-feat__p">{seminar.text}</p>
+          <dl class="cl-feat__sched">
+            <div><dt>1回（40分）</dt><dd><span class="rate-amount">2,000</span>円（税込）</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="cl-feat cl-feat--gold">
+        <header class="cl-feat__head">
+          <h3 class="cl-feat__title">瞑想会</h3>
+          <p class="cl-feat__en">Meditation</p>
+          <p class="cl-feat__when">{meditation.when}（40分）</p>
+        </header>
+        <div class="cl-feat__body">
+          <p class="cl-feat__p">{meditation.text}</p>
+          <dl class="cl-feat__sched">
+            <div><dt>1回（40分）</dt><dd><span class="rate-amount">2,000</span>円（税込）</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+
+    <div class="cl-actions">
+      <a href={SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">毎週参加するなら、オンライン会員へ</a>
+    </div>
+    <p class="cl-fine">※ 朝ヨガは含まれません。SATORIN メンバーの方は1回 1,500円で参加いただけます。</p>
+  </div>
+</section>
