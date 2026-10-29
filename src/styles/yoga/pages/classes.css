@@ -26,7 +26,7 @@ body.page-offerings main > section.cl-section { padding-block: clamp(56px, 7vw, 
 .cl-hero__en { margin: 0; font-family: "Newsreader", "Shippori Mincho", serif; font-style: italic; letter-spacing: .1em; font-size: 15px; color: var(--color-deep-olive); }
 .cl-hero h1 { margin: 18px 0 0; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: clamp(34px, 5vw, 56px); line-height: 1.45; color: var(--yl-head); letter-spacing: .04em; }
 .cl-hero__lead { margin: 28px 0 0; max-width: 34em; font-size: 17px; line-height: 2.1; color: var(--yl-text); }
-.cl-hero__photo { position: relative; aspect-ratio: 1.15 / 1; border-radius: 58% 42% 50% 50% / 46% 58% 42% 54%; overflow: hidden; box-shadow: 0 14px 32px -20px color-mix(in srgb, var(--yl-head) 55%, transparent); }
+.cl-hero__photo { position: relative; aspect-ratio: 4 / 3; border-radius: 0; overflow: hidden; box-shadow: 0 14px 32px -20px color-mix(in srgb, var(--yl-head) 55%, transparent); }
 .cl-hero__photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* section heading */
@@ -181,10 +181,8 @@ body.page-offerings .cl-section--sand { background: linear-gradient(155deg, var(
 body.page-offerings main > section.cl-hero--tabs,
 body.page-offerings.ja-sunlit main > section.cl-hero.cl-hero--tabs:first-child { padding-bottom: 0 !important; }
 .cl-hero--tabs .cl-hero__grid { padding-bottom: clamp(28px, 4vw, 48px); }
-.cl-hero__note { margin: 18px 0 0; max-width: 40em; font-size: 14px; line-height: 2; color: var(--yl-soft); }
-.cl-hero__note .cl-link { font-size: 14px; margin: 0 2px; }
-.cl-tabs { display: flex; align-items: flex-end; gap: 6px; border-bottom: 1px solid var(--color-antique-gold); }
-.cl-city-tab { position: relative; flex: 0 1 180px; min-width: 0; padding: 14px 18px 12px; text-align: center; text-decoration: none; font-family: "Shippori Mincho", serif; font-size: clamp(17px, 2vw, 20px); line-height: 1.4; letter-spacing: .06em; color: var(--yl-soft); background: color-mix(in srgb, var(--color-paper) 55%, transparent); border: 1px solid color-mix(in srgb, var(--color-antique-gold) 55%, transparent); border-bottom: 0; border-radius: 14px 14px 0 0; transition: background-color .2s, color .2s; }
+.cl-tabs { display: flex; align-items: stretch; gap: 6px; border-bottom: 1px solid var(--color-antique-gold); }
+.cl-city-tab { position: relative; display: flex; align-items: center; justify-content: center; flex: 0 1 180px; min-width: 0; padding: 14px 18px 12px; text-align: center; text-decoration: none; font-family: "Shippori Mincho", serif; font-size: clamp(17px, 2vw, 20px); line-height: 1.4; letter-spacing: .06em; color: var(--yl-soft); background: color-mix(in srgb, var(--color-paper) 55%, transparent); border: 1px solid color-mix(in srgb, var(--color-antique-gold) 55%, transparent); border-bottom: 0; border-radius: 14px 14px 0 0; transition: background-color .2s, color .2s; }
 .cl-city-tab:hover { background: color-mix(in srgb, var(--color-paper) 85%, transparent); color: var(--yl-head); }
 .cl-city-tab:focus-visible { outline: 2px solid var(--color-deep-olive); outline-offset: -4px; }
 .cl-city-tab[aria-selected="true"] { z-index: 1; margin-bottom: -1px; padding-bottom: 13px; color: var(--yl-head); background: var(--color-ivory-cream); border-color: var(--color-antique-gold); }

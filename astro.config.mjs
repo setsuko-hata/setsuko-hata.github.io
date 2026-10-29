@@ -63,4 +63,5 @@ export default defineConfig({
     "/hatha-yoga/en/contact.html": "/hatha-yoga/ja/contact/",
   },
   server: { port: Number(process.env.PORT) || 4321 },
+  vite: { plugins: [publicPageFallback()] },
 });

@@ -2,8 +2,8 @@
 /** In-person drop-in classes (used by the 東京 tab). The venue is listed under ご案内; 料金 is its own section (Fees.astro). */
 import { OSAKA_COURSE_FORM_URL as BOOKING_FORM_URL } from '../../../data/yoga';
 
-interface Props { id: string; eyebrow: string; title: string; lead: string; tone?: string; }
-const { id, eyebrow, title, lead, tone = '' } = Astro.props;
+interface Props { id: string; eyebrow: string; title: string; lead: string; tone?: string; calFilter?: string; }
+const { id, eyebrow, title, lead, tone = '', calFilter = 'inperson' } = Astro.props;
 ---
 <section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
   <div class="cl-wrap">
@@ -16,7 +16,7 @@ const { id, eyebrow, title, lead, tone = '' } = Astro.props;
 
     <div class="cl-actions">
       <a href={BOOKING_FORM_URL} target="_blank" rel="noreferrer" class="cl-btn">予約する</a>
-      <a href="#calendar" data-cal-filter="inperson" class="cl-btn cl-btn--ghost">開催スケジュール</a>
+      <a href="#calendar" data-cal-filter={calFilter} class="cl-btn cl-btn--ghost">開催スケジュール</a>
     </div>
   </div>
 </section>
