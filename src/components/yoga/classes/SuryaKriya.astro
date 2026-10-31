@@ -3,8 +3,8 @@
 import { SURYA_KRIYA_FORM_URL, yogaHref } from '../../../data/yoga';
 import { SURYA_BENEFITS } from '../../../data/classes';
 
-interface Props { id: string; tone?: string; }
-const { id, tone = '' } = Astro.props;
+interface Props { id: string; tone?: string; calFilter?: string; }
+const { id, tone = '', calFilter = 'special' } = Astro.props;
 ---
 <section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
   <div class="cl-wrap">
@@ -16,7 +16,7 @@ const { id, tone = '' } = Astro.props;
       </div>
       <div class="cl-actions">
         <a href={SURYA_KRIYA_FORM_URL} target="_blank" rel="noreferrer" class="cl-btn">予約する</a>
-        <a href="#calendar" data-cal-filter="special" class="cl-btn cl-btn--ghost">開催スケジュール</a>
+        <a href="#calendar" data-cal-filter={calFilter} class="cl-btn cl-btn--ghost">開催スケジュール</a>
         <a href={yogaHref('ja', 'path')} class="cl-link">本格ハタヨガへの道<span aria-hidden="true" class="cl-arrow"> →</span></a>
       </div>
     </div>
