@@ -105,6 +105,7 @@ body.page-offerings .cl-section--tight { padding-block: clamp(48px, 6vw, 80px); 
 body.page-offerings .cl-section--sand { background: linear-gradient(155deg, var(--color-ivory-cream), var(--color-warm-beige)); }
 .cl-fine { margin: 18px 0 0; max-width: 46em; font-size: 14px; line-height: 2; color: var(--yl-soft); }
 .cl-fine p { margin: 0; }
+.cl-fine--full-width { max-width: none; }
 .cl-minihead { margin: 32px 0 0; font-size: 14px; letter-spacing: .16em; color: var(--yl-gold); }
 .cl-dash { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .cl-dash li { position: relative; padding-left: 26px; font-size: 15px; line-height: 1.9; color: var(--yl-text); }
