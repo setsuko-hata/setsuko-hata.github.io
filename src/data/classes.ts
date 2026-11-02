@@ -54,7 +54,7 @@ export const SATORIN_PLANS = [
   { no: '02', name: '安らぎ', type: 'ナイトプラン', tagline: '一日の終わりに、心がほどける夜を。', price: '6,000', morning: false, evening: true, coaching: null, pick: false,
     features: ['健康セミナー：月4回', '瞑想：月4回', '月1回 コミュニティ交流会'], url: `${STORES}363296` },
   { no: '03', name: '整う', type: 'ヨガ＆瞑想プラン', tagline: '実践・学び・瞑想を、一つのリズムに。', price: '12,000', morning: true, evening: true, coaching: null, pick: true,
-    features: ['朝ヨガ：月20回・受け放題', '健康セミナー：月4回', '瞑想：月4回', '月1回 コミュニティ交流会'], url: `${STORES}229802` },
+    features: ['朝ヨガ：受け放題', '健康セミナー：月4回', '瞑想：月4回', '月1回 コミュニティ交流会'], url: `${STORES}229802` },
   { no: '04', name: '花ひらく', type: 'パーソナルプラン', tagline: '個別の対話から、あなたらしい変化を。', price: '21,000', morning: true, evening: true, coaching: '月1回', pick: false,
     features: ['整うプランのすべて', '1:1 コーチング：月1回（60分）'], url: `${STORES}430979` },
   { no: '05', name: '輝く', type: 'プレミアムプラン', tagline: '細やかな伴走で、変化を加速する。', price: '36,000', morning: true, evening: true, coaching: '月3回', pick: false,
