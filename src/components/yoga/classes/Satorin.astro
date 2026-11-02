@@ -31,10 +31,6 @@ const { id, full = false, tone = '', fullHref = '#online-satorin' } = Astro.prop
           <p class="cl-feat__lead">平日毎朝6時、オンラインで待ち合わせ。</p>
           <p class="cl-feat__p">初心者の方も、すでに本格ハタヨガを学んでいる方も、ご自身に合った形で参加できます。難しいポーズを競うのではなく、身体の動き、呼吸、音、内側の感覚へ意識を向ける時間です。</p>
           <ul class="cl-tiles">{SATORIN_MORNING.practices.map((t) => <li>{t}</li>)}</ul>
-          <dl class="cl-feat__sched">
-            {SATORIN_MORNING.schedule.map((r) => <div><dt>{r.time}</dt><dd>{r.what}</dd></div>)}
-          </dl>
-          <p class="cl-fine">スーリヤ・クリヤを学んでいる方は、6時にインボケーションから一緒に始め、6:40までそれぞれのスーリヤ・クリヤを実践。6:40から全員で呼吸法とミラクル瞑想を行います。</p>
         </div>
       </article>
 
