@@ -38,6 +38,7 @@ body.yoga-site .main-look a.fl-card__link, a.fl-card__link { color: var(--yl-hea
 .fl-pair .fl-card { padding-inline: 12px; }
 .fl-card__price { margin-top: 4px !important; font-family: "Shippori Mincho", serif; font-size: 18px; color: var(--yl-head); }
 .fl-card__price small { font-size: 13px; margin-left: 2px; }
+.fl-card__support { font-size: 14px; line-height: 2; color: var(--yl-text); }
 .fl-card__actions { position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 14px; }
 .cl-btn.fl-btn { gap: 10px; padding: 8px 18px; font-size: 13px; letter-spacing: .04em; }
 
