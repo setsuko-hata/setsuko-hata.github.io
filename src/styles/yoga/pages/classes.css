@@ -37,6 +37,8 @@ body.page-offerings main > section.cl-section { padding-block: clamp(56px, 7vw, 
 .cl-head__rule { display: block; width: 48px; height: 1px; margin: 16px 0 0; background: var(--color-antique-gold); }
 .cl-head--center .cl-head__rule { margin-inline: auto; }
 .cl-lead { margin: 22px 0 0; max-width: 46em; font-size: 16px; line-height: 2.05; color: var(--yl-text); }
+.cl-lead--full-width { max-width: none; }
+.cl-phrase-nowrap { white-space: nowrap; }
 .cl-head--center + .cl-lead { margin-inline: auto; text-align: center; }
 
 /* ringed icon */
