@@ -114,14 +114,14 @@ const { id, full = false, tone = '', fullHref = '#online-satorin' } = Astro.prop
         <table class="cl-table">
           <caption class="cl-sr">SATORIN メンバーシップのプラン比較（月額・税込）</caption>
           <thead>
-            <tr><th scope="col">プラン</th><th scope="col">月額（税込）</th><th scope="col">朝ヨガ<small>月〜金 6:00〜7:00</small><small>月20回</small></th><th scope="col">健康セミナー<small>月曜 19:30〜20:10</small><small>月4回</small></th><th scope="col">瞑想<small>月曜 20:20〜21:00</small><small>月4回</small></th><th scope="col">交流会<small>月1回</small></th><th scope="col">1:1 コーチング<small>60分</small></th></tr>
+            <tr><th scope="col">プラン</th><th scope="col">月額（税込）</th><th scope="col">朝ヨガ<small>月〜金 6:00〜6:45</small><small>(土・日・祝休み)</small></th><th scope="col">健康セミナー<small>月曜 19:30〜20:10</small><small>月4回</small></th><th scope="col">瞑想<small>月曜 20:20〜21:00</small><small>月4回</small></th><th scope="col">交流会<small>月1回</small></th><th scope="col">1:1 コーチング<small>60分</small></th></tr>
           </thead>
           <tbody>
             {SATORIN_PLANS.map((p) => (
               <tr class={p.pick ? 'is-pick' : undefined}>
                 <th scope="row"><span class="cl-table__name">{p.name}</span><span class="cl-table__type">{p.type}</span>{p.pick && <span class="cl-badge">おすすめ</span>}</th>
                 <td data-label="月額（税込）"><span><span class="rate-amount">{p.price}</span>円</span></td>
-                <td data-label="朝ヨガ 平日6:00〜 月20回">{p.morning ? <span class="cl-yes" aria-label="あり">✓</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
+                <td class="cl-table__morning" data-label="朝ヨガ&#10;月〜金 6:00〜6:45&#10;(土・日・祝休み)">{p.morning ? <span class="cl-yes" aria-label="あり">✓</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
                 <td data-label="健康セミナー 月曜19:30〜 月4回">{p.evening ? <span class="cl-yes" aria-label="あり">{yes}</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
                 <td data-label="瞑想 月曜20:20〜 月4回">{p.evening ? <span class="cl-yes" aria-label="あり">{yes}</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
                 <td data-label="交流会 月1回"><span class="cl-yes" aria-label="あり">✓</span></td>

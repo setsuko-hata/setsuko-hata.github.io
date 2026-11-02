@@ -142,6 +142,7 @@ body.page-offerings .cl-section--sand { background: linear-gradient(155deg, var(
   .cl-table td { display: flex; justify-content: space-between; align-items: center; padding: 9px 16px; border-bottom: 1px dashed var(--yl-line); text-align: right; }
   .cl-table td:last-child { border-bottom: 0; }
   .cl-table td::before { content: attr(data-label); font-size: 14px; color: var(--yl-soft); text-align: left; }
+  .cl-table td.cl-table__morning::before { white-space: pre-line; }
 }
 
 .cl-callout { margin-top: 26px; padding: 18px 22px; border: 1.5px dashed var(--color-antique-gold); border-radius: 12px; background: color-mix(in srgb, var(--color-gold-accent) 12%, var(--color-paper)); }
