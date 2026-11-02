@@ -25,16 +25,12 @@ const { id, full = false, tone = '', fullHref = '#online-satorin' } = Astro.prop
           <p class="cl-feat__no"><span>01</span>Included</p>
           <h3 class="cl-feat__title">朝ヨガ</h3>
           <p class="cl-feat__en">Morning practice</p>
-          <p class="cl-feat__when">月曜日〜金曜日｜6:00〜7:00（月20回）</p>
+          <p class="cl-feat__when">月曜日〜金曜日｜6:00〜6:45<br />(土・日・祝休み)</p>
         </header>
         <div class="cl-feat__body">
           <p class="cl-feat__lead">平日毎朝6時、オンラインで待ち合わせ。</p>
           <p class="cl-feat__p">初心者の方も、すでに本格ハタヨガを学んでいる方も、ご自身に合った形で参加できます。難しいポーズを競うのではなく、身体の動き、呼吸、音、内側の感覚へ意識を向ける時間です。</p>
           <ul class="cl-tiles">{SATORIN_MORNING.practices.map((t) => <li>{t}</li>)}</ul>
-          <dl class="cl-feat__sched">
-            {SATORIN_MORNING.schedule.map((r) => <div><dt>{r.time}</dt><dd>{r.what}</dd></div>)}
-          </dl>
-          <p class="cl-fine">スーリヤ・クリヤを学んでいる方は、6時にインボケーションから一緒に始め、6:40までそれぞれのスーリヤ・クリヤを実践。6:40から全員で呼吸法とミラクル瞑想を行います。</p>
         </div>
       </article>
 
@@ -118,14 +114,14 @@ const { id, full = false, tone = '', fullHref = '#online-satorin' } = Astro.prop
         <table class="cl-table">
           <caption class="cl-sr">SATORIN メンバーシップのプラン比較（月額・税込）</caption>
           <thead>
-            <tr><th scope="col">プラン</th><th scope="col">月額（税込）</th><th scope="col">朝ヨガ<small>月〜金 6:00〜7:00</small><small>月20回</small></th><th scope="col">健康セミナー<small>月曜 19:30〜20:10</small><small>月4回</small></th><th scope="col">瞑想<small>月曜 20:20〜21:00</small><small>月4回</small></th><th scope="col">交流会<small>月1回</small></th><th scope="col">1:1 コーチング<small>60分</small></th></tr>
+            <tr><th scope="col">プラン</th><th scope="col">月額（税込）</th><th scope="col">朝ヨガ<small>月〜金 6:00〜6:45</small><small>(土・日・祝休み)</small></th><th scope="col">健康セミナー<small>月曜 19:30〜20:10</small><small>月4回</small></th><th scope="col">瞑想<small>月曜 20:20〜21:00</small><small>月4回</small></th><th scope="col">交流会<small>月1回</small></th><th scope="col">1:1 コーチング<small>60分</small></th></tr>
           </thead>
           <tbody>
             {SATORIN_PLANS.map((p) => (
               <tr class={p.pick ? 'is-pick' : undefined}>
                 <th scope="row"><span class="cl-table__name">{p.name}</span><span class="cl-table__type">{p.type}</span>{p.pick && <span class="cl-badge">おすすめ</span>}</th>
                 <td data-label="月額（税込）"><span><span class="rate-amount">{p.price}</span>円</span></td>
-                <td data-label="朝ヨガ 平日6:00〜 月20回">{p.morning ? <span class="cl-yes" aria-label="あり">✓</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
+                <td class="cl-table__morning" data-label="朝ヨガ&#10;月〜金 6:00〜6:45&#10;(土・日・祝休み)">{p.morning ? <span class="cl-yes" aria-label="あり">✓</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
                 <td data-label="健康セミナー 月曜19:30〜 月4回">{p.evening ? <span class="cl-yes" aria-label="あり">{yes}</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
                 <td data-label="瞑想 月曜20:20〜 月4回">{p.evening ? <span class="cl-yes" aria-label="あり">{yes}</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
                 <td data-label="交流会 月1回"><span class="cl-yes" aria-label="あり">✓</span></td>
@@ -158,7 +154,7 @@ const { id, full = false, tone = '', fullHref = '#online-satorin' } = Astro.prop
       <span class="cl-head__rule" aria-hidden="true"></span>
     </div>
     <div class="cl-panel cl-satori-mini">
-      <p class="cl-lead">平日朝のヨガと、月曜夜の健康セミナー・瞑想を、ご自宅からオンラインで。対面クラスと合わせて、毎日の実践を続けられるメンバーシップです。</p>
+      <p class="cl-lead">平日朝のヨガと、月曜夜の健康セミナー・瞑想を、ご自宅からオンラインで。<br />対面クラスと合わせて、毎日の実践を続けられるメンバーシップです。</p>
       <div class="cl-actions">
         <a href={fullHref} class="cl-btn">オンラインのクラスを見る</a>
       </div>

@@ -18,8 +18,8 @@ import '../../../styles/yoga/calendar.css';
 const cities = [
   { id: 'osaka', name: '大阪', cal: 'kw-osaka' },
   { id: 'tokyo', name: '東京', cal: 'kw-tokyo' },
-  { id: 'online', name: 'オンライン会員', cal: 'online' },
-  { id: 'online-single', name: 'オンライン単発', cal: 'online' },
+  { id: 'online', name: 'オンライン会員', shortName: '会員', cal: 'online' },
+  { id: 'online-single', name: 'オンライン単発', shortName: '単発', cal: 'online' },
 ];
 ---
 <YogaLayout title="クラス・料金｜大阪・東京のハタヨガ教室 | Setsuko Hata Yoga"
@@ -40,7 +40,7 @@ const cities = [
           <div class="cl-wrap">
             <div id="cities" class="cl-tabs scroll-mt-24" role="tablist" aria-label="開催場所">
               {cities.map((c, i) => (
-                <a class="cl-city-tab" role="tab" id={`tab-${c.id}`} href={`#${c.id}`} aria-controls={c.id} aria-selected={i === 0 ? 'true' : 'false'} data-city-tab={c.id} data-cal-default={c.cal}>{c.name}</a>
+                <a class:list={["cl-city-tab", { "cl-city-tab--online": c.shortName }]} aria-label={c.name} role="tab" id={`tab-${c.id}`} href={`#${c.id}`} aria-controls={c.id} aria-selected={i === 0 ? 'true' : 'false'} data-city-tab={c.id} data-cal-default={c.cal}>{c.shortName ? <span class="cl-city-tab__label">オンライン<br />{c.shortName}</span> : c.name}</a>
               ))}
             </div>
           </div>
@@ -109,7 +109,7 @@ const cities = [
                   </div>
                 ))}
               </dd></div>
-              <div><dt>お支払い</dt><dd><p>PayPay、当日現金</p></dd></div>
+              <div><dt>お支払い</dt><dd><p>銀行振込・当日現金・PayPay</p></dd></div>
               <div data-guide-for="osaka tokyo"><dt>キャンセル</dt><dd><p>前日：受講料の50％</p><p>当日：受講料の100％</p></dd></div>
               <div data-guide-for="online" hidden><dt>返金・休学・退会について</dt><dd>
                 <p>お支払い済みの月の受講料は、ご返金いたしかねます。あらかじめご了承ください。</p>

@@ -58,8 +58,8 @@ const advanced = [
             <span class="fl-start">START</span>
             <p class="fl-card__mode">対面・オンライン</p>
             <h3 class="fl-card__name"><a class="fl-card__link" href={types('upa')}>ウパヨガ 1</a></h3>
-            <p class="fl-card__meta">対面：各1時間15分</p>
-            <p class="fl-card__meta">オンライン（SATORIN）：1時間</p>
+            <p class="fl-card__meta">対面：75分</p>
+            <p class="fl-card__meta">オンライン朝ヨガ（SATORIN）</p>
             <div class="fl-card__actions">
               <a class="cl-btn fl-btn" href={offerings}>対面クラスを見る</a>
               <a class="cl-btn cl-btn--ghost fl-btn" href={SATORIN_PAGE_URL}>SATORINを見る</a>
@@ -69,7 +69,7 @@ const advanced = [
             <article id={s.id} class="fl-card fl-card--step" data-next={s.next}>
               <p class="fl-card__mode">対面</p>
               <h3 class="fl-card__name"><a class="fl-card__link" href={types('upa')}>{s.name}</a></h3>
-              <p class="fl-card__meta">各1時間15分</p>
+              <p class="fl-card__meta">75分</p>
             </article>
           ))}
         </div>
@@ -81,6 +81,7 @@ const advanced = [
             <h3 class="fl-card__name"><a class="fl-card__link" href={types('surya')}>スーリヤ・クリヤ</a></h3>
             <p class="fl-card__meta">7時間・伝授：2日間</p>
             <p class="fl-card__price">60,000<small>円</small></p>
+            <p class="fl-card__support">受講後1年間、年2回の個別復習・修正を無料でサポート</p>
             <div class="fl-card__actions">
               <a class="cl-btn fl-btn" href={SURYA_KRIYA_FORM_URL} target="_blank" rel="noreferrer">予約する</a>
             </div>
@@ -92,6 +93,7 @@ const advanced = [
                 <h3 class="fl-card__name"><a class="fl-card__link" href={types(c.hash)}>{c.name}</a></h3>
                 <p class="fl-card__meta">12時間・伝授：4日間</p>
                 <p class="fl-card__price">{c.price}<small>円</small></p>
+                <p class="fl-card__support">受講後1年間、年2回の個別復習・修正を無料でサポート</p>
                 <div class="fl-card__actions">
                   <a class="cl-btn cl-btn--ghost fl-btn" href={contact}>お問い合わせ</a>
                 </div>
@@ -104,7 +106,7 @@ const advanced = [
       <div class="pt-support">
         <p class="pt-support__en">Support</p>
         <p class="pt-support__title">一度の伝授から、一生涯の実践へ</p>
-        <p>受講後1年間、年2回の個別復習・修正を無料でサポート。その後も一生涯、実践をサポートします。</p>
+        <p>その後も一生涯、実践をサポートします。</p>
       </div>
     </div>
   </section>

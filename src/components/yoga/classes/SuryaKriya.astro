@@ -26,9 +26,9 @@ const { id, tone = '', calFilter = 'special' } = Astro.props;
       <section class="oc-sec" aria-labelledby={`${id}-info`}>
         <h3 class="oc-h" id={`${id}-info`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#sun" /></svg>プログラム内容</h3>
         <dl class="oc-info">
-          <div><dt>伝授</dt><dd>約6.5時間</dd></div>
+          <div><dt>伝授</dt><dd>約7時間</dd></div>
           <div><dt>受講料</dt><dd><span class="rate-amount">60,000</span>円（税込）</dd></div>
-          <div><dt>サポート</dt><dd>受講後1年間、年2回の個別復習・修正を無料で</dd></div>
+          <div><dt>サポート</dt><dd>受講後1年間、計2回の個別復習・修正を無料で受けていただけます</dd></div>
         </dl>
       </section>
 
@@ -37,7 +37,7 @@ const { id, tone = '', calFilter = 'special' } = Astro.props;
         <ul class="oc-for">{SURYA_BENEFITS.map((b) => <li>{b}</li>)}</ul>
       </section>
 
-      <p class="cl-fine">※ 単発のお申し込みのみとなります。月額会員の割引対象外です。開催日は開催スケジュールをご確認ください。</p>
+      <p class="cl-fine cl-fine--full-width">※ 単発のお申し込みのみとなります。月額会員の割引対象外です。開催日は開催スケジュールをご確認ください。</p>
     </div>
   </div>
 </section>

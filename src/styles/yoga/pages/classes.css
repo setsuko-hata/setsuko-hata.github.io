@@ -37,6 +37,8 @@ body.page-offerings main > section.cl-section { padding-block: clamp(56px, 7vw, 
 .cl-head__rule { display: block; width: 48px; height: 1px; margin: 16px 0 0; background: var(--color-antique-gold); }
 .cl-head--center .cl-head__rule { margin-inline: auto; }
 .cl-lead { margin: 22px 0 0; max-width: 46em; font-size: 16px; line-height: 2.05; color: var(--yl-text); }
+.cl-lead--full-width { max-width: none; }
+.cl-phrase-nowrap { white-space: nowrap; }
 .cl-head--center + .cl-lead { margin-inline: auto; text-align: center; }
 
 /* ringed icon */
@@ -105,6 +107,7 @@ body.page-offerings .cl-section--tight { padding-block: clamp(48px, 6vw, 80px); 
 body.page-offerings .cl-section--sand { background: linear-gradient(155deg, var(--color-ivory-cream), var(--color-warm-beige)); }
 .cl-fine { margin: 18px 0 0; max-width: 46em; font-size: 14px; line-height: 2; color: var(--yl-soft); }
 .cl-fine p { margin: 0; }
+.cl-fine--full-width { max-width: none; }
 .cl-minihead { margin: 32px 0 0; font-size: 14px; letter-spacing: .16em; color: var(--yl-gold); }
 .cl-dash { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .cl-dash li { position: relative; padding-left: 26px; font-size: 15px; line-height: 1.9; color: var(--yl-text); }
@@ -142,6 +145,7 @@ body.page-offerings .cl-section--sand { background: linear-gradient(155deg, var(
   .cl-table td { display: flex; justify-content: space-between; align-items: center; padding: 9px 16px; border-bottom: 1px dashed var(--yl-line); text-align: right; }
   .cl-table td:last-child { border-bottom: 0; }
   .cl-table td::before { content: attr(data-label); font-size: 14px; color: var(--yl-soft); text-align: left; }
+  .cl-table td.cl-table__morning::before { white-space: pre-line; }
 }
 
 .cl-callout { margin-top: 26px; padding: 18px 22px; border: 1.5px dashed var(--color-antique-gold); border-radius: 12px; background: color-mix(in srgb, var(--color-gold-accent) 12%, var(--color-paper)); }
@@ -183,12 +187,15 @@ body.page-offerings.ja-sunlit main > section.cl-hero.cl-hero--tabs:first-child {
 .cl-hero--tabs .cl-hero__grid { padding-bottom: clamp(28px, 4vw, 48px); }
 .cl-tabs { display: flex; align-items: stretch; gap: 6px; border-bottom: 1px solid var(--color-antique-gold); }
 .cl-city-tab { position: relative; display: flex; align-items: center; justify-content: center; flex: 0 1 180px; min-width: 0; padding: 14px 18px 12px; text-align: center; text-decoration: none; font-family: "Shippori Mincho", serif; font-size: clamp(17px, 2vw, 20px); line-height: 1.4; letter-spacing: .06em; color: var(--yl-soft); background: color-mix(in srgb, var(--color-paper) 55%, transparent); border: 1px solid color-mix(in srgb, var(--color-antique-gold) 55%, transparent); border-bottom: 0; border-radius: 14px 14px 0 0; transition: background-color .2s, color .2s; }
+.cl-city-tab__label { white-space: nowrap; }
 .cl-city-tab:hover { background: color-mix(in srgb, var(--color-paper) 85%, transparent); color: var(--yl-head); }
 .cl-city-tab:focus-visible { outline: 2px solid var(--color-deep-olive); outline-offset: -4px; }
 .cl-city-tab[aria-selected="true"] { z-index: 1; margin-bottom: -1px; padding-bottom: 13px; color: var(--yl-head); background: var(--color-ivory-cream); border-color: var(--color-antique-gold); }
 .cl-city-tab[aria-selected="true"]::before { content: ""; position: absolute; left: 14px; right: 14px; top: -1px; height: 3px; border-radius: 0 0 3px 3px; background: var(--color-deep-olive); }
 body.yoga-site .main-look a.cl-city-tab:hover { color: var(--yl-head); }
 @media (max-width: 559px) { .cl-city-tab { flex: 1 1 0; padding-inline: 4px; font-size: 16px; letter-spacing: .02em; white-space: nowrap; } }
+
+@media (max-width: 559px) { .cl-city-tab--online { flex-grow: 2; font-size: 14px; } }
 
 /* The old tab stylesheet targets [role=tabpanel]; keep these panels plain. */
 main .cl-city[role="tabpanel"] { background: transparent; }
