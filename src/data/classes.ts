@@ -172,7 +172,7 @@ export const CLASS_DIALOGS = [
     listTitle: 'こんな方におすすめ',
     list: ['身体の疲れやこわばりを感じている方', '運動不足を感じている方', 'ヨガを初めて体験する方', '日常に無理なくヨガを取り入れたい方'],
     times: [
-      { label: 'オンライン（SATORIN 朝ヨガ）', value: '月〜金 6:00〜7:00' },
+      { label: 'オンライン（SATORIN 朝ヨガ）', value: '月〜金 6:00〜6:45' },
       { label: '対面', value: '約75分' },
     ],
   },
