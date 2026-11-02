@@ -185,12 +185,15 @@ body.page-offerings.ja-sunlit main > section.cl-hero.cl-hero--tabs:first-child {
 .cl-hero--tabs .cl-hero__grid { padding-bottom: clamp(28px, 4vw, 48px); }
 .cl-tabs { display: flex; align-items: stretch; gap: 6px; border-bottom: 1px solid var(--color-antique-gold); }
 .cl-city-tab { position: relative; display: flex; align-items: center; justify-content: center; flex: 0 1 180px; min-width: 0; padding: 14px 18px 12px; text-align: center; text-decoration: none; font-family: "Shippori Mincho", serif; font-size: clamp(17px, 2vw, 20px); line-height: 1.4; letter-spacing: .06em; color: var(--yl-soft); background: color-mix(in srgb, var(--color-paper) 55%, transparent); border: 1px solid color-mix(in srgb, var(--color-antique-gold) 55%, transparent); border-bottom: 0; border-radius: 14px 14px 0 0; transition: background-color .2s, color .2s; }
+.cl-city-tab__label { white-space: nowrap; }
 .cl-city-tab:hover { background: color-mix(in srgb, var(--color-paper) 85%, transparent); color: var(--yl-head); }
 .cl-city-tab:focus-visible { outline: 2px solid var(--color-deep-olive); outline-offset: -4px; }
 .cl-city-tab[aria-selected="true"] { z-index: 1; margin-bottom: -1px; padding-bottom: 13px; color: var(--yl-head); background: var(--color-ivory-cream); border-color: var(--color-antique-gold); }
 .cl-city-tab[aria-selected="true"]::before { content: ""; position: absolute; left: 14px; right: 14px; top: -1px; height: 3px; border-radius: 0 0 3px 3px; background: var(--color-deep-olive); }
 body.yoga-site .main-look a.cl-city-tab:hover { color: var(--yl-head); }
 @media (max-width: 559px) { .cl-city-tab { flex: 1 1 0; padding-inline: 4px; font-size: 16px; letter-spacing: .02em; white-space: nowrap; } }
+
+@media (max-width: 559px) { .cl-city-tab--online { flex-grow: 2; font-size: 14px; } }
 
 /* The old tab stylesheet targets [role=tabpanel]; keep these panels plain. */
 main .cl-city[role="tabpanel"] { background: transparent; }
