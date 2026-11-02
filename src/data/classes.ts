@@ -50,7 +50,7 @@ export const SATORIN_COACHING_RATES = [
 const STORES = 'https://setsuko-hata-yoga.stores.jp/reserve/honten-kf004n/products/';
 export const SATORIN_PLANS = [
   { no: '01', name: '目覚め', type: '朝ヨガプラン', tagline: '毎朝の実践を、人生の土台に。', price: '6,000', morning: true, evening: false, coaching: null, pick: false,
-    features: ['朝ヨガ：月20回・受け放題', '月1回 コミュニティ交流会'], url: `${STORES}151433` },
+    features: ['朝ヨガ：月平均20回・受け放題', '月1回 コミュニティ交流会'], url: `${STORES}151433` },
   { no: '02', name: '安らぎ', type: 'ナイトプラン', tagline: '一日の終わりに、心がほどける夜を。', price: '6,000', morning: false, evening: true, coaching: null, pick: false,
     features: ['健康セミナー：月4回', '瞑想：月4回', '月1回 コミュニティ交流会'], url: `${STORES}363296` },
   { no: '03', name: '整う', type: 'ヨガ＆瞑想プラン', tagline: '実践・学び・瞑想を、一つのリズムに。', price: '12,000', morning: true, evening: true, coaching: null, pick: true,
