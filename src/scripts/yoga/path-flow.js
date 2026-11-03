@@ -21,13 +21,6 @@
     svg.setAttribute('height', base.height);
     while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-    var defs = document.createElementNS(NS, 'defs');
-    var marker = document.createElementNS(NS, 'marker');
-    marker.setAttribute('id','fl-direction'); marker.setAttribute('viewBox','0 0 8 8');
-    marker.setAttribute('refX','7'); marker.setAttribute('refY','4');
-    marker.setAttribute('markerWidth','6'); marker.setAttribute('markerHeight','6'); marker.setAttribute('orient','auto');
-    var arrow = document.createElementNS(NS,'polygon'); arrow.setAttribute('points','0,0 8,4 0,8'); arrow.setAttribute('fill','#7B8062');
-    marker.appendChild(arrow); defs.appendChild(marker); svg.appendChild(defs);
     cards.forEach(function (card) {
       var a = rel(card, base);
       card.dataset.next.split(/\s+/).forEach(function (id) {
@@ -35,14 +28,7 @@
         if (!target) return;
         var b = rel(target, base);
         var d;
-        if (window.matchMedia('(min-width: 900px)').matches && card.id === 'fl-upa4') {
-          // Exit below the preparatory module, then use the clear central corridor.
-          var moduleBottom = flow.querySelector('.fl-col--upa').getBoundingClientRect().bottom - base.top;
-          var corridor = (flow.querySelector('.fl-col--upa').getBoundingClientRect().right - base.left + b.l) / 2;
-          d = 'M' + ((a.l+a.r)/2) + ' ' + a.b + ' V' + (moduleBottom+24) + ' H' + corridor + ' V' + ((b.t+b.b)/2) + ' H' + b.l;
-        } else if (window.matchMedia('(min-width: 900px)').matches && card.id === 'fl-upa3') {
-          d = 'M' + a.l + ' ' + ((a.t+a.b)/2) + ' H' + b.r;
-        } else if (b.t >= a.b - 1) {
+        if (b.t >= a.b - 1) {
           var sx = (a.l + a.r) / 2, tx = (b.l + b.r) / 2, midY = (a.b + b.t) / 2;
           d = 'M' + sx + ' ' + a.b + ' V' + midY + ' H' + tx + ' V' + b.t;
         } else {
@@ -51,7 +37,6 @@
         }
         var path = document.createElementNS(NS, 'path');
         path.setAttribute('d', d);
-        path.setAttribute('marker-end', 'url(#fl-direction)');
         svg.appendChild(path);
       });
     });
