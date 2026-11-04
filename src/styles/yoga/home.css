@@ -668,3 +668,20 @@ html[lang="en"] body.ja-home .jh__copy { width: 100%; min-width: 0; container-ty
 /* Shared sunlit headings use !important; the English sizing must override them. */
 html[lang="en"] body.ja-home .jh__title { font-size: clamp(17px, 4vw, 38px) !important; font-size: clamp(17px, 6.6cqw, 40px) !important; letter-spacing: .01em !important; }
 html[lang="en"] body.ja-home .jh__title-line { white-space: nowrap; }
+
+/* Keep English hero copy in the clear right-hand area used by the Japanese page. */
+@media (min-width: 901px) {
+  html[lang="en"] body.ja-home .jh__copy { max-width: 480px; }
+}
+html[lang="en"] body.ja-home .jh__lead {
+  max-width: 100%;
+  color: #2A1D14 !important;
+  line-height: 1.8;
+  text-shadow: 0 1px 3px rgba(253, 244, 222, .9);
+}
+html[lang="en"] body.ja-home .jh__sub {
+  color: #4A3A2D !important;
+  letter-spacing: .025em;
+  text-shadow: 0 1px 3px rgba(253, 244, 222, .9);
+}
+html[lang="en"] body.ja-home .jh__btn { padding-inline: 20px; letter-spacing: .04em; }

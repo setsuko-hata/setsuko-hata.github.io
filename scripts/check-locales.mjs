@@ -44,5 +44,5 @@ for (const [, route] of pairs) {
 console.log('PASS: English text coverage and localized internal links.');
 
 const englishHero = readFileSync('dist/hatha-yoga/en/index.html', 'utf8');
-assert.match(englishHero, /<h1[^>]*id="jh-title"[^>]*><span[^>]*>Be who you want to be<\/span><br\s*\/?><span[^>]*>through classical Hatha yoga<\/span><\/h1>/);
+assert.match(englishHero, /<h1[^>]*id="jh-title"[^>]*><span[^>]*>Be who you want to be<\/span><br\s*\/?><span[^>]*>through Classical Hatha Yoga<\/span><\/h1>/);
 console.log('PASS: exact English hero wording, capitalization and explicit line break.');
