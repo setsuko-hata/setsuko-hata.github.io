@@ -1,43 +1,46 @@
 ---
 /** Surya Kriya program card (the card's own title is the section heading). */
 import { SURYA_KRIYA_FORM_URL, yogaHref } from '../../../data/yoga';
-import { SURYA_BENEFITS } from '../../../data/classes';
+import { classText, getClassContent } from '../../../data/classes';
 
-interface Props { id: string; tone?: string; calFilter?: string; }
-const { id, tone = '', calFilter = 'special' } = Astro.props;
+interface Props { locale?: 'ja' | 'en'; id: string; tone?: string; calFilter?: string; }
+const { locale = 'ja', id, tone = '', calFilter = 'special' } = Astro.props;
+const t = (text: string) => classText(locale, text);
+const { SURYA_BENEFITS } = getClassContent(locale);
+
 ---
 <section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
   <div class="cl-wrap">
     <div class="cl-headrow">
       <div class="cl-head">
-        <p class="cl-eyebrow">伝授プログラム</p>
-        <h2>スーリヤ・クリヤ（スーリヤ・シャクティ付き）</h2>
+        <p class="cl-eyebrow">{t("伝授プログラム")}</p>
+        <h2>{t("スーリヤ・クリヤ（スーリヤ・シャクティ付き）")}</h2>
         <span class="cl-head__rule" aria-hidden="true"></span>
       </div>
       <div class="cl-actions">
-        <a href={SURYA_KRIYA_FORM_URL} target="_blank" rel="noreferrer" class="cl-btn">予約する</a>
-        <a href="#calendar" data-cal-filter={calFilter} class="cl-btn cl-btn--ghost">開催スケジュール</a>
-        <a href={yogaHref('ja', 'path')} class="cl-link">本格ハタヨガへの道<span aria-hidden="true" class="cl-arrow"> →</span></a>
+        <a href={SURYA_KRIYA_FORM_URL} target="_blank" rel="noreferrer" class="cl-btn">{t("予約する")}</a>
+        <a href="#calendar" data-cal-filter={calFilter} class="cl-btn cl-btn--ghost">{t("開催スケジュール")}</a>
+        <a href={yogaHref(locale, 'path')} class="cl-link">{t("本格ハタヨガへの道")}<span aria-hidden="true" class="cl-arrow"> →</span></a>
       </div>
     </div>
-    <p class="cl-lead">自身の生命エネルギーを太陽のサイクルと調和させていく、本格的でパワフルなハタヨガです。身体・心・エネルギーのすべてのレベルに働きかけ、内側から健やかさと活力を育みます。一度伝授を受ければ、ご自宅で一生続けていける実践です。</p>
+    <p class="cl-lead">{t("自身の生命エネルギーを太陽のサイクルと調和させていく、本格的でパワフルなハタヨガです。身体・心・エネルギーのすべてのレベルに働きかけ、内側から健やかさと活力を育みます。一度伝授を受ければ、ご自宅で一生続けていける実践です。")}</p>
 
     <div class="cl-panel cl-panel--compact oc">
       <section class="oc-sec" aria-labelledby={`${id}-info`}>
-        <h3 class="oc-h" id={`${id}-info`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#sun" /></svg>プログラム内容</h3>
+        <h3 class="oc-h" id={`${id}-info`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#sun" /></svg>{t("プログラム内容")}</h3>
         <dl class="oc-info">
-          <div><dt>伝授</dt><dd>約7時間</dd></div>
-          <div><dt>受講料</dt><dd><span class="rate-amount">60,000</span>円（税込）</dd></div>
-          <div><dt>サポート</dt><dd>受講後1年間、計2回の個別復習・修正を無料で受けていただけます</dd></div>
+          <div><dt>{t("伝授")}</dt><dd>{t("約7時間")}</dd></div>
+          <div><dt>{t("受講料")}</dt><dd><span class="rate-amount">60,000</span>{t("円（税込）")}</dd></div>
+          <div><dt>{t("サポート")}</dt><dd>{t("受講後1年間、計2回の個別復習・修正を無料で受けていただけます")}</dd></div>
         </dl>
       </section>
 
       <section class="oc-sec" aria-labelledby={`${id}-benefit`}>
-        <h3 class="oc-h" id={`${id}-benefit`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#heart" /></svg>期待できること</h3>
+        <h3 class="oc-h" id={`${id}-benefit`}><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#heart" /></svg>{t("期待できること")}</h3>
         <ul class="oc-for">{SURYA_BENEFITS.map((b) => <li>{b}</li>)}</ul>
       </section>
 
-      <p class="cl-fine cl-fine--full-width">※ 単発のお申し込みのみとなります。月額会員の割引対象外です。開催日は開催スケジュールをご確認ください。</p>
+      <p class="cl-fine cl-fine--full-width">{t("※ 単発のお申し込みのみとなります。月額会員の割引対象外です。開催日は開催スケジュールをご確認ください。")}</p>
     </div>
   </div>
 </section>

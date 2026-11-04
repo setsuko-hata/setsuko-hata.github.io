@@ -566,7 +566,7 @@ body.yoga-site footer.ja-band-foot { background: linear-gradient(rgba(251, 247, 
 body.yoga-site footer > div:first-child { padding-block: 28px !important; gap: 18px 36px !important; }
 @media (min-width: 768px) { body.yoga-site footer > div:first-child { grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr) minmax(0, 1fr) !important; } }
 body.yoga-site footer ul { margin-top: 10px !important; }
-body.yoga-site footer ul:has(a[href="/hatha-yoga/ja/about/"]) { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+body.yoga-site footer ul.yoga-footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
 body.yoga-site footer ul li + li { margin-top: 0; }
 body.yoga-site footer li, body.yoga-site footer a { font-size: 16px; line-height: 1.55; }
 body.yoga-site footer ul li { padding-block: 3px; }
@@ -574,9 +574,9 @@ body.yoga-site footer .font-display { font-size: 1.7rem !important; }
 body.yoga-site footer p { font-size: 15px; line-height: 1.7; }
 body.yoga-site footer > div + div > div { padding-block: 12px !important; }
 body.yoga-site footer .mt-6 { margin-top: 8px !important; }
-@media (max-width: 767px) { body.yoga-site footer ul:has(a[href="/hatha-yoga/ja/about/"]) { gap: 0 16px; } body.yoga-site footer li, body.yoga-site footer a { font-size: 15px; } }
-body.yoga-site footer ul:has(a[href="/hatha-yoga/ja/about/"]) { grid-auto-flow: column; grid-template-rows: repeat(5, auto); }
-@media (min-width: 768px) { body.yoga-site footer ul:has(a[href="/hatha-yoga/ja/about/"]) li { white-space: nowrap; } }
+@media (max-width: 767px) { body.yoga-site footer ul.yoga-footer-links { gap: 0 16px; } body.yoga-site footer li, body.yoga-site footer a { font-size: 15px; } }
+body.yoga-site footer ul.yoga-footer-links { grid-auto-flow: column; grid-template-rows: repeat(5, auto); }
+@media (min-width: 768px) { body.yoga-site footer ul.yoga-footer-links li { white-space: nowrap; } }
 /* room for the corner swells at the foot of プログラム */
 #trial { padding-bottom: clamp(96px, 12vw, 150px); }
 
@@ -659,3 +659,12 @@ body.ja-home .jh__wave { position: absolute; z-index: 3; left: 0; right: 0; bott
   body.ja-home .jh__lead br { display: none; }
   body.ja-home .jh__wave { display: none; }
 }
+
+/* Longer English labels wrap rather than overflow their shared columns. */
+html[lang="en"] body.yoga-site footer ul.yoga-footer-links li { white-space: normal; overflow-wrap: anywhere; }
+
+/* Preserve the requested two English headline lines at desktop and phone widths. */
+html[lang="en"] body.ja-home .jh__copy { width: 100%; min-width: 0; container-type: inline-size; }
+/* Shared sunlit headings use !important; the English sizing must override them. */
+html[lang="en"] body.ja-home .jh__title { font-size: clamp(17px, 4vw, 38px) !important; font-size: clamp(17px, 6.6cqw, 40px) !important; letter-spacing: .01em !important; }
+html[lang="en"] body.ja-home .jh__title-line { white-space: nowrap; }

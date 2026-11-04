@@ -51,14 +51,27 @@ a:focus-visible,button:focus-visible{outline:2px solid #A8802F;outline-offset:3p
 .plan-navigation [data-act]:not(:disabled):hover{background:#8A6A2C!important;color:#fff!important}
 #plans button:focus-visible{outline:2px solid #8A6A2C!important;outline-offset:3px!important}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* A shared, keyboard-accessible language switch on both static page families. */
+.language-switch{display:inline-flex;align-items:center;gap:4px;font:500 12px/1.2 Inter,sans-serif;letter-spacing:.08em;white-space:nowrap}
+.language-switch a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 10px;border:1px solid transparent;border-radius:3px;color:#4A433C;text-decoration:none}
+.language-switch a[aria-current="page"]{border-color:#8A6A2C;color:#8A6A2C}
+.language-switch a:hover{background:#E8D9C2;color:#2F2A26}
+.language-switch a:focus-visible{outline:2px solid #8A6A2C;outline-offset:3px}
 </style>
+
+<link rel="alternate" hreflang="ja" href="https://setsukohata.com/satorin/">
+<link rel="alternate" hreflang="en" href="https://setsukohata.com/satorin/en/">
+<link rel="alternate" hreflang="x-default" href="https://setsukohata.com/satorin/">
+<script src="/scripts/language.js" defer></script>
 </head>
 <body>
 <div style="font-family:'Noto Sans JP',sans-serif;font-weight:500;line-break:strict;word-break:normal;overflow-wrap:break-word;color:#2F2A26;background:#F5EFDF">
 
 <section data-screen-label="01 Hero" style="background:#F5EFDF;overflow:hidden;display:flex;flex-direction:column;min-height:100svh">
-  <div style="max-width:1200px;margin:0 auto;padding:22px clamp(20px,5vw,64px) 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:8px 16px">
+  <div style="max-width:1200px;margin:0 auto;padding:22px clamp(20px,5vw,64px) 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;width:100%;box-sizing:border-box">
     <a href="/" style="white-space:nowrap;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#4A433C">← setsukohata.com</a>
+    <nav class="language-switch" aria-label="言語を選択"><a href="/satorin/" lang="ja" hreflang="ja" data-language-switch="ja" aria-current="page">JA</a><a href="/satorin/en/" lang="en" hreflang="en" data-language-switch="en">EN</a></nav>
       </div>
   <div class="hero-grid" style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vh,64px) clamp(20px,5vw,64px) clamp(20px,3vh,40px);flex:1;width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
     <div class="hero-text">

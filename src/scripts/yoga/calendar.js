@@ -5,7 +5,11 @@
  */
 (function () {
   var H = 36e5, D = 864e5, JST = 9 * H;
-  var WD = ['日', '月', '火', '水', '木', '金', '土'];
+  var isEn = document.documentElement.lang === 'en';
+  var WD = isEn ? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] : ['日', '月', '火', '水', '木', '金', '土'];
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  function translate(ja, en) { return isEn ? en : ja; }
+  function dateText(p, year) { return isEn ? WD[p.w] + ', ' + MONTHS[p.m] + ' ' + p.d + (year ? ', ' + p.y : '') : (year ? p.y + '年' : '') + (p.m + 1) + '月' + p.d + '日（' + WD[p.w] + '）'; }
   var WD_KEYS = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
 
   /* ---- time helpers: every instant is held as "JST wall-clock read as UTC" ---- */
@@ -110,7 +114,7 @@
       function push(start) {
         var end = start + dur;
         if (end <= from || start >= to) return;
-        res.push({ src: e.src, tone: e.tone, color: e.color, title: e.title || '(無題)', loc: e.loc, desc: e.desc, start: start, end: end, allDay: e.s.allDay });
+        res.push({ src: e.src, tone: e.tone, color: e.color, title: e.title || translate('(無題)', '(Untitled)'), loc: e.loc, desc: e.desc, start: start, end: end, allDay: e.s.allDay });
       }
       if (!e.rrule || e.recId != null || e.pre) { push(e.s.t); return; }
       var r = parseRule(e.rrule), interval = +(r.INTERVAL || 1), count = r.COUNT ? +r.COUNT : Infinity;
@@ -143,7 +147,7 @@
     var multi = sources.length > 1, tone = multi ? 'sage' : sources[0].tone;
     var feedUrl = root.dataset.feed || '';
     var srcOf = {}; sources.forEach(function (x) { srcOf[x.key] = x; });
-    var label = root.dataset.label || 'カレンダー';
+    var label = root.dataset.label || translate('カレンダー', 'Calendar');
     var now = parts(nowJ());
     var st = { y: now.y, m: now.m, view: 'month', sel: startOfDay(nowJ()), vev: [], place: 'all', type: 'all', loaded: false, failed: false, shown: [] };
     root.classList.add('hy-cal', 'hy-cal--' + tone);
@@ -167,7 +171,7 @@
     function eventsOn(list, day) {
       return list.filter(function (e) { return e.start < day + D && e.end > day && !(e.end <= e.start && startOfDay(e.start) !== day); });
     }
-    function timeText(e) { return e.allDay ? '終日' : hm(e.start) + '–' + hm(e.end); }
+    function timeText(e) { return e.allDay ? translate('終日', 'All day') : hm(e.start) + '–' + hm(e.end); }
 
     function pill(e, i) {
       var past = e.end < nowJ() ? ' is-past' : '';
@@ -181,14 +185,14 @@
         var day = r.gridStart + i * D, p = parts(day), de = eventsOn(evs, day);
         var cls = 'hy-cal__day' + (p.m !== st.m ? ' is-out' : '') + (day === today ? ' is-today' : '') + (day === st.sel ? ' is-sel' : '') + (de.length ? ' has-ev' : '');
         h += '<div class="' + cls + '" data-day="' + day + '" tabindex="-1"><span class="hy-cal__num">' + p.d + '</span>';
-        h += '<div class="hy-cal__evs">' + de.slice(0, 3).map(function (e) { return pill(e, st.shown.indexOf(e)); }).join('') + (de.length > 3 ? '<span class="hy-cal__more">ほか' + (de.length - 3) + '件</span>' : '') + '</div>';
+        h += '<div class="hy-cal__evs">' + de.slice(0, 3).map(function (e) { return pill(e, st.shown.indexOf(e)); }).join('') + (de.length > 3 ? '<span class="hy-cal__more">' + (isEn ? '+' + (de.length - 3) + ' more' : 'ほか' + (de.length - 3) + '件') + '</span>' : '') + '</div>';
         h += '<div class="hy-cal__dots" aria-hidden="true">' + de.slice(0, 3).map(function (e) { return '<i' + colorStyle(e) + '></i>'; }).join('') + '</div></div>';
       }
       h += '</div>';
       // Small-screen day detail
       var sel = eventsOn(evs, st.sel), sp = parts(st.sel);
-      h += '<div class="hy-cal__daylist"><p class="hy-cal__daylist-h">' + (sp.m + 1) + '月' + sp.d + '日（' + WD[sp.w] + '）</p>' +
-        (sel.length ? sel.map(function (e) { return '<button type="button" class="hy-cal__row" data-ev="' + st.shown.indexOf(e) + '"' + colorStyle(e) + '><span class="hy-cal__row-t">' + esc(timeText(e)) + '</span><span class="hy-cal__row-n">' + esc(e.title) + '</span></button>'; }).join('') : '<p class="hy-cal__none">この日の予定はありません</p>') + '</div>';
+      h += '<div class="hy-cal__daylist"><p class="hy-cal__daylist-h">' + dateText(sp, false) + '</p>' +
+        (sel.length ? sel.map(function (e) { return '<button type="button" class="hy-cal__row" data-ev="' + st.shown.indexOf(e) + '"' + colorStyle(e) + '><span class="hy-cal__row-t">' + esc(timeText(e)) + '</span><span class="hy-cal__row-n">' + esc(e.title) + '</span></button>'; }).join('') : '<p class="hy-cal__none">' + translate('この日の予定はありません', 'No events on this day') + '</p>') + '</div>';
       return h;
     }
 
@@ -201,14 +205,14 @@
         if (d !== last) {
           if (last !== null) h += '</div></div>';
           var p = parts(d);
-          h += '<div class="hy-cal__lday"><div class="hy-cal__ldate' + (d === startOfDay(nowJ()) ? ' is-today' : '') + '"><b>' + p.d + '</b><small>' + (p.m + 1) + '月・' + WD[p.w] + '</small></div><div class="hy-cal__lcards">';
+          h += '<div class="hy-cal__lday"><div class="hy-cal__ldate' + (d === startOfDay(nowJ()) ? ' is-today' : '') + '"><b>' + p.d + '</b><small>' + (isEn ? MONTHS[p.m].slice(0, 3) + ' · ' + WD[p.w] : (p.m + 1) + '月・' + WD[p.w]) + '</small></div><div class="hy-cal__lcards">';
           last = d;
         }
         h += '<button type="button" class="hy-cal__card" data-ev="' + st.shown.indexOf(e) + '"' + colorStyle(e) + '><span class="hy-cal__card-t">' + esc(timeText(e)) + '</span><span class="hy-cal__card-n">' + esc(e.title) + '</span>' + (multi && srcOf[e.src] ? '<span class="hy-cal__card-l">' + esc(srcOf[e.src].label) + '</span>' : '') + (e.loc ? '<span class="hy-cal__card-l">' + esc(e.loc) + '</span>' : '') + '</button>';
       });
       if (last !== null) h += '</div></div>';
       h += '</div>';
-      return n ? h : '<p class="hy-cal__empty">これからの予定は、決まり次第お知らせします。</p>';
+      return n ? h : '<p class="hy-cal__empty">' + translate('これからの予定は、決まり次第お知らせします。', 'Upcoming events will be announced when confirmed.') + '</p>';
     }
 
     function select(name, label, allLabel, items, value) {
@@ -218,43 +222,43 @@
     function filters() {
       if (!multi && !kws.length) return '';
       return '<div class="hy-cal__filters">' +
-        (kws.length ? select('place', '場所', 'すべて', kws, st.place) : '') +
-        (multi ? select('type', '種類', 'すべて', sources, st.type) : '') + '</div>';
+        (kws.length ? select('place', translate('場所', 'Location'), translate('すべて', 'All'), kws, st.place) : '') +
+        (multi ? select('type', translate('種類', 'Type'), translate('すべて', 'All'), sources, st.type) : '') + '</div>';
     }
 
     function render() {
       var title, evs, body;
       if (st.view === 'month') {
         var r = monthRange(); evs = expand(vevs(), r.gridStart, r.gridEnd); st.shown = evs;
-        title = '<span class="hy-cal__year">' + st.y + '年</span>' + (st.m + 1) + '月';
+        title = '<span class="hy-cal__year">' + st.y + (isEn ? '</span>' : '年</span>') + (isEn ? MONTHS[st.m] : (st.m + 1) + '月');
         body = st.failed ? '' : renderMonth(evs);
       } else {
         st.listFrom = startOfDay(nowJ()); evs = expand(vevs(), st.listFrom, st.listFrom + 120 * D); st.shown = evs;
-        title = 'これからの予定';
+        title = translate('これからの予定', 'Upcoming events');
         body = st.failed ? '' : renderList(evs);
       }
-      if (st.failed) body = '<p class="hy-cal__empty">カレンダーを読み込めませんでした。時間をおいてもう一度お試しください。</p>';
-      else if (!st.loaded) body = '<p class="hy-cal__empty">読み込み中…</p>';
+      if (st.failed) body = '<p class="hy-cal__empty">' + translate('カレンダーを読み込めませんでした。時間をおいてもう一度お試しください。', 'The calendar could not be loaded. Please try again later.') + '</p>';
+      else if (!st.loaded) body = '<p class="hy-cal__empty">' + translate('読み込み中…', 'Loading…') + '</p>';
       root.innerHTML =
         '<div class="hy-cal__head"><svg class="hy-cal__leaf" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 42C24 42 8 32 8 18C8 11 14 6 24 6C34 6 40 11 40 18C40 32 24 42 24 42Z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M24 38V14M24 24C20 22 17 19 16 16M24 28C28 26 31 23 32 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>' +
         '<h3 class="hy-cal__title" aria-live="polite">' + title + '</h3>' +
-        '<div class="hy-cal__nav"><button type="button" class="hy-cal__btn" data-act="prev" aria-label="前へ">‹</button><button type="button" class="hy-cal__btn hy-cal__btn--t" data-act="today">今日</button><button type="button" class="hy-cal__btn" data-act="next" aria-label="次へ">›</button></div>' +
-        '<div class="hy-cal__seg" role="group" aria-label="表示切り替え"><button type="button" data-v="month" aria-pressed="' + (st.view === 'month') + '">月</button><button type="button" data-v="list" aria-pressed="' + (st.view === 'list') + '">一覧</button></div></div>' +
-        filters() +
-        '<div class="hy-cal__body">' + body + '</div><p class="hy-cal__tz">時間は日本時間（JST）です</p>';
+        '<div class="hy-cal__nav"><button type="button" class="hy-cal__btn" data-act="prev" aria-label="' + translate('前へ', 'Previous') + '">‹</button><button type="button" class="hy-cal__btn hy-cal__btn--t" data-act="today">' + translate('今日', 'Today') + '</button><button type="button" class="hy-cal__btn" data-act="next" aria-label="' + translate('次へ', 'Next') + '">›</button></div>' +
+        '<div class="hy-cal__seg" role="group" aria-label="' + translate('表示切り替え', 'Switch view') + '"><button type="button" data-v="month" aria-pressed="' + (st.view === 'month') + '">' + translate('月', 'Month') + '</button><button type="button" data-v="list" aria-pressed="' + (st.view === 'list') + '">' + translate('一覧', 'List') + '</button></div></div>' +
+        filters() + (isEn ? '<p class="hy-cal__tz">Event titles and details are provided by the organizer in their original language.</p>' : '') +
+        '<div class="hy-cal__body">' + body + '</div><p class="hy-cal__tz">' + translate('時間は日本時間（JST）です', 'All times are in Japan Standard Time (JST).') + '</p>';
     }
 
     function openEvent(i) {
       var e = st.shown[i]; if (!e) return;
       var p = parts(e.start);
-      var when = (p.y) + '年' + (p.m + 1) + '月' + p.d + '日（' + WD[p.w] + '）' + (e.allDay ? ' 終日' : '<br><b>' + hm(e.start) + ' – ' + hm(e.end) + '</b>');
+      var when = dateText(p, true) + (e.allDay ? ' ' + translate('終日', 'All day') : '<br><b>' + hm(e.start) + ' – ' + hm(e.end) + '</b>');
       var desc = e.desc ? '<p class="hy-cal__m-desc">' + esc(e.desc).replace(/https?:\/\/[^\s<]+/g, function (u) { return '<a href="' + u + '" target="_blank" rel="noopener noreferrer">' + u + '</a>'; }) + '</p>' : '';
       var m = document.createElement('div');
       m.className = 'hy-cal__scrim hy-cal--' + tone;
       var cs = paletteOf(e);
       if (cs) m.setAttribute('style', '--c-deep:' + cs[0] + ';--c-tint:' + cs[1] + ';--c-ink:' + cs[2]);
       m.innerHTML = '<div class="hy-cal__modal" role="dialog" aria-modal="true" aria-label="' + esc(e.title) + '"><div class="hy-cal__m-head">' + (multi && srcOf[e.src] ? '<span class="hy-cal__m-src">' + esc(srcOf[e.src].label) + '</span>' : '') + '<h4>' + esc(e.title) + '</h4><p>' + when + '</p></div><div class="hy-cal__m-body">' +
-        (e.loc ? '<p class="hy-cal__m-loc">' + esc(e.loc) + '</p>' : '') + desc + '<button type="button" class="hy-cal__close">閉じる</button></div></div>';
+        (e.loc ? '<p class="hy-cal__m-loc">' + esc(e.loc) + '</p>' : '') + desc + '<button type="button" class="hy-cal__close">' + translate('閉じる', 'Close') + '</button></div></div>';
       var prevFocus = document.activeElement;
       function close() { m.remove(); document.removeEventListener('keydown', onKey); if (prevFocus && prevFocus.focus) prevFocus.focus(); }
       function onKey(ev) { if (ev.key === 'Escape') close(); }

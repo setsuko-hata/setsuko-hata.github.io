@@ -1,5 +1,5 @@
 ---
-import { NAV, yogaHref, type Locale } from '../../data/yoga';
+import { NAV, type Locale } from '../../data/yoga';
 
 interface Props {
   locale: Locale;
@@ -30,13 +30,13 @@ const menuId = (id: string) => `yoga-menu-${id}`;
           <span>SETSUKOHATA.COM</span>
         </a>
       ) : (
-        <a class="flex items-center gap-3 font-mono text-[13px] uppercase tracking-[0.28em]" href="/" aria-label="Back to setsukohata.com">
+        <a class="flex items-center gap-3 font-mono text-[13px] uppercase tracking-[0.28em]" href="/en/" aria-label="Back to setsukohata.com">
           <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5" /><path d="m11 6-6 6 6 6" /></svg>
           <span>SETSUKOHATA.COM</span>
         </a>
       )
     }
-    <nav class="hidden items-center gap-9 md:flex" aria-label="Primary">
+    <nav class="hidden items-center gap-9 md:flex" aria-label={isJa ? 'メインメニュー' : 'Primary navigation'}>
       {
         items.map((item) =>
           item.items ? (
@@ -69,16 +69,7 @@ const menuId = (id: string) => `yoga-menu-${id}`;
         )
       }
     </nav>
-    {
-      !isJa && (
-        <div class="hidden items-center gap-6 md:flex">
-          {switchHref && (
-            <a href={switchHref} class="font-mono text-[13px] uppercase tracking-[0.22em] opacity-80 transition-opacity hover:opacity-100" aria-label="日本語に切り替える" lang="ja">JA</a>
-          )}
-          <a href={yogaHref('en', 'contact')} class="px-5 py-2.5 text-[13px] uppercase tracking-[0.22em] font-medium transition-colors bg-brand-espresso text-white hover:bg-brand-moss">Book a Class</a>
-        </div>
-      )
-    }
+    {switchHref && <a href={switchHref} data-language-switch={isJa ? 'en' : 'ja'} class="yoga-language-switch" aria-label={isJa ? 'Switch to English' : '日本語に切り替える'} lang={isJa ? 'en' : 'ja'}>{isJa ? 'EN' : '日本語'}</a>}
     <button
       id="yoga-menu-btn"
       type="button"
@@ -116,7 +107,7 @@ const menuId = (id: string) => `yoga-menu-${id}`;
           ),
         )
       }
-      {!isJa && switchHref && <a class="yoga-mobile-nav__link font-display text-xl" href={switchHref} lang="ja">日本語</a>}
+      {switchHref && <a data-language-switch={isJa ? 'en' : 'ja'} class="yoga-mobile-nav__link font-display text-xl" href={switchHref} lang={isJa ? 'en' : 'ja'}>{isJa ? 'English' : '日本語'}</a>}
     </nav>
   </div>
 </div>
@@ -124,3 +115,9 @@ const menuId = (id: string) => `yoga-menu-${id}`;
 <script>
   import '../../scripts/yoga/nav';
 </script>
+
+<style>
+  .yoga-language-switch { flex-shrink: 0; font: 600 13px/1.4 Inter, sans-serif; padding: 8px 10px; border: 1px solid currentColor; margin-left: auto; margin-right: 12px; }
+  @media (min-width: 1280px) { .yoga-language-switch { margin-left: 18px; margin-right: 0; } }
+  @media (max-width: 1279px) { header nav { display: none !important; } #yoga-menu-btn { display: flex !important; } }
+</style>

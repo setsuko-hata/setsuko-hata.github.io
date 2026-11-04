@@ -1,10 +1,13 @@
 ---
 /** オンライン単発: drop-in 瞑想会 and ヨガセミナー, no membership needed. */
 import { ONLINE_MEDITATION_URL, ONLINE_SEMINAR_URL, ONLINE_BOTH_URL, SATORIN_PAGE_URL } from '../../../data/yoga';
-import { SATORIN_EVENING } from '../../../data/classes';
+import { classText, getClassContent } from '../../../data/classes';
 
-interface Props { id: string; tone?: string; }
-const { id, tone = '' } = Astro.props;
+interface Props { locale?: 'ja' | 'en'; id: string; tone?: string; }
+const { locale = 'ja', id, tone = '' } = Astro.props;
+const t = (text: string) => classText(locale, text);
+const { SATORIN_EVENING } = getClassContent(locale);
+
 
 const seminar = SATORIN_EVENING[0];
 const meditation = SATORIN_EVENING[1];
@@ -12,51 +15,51 @@ const meditation = SATORIN_EVENING[1];
 <section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
   <div class="cl-wrap">
     <div class="cl-head">
-      <p class="cl-eyebrow">オンライン単発</p>
-      <h2>ヨガ科学の健康セミナー・瞑想会</h2>
+      <p class="cl-eyebrow">{t("オンライン単発")}</p>
+      <h2>{t("ヨガ科学の健康セミナー・瞑想会")}</h2>
       <span class="cl-head__rule" aria-hidden="true"></span>
     </div>
-    <p class="cl-lead cl-lead--full-width">メンバーでない方も、月曜夜の健康セミナー・瞑想会に、ご自宅からオンラインで気軽に<span class="cl-phrase-nowrap">ご参加いただけます。</span><br />1回からお申し込みいただけ、どちらか一方でも、続けて両方でも<span class="cl-phrase-nowrap">ご参加いただけます。</span></p>
+    <p class="cl-lead cl-lead--full-width">{t("メンバーでない方も、月曜夜の健康セミナー・瞑想会に、ご自宅からオンラインで気軽に")}<span class="cl-phrase-nowrap">{t("ご参加いただけます。")}</span><br />{t("1回からお申し込みいただけ、どちらか一方でも、続けて両方でも")}<span class="cl-phrase-nowrap">{t("ご参加いただけます。")}</span></p>
 
     <div class="cl-actions cl-actions--row">
-      <a href={ONLINE_SEMINAR_URL} target="_blank" rel="noreferrer" class="cl-btn">健康セミナーに申し込む</a>
-      <a href={ONLINE_MEDITATION_URL} target="_blank" rel="noreferrer" class="cl-btn">瞑想会に申し込む</a>
-      <a href={ONLINE_BOTH_URL} target="_blank" rel="noreferrer" class="cl-btn">両方に申し込む</a>
+      <a href={ONLINE_SEMINAR_URL} target="_blank" rel="noreferrer" class="cl-btn">{t("健康セミナーに申し込む")}</a>
+      <a href={ONLINE_MEDITATION_URL} target="_blank" rel="noreferrer" class="cl-btn">{t("瞑想会に申し込む")}</a>
+      <a href={ONLINE_BOTH_URL} target="_blank" rel="noreferrer" class="cl-btn">{t("両方に申し込む")}</a>
     </div>
 
     <div class="cl-feats cl-feats--duo">
       <article class="cl-feat cl-feat--olive">
         <header class="cl-feat__head">
-          <h3 class="cl-feat__title">ヨガ科学の健康セミナー</h3>
+          <h3 class="cl-feat__title">{t("ヨガ科学の健康セミナー")}</h3>
           <p class="cl-feat__en">YOGIC HEALTH SEMINAR</p>
-          <p class="cl-feat__when">{seminar.when}（40分）</p>
+          <p class="cl-feat__when">{seminar.when}{t('（40分）')}</p>
         </header>
         <div class="cl-feat__body">
           <p class="cl-feat__p">{seminar.text}</p>
           <dl class="cl-feat__sched">
-            <div><dt>1回（40分）</dt><dd><span class="rate-amount">2,000</span>円（税込）</dd></div>
+            <div><dt>{t("1回（40分）")}</dt><dd><span class="rate-amount">2,000</span>{t("円（税込）")}</dd></div>
           </dl>
         </div>
       </article>
 
       <article class="cl-feat cl-feat--gold">
         <header class="cl-feat__head">
-          <h3 class="cl-feat__title">瞑想会</h3>
+          <h3 class="cl-feat__title">{t("瞑想会")}</h3>
           <p class="cl-feat__en">Meditation</p>
-          <p class="cl-feat__when">{meditation.when}（40分）</p>
+          <p class="cl-feat__when">{meditation.when}{t('（40分）')}</p>
         </header>
         <div class="cl-feat__body">
           <p class="cl-feat__p">{meditation.text}</p>
           <dl class="cl-feat__sched">
-            <div><dt>1回（40分）</dt><dd><span class="rate-amount">2,000</span>円（税込）</dd></div>
+            <div><dt>{t("1回（40分）")}</dt><dd><span class="rate-amount">2,000</span>{t("円（税込）")}</dd></div>
           </dl>
         </div>
       </article>
     </div>
 
     <div class="cl-actions">
-      <a href={SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">毎週参加するなら、オンライン会員へ</a>
+      <a href={locale === 'en' ? '/satorin/en/' : SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">{t("毎週参加するなら、オンライン会員へ")}</a>
     </div>
-    <p class="cl-fine">※ 朝ヨガは含まれません。SATORIN メンバーの方は1回 1,500円で参加いただけます。</p>
+    <p class="cl-fine">{t("※ 朝ヨガは含まれません。SATORIN メンバーの方は1回 1,500円で参加いただけます。")}</p>
   </div>
 </section>

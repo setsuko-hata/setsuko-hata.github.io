@@ -1,12 +1,15 @@
 ---
 // The three "At a Glance" cards, shared by About (plain grid) and Home
 // (floating over the hero photo).
+import { translator, type Locale } from '../data/personal-i18n';
 interface Props {
+  locale?: Locale;
   float?: boolean;
   reveal?: boolean;
 }
 
-const { float = false, reveal = false } = Astro.props;
+const { float = false, reveal = false, locale = 'ja' } = Astro.props;
+const t = translator(locale);
 const cardClass = float ? 'stat-card stat-card--float' : 'stat-card';
 ---
 
@@ -17,11 +20,11 @@ const cardClass = float ? 'stat-card stat-card--float' : 'stat-card';
     </span>
     <div class="stat-card__num-row">
       <span class="stat-card__num">13</span>
-      <span class="stat-card__unit">Years</span>
+      <span class="stat-card__unit">{t('年', 'Years')}</span>
     </div>
     <span class="stat-card__rule"></span>
-    <div class="stat-card__label">Music &amp; Performance</div>
-    <div class="stat-card__jp" lang="ja">アメリカでの音楽活動</div>
+    <div class="stat-card__label">{t('音楽・演奏活動', 'Music & Performance')}</div>
+    <div class="stat-card__jp" lang={locale}>{t('アメリカでの音楽活動', 'Music in the United States')}</div>
   </div>
   <div class={cardClass}>
     <span class="stat-card__icon" aria-hidden="true">
@@ -29,11 +32,11 @@ const cardClass = float ? 'stat-card stat-card--float' : 'stat-card';
     </span>
     <div class="stat-card__num-row">
       <span class="stat-card__num">1,750</span>
-      <span class="stat-card__unit">Hours</span>
+      <span class="stat-card__unit">{t('時間', 'Hours')}</span>
     </div>
     <span class="stat-card__rule"></span>
-    <div class="stat-card__label">Hatha Yoga Training</div>
-    <div class="stat-card__jp" lang="ja">ハタヨガ トレーニング修了</div>
+    <div class="stat-card__label">{t('ハタヨガの学び', 'Hatha Yoga Training')}</div>
+    <div class="stat-card__jp" lang={locale}>{t('ハタヨガ トレーニング修了', 'Hatha Yoga training completed')}</div>
   </div>
   <div class={cardClass}>
     <span class="stat-card__icon" aria-hidden="true">
@@ -43,7 +46,7 @@ const cardClass = float ? 'stat-card stat-card--float' : 'stat-card';
       <span class="stat-card__num">2026</span>
     </div>
     <span class="stat-card__rule"></span>
-    <div class="stat-card__label">Based in Japan</div>
-    <div class="stat-card__jp" lang="ja">活動拠点を日本へ</div>
+    <div class="stat-card__label">{t('日本を拠点に', 'Based in Japan')}</div>
+    <div class="stat-card__jp" lang={locale}>{t('活動拠点を日本へ', 'A new base in Japan')}</div>
   </div>
 </div>

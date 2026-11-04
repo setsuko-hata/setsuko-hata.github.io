@@ -1,12 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { translator, type Locale } from '../data/personal-i18n';
+interface Props { locale?: Locale; }
+const { locale = 'ja' } = Astro.props;
+const t = translator(locale);
+
 
 const formUrl = 'https://forms.gle/pwHghcYgKgdYcFk17';
 ---
 
 <Layout
-  title="２週間無料 オンライン朝ヨガ体験 | 秦 節子 Setsuko Hata"
-  description="10月19日〜10月30日、月〜金 6:00〜7:00。サドグル公認ハタヨガ講師・秦 節子と始めるオンライン朝ヨガ・呼吸法・瞑想の２週間無料体験。"
+  locale={locale}
+  title={t("２週間無料 オンライン朝ヨガ体験 | 秦 節子 Setsuko Hata", "Free Two-Week Online Morning Yoga Trial | Setsuko Hata")}
+  description={t("10月19日〜10月30日、月〜金 6:00〜7:00。サドグル公認ハタヨガ講師・秦 節子と始めるオンライン朝ヨガ・呼吸法・瞑想の２週間無料体験。", "October 19–30, Monday–Friday, 6:00–7:00. A free two-week online trial of morning yoga, breathing, and meditation with Sadhguru-certified Hatha Yoga teacher Setsuko Hata.")}
   active="home"
   footer="none"
   image="/assets/og-image.jpg"
@@ -16,36 +22,36 @@ const formUrl = 'https://forms.gle/pwHghcYgKgdYcFk17';
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Noto+Sans+JP:wght@500;700&display=swap"
   />
-  <main class="trial" id="main">
+  <div class="trial" id="main">
     <section class="trial-hero">
       <div class="trial-hero__copy">
-        <p class="trial-hero__eyebrow" lang="ja">オンライン朝ヨガ・呼吸法・瞑想</p>
-        <h1 class="trial-hero__title" lang="ja">
-          <span class="trial-hero__line">インドで<mark class="trial-hero__num">1,750時間</mark>の</span>
-          <span class="trial-hero__line">トレーニングを修了した講師と</span>
-          <span class="trial-hero__line">朝ヨガを始める</span>
-          <span class="trial-hero__line trial-hero__line--accent">２週間無料体験</span>
+        <p class="trial-hero__eyebrow" lang={locale}>{t("オンライン朝ヨガ・呼吸法・瞑想", "Online morning yoga, breathing & meditation")}</p>
+        <h1 class="trial-hero__title" lang={locale}>
+          <span class="trial-hero__line">{t("インドで", "With a teacher trained for ")}<mark class="trial-hero__num">{t("1,750時間", "1,750 hours")}</mark>{t("の", " in India")}</span>
+          <span class="trial-hero__line">{t("トレーニングを修了した講師と", "Begin your mornings")}</span>
+          <span class="trial-hero__line">{t("朝ヨガを始める", "with yoga")}</span>
+          <span class="trial-hero__line trial-hero__line--accent">{t("２週間無料体験", "Two-week free trial")}</span>
         </h1>
       </div>
       <img
         class="trial-hero__person"
         src="/assets/morning-setsuko.webp"
-        alt="合掌する秦 節子"
+        alt={t("合掌する秦 節子", "Setsuko Hata with palms together")}
         width="900"
         height="1200"
       />
     </section>
     <section class="trial-info">
-      <p class="trial-info__dates" lang="ja">
-        <span>10月19日<small>（月）</small></span>
+      <p class="trial-info__dates" lang={locale}>
+        <span>{t("10月19日", "October 19")}<small>{t("（月）", " (Mon)")}</small></span>
         <span class="trial-info__dash" aria-hidden="true">→</span>
-        <span>10月30日<small>（金）</small></span>
+        <span>{t("10月30日", "October 30")}<small>{t("（金）", " (Fri)")}</small></span>
       </p>
-      <p class="trial-info__meta" lang="ja">月〜金　6:00〜7:00｜オンライン</p>
+      <p class="trial-info__meta" lang={locale}>{t("月〜金　6:00〜7:00｜オンライン", "Monday–Friday, 6:00–7:00 | Online")}</p>
       <a class="trial-cta" href={formUrl} target="_blank" rel="noopener">
-        <span lang="ja">無料で参加する</span>
+        <span lang={locale}>{t("無料で参加する", "Join for free")}</span>
       </a>
-      <p class="trial-info__teacher" lang="ja">サドグル公認ハタヨガ講師｜秦 節子（Setsuko Hata）</p>
+      <p class="trial-info__teacher" lang={locale}>{t("サドグル公認ハタヨガ講師｜秦 節子（Setsuko Hata）", "Sadhguru-certified Hatha Yoga Teacher | Setsuko Hata")}</p>
     </section>
-  </main>
+  </div>
 </Layout>

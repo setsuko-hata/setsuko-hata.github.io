@@ -1,23 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { translator, type Locale } from '../data/personal-i18n';
+interface Props { locale?: Locale; }
+const { locale = 'ja' } = Astro.props;
+const t = translator(locale);
+
 import StatCards from '../components/StatCards.astro';
 import ExploreCards from '../components/ExploreCards.astro';
 
 const galleryImages = [
-  { src: '/assets/g-a-headshot.jpg', alt: 'Setsuko Hata singing', position: 'center 28%' },
-  { src: '/assets/g-b-meditation.jpg', alt: 'Setsuko Hata meditating', position: 'center 34%' },
-  { src: '/assets/g-e-crane.jpg', alt: 'Setsuko Hata with crane painting', position: '38% center' },
-  { src: '/assets/g-f-kimono.jpg', alt: 'Setsuko Hata in kimono', position: 'center 26%' },
-  { src: '/assets/g-c-garden.jpg', alt: 'Setsuko Hata in a garden', position: '30% center' },
-  { src: '/assets/g-d-stage.jpg', alt: 'Setsuko Hata on stage with piano', position: '74% center' },
-  { src: '/assets/g-g-india.jpg', alt: 'Setsuko Hata performing in India', position: 'center 32%' },
-  { src: '/assets/g-h-street.jpg', alt: 'Setsuko Hata walking in Kobe', position: 'center 40%' },
+  { src: '/assets/g-a-headshot.jpg', alt: t("歌う秦 節子", "Setsuko Hata singing"), position: 'center 28%' },
+  { src: '/assets/g-b-meditation.jpg', alt: t("瞑想する秦 節子", "Setsuko Hata meditating"), position: 'center 34%' },
+  { src: '/assets/g-e-crane.jpg', alt: t("鶴の絵と秦 節子", "Setsuko Hata with crane painting"), position: '38% center' },
+  { src: '/assets/g-f-kimono.jpg', alt: t("着物姿の秦 節子", "Setsuko Hata in kimono"), position: 'center 26%' },
+  { src: '/assets/g-c-garden.jpg', alt: t("庭園にいる秦 節子", "Setsuko Hata in a garden"), position: '30% center' },
+  { src: '/assets/g-d-stage.jpg', alt: t("ピアノのあるステージで歌う秦 節子", "Setsuko Hata on stage with piano"), position: '74% center' },
+  { src: '/assets/g-g-india.jpg', alt: t("インドで演奏する秦 節子", "Setsuko Hata performing in India"), position: 'center 32%' },
+  { src: '/assets/g-h-street.jpg', alt: t("神戸を歩く秦 節子", "Setsuko Hata walking in Kobe"), position: 'center 40%' },
 ];
 ---
 
 <Layout
-  title="プロフィール | 秦 節子 Setsuko Hata — About"
-  description="秦節子（Setsuko Hata）のプロフィール。大阪出身。ニューヨーク・コロラド・ロサンゼルスで13年間ジャズシンガー・作曲家として活動し、インドのIsha Foundationでサドグル公認ハタヨガ講師資格を取得。2026年より日本を拠点に活動。"
+  locale={locale}
+  title={t("プロフィール | 秦 節子 Setsuko Hata", "About | Setsuko Hata")}
+  description={t("秦節子（Setsuko Hata）のプロフィール。大阪出身。ニューヨーク・コロラド・ロサンゼルスで13年間ジャズシンガー・作曲家として活動し、インドのIsha Foundationでサドグル公認ハタヨガ講師資格を取得。2026年より日本を拠点に活動。", "Meet Setsuko Hata, an Osaka-born jazz singer and composer with 13 years in New York, Colorado, and Los Angeles, and a Sadhguru-certified Hatha Yoga teacher trained at Isha Foundation in India. Based in Japan from 2026.")}
   active="about"
   footer="about"
 >
@@ -31,8 +37,8 @@ const galleryImages = [
         Setsuko Hata<span class="about-hero__jp-name" lang="ja">秦 節子</span>
       </h1>
       <p class="about-hero__tagline">
-        Jazz Singer. <em>Composer.</em><br />
-        Hatha Yoga Teacher.
+        {t("ジャズシンガー。", "Jazz Singer. ")}<em>{t("作曲家。", "Composer.")}</em><br />
+        {t("ハタヨガ講師。", "Hatha Yoga Teacher.")}
       </p>
     </div>
   </section>
@@ -41,29 +47,29 @@ const galleryImages = [
     <div class="stats-section__inner">
       <div class="stats-label-row">
         <span class="stats-label-row__rule"></span>
-        <span class="eyebrow">At a Glance</span>
+        <span class="eyebrow">{t("ひと目でわかるプロフィール", "At a Glance")}</span>
         <span class="stats-label-row__rule"></span>
       </div>
-      <StatCards reveal />
+      <StatCards locale={locale} reveal />
     </div>
   </section>
 
   <section class="origin-section">
     <figure class="origin__figure">
       <div class="origin__frame" data-reveal-soft>
-        <img decoding="async" src="/assets/about-main.jpg" alt="Setsuko Hata beside a mountain stream" />
+        <img decoding="async" src="/assets/about-main.jpg" alt={t("渓流のほとりに佇む秦 節子", "Setsuko Hata beside a mountain stream")} />
       </div>
     </figure>
     <div class="origin__body" data-reveal>
       <div class="section-label">
         <span class="section-label__rule"></span>
-        <span class="eyebrow">Origin</span>
+        <span class="eyebrow">{t("原点", "Origin")}</span>
       </div>
-      <p class="jp-body" lang="ja">
-        大阪出身。ジャズシンガー、作曲家、編曲家、ハタヨガ講師。幼い頃から歌うことが大好きで、音楽はいつも私の人生の中心にありました。しかし、21歳の時にうつ病・双極性障害を経験し、人生の大きな転機を迎えます。
+      <p class="jp-body" lang={locale}>
+        {t("大阪出身。ジャズシンガー、作曲家、編曲家、ハタヨガ講師。幼い頃から歌うことが大好きで、音楽はいつも私の人生の中心にありました。しかし、21歳の時にうつ病・双極性障害を経験し、人生の大きな転機を迎えます。", "I am a jazz singer, composer, arranger, and Hatha Yoga teacher from Osaka. I have loved singing since childhood, and music has always been at the center of my life. At 21, however, I experienced depression and bipolar disorder, which became a major turning point.")}
       </p>
-      <p class="jp-body" lang="ja">
-        その経験をきっかけに、「人はどうすれば心身ともに健康に生きられるのか」「本当の幸せとは何か」という問いを深く探求するようになりました。
+      <p class="jp-body" lang={locale}>
+        {t("その経験をきっかけに、「人はどうすれば心身ともに健康に生きられるのか」「本当の幸せとは何か」という問いを深く探求するようになりました。", "That experience led me to explore deeply what it means to live with a healthy body and mind, and what true happiness is.")}
       </p>
     </div>
   </section>
@@ -72,27 +78,27 @@ const galleryImages = [
     <div class="study__body" data-reveal>
       <div class="section-label">
         <span class="section-label__rule"></span>
-        <span class="eyebrow">Study &amp; Performance</span>
+        <span class="eyebrow">{t("学びと演奏活動", "Study & Performance")}</span>
       </div>
-      <p class="jp-body" lang="ja">
-        3年間の休学を経て、大阪市立大学生活科学部食品栄養科学科を卒業し、栄養士資格を取得。その後、夢だった音楽の道を本格的に歩むため、2011年にアメリカへ渡りました。
+      <p class="jp-body" lang={locale}>
+        {t("3年間の休学を経て、大阪市立大学生活科学部食品栄養科学科を卒業し、栄養士資格を取得。その後、夢だった音楽の道を本格的に歩むため、2011年にアメリカへ渡りました。", "After a three-year leave of absence, I graduated from the Department of Food and Nutrition in the Faculty of Human Life Science at Osaka City University and qualified as a nutritionist. In 2011, I moved to the United States to pursue my dream of a career in music.")}
       </p>
-      <p class="jp-body" lang="ja">
-        その後13年間、ニューヨーク、コロラド、ロサンゼルスを拠点に、プロのジャズシンガー・作曲家として活動。City College of New York（CUNY）でジャズボーカルを学んだ後、University of Northern Colorado大学院へ進学。ジャズボーカルに加え、作曲、編曲、ビッグバンド、オーケストラ、映画音楽など幅広い音楽表現を研究し、同大学では日本人初となる教授アシスタントを務めました。
+      <p class="jp-body" lang={locale}>
+        {t("その後13年間、ニューヨーク、コロラド、ロサンゼルスを拠点に、プロのジャズシンガー・作曲家として活動。City College of New York（CUNY）でジャズボーカルを学んだ後、University of Northern Colorado大学院へ進学。ジャズボーカルに加え、作曲、編曲、ビッグバンド、オーケストラ、映画音楽など幅広い音楽表現を研究し、同大学では日本人初となる教授アシスタントを務めました。", "For the next 13 years, I worked as a professional jazz singer and composer in New York, Colorado, and Los Angeles. After studying jazz vocals at the City College of New York (CUNY), I pursued graduate studies at the University of Northern Colorado. Alongside jazz vocals, I studied composition, arranging, big band, orchestral music, and film scoring, and became the university’s first Japanese teaching assistant.")}
       </p>
-      <p class="jp-body" lang="ja">
-        全米各地で数多くの演奏活動を重ねながら、ロサンゼルスの名門ジャズクラブ Catalina Jazz Club にてソロコンサートを開催するなど、多数の自主企画公演をプロデュース。2024年には グッと！読売テレビのグッと地球便に出演し、アメリカで活動するジャズシンガーとして特集されました。
+      <p class="jp-body" lang={locale}>
+        {t("全米各地で数多くの演奏活動を重ねながら、ロサンゼルスの名門ジャズクラブ Catalina Jazz Club にてソロコンサートを開催するなど、多数の自主企画公演をプロデュース。2024年には グッと！読売テレビのグッと地球便に出演し、アメリカで活動するジャズシンガーとして特集されました。", "While performing throughout the United States, I produced many of my own concerts, including a solo concert at the renowned Catalina Jazz Club in Los Angeles. In 2024, Yomiuri TV’s documentary program Gutto! Chikyubin featured my work as a jazz singer in the United States.")}
       </p>
     </div>
     <div class="study__polaroids">
       <figure class="polaroid polaroid--back" data-reveal-soft>
         <div class="polaroid__frame">
-          <img src="/assets/about-portrait-navy.jpg" alt="Setsuko Hata portrait" style="object-position: center 25%;" />
+          <img src="/assets/about-portrait-navy.jpg" alt={t("秦 節子のポートレート", "Setsuko Hata portrait")} style="object-position: center 25%;" />
         </div>
       </figure>
       <figure class="polaroid polaroid--front" data-reveal-soft>
         <div class="polaroid__frame">
-          <img src="/assets/about-portrait-denim.jpg" alt="Setsuko Hata portrait" style="object-position: center 20%;" />
+          <img src="/assets/about-portrait-denim.jpg" alt={t("秦 節子のポートレート", "Setsuko Hata portrait")} style="object-position: center 20%;" />
         </div>
       </figure>
     </div>
@@ -105,7 +111,7 @@ const galleryImages = [
         loading="lazy"
         decoding="async"
         src="/assets/about-catalina.jpg"
-        alt="Setsuko Hata performing at Catalina Jazz Club, Los Angeles"
+        alt={t("ロサンゼルスのCatalina Jazz Clubで演奏する秦 節子", "Setsuko Hata performing at Catalina Jazz Club, Los Angeles")}
         class="catalina__img"
       />
       <a
@@ -113,7 +119,7 @@ const galleryImages = [
         target="_blank"
         rel="noopener"
         class="catalina__play"
-        aria-label="Watch Setsuko's music on YouTube (opens in a new tab)"
+        aria-label={t("YouTubeで節子の音楽を見る（新しいタブで開きます）", "Watch Setsuko's music on YouTube (opens in a new tab)")}
       >
         <span class="catalina__play-btn">
           <svg viewBox="0 0 68 48" aria-hidden="true">
@@ -125,11 +131,8 @@ const galleryImages = [
     </figure>
     <div class="catalina__quote-wrap">
       <blockquote class="quote-block" data-reveal-soft>
-        <p class="quote-block__en" lang="en">
-          My music is rooted in jazz, but its subject is the search itself — inner growth, and the thread that ties us to nature.
-        </p>
-        <p class="quote-block__jp" lang="ja">
-          私の音楽は、ジャズの伝統に根ざしながらも、「人生の探求」「内なる成長」「自然とのつながり」をテーマに、聴く人の心に深く響く世界観を表現しています。
+        <p class={locale === 'ja' ? 'quote-block__jp' : 'quote-block__en'} lang={locale}>
+          {t("私の音楽は、ジャズの伝統に根ざしながらも、「人生の探求」「内なる成長」「自然とのつながり」をテーマに、聴く人の心に深く響く世界観を表現しています。", "Rooted in the jazz tradition, my music explores the search for meaning in life, inner growth, and our connection to nature, expressing a world that resonates deeply with listeners.")}
         </p>
       </blockquote>
     </div>
@@ -138,18 +141,18 @@ const galleryImages = [
   <section class="yoga-section">
     <div class="yoga-section__inner">
       <figure class="yoga__figure" data-reveal-soft>
-        <img loading="lazy" decoding="async" src="/assets/about-meditation.jpg" alt="Setsuko Hata meditating in a garden" />
+        <img loading="lazy" decoding="async" src="/assets/about-meditation.jpg" alt={t("庭園で瞑想する秦 節子", "Setsuko Hata meditating in a garden")} />
       </figure>
       <div class="yoga__body" data-reveal>
         <div class="section-label">
           <span class="section-label__rule"></span>
-          <span class="eyebrow">Yoga</span>
+          <span class="eyebrow">{t("ヨガ", "Yoga")}</span>
         </div>
-        <p class="jp-body" lang="ja">
-          2024年にはインドの Isha Foundation にて約1年半にわたりヨガと瞑想を探求。1,750時間を超える厳格なトレーニングを修了し、Sadhguru公認ハタヨガ講師資格を取得しました。
+        <p class="jp-body" lang={locale}>
+          {t("2024年にはインドの Isha Foundation にて約1年半にわたりヨガと瞑想を探求。1,750時間を超える厳格なトレーニングを修了し、Sadhguru公認ハタヨガ講師資格を取得しました。", "In 2024, I began exploring yoga and meditation at Isha Foundation in India over a period of approximately a year and a half. I completed more than 1,750 hours of rigorous training and became a Sadhguru-certified Hatha Yoga teacher.")}
         </p>
-        <p class="jp-body" lang="ja">
-          2026年より活動拠点を日本へ移し、「ストレスやうつに苦しむ人を一人でも減らし、一人ひとりが本来持つ可能性を開花できる社会をつくる」というビジョンのもと活動を展開。音楽を通して人々の心に希望と感動を届けるとともに、ハタヨガ講師として人生を変革するための実践的なツールを伝えています。
+        <p class="jp-body" lang={locale}>
+          {t("2026年より活動拠点を日本へ移し、「ストレスやうつに苦しむ人を一人でも減らし、一人ひとりが本来持つ可能性を開花できる社会をつくる」というビジョンのもと活動を展開。音楽を通して人々の心に希望と感動を届けるとともに、ハタヨガ講師として人生を変革するための実践的なツールを伝えています。", "From 2026, I am based in Japan, working toward a society where fewer people suffer from stress and depression, and everyone can realize their innate potential. Through music, I share hope and inspiration. As a Hatha Yoga teacher, I offer practical tools for transforming one’s life.")}
         </p>
         <div class="yoga__channels">
           <a href="https://www.youtube.com/@SetsukoHataFlows" target="_blank" rel="noopener" class="channel-link">
@@ -157,8 +160,8 @@ const galleryImages = [
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C18.1 5 12 5 12 5s-6.1 0-7.8.5c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.9 19 12 19 12 19s6.1 0 7.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7zM10 15.2V8.8L15.5 12 10 15.2z"></path></svg>
             </span>
             <span class="channel-link__body">
-              <span class="channel-link__title">Yoga English</span>
-              <span class="channel-link__caption">Practices in English</span>
+              <span class="channel-link__title">{t("ヨガ 英語", "Yoga in English")}</span>
+              <span class="channel-link__caption">{t("英語での実践", "Practices in English")}</span>
             </span>
             <span class="channel-link__arrow">→</span>
           </a>
@@ -167,8 +170,8 @@ const galleryImages = [
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C18.1 5 12 5 12 5s-6.1 0-7.8.5c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.9 19 12 19 12 19s6.1 0 7.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7zM10 15.2V8.8L15.5 12 10 15.2z"></path></svg>
             </span>
             <span class="channel-link__body">
-              <span class="channel-link__title" lang="ja">Yoga 日本語</span>
-              <span class="channel-link__caption">Practices in Japanese</span>
+              <span class="channel-link__title" lang={locale}>{t("ヨガ 日本語", "Yoga in Japanese")}</span>
+              <span class="channel-link__caption">{t("日本語での実践", "Practices in Japanese")}</span>
             </span>
             <span class="channel-link__arrow">→</span>
           </a>
@@ -182,9 +185,9 @@ const galleryImages = [
       <div>
         <div class="section-label">
           <span class="section-label__rule"></span>
-          <span class="eyebrow">Moments</span>
+          <span class="eyebrow">{t("日々の記録", "Moments")}</span>
         </div>
-        <h2 class="gallery__heading">A Life in <em>Motion</em></h2>
+        <h2 class="gallery__heading">{t("歩み続ける", "A Life in ")}<em>{t("日々", "Motion")}</em></h2>
       </div>
     </div>
     <div class="gallery__mask">
@@ -202,13 +205,13 @@ const galleryImages = [
       </div>
     </div>
     <div class="gallery__controls">
-      <button type="button" class="gallery__toggle" data-gallery-toggle aria-pressed="false">
-        <span data-gallery-toggle-label>Pause</span> gallery motion
+      <button type="button" class="gallery__toggle" data-gallery-toggle data-locale={locale} aria-pressed="false">
+        <span data-gallery-toggle-label>{t("ギャラリーの動きを止める", "Pause gallery motion")}</span>
       </button>
     </div>
   </section>
 
-  <ExploreCards />
+  <ExploreCards locale={locale} />
 </Layout>
 
 <script>
@@ -219,6 +222,8 @@ const galleryImages = [
   toggle?.addEventListener('click', () => {
     const paused = track?.classList.toggle('is-paused');
     toggle.setAttribute('aria-pressed', String(!!paused));
-    if (label) label.textContent = paused ? 'Play' : 'Pause';
+    if (label) label.textContent = toggle.dataset.locale === 'en'
+      ? (paused ? 'Play gallery motion' : 'Pause gallery motion')
+      : (paused ? 'ギャラリーの動きを再開する' : 'ギャラリーの動きを止める');
   });
 </script>

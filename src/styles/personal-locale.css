@@ -1,0 +1,29 @@
+/* Shared, keyboard-accessible language links. Preserve the existing header layout. */
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.language-switch a {
+  padding: 0.35rem 0.2rem;
+  border-bottom: 1px solid transparent;
+}
+.language-switch a[aria-current='page'] {
+  border-bottom-color: var(--gold-deep);
+  font-weight: 600;
+}
+.language-switch a:focus-visible {
+  outline: 2px solid var(--gold-deep);
+  outline-offset: 3px;
+}
+html[lang='ja'] .nav-link { letter-spacing: 0.08em; }
+html[lang='en'] .jp-body,
+html[lang='en'] .intro__text { line-height: 1.9; }
+@media (max-width: 560px) {
+  .site-header__inner > nav:first-of-type { order: 2; width: 100%; }
+  .site-header__inner { gap: 12px 16px; }
+}

@@ -1,12 +1,15 @@
 import Chart from 'chart.js/auto';
 
-// Bar charts on /hatha-yoga/ja/schools. Canvas can't resolve var(), so read tokens from :root.
+// Bar charts on the localized schools pages. Canvas can't resolve var(), so read tokens from :root.
 /* canvas can't resolve var(): read the tokens from :root */
 var tok = function (n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); };
 var ink = tok('--color-text-primary'), grid = tok('--color-border'), font = "'Zen Kaku Gothic New', system-ui, sans-serif";
 Chart.defaults.font.family = font;
 Chart.defaults.font.size = 14;
 Chart.defaults.color = ink;
+var locale = document.documentElement.lang === 'en' ? 'en' : 'ja';
+var studentLabels = locale === 'en' ? ['Elementary school', 'Junior high school', 'High school'] : ['小学生', '中学生', '高校生'];
+var studentSuffix = locale === 'en' ? ' students' : '人';
 function make(id, labels, data, colors, suffix, axisMax) {
   var el = document.getElementById(id);
   if (!el) return;
@@ -23,7 +26,7 @@ function make(id, labels, data, colors, suffix, axisMax) {
         legend: { display: false },
         tooltip: {
           backgroundColor: tok('--color-text-primary'), titleFont: { size: 15 }, bodyFont: { size: 15 }, padding: 12, displayColors: false,
-          callbacks: { label: function (c) { return c.parsed.x.toLocaleString() + suffix; } }
+          callbacks: { label: function (c) { return c.parsed.x.toLocaleString(locale) + suffix; } }
         }
       },
       scales: {
@@ -33,5 +36,5 @@ function make(id, labels, data, colors, suffix, axisMax) {
     }
   });
 }
-make('chartTruancy', ['小学生', '中学生', '高校生'], [23.0, 67.9, 23.3], [tok('--color-deep-olive'), tok('--color-warm-brown'), tok('--color-soft-terracotta')], '人', 75);
-make('chartSuicide', ['小学生', '中学生', '高校生'], [10, 172, 356], [tok('--color-deep-olive'), tok('--color-warm-brown'), tok('--color-soft-terracotta')], '人', 380);
+make('chartTruancy', studentLabels, [23.0, 67.9, 23.3], [tok('--color-deep-olive'), tok('--color-warm-brown'), tok('--color-soft-terracotta')], studentSuffix, 75);
+make('chartSuicide', studentLabels, [10, 172, 356], [tok('--color-deep-olive'), tok('--color-warm-brown'), tok('--color-soft-terracotta')], studentSuffix, 380);
