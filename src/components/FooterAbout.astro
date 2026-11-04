@@ -1,4 +1,9 @@
 ---
+import { translator, localizedPath, type Locale } from '../data/personal-i18n';
+interface Props { locale?: Locale; }
+const { locale = 'ja' } = Astro.props;
+const t = translator(locale);
+const link = (path: string) => localizedPath(path, locale);
 ---
 
 <footer class="footer-about">
@@ -8,11 +13,11 @@
         <div class="footer-about__word">Setsuko Hata</div>
         <div class="footer-about__jp" lang="ja">秦 節子</div>
       </div>
-      <nav aria-label="Footer">
+      <nav aria-label={t('フッターナビゲーション', 'Footer navigation')}>
         <ul class="footer-about__nav-list">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="mailto:info@setsukohata.com">Contact</a></li>
+          <li><a href={link('/')}>{t('ホーム', 'Home')}</a></li>
+          <li><a href={link('/about/')}>{t('プロフィール', 'About')}</a></li>
+          <li><a href="mailto:info@setsukohata.com">{t('お問い合わせ', 'Contact')}</a></li>
         </ul>
       </nav>
       <div class="footer-about__social">
@@ -24,6 +29,6 @@
         </a>
       </div>
     </div>
-    <div class="footer-about__copyright">© 2026 Setsuko Hata All Rights Reserved.</div>
+    <div class="footer-about__copyright">{t('© 2026 Setsuko Hata 無断転載を禁じます。', '© 2026 Setsuko Hata All Rights Reserved.')}</div>
   </div>
 </footer>

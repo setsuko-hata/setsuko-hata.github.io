@@ -1,9 +1,13 @@
 ---
+interface Props { locale?: 'ja' | 'en'; }
+const { locale = 'ja' } = Astro.props;
+const t = (ja: string, en: string) => locale === 'en' ? en : ja;
+
 import YogaLayout from '../../../layouts/YogaLayout.astro';
 ---
-<YogaLayout title="お問い合わせ｜大阪・東京のハタヨガ 秦 節子 | Setsuko Hata Yoga"
-  description="ハタヨガのクラス、月額会員、企業・学校向けプログラムについてのお問い合わせはこちらから。大阪・東京の対面クラスとオンラインクラスについて、サドグル公認ハタヨガ講師・秦 節子がお答えします。"
-  locale="ja"
+<YogaLayout title={t("お問い合わせ｜大阪・東京のハタヨガ 秦 節子 | Setsuko Hata Yoga", "Contact | Hatha Yoga in Osaka & Tokyo | Setsuko Hata Yoga")}
+  description={t("ハタヨガのクラス、月額会員、企業・学校向けプログラムについてのお問い合わせはこちらから。大阪・東京の対面クラスとオンラインクラスについて、サドグル公認ハタヨガ講師・秦 節子がお答えします。", "Contact Setsuko Hata about Hatha Yoga classes, monthly membership, and programs for workplaces and schools. Get answers about in-person classes in Osaka and Tokyo and online classes from a Sadhguru-certified Hatha Yoga teacher.")}
+  locale={locale}
   active="contact"
 >
 
@@ -11,7 +15,7 @@ import YogaLayout from '../../../layouts/YogaLayout.astro';
         <section class="pt-32 pb-24 md:pt-40 md:pb-32 ja-band ja-band-sage" data-lt="1">
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10">
             <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss">Contact</p>
-            <h1 class="mt-6 max-w-3xl font-display text-4xl leading-[1.2] text-brand-espresso md:text-6xl md:leading-[1.1]">お問い合わせ</h1>
+            <h1 class="mt-6 max-w-3xl font-display text-4xl leading-[1.2] text-brand-espresso md:text-6xl md:leading-[1.1]">{t("お問い合わせ", "Contact")}</h1>
             
           </div>
         </section>
@@ -19,14 +23,14 @@ import YogaLayout from '../../../layouts/YogaLayout.astro';
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10">
             <div class="grid gap-16 md:grid-cols-2 md:gap-24">
               <div>
-                <form class="space-y-7" action="https://formsubmit.co/yoga@setsukohata.com" method="POST">
-                    <input type="hidden" name="_subject" value="お問い合わせフォームより" />
+                <form data-localized-contact class="space-y-7" action="https://formsubmit.co/yoga@setsukohata.com" method="POST">
+                    <input type="hidden" name="_subject" value={t("お問い合わせフォームより", "Inquiry from the contact form")} />
                     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
                     <div>
                       <label
                         for="name"
                         class="mb-2 block font-mono text-[13px] uppercase tracking-[0.22em] text-brand-espresso/70"
-                        >お名前<!-- -->
+                        >{t("お名前", "Name")}<!-- -->
                         <span aria-hidden="true">*</span></label
                       ><input
                         id="name"
@@ -41,7 +45,7 @@ import YogaLayout from '../../../layouts/YogaLayout.astro';
                       <label
                         for="email"
                         class="mb-2 block font-mono text-[13px] uppercase tracking-[0.22em] text-brand-espresso/70"
-                        >メールアドレス<!-- -->
+                        >{t("メールアドレス", "Email address")}<!-- -->
                         <span aria-hidden="true">*</span></label
                       ><input
                         id="email"
@@ -56,7 +60,7 @@ import YogaLayout from '../../../layouts/YogaLayout.astro';
                       <label
                         for="phone"
                         class="mb-2 block font-mono text-[13px] uppercase tracking-[0.22em] text-brand-espresso/70"
-                        >電話番号（任意）<!-- --> </label
+                        >{t("電話番号（任意）", "Phone number (optional)")}<!-- --> </label
                       ><input
                         id="phone"
                         type="tel"
@@ -69,7 +73,7 @@ import YogaLayout from '../../../layouts/YogaLayout.astro';
                       <label
                         for="message"
                         class="mb-2 block font-mono text-[13px] uppercase tracking-[0.22em] text-brand-espresso/70"
-                        >メッセージ<!-- -->
+                        >{t("メッセージ", "Message")}<!-- -->
                         <span aria-hidden="true">*</span></label
                       ><textarea
                         id="message"
@@ -83,13 +87,13 @@ import YogaLayout from '../../../layouts/YogaLayout.astro';
                       type="submit"
                       class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[13px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 active:translate-y-px bg-brand-espresso text-white hover:bg-brand-moss disabled:cursor-not-allowed disabled:opacity-60"
                     >
-                      送信する
+                      {t("送信する", "Send message")}
                     </button>
                   </form>
               </div>
               <div>
-                <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss ja-eyebrow">お問い合わせ</p>
-                <p class="mt-6 font-display text-3xl md:text-4xl">秦 節子</p>
+                <p class="font-mono text-[13px] uppercase tracking-[0.24em] text-brand-moss ja-eyebrow">{t("お問い合わせ", "Contact")}</p>
+                <p class="mt-6 font-display text-3xl md:text-4xl">{t("秦 節子", "Setsuko Hata")}</p>
                 <ul class="mt-8 space-y-4 border-t border-brand-espresso/15 pt-6 text-base">
                   <li><a href="mailto:yoga@setsukohata.com" class="hover:opacity-70">✉️ yoga@setsukohata.com</a></li>
                 </ul>
@@ -98,3 +102,16 @@ import YogaLayout from '../../../layouts/YogaLayout.astro';
           </div>
         </section>
 </YogaLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-localized-contact]');
+  const isEn = document.documentElement.lang === 'en';
+  form?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[required], textarea[required]').forEach((field) => {
+    field.addEventListener('input', () => field.setCustomValidity(''));
+    field.addEventListener('invalid', () => {
+      field.setCustomValidity('');
+      if (field.validity.valueMissing) field.setCustomValidity(isEn ? 'Please complete this field.' : 'この項目を入力してください。');
+      else if (field.validity.typeMismatch) field.setCustomValidity(isEn ? 'Please enter a valid email address.' : '有効なメールアドレスを入力してください。');
+    });
+  });
+</script>

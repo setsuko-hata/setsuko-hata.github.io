@@ -1,10 +1,14 @@
 ---
+interface Props { locale?: 'ja' | 'en'; }
+const { locale = 'ja' } = Astro.props;
+const t = (ja: string, en: string) => locale === 'en' ? en : ja;
+
 import YogaLayout from '../../../layouts/YogaLayout.astro';
 import '../../../styles/yoga/pages/schools.css';
 ---
-<YogaLayout title="学校・教育機関向け | Setsuko Hata Yoga"
-  description="小学校・中学校・高校・大学・専門学校への出張ハタヨガ・瞑想プログラム。集中力、ストレスマネジメント、心身のウェルビーイングを育てる体験授業・講演。"
-  locale="ja"
+<YogaLayout title={t("学校・教育機関向け | Setsuko Hata Yoga", "Schools and Educational Institutions | Setsuko Hata Yoga")}
+  description={t("小学校・中学校・高校・大学・専門学校への出張ハタヨガ・瞑想プログラム。集中力、ストレスマネジメント、心身のウェルビーイングを育てる体験授業・講演。", "On-site Hatha Yoga and meditation for elementary schools, junior high schools, high schools, universities, and vocational colleges. Classes and talks supporting concentration, stress management, and mental and physical wellbeing.")}
+  locale={locale}
   active="schools"
 >
 
@@ -15,12 +19,12 @@ import '../../../styles/yoga/pages/schools.css';
           <svg aria-hidden="true" viewBox="0 0 600 600" style="position:absolute;right:6%;top:8%;width:min(360px,40vw);opacity:.5;pointer-events:none"><circle cx="300" cy="300" r="240" fill="none" stroke="var(--color-warm-brown)" stroke-opacity=".45" /><circle cx="300" cy="300" r="180" fill="none" stroke="var(--color-warm-brown)" stroke-opacity=".28" /></svg>
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
             <p class="font-mono uppercase tracking-[0.24em]" style="color:#5C4A2E">School Wellness Program</p>
-            <h1 class="mt-6 max-w-4xl font-display text-3xl leading-[1.3] md:text-5xl md:leading-[1.2]" style="color:#33301F">これからの時代を生きる若い世代に<br />一生使える「自分自身を整える力」を。</h1>
-            <h2 class="mt-8 max-w-3xl font-display text-xl leading-snug md:text-2xl" style="color:#6B4A2C">学校向け 出張ハタヨガ・瞑想プログラム</h2>
-            <h3 class="mt-3 font-display text-lg leading-snug md:text-xl" style="color:#3E3A27">小学校・中学校・高校・大学へ、本格ハタヨガ・瞑想をお届けします。</h3>
+            <h1 class="mt-6 max-w-4xl font-display text-3xl leading-[1.3] md:text-5xl md:leading-[1.2]" style="color:#33301F">{t("これからの時代を生きる若い世代に", "For the young generation shaping the future,")}<br />{t("一生使える「自分自身を整える力」を。", "lifelong skills to find balance within.")}</h1>
+            <h2 class="mt-8 max-w-3xl font-display text-xl leading-snug md:text-2xl" style="color:#6B4A2C">{t("学校向け 出張ハタヨガ・瞑想プログラム", "Hatha Yoga and Meditation Programs for Schools")}</h2>
+            <h3 class="mt-3 font-display text-lg leading-snug md:text-xl" style="color:#3E3A27">{t("小学校・中学校・高校・大学へ、本格ハタヨガ・瞑想をお届けします。", "Bringing authentic Hatha Yoga and meditation to elementary schools, junior high schools, high schools, and universities.")}</h3>
             <div class="mt-12 flex flex-wrap gap-4">
-              <a href="#contact" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium">出張授業・講演について相談する</a>
-              <a href="#stages" class="ja-btn-ghost inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium">対象年齢を見る</a>
+              <a href="#contact" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium">{t("出張授業・講演について相談する", "Discuss a school visit or talk")}</a>
+              <a href="#stages" class="ja-btn-ghost inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium">{t("対象年齢を見る", "Explore age groups")}</a>
             </div>
           </div>
           <svg aria-hidden="true" viewBox="0 0 1440 140" preserveAspectRatio="none" style="position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(60px,8vw,110px);display:block;pointer-events:none">
@@ -29,70 +33,70 @@ import '../../../styles/yoga/pages/schools.css';
           </svg>
         </section>
 
-        <section style="position:relative;background:var(--color-ivory-cream)" data-screen-label="いまの学生たち">
+        <section style="position:relative;background:var(--color-ivory-cream)" data-screen-label={t("いまの学生たち", "Today's students")}>
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
             <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">Students Today</p>
-            <h2 class="mt-6 max-w-3xl font-display text-2xl leading-[1.35] md:text-4xl">情報にあふれた時代を生きる、いまの学生たち</h2>
+            <h2 class="mt-6 max-w-3xl font-display text-2xl leading-[1.35] md:text-4xl">{t("情報にあふれた時代を生きる、いまの学生たち", "Today's students live in a world overflowing with information")}</h2>
             <div class="mt-8 grid max-w-3xl gap-5">
-              <p class="text-base leading-loose" style="color:#4A3F31">現代の若い世代は、これまでにないほど多くの情報や刺激に囲まれて生活しています。スマートフォン・SNSとの向き合い方、勉強、受験、人間関係、就職、そして将来への不安。それぞれのライフステージによって、学生たちの抱える悩みやストレスも変化していきます。</p>
-              <p class="text-base leading-loose" style="color:#4A3F31">常に外から情報が入り続ける一方で、自分の心や身体の状態に気づき、静かに自分自身と向き合う時間は、ますます少なくなっています。</p>
+              <p class="text-base leading-loose" style="color:#4A3F31">{t("現代の若い世代は、これまでにないほど多くの情報や刺激に囲まれて生活しています。スマートフォン・SNSとの向き合い方、勉強、受験、人間関係、就職、そして将来への不安。それぞれのライフステージによって、学生たちの抱える悩みやストレスも変化していきます。", "Young people today are surrounded by more information and stimulation than ever before. Smartphones and social media, studying, entrance exams, relationships, finding a job, and worries about the future: the concerns and stresses students face change at every stage of life.")}</p>
+              <p class="text-base leading-loose" style="color:#4A3F31">{t("常に外から情報が入り続ける一方で、自分の心や身体の状態に気づき、静かに自分自身と向き合う時間は、ますます少なくなっています。", "As information continually flows in from outside, there is less and less time to notice how the mind and body feel and quietly turn inward.")}</p>
             </div>
           </div>
         </section>
 
-        <section id="why" class="scroll-mt-24" style="position:relative;background:var(--color-ivory-cream);overflow:hidden" data-screen-label="背景">
+        <section id="why" class="scroll-mt-24" style="position:relative;background:var(--color-ivory-cream);overflow:hidden" data-screen-label={t("背景", "Background")}>
           <svg aria-hidden="true" viewBox="0 0 600 600" style="position:absolute;left:-180px;top:60px;width:min(480px,56vw);opacity:.45;pointer-events:none"><path d="M300 30 C 470 30 570 170 540 320 C 512 462 380 570 240 552 C 92 533 20 400 34 268 C 48 132 140 30 300 30 Z" fill="var(--color-surface-sage)" /></svg>
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
-            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">いまの子どもたち・若い世代</p>
-            <h2 class="mt-6 font-display text-3xl leading-[1.3] md:text-5xl">静かに自分と向き合う時間が、失われています</h2>
-            <p class="mt-8 max-w-3xl text-base leading-loose" style="color:#4A3F31">常に外から情報が入り続ける一方で、自分の心や身体に気づき、静かに向き合う時間は、ますます少なくなっています。ハタヨガ・瞑想は、その時間を教育の中に取り戻すための、具体的な方法です。</p>
+            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">{t("いまの子どもたち・若い世代", "Children and young people today")}</p>
+            <h2 class="mt-6 font-display text-3xl leading-[1.3] md:text-5xl">{t("静かに自分と向き合う時間が、失われています", "Time to quietly connect with themselves is disappearing")}</h2>
+            <p class="mt-8 max-w-3xl text-base leading-loose" style="color:#4A3F31">{t("常に外から情報が入り続ける一方で、自分の心や身体に気づき、静かに向き合う時間は、ますます少なくなっています。ハタヨガ・瞑想は、その時間を教育の中に取り戻すための、具体的な方法です。", "As information continually flows in from outside, there is less and less time to notice the mind and body and quietly turn inward. Hatha Yoga and meditation offer a practical way to bring that time back into education.")}</p>
             <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               <div class="sc-card sc-rise" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-top:3px solid var(--color-sage);border-radius:6px;padding:32px 28px 34px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#E6E9D8;border:1px solid rgba(138,96,67,.4);color:var(--color-deep-olive);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16s5-8 14-8 14 8 14 8-5 8-14 8-14-8-14-8Z"/><circle cx="16" cy="16" r="3.5"/></svg></span>
-                <h3 class="mt-6 font-display text-xl leading-snug">集中する</h3>
-                <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">刺激に奪われた意識を、今ここに戻す。</p>
+                <h3 class="mt-6 font-display text-xl leading-snug">{t("集中する", "Focus")}</h3>
+                <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">{t("刺激に奪われた意識を、今ここに戻す。", "Bring attention back from distractions to the present moment.")}</p>
               </div>
               <div class="sc-card sc-rise" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-top:3px solid var(--color-camel-brown);border-radius:6px;padding:32px 28px 34px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#F0E8D4;border:1px solid rgba(138,96,67,.4);color:var(--color-camel-brown);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11c3.5-3 6.5-3 10 0s6.5 3 10 0M3 18c3.5-3 6.5-3 10 0s6.5 3 10 0M3 25c3.5-3 6.5-3 10 0s6.5 3 10 0" transform="translate(3 -1)"/></svg></span>
-                <h3 class="mt-6 font-display text-xl leading-snug">整える</h3>
-                <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">心と身体の状態に、自分で気づく。</p>
+                <h3 class="mt-6 font-display text-xl leading-snug">{t("整える", "Find balance")}</h3>
+                <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">{t("心と身体の状態に、自分で気づく。", "Become aware of the state of your mind and body.")}</p>
               </div>
               <div class="sc-card sc-rise" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-top:3px solid var(--color-soft-terracotta);border-radius:6px;padding:32px 28px 34px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#F7E6DC;border:1px solid rgba(138,96,67,.4);color:var(--color-soft-terracotta);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3l11 4v8c0 7-4.6 11.8-11 14-6.4-2.2-11-7-11-14V7l11-4Z"/><path d="M11.5 16.5l3 3 6-6.5"/></svg></span>
-                <h3 class="mt-6 font-display text-xl leading-snug">向き合う</h3>
-                <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">ストレスの中でも、自分を保つ。</p>
+                <h3 class="mt-6 font-display text-xl leading-snug">{t("向き合う", "Meet challenges")}</h3>
+                <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">{t("ストレスの中でも、自分を保つ。", "Stay grounded, even under stress.")}</p>
               </div>
               <div class="sc-card sc-rise" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-top:3px solid var(--color-deep-olive);border-radius:6px;padding:32px 28px 34px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#E6E9D8;border:1px solid rgba(138,96,67,.4);color:var(--color-deep-olive);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 28V14"/><path d="M16 14C16 9 12 5 6 5c0 6 4 9 10 9Z"/><path d="M16 16c0-4.4 3.6-8 9-8 0 5.4-4 8-9 8Z"/></svg></span>
-                <h3 class="mt-6 font-display text-xl leading-snug">生き生きと</h3>
-                <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">本来の活力を、のびのびと発揮する。</p>
+                <h3 class="mt-6 font-display text-xl leading-snug">{t("生き生きと", "Live fully")}</h3>
+                <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">{t("本来の活力を、のびのびと発揮する。", "Allow your natural vitality to flourish.")}</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="stages" class="scroll-mt-24" style="position:relative;background:var(--color-warm-beige);overflow:hidden" data-screen-label="対象">
+        <section id="stages" class="scroll-mt-24" style="position:relative;background:var(--color-warm-beige);overflow:hidden" data-screen-label={t("対象", "Age groups")}>
           <div aria-hidden="true" style="position:absolute;right:-150px;top:-100px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(180,190,148,.5) 0%,rgba(180,190,148,0) 70%);pointer-events:none"></div>
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
-            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">対象</p>
-            <h2 class="mt-6 font-display text-3xl leading-[1.3] md:text-5xl">その年齢に、いま必要な内容で</h2>
-            <p class="mt-8 max-w-3xl text-base leading-loose" style="color:#4A3F31">同じハタヨガでも、育てたい力と抱えている課題は年齢によって異なります。学校段階ごとに内容を組み立てます。</p>
-            <div class="ja-tablist mt-12" role="tablist" aria-label="学校段階">
+            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">{t("対象", "Age groups")}</p>
+            <h2 class="mt-6 font-display text-3xl leading-[1.3] md:text-5xl">{t("その年齢に、いま必要な内容で", "What each age needs, right now")}</h2>
+            <p class="mt-8 max-w-3xl text-base leading-loose" style="color:#4A3F31">{t("同じハタヨガでも、育てたい力と抱えている課題は年齢によって異なります。学校段階ごとに内容を組み立てます。", "Even within Hatha Yoga, the abilities to nurture and the challenges students face vary with age. Programs are designed for each stage of education.")}</p>
+            <div class="ja-tablist mt-12" role="tablist" aria-label={t("学校段階", "School levels")}>
               <button type="button" role="tab" id="tab-stage-es" aria-controls="panel-stage-es" aria-selected="true" data-tab="stage-es" class="ja-tab" style="--ja-tab-accent:var(--color-sage)">
-                <span class="block font-display text-lg leading-snug md:text-xl">小学校</span>
-                <span class="mt-1 block font-mono text-[12px] tracking-[0.16em]" style="opacity:.7">6〜12歳</span>
+                <span class="block font-display text-lg leading-snug md:text-xl">{t("小学校", "Elementary school")}</span>
+                <span class="mt-1 block font-mono text-[12px] tracking-[0.16em]" style="opacity:.7">{t("6〜12歳", "Ages 6–12")}</span>
               </button>
               <button type="button" role="tab" id="tab-stage-jhs" aria-controls="panel-stage-jhs" aria-selected="false" data-tab="stage-jhs" class="ja-tab" style="--ja-tab-accent:var(--color-camel-brown)">
-                <span class="block font-display text-lg leading-snug md:text-xl">中学校</span>
-                <span class="mt-1 block font-mono text-[12px] tracking-[0.16em]" style="opacity:.7">12〜15歳</span>
+                <span class="block font-display text-lg leading-snug md:text-xl">{t("中学校", "Junior high school")}</span>
+                <span class="mt-1 block font-mono text-[12px] tracking-[0.16em]" style="opacity:.7">{t("12〜15歳", "Ages 12–15")}</span>
               </button>
               <button type="button" role="tab" id="tab-stage-hs" aria-controls="panel-stage-hs" aria-selected="false" data-tab="stage-hs" class="ja-tab" style="--ja-tab-accent:var(--color-soft-terracotta)">
-                <span class="block font-display text-lg leading-snug md:text-xl">高校</span>
-                <span class="mt-1 block font-mono text-[12px] tracking-[0.16em]" style="opacity:.7">15〜18歳</span>
+                <span class="block font-display text-lg leading-snug md:text-xl">{t("高校", "High school")}</span>
+                <span class="mt-1 block font-mono text-[12px] tracking-[0.16em]" style="opacity:.7">{t("15〜18歳", "Ages 15–18")}</span>
               </button>
               <button type="button" role="tab" id="tab-stage-uni" aria-controls="panel-stage-uni" aria-selected="false" data-tab="stage-uni" class="ja-tab" style="--ja-tab-accent:var(--color-deep-olive)">
-                <span class="block font-display text-lg leading-snug md:text-xl">大学 ・ 専門学校</span>
-                <span class="mt-1 block font-mono text-[12px] tracking-[0.16em]" style="opacity:.7">18歳〜</span>
+                <span class="block font-display text-lg leading-snug md:text-xl">{t("大学 ・ 専門学校", "Universities and vocational colleges")}</span>
+                <span class="mt-1 block font-mono text-[12px] tracking-[0.16em]" style="opacity:.7">{t("18歳〜", "Ages 18+")}</span>
               </button>
             </div>
             <div class="ja-stage-panels grid">
@@ -102,23 +106,23 @@ import '../../../styles/yoga/pages/schools.css';
                 <div class="ja-stage-grid grid gap-8 md:gap-12">
                   <div>
                     <div style="display:flex;align-items:center;gap:16px">
-                      <p class="font-mono ja-sublabel" style="color:var(--color-deep-olive)">小学校 ・ 6〜12歳</p>
+                      <p class="font-mono ja-sublabel" style="color:var(--color-deep-olive)">{t("小学校 ・ 6〜12歳", "Elementary school · Ages 6–12")}</p>
                     </div>
-                    <h3 class="mt-5 font-display text-2xl leading-snug md:text-3xl">身体を動かし、自分に気づく力を育てる時期に</h3>
+                    <h3 class="mt-5 font-display text-2xl leading-snug md:text-3xl">{t("身体を動かし、自分に気づく力を育てる時期に", "A time to move the body and develop self-awareness")}</h3>
                   </div>
                   <div>
-                    <p class="text-base leading-loose" style="color:#4A3F31">スマートフォン、ゲーム、動画に触れる時間が増え、外で思いきり身体を動かす機会が少なくなっています。集中力が続かない。じっとしていることが難しい。気持ちの切り替えがうまくできない。運動不足や姿勢の乱れ、睡眠リズム、友人関係や学校生活へのストレスなど、幼い時期からさまざまな課題に向き合っています。</p>
+                    <p class="text-base leading-loose" style="color:#4A3F31">{t("スマートフォン、ゲーム、動画に触れる時間が増え、外で思いきり身体を動かす機会が少なくなっています。集中力が続かない。じっとしていることが難しい。気持ちの切り替えがうまくできない。運動不足や姿勢の乱れ、睡眠リズム、友人関係や学校生活へのストレスなど、幼い時期からさまざまな課題に向き合っています。", "As time spent with smartphones, games, and videos increases, there are fewer opportunities to move freely outdoors. Difficulty concentrating, sitting still, or shifting emotions can arise. From an early age, children face challenges including lack of exercise, poor posture, sleep patterns, friendships, and the stress of school life.")}</p>
                     <div class="mt-7" style="background:#E6E9D8;border-left:3px solid var(--color-sage);border-radius:0 6px 6px 0;padding:24px 28px">
-                      <p class="font-display text-lg leading-snug">ハタヨガ・瞑想でできること</p>
-                      <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">「動く」「感じる」「集中する」「静かになる」という体験を通して、集中力・身体感覚・姿勢・バランス・自分を落ち着かせる力の土台を育てます。</p>
+                      <p class="font-display text-lg leading-snug">{t("ハタヨガ・瞑想でできること", "How Hatha Yoga and meditation can help")}</p>
+                      <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">{t("「動く」「感じる」「集中する」「静かになる」という体験を通して、集中力・身体感覚・姿勢・バランス・自分を落ち着かせる力の土台を育てます。", "Through experiences of moving, sensing, focusing, and becoming still, students build foundations for concentration, body awareness, posture, balance, and the ability to calm themselves.")}</p>
                     </div>
-                    <p class="mt-8 font-display text-lg" style="color:var(--color-deep-olive)">小学校での導入例</p>
+                    <p class="mt-8 font-display text-lg" style="color:var(--color-deep-olive)">{t("小学校での導入例", "Examples for elementary schools")}</p>
                     <ul class="mt-4 grid gap-2.5">
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>体育・健康教育でのハタヨガ体験</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>集中力を育てるハタヨガ・瞑想授業</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>スマホ・ゲームなどデジタルとの付き合い方を考えるプログラム</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>身体を動かし、静かになる体験型プログラム</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>親子・PTA向け心と身体の健康プログラム</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>{t("体育・健康教育でのハタヨガ体験", "Hatha Yoga experiences in PE and health education")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>{t("集中力を育てるハタヨガ・瞑想授業", "Hatha Yoga and meditation classes to build concentration")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>{t("スマホ・ゲームなどデジタルとの付き合い方を考えるプログラム", "Programs exploring healthy relationships with smartphones, games, and digital media")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>{t("身体を動かし、静かになる体験型プログラム", "Experiential programs combining movement and stillness")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>{t("親子・PTA向け心と身体の健康プログラム", "Mind and body wellness programs for families and PTAs")}</span></li>
                     </ul>
                   </div>
                 </div>
@@ -130,23 +134,23 @@ import '../../../styles/yoga/pages/schools.css';
                 <div class="ja-stage-grid grid gap-8 md:gap-12">
                   <div>
                     <div style="display:flex;align-items:center;gap:16px">
-                      <p class="font-mono ja-sublabel" style="color:var(--color-camel-brown)">中学校 ・ 12〜15歳</p>
+                      <p class="font-mono ja-sublabel" style="color:var(--color-camel-brown)">{t("中学校 ・ 12〜15歳", "Junior high school · Ages 12–15")}</p>
                     </div>
-                    <h3 class="mt-5 font-display text-2xl leading-snug md:text-3xl">思春期の変化とストレスの中で、自分と向き合う力を育てる時期に</h3>
+                    <h3 class="mt-5 font-display text-2xl leading-snug md:text-3xl">{t("思春期の変化とストレスの中で、自分と向き合う力を育てる時期に", "A time to develop self-awareness amid the changes and stresses of adolescence")}</h3>
                   </div>
                   <div>
-                    <p class="text-base leading-loose" style="color:#4A3F31">心も身体も大きく変化する思春期。高校受験や成績へのプレッシャー、友人関係、SNS、周囲との比較など、さまざまなストレスを感じやすくなる時期です。長時間の勉強やスマートフォンによる姿勢の乱れ、運動不足、睡眠不足など、身体への負担も増えていきます。</p>
+                    <p class="text-base leading-loose" style="color:#4A3F31">{t("心も身体も大きく変化する思春期。高校受験や成績へのプレッシャー、友人関係、SNS、周囲との比較など、さまざまなストレスを感じやすくなる時期です。長時間の勉強やスマートフォンによる姿勢の乱れ、運動不足、睡眠不足など、身体への負担も増えていきます。", "Adolescence brings major changes to both mind and body. Entrance exams, pressure over grades, friendships, social media, and comparisons with others can bring increased stress. Long hours of studying and smartphone use, poor posture, lack of exercise, and insufficient sleep also place more strain on the body.")}</p>
                     <div class="mt-7" style="background:#F0E8D4;border-left:3px solid var(--color-camel-brown);border-radius:0 6px 6px 0;padding:24px 28px">
-                      <p class="font-display text-lg leading-snug">ハタヨガ・瞑想でできること</p>
-                      <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">勉強や情報、人間関係へ向き続けている意識を、一度自分自身へ戻す。集中力を取り戻し、身体の緊張に気づき、ストレスの中でも自分を整える体験につなげます。</p>
+                      <p class="font-display text-lg leading-snug">{t("ハタヨガ・瞑想でできること", "How Hatha Yoga and meditation can help")}</p>
+                      <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">{t("勉強や情報、人間関係へ向き続けている意識を、一度自分自身へ戻す。集中力を取り戻し、身体の緊張に気づき、ストレスの中でも自分を整える体験につなげます。", "Bring attention back to yourself after constantly focusing on studies, information, and relationships. Students experience regaining focus, noticing physical tension, and finding balance even amid stress.")}</p>
                     </div>
-                    <p class="mt-8 font-display text-lg" style="color:var(--color-camel-brown)">中学校での導入例</p>
+                    <p class="mt-8 font-display text-lg" style="color:var(--color-camel-brown)">{t("中学校での導入例", "Examples for junior high schools")}</p>
                     <ul class="mt-4 grid gap-2.5">
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-camel-brown);flex:none">✦</span><span>受験生向け集中力・心身コンディショニング</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-camel-brown);flex:none">✦</span><span>思春期の心と身体を整えるハタヨガ・瞑想授業</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-camel-brown);flex:none">✦</span><span>長時間の勉強による姿勢・身体のコンディショニング</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-camel-brown);flex:none">✦</span><span>ストレスマネジメントプログラム</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-camel-brown);flex:none">✦</span><span>学校の方針に合わせた少人数でのウェルビーイング活動</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-camel-brown);flex:none">✦</span><span>{t("受験生向け集中力・心身コンディショニング", "Concentration and mind-body conditioning for exam students")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-camel-brown);flex:none">✦</span><span>{t("思春期の心と身体を整えるハタヨガ・瞑想授業", "Hatha Yoga and meditation to support balance during adolescence")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-camel-brown);flex:none">✦</span><span>{t("長時間の勉強による姿勢・身体のコンディショニング", "Posture and physical conditioning for long hours of studying")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-camel-brown);flex:none">✦</span><span>{t("ストレスマネジメントプログラム", "Stress management programs")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-camel-brown);flex:none">✦</span><span>{t("学校の方針に合わせた少人数でのウェルビーイング活動", "Small-group wellbeing activities aligned with school policies")}</span></li>
                     </ul>
                   </div>
                 </div>
@@ -158,23 +162,23 @@ import '../../../styles/yoga/pages/schools.css';
                 <div class="ja-stage-grid grid gap-8 md:gap-12">
                   <div>
                     <div style="display:flex;align-items:center;gap:16px">
-                      <p class="font-mono ja-sublabel" style="color:var(--color-soft-terracotta)">高校 ・ 15〜18歳</p>
+                      <p class="font-mono ja-sublabel" style="color:var(--color-soft-terracotta)">{t("高校 ・ 15〜18歳", "High school · Ages 15–18")}</p>
                     </div>
-                    <h3 class="mt-5 font-display text-2xl leading-snug md:text-3xl">受験・進路・人間関係——自分を見失わない力を育てる時期に</h3>
+                    <h3 class="mt-5 font-display text-2xl leading-snug md:text-3xl">{t("受験・進路・人間関係——自分を見失わない力を育てる時期に", "Exams, future plans, and relationships: a time to learn to stay grounded")}</h3>
                   </div>
                   <div>
-                    <p class="text-base leading-loose" style="color:#4A3F31">大学受験、成績、進路、将来への不安。さらに、友人関係や恋愛、SNSでの比較など、自分自身や周囲との関係に心が揺れやすい時期でもあります。「自分は何をしたいのか」——人生について深く考え始める時期だからこそ、心身へのプレッシャーも大きくなります。</p>
+                    <p class="text-base leading-loose" style="color:#4A3F31">{t("大学受験、成績、進路、将来への不安。さらに、友人関係や恋愛、SNSでの比較など、自分自身や周囲との関係に心が揺れやすい時期でもあります。「自分は何をしたいのか」——人生について深く考え始める時期だからこそ、心身へのプレッシャーも大きくなります。", "University entrance exams, grades, career paths, and uncertainty about the future. Friendships, romance, and comparisons on social media can also make this a time of emotional uncertainty about oneself and others. As students begin asking what they want from life, the pressure on mind and body can grow.")}</p>
                     <div class="mt-7" style="background:#F7E6DC;border-left:3px solid var(--color-soft-terracotta);border-radius:0 6px 6px 0;padding:24px 28px">
-                      <p class="font-display text-lg leading-snug">ハタヨガ・瞑想でできること</p>
-                      <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">常に頭を使い続ける日常から少し離れ、心身の状態に気づき、自分自身を落ち着かせる時間をつくる。プレッシャーの中でも自分自身を見失わず、落ち着いて向き合える力を育てます。</p>
+                      <p class="font-display text-lg leading-snug">{t("ハタヨガ・瞑想でできること", "How Hatha Yoga and meditation can help")}</p>
+                      <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">{t("常に頭を使い続ける日常から少し離れ、心身の状態に気づき、自分自身を落ち着かせる時間をつくる。プレッシャーの中でも自分自身を見失わず、落ち着いて向き合える力を育てます。", "Take a little time away from the constant mental demands of daily life to notice the state of mind and body and settle within. Students develop the ability to stay grounded under pressure and meet challenges calmly.")}</p>
                     </div>
-                    <p class="mt-8 font-display text-lg" style="color:var(--color-soft-terracotta)">高校での導入例</p>
+                    <p class="mt-8 font-display text-lg" style="color:var(--color-soft-terracotta)">{t("高校での導入例", "Examples for high schools")}</p>
                     <ul class="mt-4 grid gap-2.5">
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-soft-terracotta);flex:none">✦</span><span>大学受験前の心身コンディショニング</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-soft-terracotta);flex:none">✦</span><span>受験・進路に向き合うためのストレスマネジメント</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-soft-terracotta);flex:none">✦</span><span>体育・保健授業でのハタヨガ・瞑想</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-soft-terracotta);flex:none">✦</span><span>部活動・アスリート向けハタヨガ</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-soft-terracotta);flex:none">✦</span><span>生徒のウェルビーイングを支える体験授業</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-soft-terracotta);flex:none">✦</span><span>{t("大学受験前の心身コンディショニング", "Mind-body conditioning before university entrance exams")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-soft-terracotta);flex:none">✦</span><span>{t("受験・進路に向き合うためのストレスマネジメント", "Stress management for exams and future decisions")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-soft-terracotta);flex:none">✦</span><span>{t("体育・保健授業でのハタヨガ・瞑想", "Hatha Yoga and meditation in PE and health classes")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-soft-terracotta);flex:none">✦</span><span>{t("部活動・アスリート向けハタヨガ", "Hatha Yoga for sports clubs and athletes")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-soft-terracotta);flex:none">✦</span><span>{t("生徒のウェルビーイングを支える体験授業", "Experiential classes supporting student wellbeing")}</span></li>
                     </ul>
                   </div>
                 </div>
@@ -186,23 +190,23 @@ import '../../../styles/yoga/pages/schools.css';
                 <div class="ja-stage-grid grid gap-8 md:gap-12">
                   <div>
                     <div style="display:flex;align-items:center;gap:16px">
-                      <p class="font-mono ja-sublabel" style="color:var(--color-deep-olive)">大学 ・ 専門学校</p>
+                      <p class="font-mono ja-sublabel" style="color:var(--color-deep-olive)">{t("大学 ・ 専門学校", "Universities and vocational colleges")}</p>
                     </div>
-                    <h3 class="mt-5 font-display text-2xl leading-snug md:text-3xl">社会に出る前に、自分自身を整える力を育てる時期に</h3>
+                    <h3 class="mt-5 font-display text-2xl leading-snug md:text-3xl">{t("社会に出る前に、自分自身を整える力を育てる時期に", "A time to build self-management skills before entering working life")}</h3>
                   </div>
                   <div>
-                    <p class="text-base leading-loose" style="color:#4A3F31">大学生活は自由が増える一方で、自分自身で生活や心身の状態を管理することが求められる時期です。学業、研究、就職活動、アルバイト、人間関係、将来への不安。一見普通に学生生活を送っていても、内側では不安や孤独、心の疲れを抱えていることもあります。</p>
+                    <p class="text-base leading-loose" style="color:#4A3F31">{t("大学生活は自由が増える一方で、自分自身で生活や心身の状態を管理することが求められる時期です。学業、研究、就職活動、アルバイト、人間関係、将来への不安。一見普通に学生生活を送っていても、内側では不安や孤独、心の疲れを抱えていることもあります。", "University offers greater freedom, while asking students to manage their own lives and wellbeing. Academics, research, job hunting, part-time work, relationships, and uncertainty about the future can all take their toll. Even students who seem to be doing well may be carrying anxiety, loneliness, or emotional fatigue.")}</p>
                     <div class="mt-7" style="background:#E6E9D8;border-left:3px solid var(--color-deep-olive);border-radius:0 6px 6px 0;padding:24px 28px">
-                      <p class="font-display text-lg leading-snug">ハタヨガ・瞑想でできること</p>
-                      <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">自分の心身の状態に気づき、絶え間ない情報から一度距離を置き、静かに自分自身と向き合う。「自分自身へ戻る方法」を知っていることは、一生を支える力になります。</p>
+                      <p class="font-display text-lg leading-snug">{t("ハタヨガ・瞑想でできること", "How Hatha Yoga and meditation can help")}</p>
+                      <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">{t("自分の心身の状態に気づき、絶え間ない情報から一度距離を置き、静かに自分自身と向き合う。「自分自身へ戻る方法」を知っていることは、一生を支える力になります。", "Notice the state of your mind and body, step back from the constant flow of information, and quietly turn inward. Knowing how to return to yourself can become a lifelong source of support.")}</p>
                     </div>
-                    <p class="mt-8 font-display text-lg" style="color:var(--color-deep-olive)">大学での導入例</p>
+                    <p class="mt-8 font-display text-lg" style="color:var(--color-deep-olive)">{t("大学での導入例", "Examples for universities")}</p>
                     <ul class="mt-4 grid gap-2.5">
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>学生ウェルビーイングプログラム</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>就職活動・キャリア支援と連携した心身コンディショニング</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>新入生向けセルフマネジメントプログラム</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>学生相談・保健センター等と連携したウェルビーイング企画</span></li>
-                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>大学スポーツ・運動部向けハタヨガ</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>{t("学生ウェルビーイングプログラム", "Student wellbeing programs")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>{t("就職活動・キャリア支援と連携した心身コンディショニング", "Mind-body conditioning alongside job hunting and career support")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>{t("新入生向けセルフマネジメントプログラム", "Self-management programs for new students")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>{t("学生相談・保健センター等と連携したウェルビーイング企画", "Wellbeing initiatives with student counseling and campus health centers")}</span></li>
+                      <li class="flex gap-3 text-sm leading-relaxed" style="color:#4A3F31"><span aria-hidden="true" style="color:var(--color-deep-olive);flex:none">✦</span><span>{t("大学スポーツ・運動部向けハタヨガ", "Hatha Yoga for university sports and athletic clubs")}</span></li>
                     </ul>
                   </div>
                 </div>
@@ -212,84 +216,84 @@ import '../../../styles/yoga/pages/schools.css';
           </div>
         </section>
 
-        <section id="data" class="scroll-mt-24" style="position:relative;background:linear-gradient(170deg,#E6E9D8 0%,#E6E9D8 46%,#F0E8D4 100%);overflow:hidden" data-screen-label="データ">
+        <section id="data" class="scroll-mt-24" style="position:relative;background:linear-gradient(170deg,#E6E9D8 0%,#E6E9D8 46%,#F0E8D4 100%);overflow:hidden" data-screen-label={t("データ", "Data")}>
           <div aria-hidden="true" style="position:absolute;left:-160px;bottom:-140px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(138,96,67,.28) 0%,rgba(138,96,67,0) 70%);pointer-events:none"></div>
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
-            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">データで見る　若い世代の今</p>
-            <h2 class="mt-6 max-w-3xl font-display text-3xl leading-[1.3] md:text-5xl">公的な統計からも、その現状がうかがえます</h2>
-            <p class="mt-8 max-w-3xl text-base leading-loose" style="color:#4C4632">課題の背景には、若い世代を取り巻く環境の変化があります。スマホ・SNSとの向き合い方から不登校、そして最も深刻な自殺者数まで——数字で見える現在地です。</p>
+            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">{t("データで見る　若い世代の今", "Young people today, in numbers")}</p>
+            <h2 class="mt-6 max-w-3xl font-display text-3xl leading-[1.3] md:text-5xl">{t("公的な統計からも、その現状がうかがえます", "Official statistics also reveal the current situation")}</h2>
+            <p class="mt-8 max-w-3xl text-base leading-loose" style="color:#4C4632">{t("課題の背景には、若い世代を取り巻く環境の変化があります。スマホ・SNSとの向き合い方から不登校、そして最も深刻な自殺者数まで——数字で見える現在地です。", "These challenges reflect a changing environment for young people. From smartphones and social media to school non-attendance and, most seriously, suicide, the numbers show where things stand.")}</p>
 
             <div class="mt-14" style="border-top:1px solid rgba(90,106,60,.28);padding-top:40px">
               <div class="flex flex-wrap items-end justify-between gap-4">
-                <h3 class="font-display text-2xl leading-snug">スマホ・SNSとストレス・不安</h3>
-                <p class="sc-note" style="max-width:26rem;color:var(--yl-soft)">出典：国立青少年教育振興機構「高校生のSNSの利用に関する調査報告書」（令和6年7月）</p>
+                <h3 class="font-display text-2xl leading-snug">{t("スマホ・SNSとストレス・不安", "Smartphones, social media, stress, and anxiety")}</h3>
+                <p class="sc-note" style="max-width:26rem;color:var(--yl-soft)">{t("出典：国立青少年教育振興機構「高校生のSNSの利用に関する調査報告書」（令和6年7月）", "Source: National Institution for Youth Education, Survey Report on High School Students' Use of Social Media (July 2024)")}</p>
               </div>
               <div class="mt-8 grid gap-5 md:grid-cols-2">
                 <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-left:5px solid var(--color-camel-brown);border-radius:6px;padding:32px 30px">
                   <p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">49.6%</p>
-                  <h4 class="mt-5 font-display text-xl leading-snug">SNSの利用開始が「中学1〜3年」</h4>
-                  <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">次いで「小学4〜6年」が28.5%。利用開始の低年齢化が進んでいます。</p>
+                  <h4 class="mt-5 font-display text-xl leading-snug">{t("SNSの利用開始が「中学1〜3年」", "Started using social media in junior high school")}</h4>
+                  <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">{t("次いで「小学4〜6年」が28.5%。利用開始の低年齢化が進んでいます。", "Next were grades 4–6 of elementary school, at 28.5%. Children are starting to use social media at younger ages.")}</p>
                 </div>
                 <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-left:5px solid var(--color-soft-terracotta);border-radius:6px;padding:32px 30px">
-                  <p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">3〜4割</p>
-                  <h4 class="mt-5 font-display text-xl leading-snug">SNS利用で気分の落ち込み・不眠を経験</h4>
-                  <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">日本の高校生で3〜4割、米国の同調査では約5割。利用時間の長さが要因とされています。</p>
+                  <p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">{t("3〜4割", "30–40%")}</p>
+                  <h4 class="mt-5 font-display text-xl leading-snug">{t("SNS利用で気分の落ち込み・不眠を経験", "Experienced low mood or insomnia while using social media")}</h4>
+                  <p class="mt-3 text-sm leading-relaxed" style="color:#4A3F31">{t("日本の高校生で3〜4割、米国の同調査では約5割。利用時間の長さが要因とされています。", "Reported by 30–40% of Japanese high school students and around 50% in the U.S. in the same survey. Longer usage time is identified as a factor.")}</p>
                 </div>
               </div>
             </div>
 
             <div class="mt-14" style="border-top:1px solid rgba(90,106,60,.28);padding-top:40px">
               <div class="flex flex-wrap items-end justify-between gap-4">
-                <h3 class="font-display text-2xl leading-snug">不登校｜最新全国調査</h3>
-                <p class="sc-note" style="max-width:26rem;color:var(--yl-soft)">出典：文部科学省 令和6年度調査（2025年10月公表）</p>
+                <h3 class="font-display text-2xl leading-snug">{t("不登校｜最新全国調査", "School non-attendance | Latest national survey")}</h3>
+                <p class="sc-note" style="max-width:26rem;color:var(--yl-soft)">{t("出典：文部科学省 令和6年度調査（2025年10月公表）", "Source: Ministry of Education, Culture, Sports, Science and Technology (MEXT), FY2024 survey (published October 2025)")}</p>
               </div>
               <div class="mt-8 grid gap-5 sm:grid-cols-3">
-                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-sage);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">137,704<span class="text-lg">人</span></p><h4 class="mt-5 font-display text-lg leading-snug">小学生</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">1,000人あたり 23.0人</p></div>
-                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-camel-brown);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">216,266<span class="text-lg">人</span></p><h4 class="mt-5 font-display text-lg leading-snug">中学生</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">1,000人あたり 67.9人</p></div>
-                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-soft-terracotta);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">67,782<span class="text-lg">人</span></p><h4 class="mt-5 font-display text-lg leading-snug">高校生</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">1,000人あたり 23.3人</p></div>
+                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-sage);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">137,704<span class="text-lg">{t("人", " students")}</span></p><h4 class="mt-5 font-display text-lg leading-snug">{t("小学生", "Elementary school students")}</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">{t("1,000人あたり 23.0人", "23.0 per 1,000 students")}</p></div>
+                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-camel-brown);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">216,266<span class="text-lg">{t("人", " students")}</span></p><h4 class="mt-5 font-display text-lg leading-snug">{t("中学生", "Junior high school students")}</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">{t("1,000人あたり 67.9人", "67.9 per 1,000 students")}</p></div>
+                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-soft-terracotta);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">67,782<span class="text-lg">{t("人", " students")}</span></p><h4 class="mt-5 font-display text-lg leading-snug">{t("高校生", "High school students")}</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">{t("1,000人あたり 23.3人", "23.3 per 1,000 students")}</p></div>
               </div>
               <div class="mt-5" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-radius:6px;padding:32px 30px 26px">
-                <p class="font-mono uppercase tracking-[0.22em] ja-sublabel">1,000人あたりの不登校児童・生徒数</p>
-                <div class="sc-chart-wrap mt-6"><canvas id="chartTruancy" role="img" aria-label="1,000人あたりの不登校児童・生徒数。小学生23.0人、中学生67.9人、高校生23.3人。"></canvas></div>
+                <p class="font-mono uppercase tracking-[0.22em] ja-sublabel">{t("1,000人あたりの不登校児童・生徒数", "School non-attendance per 1,000 students")}</p>
+                <div class="sc-chart-wrap mt-6"><canvas id="chartTruancy" role="img" aria-label={t("1,000人あたりの不登校児童・生徒数。小学生23.0人、中学生67.9人、高校生23.3人。", "School non-attendance per 1,000 students: 23.0 elementary, 67.9 junior high, and 23.3 high school students.")}></canvas></div>
               </div>
               <div class="mt-5 flex flex-wrap items-center justify-between gap-5" style="border:1px solid rgba(138,96,67,.4);background:#F9E7CB;border-radius:6px;padding:28px 32px">
-                <p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">353,970人</p>
-                <p class="max-w-xl text-sm leading-relaxed" style="color:#4A3F31">小・中学校の不登校児童生徒数の合計。12年連続で、過去最多を更新しています。</p>
+                <p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">{t("353,970人", "353,970 students")}</p>
+                <p class="max-w-xl text-sm leading-relaxed" style="color:#4A3F31">{t("小・中学校の不登校児童生徒数の合計。12年連続で、過去最多を更新しています。", "Total elementary and junior high school students not attending school. The number has reached a record high for 12 consecutive years.")}</p>
               </div>
             </div>
 
             <div class="mt-14" style="border-top:1px solid rgba(90,106,60,.28);padding-top:40px">
               <div class="flex flex-wrap items-end justify-between gap-4">
-                <h3 class="font-display text-2xl leading-snug">小・中・高校生の自殺者数｜2025年</h3>
-                <p class="sc-note" style="max-width:26rem;color:var(--yl-soft)">出典：警察庁「令和7年中における自殺の状況」確定値</p>
+                <h3 class="font-display text-2xl leading-snug">{t("小・中・高校生の自殺者数｜2025年", "Suicides among elementary, junior high, and high school students | 2025")}</h3>
+                <p class="sc-note" style="max-width:26rem;color:var(--yl-soft)">{t("出典：警察庁「令和7年中における自殺の状況」確定値", "Source: National Police Agency, Suicide in 2025, final figures")}</p>
               </div>
               <div class="mt-8 grid gap-5" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
                 <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-radius:6px;padding:32px 30px 26px">
-                  <p class="font-mono uppercase tracking-[0.22em] ja-sublabel">学校段階別の内訳</p>
-                  <div class="sc-chart-wrap mt-6"><canvas id="chartSuicide" role="img" aria-label="2025年の自殺者数。小学生10人、中学生172人、高校生356人。"></canvas></div>
+                  <p class="font-mono uppercase tracking-[0.22em] ja-sublabel">{t("学校段階別の内訳", "Breakdown by school level")}</p>
+                  <div class="sc-chart-wrap mt-6"><canvas id="chartSuicide" role="img" aria-label={t("2025年の自殺者数。小学生10人、中学生172人、高校生356人。", "Suicides in 2025: 10 elementary, 172 junior high, and 356 high school students.")}></canvas></div>
                 </div>
                 <div class="grid gap-5" style="align-content:start">
-                  <div class="sc-card flex flex-wrap items-baseline justify-between gap-4" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-left:5px solid var(--color-sage);border-radius:6px;padding:20px 26px"><h4 class="font-display text-lg leading-snug">小学生</h4><p class="font-display text-3xl leading-none" style="color:var(--color-warm-brown)">10<span class="text-lg">人</span></p></div>
-                  <div class="sc-card flex flex-wrap items-baseline justify-between gap-4" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-left:5px solid var(--color-camel-brown);border-radius:6px;padding:20px 26px"><h4 class="font-display text-lg leading-snug">中学生</h4><p class="font-display text-3xl leading-none" style="color:var(--color-warm-brown)">172<span class="text-lg">人</span></p></div>
-                  <div class="sc-card flex flex-wrap items-baseline justify-between gap-4" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-left:5px solid var(--color-soft-terracotta);border-radius:6px;padding:20px 26px"><h4 class="font-display text-lg leading-snug">高校生</h4><p class="font-display text-3xl leading-none" style="color:var(--color-warm-brown)">356<span class="text-lg">人</span></p></div>
-                  <div class="sc-card flex flex-wrap items-baseline justify-between gap-4" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-left:5px solid var(--color-deep-olive);border-radius:6px;padding:20px 26px"><h4 class="font-display text-lg leading-snug">合計</h4><p class="font-display text-3xl leading-none" style="color:var(--color-warm-brown)">538<span class="text-lg">人</span></p></div>
+                  <div class="sc-card flex flex-wrap items-baseline justify-between gap-4" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-left:5px solid var(--color-sage);border-radius:6px;padding:20px 26px"><h4 class="font-display text-lg leading-snug">{t("小学生", "Elementary school students")}</h4><p class="font-display text-3xl leading-none" style="color:var(--color-warm-brown)">10<span class="text-lg">{t("人", " students")}</span></p></div>
+                  <div class="sc-card flex flex-wrap items-baseline justify-between gap-4" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-left:5px solid var(--color-camel-brown);border-radius:6px;padding:20px 26px"><h4 class="font-display text-lg leading-snug">{t("中学生", "Junior high school students")}</h4><p class="font-display text-3xl leading-none" style="color:var(--color-warm-brown)">172<span class="text-lg">{t("人", " students")}</span></p></div>
+                  <div class="sc-card flex flex-wrap items-baseline justify-between gap-4" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-left:5px solid var(--color-soft-terracotta);border-radius:6px;padding:20px 26px"><h4 class="font-display text-lg leading-snug">{t("高校生", "High school students")}</h4><p class="font-display text-3xl leading-none" style="color:var(--color-warm-brown)">356<span class="text-lg">{t("人", " students")}</span></p></div>
+                  <div class="sc-card flex flex-wrap items-baseline justify-between gap-4" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-left:5px solid var(--color-deep-olive);border-radius:6px;padding:20px 26px"><h4 class="font-display text-lg leading-snug">{t("合計", "Total")}</h4><p class="font-display text-3xl leading-none" style="color:var(--color-warm-brown)">538<span class="text-lg">{t("人", " students")}</span></p></div>
                 </div>
               </div>
               <div class="mt-5 flex flex-wrap items-center justify-between gap-5" style="border:1px solid rgba(138,96,67,.4);background:#F9E7CB;border-radius:6px;padding:28px 32px">
-                <p class="font-display text-3xl leading-none" style="color:var(--color-warm-brown)">統計開始以降で最多</p>
-                <p class="max-w-xl text-sm leading-relaxed" style="color:#4A3F31">2025年の小・中・高校生の自殺者数は、統計のある1980年以降で最多となりました。</p>
+                <p class="font-display text-3xl leading-none" style="color:var(--color-warm-brown)">{t("統計開始以降で最多", "Highest since records began")}</p>
+                <p class="max-w-xl text-sm leading-relaxed" style="color:#4A3F31">{t("2025年の小・中・高校生の自殺者数は、統計のある1980年以降で最多となりました。", "In 2025, suicides among elementary, junior high, and high school students reached the highest level since records began in 1980.")}</p>
               </div>
             </div>
 
             <div class="mt-14" style="border-top:1px solid rgba(90,106,60,.28);padding-top:40px">
               <div class="flex flex-wrap items-end justify-between gap-4">
-                <h3 class="font-display text-2xl leading-snug">大学生の自殺に関するデータ</h3>
-                <p class="sc-note" style="max-width:26rem;color:var(--yl-soft)">警察庁 2025年職業別自殺統計／文部科学省「令和6年度 大学における死亡学生実態調査」</p>
+                <h3 class="font-display text-2xl leading-snug">{t("大学生の自殺に関するデータ", "Data on university student suicides")}</h3>
+                <p class="sc-note" style="max-width:26rem;color:var(--yl-soft)">{t("警察庁 2025年職業別自殺統計／文部科学省「令和6年度 大学における死亡学生実態調査」", "National Police Agency, 2025 suicide statistics by occupation / MEXT, FY2024 Survey of Student Deaths at Universities")}</p>
               </div>
               <div class="mt-8 grid gap-5 sm:grid-cols-3">
-                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-camel-brown);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">424<span class="text-lg">人</span></p><h4 class="mt-5 font-display text-lg leading-snug">大学生の自殺者数</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">2025年・警察庁</p></div>
-                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-soft-terracotta);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">306<span class="text-lg">人</span></p><h4 class="mt-5 font-display text-lg leading-snug">自殺またはその疑い</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">大学調査</p></div>
-                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-sage);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">11.0</p><h4 class="mt-5 font-display text-lg leading-snug">学生10万人あたり</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">調査方法・定義が異なるため、別の指標として表示</p></div>
+                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-camel-brown);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">424<span class="text-lg">{t("人", " students")}</span></p><h4 class="mt-5 font-display text-lg leading-snug">{t("大学生の自殺者数", "University student suicides")}</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">{t("2025年・警察庁", "2025 · National Police Agency")}</p></div>
+                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-soft-terracotta);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">306<span class="text-lg">{t("人", " students")}</span></p><h4 class="mt-5 font-display text-lg leading-snug">{t("自殺またはその疑い", "Confirmed or suspected suicides")}</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">{t("大学調査", "University survey")}</p></div>
+                <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-sage);border-radius:6px;padding:30px 28px"><p class="font-display text-4xl leading-none" style="color:var(--color-warm-brown)">11.0</p><h4 class="mt-5 font-display text-lg leading-snug">{t("学生10万人あたり", "per 100,000 students")}</h4><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">{t("調査方法・定義が異なるため、別の指標として表示", "Shown as separate measures because survey methods and definitions differ")}</p></div>
               </div>
             </div>
 
@@ -302,121 +306,121 @@ import '../../../styles/yoga/pages/schools.css';
                 <svg aria-hidden="true" viewBox="0 0 150 250" style="position:absolute;right:26px;top:-14px;width:clamp(96px,12vw,140px);color:var(--color-warm-brown);opacity:.28;pointer-events:none"><use href="#sc-stem"/></svg>
                 <div style="padding:clamp(34px,5vw,58px) clamp(26px,4vw,54px)">
                   <p class="font-mono uppercase tracking-[0.24em]" style="font-size:12px;color:var(--color-deep-olive)">Beyond the numbers</p>
-                  <h3 class="mt-6 max-w-xl font-display leading-[1.42]" style="font-size:clamp(24px,3.2vw,36px);color:#33301F">数字の向こう側には、<wbr />一人ひとりの人生があります。</h3>
+                  <h3 class="mt-6 max-w-xl font-display leading-[1.42]" style="font-size:clamp(24px,3.2vw,36px);color:#33301F">{t("数字の向こう側には、", "Behind every number,")}<wbr />{t("一人ひとりの人生があります。", "there is an individual life.")}</h3>
                   <p class="mt-5" style="font-family:Newsreader,serif;font-style:italic;font-size:19px;color:var(--color-warm-brown)">Three quiet practices</p>
                   <ul class="mt-10 grid gap-0">
-                    <li class="flex items-start gap-5" style="padding:22px 0;border-top:1px solid rgba(138,96,67,.34)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" style="color:var(--color-deep-olive);flex:none;margin-top:6px"><use href="#sc-leaf"/></svg><span class="text-base leading-loose" style="color:#4C4632">自分の心と身体の状態に気づくこと。</span></li>
-                    <li class="flex items-start gap-5" style="padding:22px 0;border-top:1px solid rgba(138,96,67,.34)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" style="color:var(--color-deep-olive);flex:none;margin-top:6px;transform:rotate(-14deg)"><use href="#sc-leaf"/></svg><span class="text-base leading-loose" style="color:#4C4632">自分自身を落ち着かせる方法を知ること。</span></li>
-                    <li class="flex items-start gap-5" style="padding:22px 0;border-top:1px solid rgba(138,96,67,.34);border-bottom:1px solid rgba(138,96,67,.34)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" style="color:var(--color-deep-olive);flex:none;margin-top:6px;transform:rotate(12deg)"><use href="#sc-leaf"/></svg><span class="text-base leading-loose" style="color:#4C4632">自分を整える習慣を身につけること。</span></li>
+                    <li class="flex items-start gap-5" style="padding:22px 0;border-top:1px solid rgba(138,96,67,.34)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" style="color:var(--color-deep-olive);flex:none;margin-top:6px"><use href="#sc-leaf"/></svg><span class="text-base leading-loose" style="color:#4C4632">{t("自分の心と身体の状態に気づくこと。", "Noticing the state of your mind and body.")}</span></li>
+                    <li class="flex items-start gap-5" style="padding:22px 0;border-top:1px solid rgba(138,96,67,.34)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" style="color:var(--color-deep-olive);flex:none;margin-top:6px;transform:rotate(-14deg)"><use href="#sc-leaf"/></svg><span class="text-base leading-loose" style="color:#4C4632">{t("自分自身を落ち着かせる方法を知ること。", "Knowing how to calm yourself.")}</span></li>
+                    <li class="flex items-start gap-5" style="padding:22px 0;border-top:1px solid rgba(138,96,67,.34);border-bottom:1px solid rgba(138,96,67,.34)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" style="color:var(--color-deep-olive);flex:none;margin-top:6px;transform:rotate(12deg)"><use href="#sc-leaf"/></svg><span class="text-base leading-loose" style="color:#4C4632">{t("自分を整える習慣を身につけること。", "Developing habits that help you find balance.")}</span></li>
                   </ul>
-                  <p class="mt-9 max-w-3xl text-sm leading-relaxed" style="color:var(--yl-soft)">それは、心身のウェルビーイングを支える教育の一つのアプローチになり得ます。学校・家庭・医療・専門機関などによる支援とともに、日々の教育の中で取り入れていただけます。</p>
+                  <p class="mt-9 max-w-3xl text-sm leading-relaxed" style="color:var(--yl-soft)">{t("それは、心身のウェルビーイングを支える教育の一つのアプローチになり得ます。学校・家庭・医療・専門機関などによる支援とともに、日々の教育の中で取り入れていただけます。", "This can be one educational approach to supporting mental and physical wellbeing. It can be incorporated into everyday education alongside support from schools, families, healthcare providers, and specialist services.")}</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="powers" class="scroll-mt-24" style="position:relative;background:var(--color-ivory-cream);overflow:hidden" data-screen-label="育てる力">
+        <section id="powers" class="scroll-mt-24" style="position:relative;background:var(--color-ivory-cream);overflow:hidden" data-screen-label={t("育てる力", "Skills to nurture")}>
           <svg aria-hidden="true" viewBox="0 0 700 700" style="position:absolute;right:-220px;bottom:-200px;width:min(600px,70vw);opacity:.5;pointer-events:none"><path d="M350 40 C 545 60 665 210 640 380 C 615 545 470 660 320 645 C 150 628 45 486 55 330 C 65 176 170 22 350 40 Z" fill="var(--color-warm-beige)" /><circle cx="350" cy="350" r="240" fill="none" stroke="#B09372" stroke-opacity=".38" /></svg>
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
-            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">育てる力</p>
-            <h2 class="mt-6 font-display text-3xl leading-[1.3] md:text-5xl">ハタヨガ・瞑想を通して育てたい6つの力</h2>
+            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">{t("育てる力", "Skills to nurture")}</p>
+            <h2 class="mt-6 font-display text-3xl leading-[1.3] md:text-5xl">{t("ハタヨガ・瞑想を通して育てたい6つの力", "Six abilities to develop through Hatha Yoga and meditation")}</h2>
             <div class="ja-grid3 mt-12 grid gap-5 sm:grid-cols-2">
               <div class="sc-card sc-rise" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:34px 30px 36px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#E6E9D8;border:1px solid rgba(138,96,67,.4);color:var(--color-deep-olive);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="10.5"/><circle cx="16" cy="16" r="4.5"/><path d="M16 2v4M16 26v4M2 16h4M26 16h4"/></svg></span>
-                <h3 class="mt-6 font-display text-xl leading-snug">集中する力</h3>
+                <h3 class="mt-6 font-display text-xl leading-snug">{t("集中する力", "The ability to focus")}</h3>
                 <div aria-hidden="true" style="width:34px;height:2px;background:var(--color-sage);margin:18px 0 16px"></div>
-                <p class="text-sm leading-relaxed" style="color:#4A3F31">外からの刺激に意識を奪われ続けるのではなく、「今ここ」に意識を戻す力を育てます。</p>
+                <p class="text-sm leading-relaxed" style="color:#4A3F31">{t("外からの刺激に意識を奪われ続けるのではなく、「今ここ」に意識を戻す力を育てます。", "Develop the ability to return attention to the present moment, rather than being constantly pulled toward outside distractions.")}</p>
               </div>
               <div class="sc-card sc-rise" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:34px 30px 36px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#F7E6DC;border:1px solid rgba(138,96,67,.4);color:var(--color-soft-terracotta);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 27C9.5 21.5 4.5 17.5 4.5 12.5A5.5 5.5 0 0 1 16 9.4a5.5 5.5 0 0 1 11.5 3.1C27.5 17.5 22.5 21.5 16 27Z"/></svg></span>
-                <h3 class="mt-6 font-display text-xl leading-snug">心を整える力</h3>
+                <h3 class="mt-6 font-display text-xl leading-snug">{t("心を整える力", "The ability to balance the mind")}</h3>
                 <div aria-hidden="true" style="width:34px;height:2px;background:var(--color-soft-terracotta);margin:18px 0 16px"></div>
-                <p class="text-sm leading-relaxed" style="color:#4A3F31">感情や思考に振り回されるのではなく、「今、自分はどんな状態なのか」に気づく力を育てます。</p>
+                <p class="text-sm leading-relaxed" style="color:#4A3F31">{t("感情や思考に振り回されるのではなく、「今、自分はどんな状態なのか」に気づく力を育てます。", "Develop awareness of your current state, rather than being swept along by thoughts and emotions.")}</p>
               </div>
               <div class="sc-card sc-rise" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:34px 30px 36px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#F0E8D4;border:1px solid rgba(138,96,67,.4);color:var(--color-camel-brown);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="6" r="3"/><path d="M16 9v9M8 13h16M16 18l-4 11M16 18l4 11"/></svg></span>
-                <h3 class="mt-6 font-display text-xl leading-snug">身体を整える力</h3>
+                <h3 class="mt-6 font-display text-xl leading-snug">{t("身体を整える力", "The ability to care for the body")}</h3>
                 <div aria-hidden="true" style="width:34px;height:2px;background:var(--color-camel-brown);margin:18px 0 16px"></div>
-                <p class="text-sm leading-relaxed" style="color:#4A3F31">姿勢、柔軟性、バランス、身体感覚を養い、自分の身体を大切にする意識を育てます。</p>
+                <p class="text-sm leading-relaxed" style="color:#4A3F31">{t("姿勢、柔軟性、バランス、身体感覚を養い、自分の身体を大切にする意識を育てます。", "Cultivate posture, flexibility, balance, and body awareness, along with a sense of care for your own body.")}</p>
               </div>
               <div class="sc-card sc-rise" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:34px 30px 36px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#E6E9D8;border:1px solid rgba(138,96,67,.4);color:var(--color-deep-olive);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3l11 4v8c0 7-4.6 11.8-11 14-6.4-2.2-11-7-11-14V7l11-4Z"/><path d="M11.5 16.5l3 3 6-6.5"/></svg></span>
-                <h3 class="mt-6 font-display text-xl leading-snug">ストレスと向き合う力</h3>
+                <h3 class="mt-6 font-display text-xl leading-snug">{t("ストレスと向き合う力", "The ability to meet stress")}</h3>
                 <div aria-hidden="true" style="width:34px;height:2px;background:var(--color-deep-olive);margin:18px 0 16px"></div>
-                <p class="text-sm leading-relaxed" style="color:#4A3F31">ストレスのない人生を目指すのではなく、プレッシャーや変化の中でも自分を整える力を育てます。</p>
+                <p class="text-sm leading-relaxed" style="color:#4A3F31">{t("ストレスのない人生を目指すのではなく、プレッシャーや変化の中でも自分を整える力を育てます。", "Rather than aiming for a life without stress, develop the ability to find balance amid pressure and change.")}</p>
               </div>
               <div class="sc-card sc-rise" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:34px 30px 36px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#E6E9D8;border:1px solid rgba(138,96,67,.4);color:var(--color-deep-olive);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 27c-6 0-11-4-11-9 3.6 0 6.4 1.4 8.2 3.4"/><path d="M16 27c6 0 11-4 11-9-3.6 0-6.4 1.4-8.2 3.4"/><path d="M16 27c-3.6-3-5.4-6.6-5.4-10.2 0-4 1.8-7.4 5.4-11.8 3.6 4.4 5.4 7.8 5.4 11.8 0 3.6-1.8 7.2-5.4 10.2Z"/></svg></span>
-                <h3 class="mt-6 font-display text-xl leading-snug">自分自身とつながる力</h3>
+                <h3 class="mt-6 font-display text-xl leading-snug">{t("自分自身とつながる力", "The ability to connect with yourself")}</h3>
                 <div aria-hidden="true" style="width:34px;height:2px;background:var(--color-sage);margin:18px 0 16px"></div>
-                <p class="text-sm leading-relaxed" style="color:#4A3F31">SNSや周囲からの評価、比較から少し離れ、静かに自分自身を感じる時間を持つ力を育みます。</p>
+                <p class="text-sm leading-relaxed" style="color:#4A3F31">{t("SNSや周囲からの評価、比較から少し離れ、静かに自分自身を感じる時間を持つ力を育みます。", "Develop the ability to step back from social media, others' judgments, and comparison, and take time to quietly sense yourself.")}</p>
               </div>
               <div class="sc-card sc-rise" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:34px 30px 36px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#F0E8D4;border:1px solid rgba(138,96,67,.4);color:#B09372;flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="6"/><path d="M16 2v4M16 26v4M2 16h4M26 16h4M6.5 6.5l3 3M22.5 22.5l3 3M25.5 6.5l-3 3M9.5 22.5l-3 3"/></svg></span>
-                <h3 class="mt-6 font-display text-xl leading-snug">生き生きと生きる力</h3>
+                <h3 class="mt-6 font-display text-xl leading-snug">{t("生き生きと生きる力", "The ability to live with vitality")}</h3>
                 <div aria-hidden="true" style="width:34px;height:2px;background:#B09372;margin:18px 0 16px"></div>
-                <p class="text-sm leading-relaxed" style="color:#4A3F31">本来持っている活力をより生き生きと発揮できる、元気に自分らしく生きる力を育てます。</p>
+                <p class="text-sm leading-relaxed" style="color:#4A3F31">{t("本来持っている活力をより生き生きと発揮できる、元気に自分らしく生きる力を育てます。", "Develop the ability to express your natural vitality more fully and live with energy, as yourself.")}</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="program" class="scroll-mt-24" style="position:relative;background:linear-gradient(165deg,#E6E9D8 0%,var(--color-warm-beige) 100%);overflow:hidden" data-screen-label="プログラム">
+        <section id="program" class="scroll-mt-24" style="position:relative;background:linear-gradient(165deg,#E6E9D8 0%,var(--color-warm-beige) 100%);overflow:hidden" data-screen-label={t("プログラム", "Programs")}>
           <div aria-hidden="true" style="position:absolute;left:-120px;top:-120px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(208,138,94,.3) 0%,rgba(208,138,94,0) 70%);pointer-events:none"></div>
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
-            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">プログラム設計</p>
-            <h2 class="mt-6 font-display text-3xl leading-[1.3] md:text-5xl">対象年齢、人数、目的、課題に合わせて</h2>
-            <p class="mt-8 max-w-3xl text-base leading-loose" style="color:#4A3F31">小学校・中学校・高校・大学・専門学校など、学校が現在抱えている課題に合わせて内容を組み立てます。授業時間や学校行事に合わせて柔軟にご相談いただけます。</p>
+            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">{t("プログラム設計", "Program design")}</p>
+            <h2 class="mt-6 font-display text-3xl leading-[1.3] md:text-5xl">{t("対象年齢、人数、目的、課題に合わせて", "Tailored to age, group size, goals, and challenges")}</h2>
+            <p class="mt-8 max-w-3xl text-base leading-loose" style="color:#4A3F31">{t("小学校・中学校・高校・大学・専門学校など、学校が現在抱えている課題に合わせて内容を組み立てます。授業時間や学校行事に合わせて柔軟にご相談いただけます。", "Programs are designed around the challenges each elementary school, junior high school, high school, university, or vocational college currently faces. Timing can be adapted to class schedules and school events.")}</p>
 
             <div class="mt-12 grid gap-5" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
               <div class="sc-card sc-rise" style="position:relative;overflow:hidden;background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:30px 28px 32px;display:flex;flex-direction:column;gap:18px">
                 <span aria-hidden="true" style="position:absolute;right:-38px;top:-38px;width:110px;height:110px;border-radius:50%;background:#E6E9D8"></span>
                 <div style="position:relative;display:flex;align-items:center;gap:16px">
                   <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--color-paper);border:1px solid var(--color-sage);color:var(--color-deep-olive);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="11" r="4.5"/><path d="M4 27c0-4.4 3.6-8 8-8s8 3.6 8 8"/><path d="M22 8.5a4.5 4.5 0 0 1 0 9M24 27c0-3.4-1-5.9-2.6-7.4"/></svg></span>
-                  <h3 class="font-display text-xl leading-snug">体験授業</h3>
+                  <h3 class="font-display text-xl leading-snug">{t("体験授業", "Introductory classes")}</h3>
                 </div>
-                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">全校・学年単位での実施</p>
+                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">{t("全校・学年単位での実施", "For whole schools or year groups")}</p>
               </div>
               <div class="sc-card sc-rise" style="position:relative;overflow:hidden;background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:30px 28px 32px;display:flex;flex-direction:column;gap:18px">
                 <span aria-hidden="true" style="position:absolute;right:-38px;top:-38px;width:110px;height:110px;border-radius:50%;background:#F0E8D4"></span>
                 <div style="position:relative;display:flex;align-items:center;gap:16px">
                   <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--color-paper);border:1px solid var(--color-camel-brown);color:var(--color-camel-brown);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h8a4 4 0 0 1 3 3v18a3.4 3.4 0 0 0-3-2.4H5V6Z"/><path d="M27 6h-8a4 4 0 0 0-3 3v18a3.4 3.4 0 0 1 3-2.4h8V6Z"/></svg></span>
-                  <h3 class="font-display text-xl leading-snug">教科授業</h3>
+                  <h3 class="font-display text-xl leading-snug">{t("教科授業", "Curriculum classes")}</h3>
                 </div>
-                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">体育・保健授業への組み込み</p>
+                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">{t("体育・保健授業への組み込み", "Integrated into PE and health education")}</p>
               </div>
               <div class="sc-card sc-rise" style="position:relative;overflow:hidden;background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:30px 28px 32px;display:flex;flex-direction:column;gap:18px">
                 <span aria-hidden="true" style="position:absolute;right:-38px;top:-38px;width:110px;height:110px;border-radius:50%;background:#F7E6DC"></span>
                 <div style="position:relative;display:flex;align-items:center;gap:16px">
                   <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--color-paper);border:1px solid var(--color-soft-terracotta);color:var(--color-soft-terracotta);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="10.5"/><circle cx="16" cy="16" r="4.5"/><path d="M16 2v4M16 26v4M2 16h4M26 16h4"/></svg></span>
-                  <h3 class="font-display text-xl leading-snug">受験対策</h3>
+                  <h3 class="font-display text-xl leading-snug">{t("受験対策", "Exam preparation")}</h3>
                 </div>
-                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">受験生向け集中力プログラム</p>
+                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">{t("受験生向け集中力プログラム", "Concentration programs for exam students")}</p>
               </div>
               <div class="sc-card sc-rise" style="position:relative;overflow:hidden;background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:30px 28px 32px;display:flex;flex-direction:column;gap:18px">
                 <span aria-hidden="true" style="position:absolute;right:-38px;top:-38px;width:110px;height:110px;border-radius:50%;background:#E6E9D8"></span>
                 <div style="position:relative;display:flex;align-items:center;gap:16px">
                   <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--color-paper);border:1px solid var(--color-deep-olive);color:var(--color-deep-olive);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h5l3.5-9L17 26l3.5-9H29"/></svg></span>
-                  <h3 class="font-display text-xl leading-snug">部活動</h3>
+                  <h3 class="font-display text-xl leading-snug">{t("部活動", "Club activities")}</h3>
                 </div>
-                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">アスリート・運動部向け</p>
+                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">{t("アスリート・運動部向け", "For athletes and sports clubs")}</p>
               </div>
               <div class="sc-card sc-rise" style="position:relative;overflow:hidden;background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:30px 28px 32px;display:flex;flex-direction:column;gap:18px">
                 <span aria-hidden="true" style="position:absolute;right:-38px;top:-38px;width:110px;height:110px;border-radius:50%;background:#F0E8D4"></span>
                 <div style="position:relative;display:flex;align-items:center;gap:16px">
                   <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--color-paper);border:1px solid #B09372;color:#B09372;flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 26s-8-4.6-8-10.4A4.6 4.6 0 0 1 16 12a4.6 4.6 0 0 1 8 3.6C24 21.4 16 26 16 26Z"/><path d="M6 26h4M22 26h4"/></svg></span>
-                  <h3 class="font-display text-xl leading-snug">学生支援</h3>
+                  <h3 class="font-display text-xl leading-snug">{t("学生支援", "Student support")}</h3>
                 </div>
-                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">学生相談・保健センターと連携</p>
+                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">{t("学生相談・保健センターと連携", "In partnership with counseling and health centers")}</p>
               </div>
               <div class="sc-card sc-rise" style="position:relative;overflow:hidden;background:var(--color-paper);border:1px solid rgba(138,96,67,.32);border-radius:6px;padding:30px 28px 32px;display:flex;flex-direction:column;gap:18px">
                 <span aria-hidden="true" style="position:absolute;right:-38px;top:-38px;width:110px;height:110px;border-radius:50%;background:#E6E9D8"></span>
                 <div style="position:relative;display:flex;align-items:center;gap:16px">
                   <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--color-paper);border:1px solid var(--color-sage);color:var(--color-deep-olive);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h24M6 5v13h20V5M16 18v5M11 28l5-5 5 5"/></svg></span>
-                  <h3 class="font-display text-xl leading-snug">研修</h3>
+                  <h3 class="font-display text-xl leading-snug">{t("研修", "Training")}</h3>
                 </div>
-                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">教職員・PTA向けプログラム</p>
+                <p class="text-sm leading-relaxed" style="position:relative;color:#4A3F31">{t("教職員・PTA向けプログラム", "Programs for teachers, staff, and PTAs")}</p>
               </div>
             </div>
 
@@ -424,59 +428,59 @@ import '../../../styles/yoga/pages/schools.css';
               <div style="display:flex;align-items:center;gap:16px">
                 <span aria-hidden="true" class="sc-icon" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#F9E7CB;border:1px solid rgba(138,96,67,.5);color:var(--color-warm-brown);flex:none"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v7.5l5 3"/></svg></span>
                 <div>
-                  <p class="font-mono uppercase tracking-[0.22em] ja-sublabel">実施時間</p>
-                  <p class="mt-1 font-display text-xl leading-snug">1コマの体験授業から、学期を通した継続プログラムまで</p>
+                  <p class="font-mono uppercase tracking-[0.22em] ja-sublabel">{t("実施時間", "Session length")}</p>
+                  <p class="mt-1 font-display text-xl leading-snug">{t("1コマの体験授業から、学期を通した継続プログラムまで", "From a single introductory class to an ongoing program across a term")}</p>
                 </div>
               </div>
               <div class="flex flex-wrap gap-3">
-                <span class="font-display text-lg" style="background:#E6E9D8;border:1px solid rgba(130,145,95,.65);color:var(--color-deep-olive);border-radius:999px;padding:12px 28px">30分</span>
-                <span class="font-display text-lg" style="background:#EDE2CB;border:1px solid rgba(177,123,85,.6);color:var(--color-warm-brown);border-radius:999px;padding:12px 28px">60分</span>
-                <span class="font-display text-lg" style="background:#F8E5D9;border:1px solid rgba(208,138,94,.65);color:var(--color-warm-brown);border-radius:999px;padding:12px 28px">90分</span>
-                <span class="font-display text-lg" style="background:#F0E8D4;border:1px solid rgba(138,96,67,.7);color:#7C6321;border-radius:999px;padding:12px 28px">2時間</span>
+                <span class="font-display text-lg" style="background:#E6E9D8;border:1px solid rgba(130,145,95,.65);color:var(--color-deep-olive);border-radius:999px;padding:12px 28px">{t("30分", "30 minutes")}</span>
+                <span class="font-display text-lg" style="background:#EDE2CB;border:1px solid rgba(177,123,85,.6);color:var(--color-warm-brown);border-radius:999px;padding:12px 28px">{t("60分", "60 minutes")}</span>
+                <span class="font-display text-lg" style="background:#F8E5D9;border:1px solid rgba(208,138,94,.65);color:var(--color-warm-brown);border-radius:999px;padding:12px 28px">{t("90分", "90 minutes")}</span>
+                <span class="font-display text-lg" style="background:#F0E8D4;border:1px solid rgba(138,96,67,.7);color:#7C6321;border-radius:999px;padding:12px 28px">{t("2時間", "2 hours")}</span>
               </div>
-              <p class="text-sm leading-relaxed" style="color:#4A3F31">全国からご相談いただけます。授業時間・学年数・実施場所に合わせて構成をご提案します。</p>
+              <p class="text-sm leading-relaxed" style="color:#4A3F31">{t("全国からご相談いただけます。授業時間・学年数・実施場所に合わせて構成をご提案します。", "Inquiries are welcome from across Japan. A format will be proposed to suit your class schedule, year groups, and venue.")}</p>
             </div>
           </div>
         </section>
 
-        <section id="instructor" class="scroll-mt-24" style="background:var(--color-ivory-cream)" data-screen-label="講師">
+        <section id="instructor" class="scroll-mt-24" style="background:var(--color-ivory-cream)" data-screen-label={t("講師", "Teacher")}>
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10">
-            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">講師紹介</p>
-            <h2 class="mt-6 font-display text-3xl leading-[1.3] md:text-5xl">この本物のハタヨガを、直接お伝えします</h2>
+            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">{t("講師紹介", "Your teacher")}</p>
+            <h2 class="mt-6 font-display text-3xl leading-[1.3] md:text-5xl">{t("この本物のハタヨガを、直接お伝えします", "Authentic Hatha Yoga, taught directly")}</h2>
             <div class="mt-12 grid gap-10 md:grid-cols-[280px_1fr] md:gap-16">
               <div class="sc-portrait" style="position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:56% 44% 52% 48% / 48% 42% 58% 52%;border:1px solid color-mix(in srgb, var(--color-warm-brown) 55%, transparent);background:var(--color-warm-beige);box-shadow:0 30px 54px -28px color-mix(in srgb, var(--color-text-primary) 42%, transparent)">
-                <picture><source type="image/webp" srcset="/hatha-yoga/assets/setsuko-about.webp" /><img src="/hatha-yoga/assets/setsuko-about.jpg" alt="秦 節子" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:0" /></picture>
+                <picture><source type="image/webp" srcset="/hatha-yoga/assets/setsuko-about.webp" /><img src="/hatha-yoga/assets/setsuko-about.jpg" alt={t("秦 節子", "Setsuko Hata")} loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:0" /></picture>
               </div>
               <div>
-                <h3 class="font-display text-3xl leading-snug">秦 節子（Setsuko Hata）</h3>
-                <p class="mt-3 font-display text-lg md:text-xl" style="color:var(--color-warm-brown)">サドグル公認ハタヨガ講師 ／ 学校向けプログラム</p>
+                <h3 class="font-display text-3xl leading-snug">{t("秦 節子（Setsuko Hata）", "Setsuko Hata")}</h3>
+                <p class="mt-3 font-display text-lg md:text-xl" style="color:var(--color-warm-brown)">{t("サドグル公認ハタヨガ講師 ／ 学校向けプログラム", "Sadhguru-certified Hatha Yoga teacher / School programs")}</p>
                 <ul class="mt-8 grid gap-5">
-                  <li class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.3);border-left:4px solid var(--color-sage);border-radius:6px;padding:22px 26px"><p class="font-display text-xl leading-snug">サドグル公認ハタヨガ講師</p><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">この資格を持つ日本人はわずか6名。そのうちの1人。</p></li>
-                  <li class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.3);border-left:4px solid var(--color-camel-brown);border-radius:6px;padding:22px 26px"><p class="font-display text-xl leading-snug">インドで1年半、ヨガの修行</p><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">1,750時間超の集中トレーニングを修了。</p></li>
-                  <li class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.3);border-left:4px solid var(--color-soft-terracotta);border-radius:6px;padding:22px 26px"><p class="font-display text-xl leading-snug">その前は13年間、米国のジャズ界で</p><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">作曲家・プロミュージシャンとして活動。伝える力と表現力。</p></li>
-                  <li class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.3);border-left:4px solid var(--color-deep-olive);border-radius:6px;padding:22px 26px"><p class="font-display text-xl leading-snug">科学に裏づけられたヨガ系統</p><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">ハーバードの研究対象と同じ、サドグルにより体系化されたハタヨガを指導。</p></li>
+                  <li class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.3);border-left:4px solid var(--color-sage);border-radius:6px;padding:22px 26px"><p class="font-display text-xl leading-snug">{t("サドグル公認ハタヨガ講師", "Sadhguru-certified Hatha Yoga teacher")}</p><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">{t("この資格を持つ日本人はわずか6名。そのうちの1人。", "One of only six Japanese people with this certification.")}</p></li>
+                  <li class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.3);border-left:4px solid var(--color-camel-brown);border-radius:6px;padding:22px 26px"><p class="font-display text-xl leading-snug">{t("インドで1年半、ヨガの修行", "A year and a half of yoga training in India")}</p><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">{t("1,750時間超の集中トレーニングを修了。", "Completed more than 1,750 hours of intensive training.")}</p></li>
+                  <li class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.3);border-left:4px solid var(--color-soft-terracotta);border-radius:6px;padding:22px 26px"><p class="font-display text-xl leading-snug">{t("その前は13年間、米国のジャズ界で", "Previously, 13 years in the U.S. jazz world")}</p><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">{t("作曲家・プロミュージシャンとして活動。伝える力と表現力。", "Worked as a composer and professional musician, developing communication and expressive skills.")}</p></li>
+                  <li class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.3);border-left:4px solid var(--color-deep-olive);border-radius:6px;padding:22px 26px"><p class="font-display text-xl leading-snug">{t("科学に裏づけられたヨガ系統", "A yoga tradition supported by science")}</p><p class="mt-2 text-sm leading-relaxed" style="color:#4A3F31">{t("ハーバードの研究対象と同じ、サドグルにより体系化されたハタヨガを指導。", "Teaches Hatha Yoga systematized by Sadhguru, the same tradition studied by Harvard researchers.")}</p></li>
                 </ul>
-                <p class="mt-8"><a href="/hatha-yoga/ja/about/" class="text-base" style="border-bottom:1px solid var(--color-warm-brown);padding-bottom:2px">講師紹介をくわしく見る</a></p>
+                <p class="mt-8"><a href={`/hatha-yoga/${locale}/about/`} class="text-base" style="border-bottom:1px solid var(--color-warm-brown);padding-bottom:2px">{t("講師紹介をくわしく見る", "Learn more about your teacher")}</a></p>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="contact" class="scroll-mt-24" style="position:relative;background:linear-gradient(155deg,#F0E8D4 0%,var(--color-warm-beige) 48%,#E6D3B2 100%);overflow:hidden" data-screen-label="お問い合わせ">
+        <section id="contact" class="scroll-mt-24" style="position:relative;background:linear-gradient(155deg,#F0E8D4 0%,var(--color-warm-beige) 48%,#E6D3B2 100%);overflow:hidden" data-screen-label={t("お問い合わせ", "Contact")}>
           <div aria-hidden="true" style="position:absolute;right:-140px;top:-140px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(208,138,94,.32) 0%,rgba(208,138,94,0) 70%);pointer-events:none"></div>
           <div aria-hidden="true" style="position:absolute;left:-120px;bottom:-160px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(130,145,95,.3) 0%,rgba(130,145,95,0) 70%);pointer-events:none"></div>
           <div class="mx-auto w-full max-w-6xl px-6 md:px-10" style="position:relative">
-            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">お問い合わせ</p>
-            <h2 class="mt-6 max-w-3xl font-display text-3xl leading-[1.3] md:text-5xl" style="color:var(--yl-text)">ヨガ・瞑想を、これからの教育へ。</h2>
-            <p class="mt-8 max-w-2xl text-base leading-loose" style="color:#4A3F31">学校が現在抱えている課題、対象年齢、人数、授業時間などをお伺いしたうえで、最適なプログラムをご提案いたします。全国からご相談いただけます。</p>
+            <p class="font-mono uppercase tracking-[0.24em] ja-eyebrow">{t("お問い合わせ", "Contact")}</p>
+            <h2 class="mt-6 max-w-3xl font-display text-3xl leading-[1.3] md:text-5xl" style="color:var(--yl-text)">{t("ヨガ・瞑想を、これからの教育へ。", "Yoga and meditation for the future of education.")}</h2>
+            <p class="mt-8 max-w-2xl text-base leading-loose" style="color:#4A3F31">{t("学校が現在抱えている課題、対象年齢、人数、授業時間などをお伺いしたうえで、最適なプログラムをご提案いたします。全国からご相談いただけます。", "After discussing your school's current challenges, students' ages, group size, and class schedule, a suitable program will be proposed. Inquiries are welcome from across Japan.")}</p>
             <div class="mt-10 flex flex-wrap gap-4">
-              <a href="mailto:yoga@setsukohata.com?subject=学校向けハタヨガ・瞑想プログラムのお問い合わせ" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium">出張授業・講演について相談する</a>
+              <a href={t("mailto:yoga@setsukohata.com?subject=学校向けハタヨガ・瞑想プログラムのお問い合わせ", "mailto:yoga@setsukohata.com?subject=Inquiry%20about%20Hatha%20Yoga%20and%20Meditation%20for%20Schools")} class="inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium">{t("出張授業・講演について相談する", "Discuss a school visit or talk")}</a>
                           </div>
             <div class="mt-14 grid gap-5 sm:grid-cols-2" style="border-top:1px solid rgba(138,96,67,.45);padding-top:40px">
-              <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-sage);border-radius:6px;padding:24px 26px"><p class="font-mono uppercase tracking-[0.22em]" style="color:var(--color-deep-olive)">担当</p><p class="mt-4 text-sm leading-relaxed" style="color:#4A3F31">秦 節子（Setsuko Hata）<br />サドグル公認ハタヨガ講師</p></div>
-                            <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-soft-terracotta);border-radius:6px;padding:24px 26px"><p class="font-mono uppercase tracking-[0.22em]" style="color:var(--color-warm-brown)">メール</p><p class="mt-4 text-sm leading-relaxed"><a href="mailto:yoga@setsukohata.com" style="color:var(--color-warm-brown)">yoga@setsukohata.com</a></p></div>
+              <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-sage);border-radius:6px;padding:24px 26px"><p class="font-mono uppercase tracking-[0.22em]" style="color:var(--color-deep-olive)">{t("担当", "Contact person")}</p><p class="mt-4 text-sm leading-relaxed" style="color:#4A3F31">{t("秦 節子（Setsuko Hata）", "Setsuko Hata")}<br />{t("サドグル公認ハタヨガ講師", "Sadhguru-certified Hatha Yoga teacher")}</p></div>
+                            <div class="sc-card" style="background:var(--color-paper);border:1px solid rgba(138,96,67,.34);border-top:4px solid var(--color-soft-terracotta);border-radius:6px;padding:24px 26px"><p class="font-mono uppercase tracking-[0.22em]" style="color:var(--color-warm-brown)">{t("メール", "Email")}</p><p class="mt-4 text-sm leading-relaxed"><a href="mailto:yoga@setsukohata.com" style="color:var(--color-warm-brown)">yoga@setsukohata.com</a></p></div>
             </div>
-            <p class="mt-10 max-w-3xl text-sm leading-relaxed" style="color:var(--yl-soft)">本ページに掲載の統計は、各出典元の公表データに基づきます。</p>
+            <p class="mt-10 max-w-3xl text-sm leading-relaxed" style="color:var(--yl-soft)">{t("本ページに掲載の統計は、各出典元の公表データに基づきます。", "Statistics on this page are based on published data from the sources listed.")}</p>
           </div>
         </section>
 </YogaLayout>

@@ -1,57 +1,61 @@
 ---
+interface Props { locale?: 'ja' | 'en'; }
+const { locale = 'ja' } = Astro.props;
+const t = (ja: string, en: string) => locale === 'en' ? en : ja;
+
 import YogaLayout from '../../../layouts/YogaLayout.astro';
 import { BOOKING_FORM_URL, yogaHref } from '../../../data/yoga';
 import '../../../styles/yoga/pages/hatha.css';
 ---
-<YogaLayout title="ハタヨガとは | Setsuko Hata Yoga"
-  description="ヨガとは、『ユニオン』ー自身の生命と宇宙が一体になった状態のこと。ハタヨガの科学について。"
-  locale="ja"
+<YogaLayout title={t("ハタヨガとは | Setsuko Hata Yoga", "What is Hatha Yoga? | Setsuko Hata Yoga")}
+  description={t("ヨガとは、『ユニオン』ー自身の生命と宇宙が一体になった状態のこと。ハタヨガの科学について。", "Yoga means union: a state in which your life and the universe become one. Explore the science of Hatha Yoga.")}
+  locale={locale}
   active="hatha-yoga"
   bodyClass="page-hatha"
   mainLook={false}
 >
   <!-- Hero: sun and moon window -->
-  <section class="hy hy-hero yoga-hero-photo" data-screen-label="バナー">
+  <section class="hy hy-hero yoga-hero-photo" data-screen-label={t("バナー", "Banner")}>
     <picture>
       <source type="image/webp" media="(max-width: 900px)" srcset="/hatha-yoga/assets/threshold-1000.webp" />
       <source type="image/webp" srcset="/hatha-yoga/assets/threshold.webp" />
       <source type="image/jpeg" media="(max-width: 900px)" srcset="/hatha-yoga/assets/threshold-1000.jpg" />
-      <img src="/hatha-yoga/assets/threshold.jpg" alt="日と月が向かい合う円窓と、積まれた石" class="hy-hero__img" fetchpriority="high" width="1600" height="1067" />
+      <img src="/hatha-yoga/assets/threshold.jpg" alt={t("日と月が向かい合う円窓と、積まれた石", "A round window with the sun and moon facing each other, beside stacked stones")} class="hy-hero__img" fetchpriority="high" width="1600" height="1067" />
     </picture>
     <div class="hy-hero__shade" aria-hidden="true"></div>
     <div class="hy-wrap">
       <div class="hy-hero__copy">
         <p class="hy-eyebrow">Hatha Yoga</p>
-        <h1>ハタヨガとは</h1>
-        <p class="hy-hero__lead">「ハ」は太陽、「タ」は月。私たちの内側にある二つのエネルギーを整える科学です。</p>
+        <h1>{t("ハタヨガとは", "What is Hatha Yoga?")}</h1>
+        <p class="hy-hero__lead">{t("「ハ」は太陽、「タ」は月。私たちの内側にある二つのエネルギーを整える科学です。", "Ha means sun; tha means moon. Hatha Yoga is a science of balancing these two energies within us.")}</p>
       </div>
     </div>
   </section>
 
   <!-- Union -->
-  <section class="hy hy-split" data-screen-label="ユニオン">
+  <section class="hy hy-split" data-screen-label={t("ユニオン", "Union")}>
     <img class="hy-sprig" src="/hatha-yoga/assets/deco/leaf-sprig.webp" alt="" aria-hidden="true" loading="lazy" />
     <div class="hy-wrap hy-split__grid">
       <div class="hy-text sc-rise">
         <div class="hy-head">
-          <h2>ヨガとは、『ユニオン』ー自身の生命と宇宙が一体になった状態のこと。</h2>
+          <h2>{t("ヨガとは、『ユニオン』ー自身の生命と宇宙が一体になった状態のこと。", "Yoga means union: a state in which your life and the universe become one.")}</h2>
         </div>
         <div class="hy-body">
-          <p>ヨガは、ポーズを取ったり身体を柔軟にすることではありません。</p>
-          <p>ヨガとは何かを「する」ものではないのです。<br />自身の生命と宇宙が一体になった状態、その状態そのものを、ヨガと呼びます。</p>
+          <p>{t("ヨガは、ポーズを取ったり身体を柔軟にすることではありません。", "Yoga is not about striking poses or making the body more flexible.")}</p>
+          <p>{t("ヨガとは何かを「する」ものではないのです。", "Yoga is not something you ‘do.’")}<br />{t("自身の生命と宇宙が一体になった状態、その状態そのものを、ヨガと呼びます。", "The very state in which your life and the universe become one is called yoga.")}</p>
         </div>
       </div>
       <figure class="hy-photo sc-rise">
         <picture>
           <source type="image/webp" srcset="/hatha-yoga/assets/sun.webp" />
-          <img src="/hatha-yoga/assets/sun.jpg" alt="木漏れ日" loading="lazy" width="800" height="1421" style="object-position:50% 30%" />
+          <img src="/hatha-yoga/assets/sun.jpg" alt={t("木漏れ日", "Sunlight filtering through leaves")} loading="lazy" width="800" height="1421" style="object-position:50% 30%" />
         </picture>
       </figure>
     </div>
   </section>
 
   <!-- Transcendence band -->
-  <section class="hy hy-band" data-screen-label="超越">
+  <section class="hy hy-band" data-screen-label={t("超越", "Beyond identity")}>
     <div class="hy-wrap hy-band__inner sc-rise">
       <div class="hy-emblem" aria-hidden="true">
         <span class="hy-emblem__line"></span>
@@ -61,79 +65,79 @@ import '../../../styles/yoga/pages/hatha.css';
         </span>
         <span class="hy-emblem__line"></span>
       </div>
-      <h2>あらゆる自己のアイデンティティーを超越し、<br class="hy-br" />ただ一つの生命として宇宙と一体化する。</h2>
-      <p>その状態を意識的に作っていく。<br />それを可能にするのが、ハタヨガの科学です。</p>
+      <h2>{t("あらゆる自己のアイデンティティーを超越し、", "Moving beyond every identity,")}<br class="hy-br" />{t("ただ一つの生命として宇宙と一体化する。", "becoming one with the universe as a single life.")}</h2>
+      <p>{t("その状態を意識的に作っていく。", "Consciously creating that state.")}<br />{t("それを可能にするのが、ハタヨガの科学です。", "The science of Hatha Yoga makes this possible.")}</p>
     </div>
   </section>
 
   <!-- Distance -->
-  <section class="hy hy-split hy-split--reverse" data-screen-label="距離">
+  <section class="hy hy-split hy-split--reverse" data-screen-label={t("距離", "Creating space")}>
     <div class="hy-wrap hy-split__grid">
       <figure class="hy-photo hy-photo--tall sc-rise">
         <picture>
           <source type="image/webp" srcset="/hatha-yoga/assets/photos/garden-path.webp" />
-          <img src="/hatha-yoga/assets/photos/garden-path.jpg" alt="石灯籠と飛び石の続く日本庭園の小径" loading="lazy" width="1024" height="1536" />
+          <img src="/hatha-yoga/assets/photos/garden-path.jpg" alt={t("石灯籠と飛び石の続く日本庭園の小径", "A Japanese garden path with stone lanterns and stepping stones")} loading="lazy" width="1024" height="1536" />
         </picture>
       </figure>
       <div class="hy-text sc-rise">
         <div class="hy-head">
-          <h2>ハタヨガの実践をすると、自分という意識と、身体と心のあいだに距離を作っていくことができます。</h2>
+          <h2>{t("ハタヨガの実践をすると、自分という意識と、身体と心のあいだに距離を作っていくことができます。", "Through Hatha Yoga, you can create a distance between your awareness of yourself and your body and mind.")}</h2>
         </div>
         <div class="hy-body">
-          <p>この距離ができてはじめて、身体も心も、自分の思い通りに使えるようになる。そこから、生命の可能性は開花しはじめます。</p>
+          <p>{t("この距離ができてはじめて、身体も心も、自分の思い通りに使えるようになる。そこから、生命の可能性は開花しはじめます。", "Only when this space exists can you begin to use your body and mind as you wish. From there, the possibilities of life begin to unfold.")}</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Ha and Tha: full-bleed split with the sun/moon emblem -->
-  <section class="hy hy-bleed" data-screen-label="ハとタ">
+  <section class="hy hy-bleed" data-screen-label={t("ハとタ", "Ha and tha")}>
     <div class="hy-bleed__text">
       <div class="hy-bleed__inner sc-rise">
         <div class="hy-head">
-          <h2>ハタヨガの「ハ」は太陽、「タ」は月。</h2>
+          <h2>{t("ハタヨガの「ハ」は太陽、「タ」は月。", "In Hatha Yoga, ha means sun and tha means moon.")}</h2>
         </div>
-        <p class="hy-bleed__sub">私たちの内側にある、太陽と月。陽と陰。二つのエネルギーを意味します。</p>
+        <p class="hy-bleed__sub">{t("私たちの内側にある、太陽と月。陽と陰。二つのエネルギーを意味します。", "They represent the sun and moon within us: yang and yin, two energies.")}</p>
         <div class="hy-body">
-          <p>心身のあらゆる不調は、この二つのエネルギーのバランスが崩れることから始まります。しかし本来、健康とは手に入れるものではなく、私たちがはじめから持っている状態です。</p>
+          <p>{t("心身のあらゆる不調は、この二つのエネルギーのバランスが崩れることから始まります。しかし本来、健康とは手に入れるものではなく、私たちがはじめから持っている状態です。", "Imbalances in body and mind begin when these two energies fall out of balance. Yet health is not something to acquire; it is the state we naturally possess.")}</p>
         </div>
       </div>
     </div>
     <figure class="hy-bleed__art">
-      <img src="/hatha-yoga/assets/deco/sun-moon-emblem.jpg" alt="雲のあいだで向かい合う太陽と三日月を描いた金色の円" loading="lazy" width="575" height="575" />
+      <img src="/hatha-yoga/assets/deco/sun-moon-emblem.jpg" alt={t("雲のあいだで向かい合う太陽と三日月を描いた金色の円", "A golden circle depicting the sun and crescent moon facing each other among clouds")} loading="lazy" width="575" height="575" />
     </figure>
   </section>
 
   <!-- Balance -->
-  <section class="hy hy-split" data-screen-label="太陽と月">
+  <section class="hy hy-split" data-screen-label={t("太陽と月", "Sun and moon")}>
     <div class="hy-wrap hy-split__grid">
       <div class="hy-text sc-rise">
         <div class="hy-head">
-          <h2>ハタヨガは、自分の中の太陽と月のバランスを整える科学です。</h2>
+          <h2>{t("ハタヨガは、自分の中の太陽と月のバランスを整える科学です。", "Hatha Yoga is a science of balancing the sun and moon within you.")}</h2>
         </div>
         <div class="hy-body">
-          <p>エネルギーの調和が戻れば、自然と本来の健康なあり方へと戻っていく。<br />それを土台に、あなたの生命の無限大の可能性を開いていく。</p>
+          <p>{t("エネルギーの調和が戻れば、自然と本来の健康なあり方へと戻っていく。", "When harmony returns to your energies, you naturally return to your original state of health.")}<br />{t("それを土台に、あなたの生命の無限大の可能性を開いていく。", "With this as your foundation, you can open the limitless possibilities of your life.")}</p>
         </div>
       </div>
       <figure class="hy-photo sc-rise">
         <picture>
           <source type="image/webp" srcset="/hatha-yoga/assets/moon.webp" />
-          <img src="/hatha-yoga/assets/moon.jpg" alt="夜空の満月" loading="lazy" width="800" height="1422" style="object-position:50% 44%" />
+          <img src="/hatha-yoga/assets/moon.jpg" alt={t("夜空の満月", "A full moon in the night sky")} loading="lazy" width="800" height="1422" style="object-position:50% 44%" />
         </picture>
       </figure>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="hy hy-cta" data-screen-label="ヨガの道">
+  <section class="hy hy-cta" data-screen-label={t("ヨガの道", "The path of yoga")}>
     <img class="hy-cta__leaf hy-cta__leaf--l" src="/hatha-yoga/assets/deco/leaf-branch.webp" alt="" aria-hidden="true" loading="lazy" />
     <img class="hy-cta__leaf hy-cta__leaf--r" src="/hatha-yoga/assets/deco/leaf-branch.webp" alt="" aria-hidden="true" loading="lazy" />
     <div class="hy-wrap hy-cta__inner sc-rise">
-      <h2 class="hy-cta__title">これがヨガの道なのです。</h2>
-      <p class="hy-cta__sub">まずは一度、通常のクラスをそのまま体験していただけます。</p>
+      <h2 class="hy-cta__title">{t("これがヨガの道なのです。", "This is the path of yoga.")}</h2>
+      <p class="hy-cta__sub">{t("まずは一度、通常のクラスをそのまま体験していただけます。", "Begin by experiencing one of our regular classes just as it is.")}</p>
       <div class="hy-cta__actions">
-        <a class="hy-btn" href={BOOKING_FORM_URL} target="_blank" rel="noreferrer">体験レッスンを予約する</a>
-        <a class="hy-link" href={yogaHref('ja', 'offerings')}>クラスを見る</a>
+        <a class="hy-btn" href={BOOKING_FORM_URL} target="_blank" rel="noreferrer">{t("体験レッスンを予約する", "Book a trial lesson")}</a>
+        <a class="hy-link" href={yogaHref(locale, 'offerings')}>{t("クラスを見る", "Explore classes")}</a>
       </div>
     </div>
   </section>

@@ -1,30 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { translator, type Locale } from '../data/personal-i18n';
+interface Props { locale?: Locale; }
+const { locale = 'ja' } = Astro.props;
+const t = translator(locale);
+
 import ExploreCards from '../components/ExploreCards.astro';
 
 const videoUrl = 'https://www.youtube.com/watch?v=vX_uhpmGQmQ';
 const instagramUrl = 'https://www.instagram.com/setsuko_hata/';
 
 const bio = [
-  '秦 節子。大阪府出身。ジャズシンガー、作曲家、編曲家、ハタヨガ講師。大阪市立大学生活科学部食品栄養学科卒業。21歳で躁うつ病を経験するも克服し、2011年に音楽を学ぶため渡米。',
-  'その後13年間、ニューヨーク、コロラド、ロサンゼルスを拠点に、プロのジャズシンガー・作曲家として活動。ニューヨークでジャズボーカルを学び、北コロラド大学大学院ではジャズに加え、ビッグバンド、オーケストラ、映画音楽など幅広いジャンルの作曲・編曲を研究。同大学では日本人初となる教授アシスタントを務めた。',
-  '全米各地で演奏活動を行いながら、ロサンゼルスの名門ジャズクラブ Catalina Jazz Club にてソロコンサートを開催するなど、多数の自主企画公演をプロデュース。2024年には読売テレビのドキュメンタリー番組「グッと！地球便」に出演し、ジャズシンガーとしての活動が特集された。',
-  '2024年には Isha Foundation にて約1年半にわたりヨガと瞑想を探求。1,750時間を超える厳格なトレーニングを修了し、Sadhguru 公認のハタヨガ講師資格を取得。現在、日本国内で認定を受けた講師はわずか4名のみであり、その一人として活動している。',
-  'セツコの音楽は、ジャズの伝統に根ざしながらも、人生の探求、内なる成長、そして自然とのつながりを独自の世界観で表現している。2026年より活動拠点を日本へ移し、「ストレスやうつに苦しむ人を一人でも減らし、一人ひとりが本来持つ可能性を開花できる社会をつくる」というビジョンのもと活動を展開。音楽を通じて人々の心に希望と感動を届けるとともに、ハタヨガ講師として人生を変革するための実践的なツールを伝えている。',
-  '音楽とヨガという二つのアプローチを通じて、人々の内なる生命力と可能性を呼び覚ますことを活動のテーマとしている。',
+  t("秦 節子。大阪府出身。ジャズシンガー、作曲家、編曲家、ハタヨガ講師。大阪市立大学生活科学部食品栄養学科卒業。21歳で躁うつ病を経験するも克服し、2011年に音楽を学ぶため渡米。", "Setsuko Hata is a jazz singer, composer, arranger, and Hatha Yoga teacher from Osaka. She graduated from the Department of Food and Nutrition in the Faculty of Human Life Science at Osaka City University. After experiencing and overcoming bipolar disorder at 21, she moved to the United States in 2011 to study music."),
+  t("その後13年間、ニューヨーク、コロラド、ロサンゼルスを拠点に、プロのジャズシンガー・作曲家として活動。ニューヨークでジャズボーカルを学び、北コロラド大学大学院ではジャズに加え、ビッグバンド、オーケストラ、映画音楽など幅広いジャンルの作曲・編曲を研究。同大学では日本人初となる教授アシスタントを務めた。", "For the next 13 years, she worked as a professional jazz singer and composer in New York, Colorado, and Los Angeles. She studied jazz vocals in New York, then pursued graduate studies at the University of Northern Colorado, exploring composition and arranging for jazz, big band, orchestra, and film. She became the university’s first Japanese teaching assistant."),
+  t("全米各地で演奏活動を行いながら、ロサンゼルスの名門ジャズクラブ Catalina Jazz Club にてソロコンサートを開催するなど、多数の自主企画公演をプロデュース。2024年には読売テレビのドキュメンタリー番組「グッと！地球便」に出演し、ジャズシンガーとしての活動が特集された。", "While performing throughout the United States, she produced many of her own concerts, including a solo concert at the renowned Catalina Jazz Club in Los Angeles. In 2024, Yomiuri TV’s documentary program Gutto! Chikyubin featured her work as a jazz singer."),
+  t("2024年には Isha Foundation にて約1年半にわたりヨガと瞑想を探求。1,750時間を超える厳格なトレーニングを修了し、Sadhguru 公認のハタヨガ講師資格を取得。現在、日本国内で認定を受けた講師はわずか4名のみであり、その一人として活動している。", "In 2024, she began exploring yoga and meditation at Isha Foundation over approximately a year and a half. She completed more than 1,750 hours of rigorous training and became a Sadhguru-certified Hatha Yoga teacher. She is one of only four certified teachers currently working in Japan."),
+  t("セツコの音楽は、ジャズの伝統に根ざしながらも、人生の探求、内なる成長、そして自然とのつながりを独自の世界観で表現している。2026年より活動拠点を日本へ移し、「ストレスやうつに苦しむ人を一人でも減らし、一人ひとりが本来持つ可能性を開花できる社会をつくる」というビジョンのもと活動を展開。音楽を通じて人々の心に希望と感動を届けるとともに、ハタヨガ講師として人生を変革するための実践的なツールを伝えている。", "Rooted in the jazz tradition, Setsuko’s music expresses her distinctive perspective on the search for meaning in life, inner growth, and our connection to nature. From 2026, she is based in Japan, working toward a society where fewer people suffer from stress and depression, and everyone can realize their innate potential. Through music, she shares hope and inspiration, while offering practical tools for transforming one’s life as a Hatha Yoga teacher."),
+  t("音楽とヨガという二つのアプローチを通じて、人々の内なる生命力と可能性を呼び覚ますことを活動のテーマとしている。", "Through the two paths of music and yoga, her work seeks to awaken people’s inner vitality and potential."),
 ];
 
 const journey = [
-  { year: '2011', title: 'To America', body: '音楽を学ぶため渡米。ニューヨークでジャズボーカルを学ぶ。' },
-  { year: '2011–24', title: 'New York · Colorado · Los Angeles', body: '北コロラド大学大学院で作曲・編曲を研究。同大学で日本人初の教授アシスタントを務める。' },
-  { year: '2024', title: 'Yoga & Meditation', body: 'Isha Foundationで1,750時間超のトレーニングを修了し、ハタヨガ講師資格を取得。' },
-  { year: '2026', title: 'Home to Japan', body: '活動拠点を日本へ。東京で新たなステージへ。' },
+  { year: '2011', title: t("アメリカへ", "To America"), body: t("音楽を学ぶため渡米。ニューヨークでジャズボーカルを学ぶ。", "Moved to the United States to study music, beginning with jazz vocals in New York.") },
+  { year: '2011–24', title: t("ニューヨーク・コロラド・ロサンゼルス", "New York · Colorado · Los Angeles"), body: t("北コロラド大学大学院で作曲・編曲を研究。同大学で日本人初の教授アシスタントを務める。", "Studied composition and arranging at the University of Northern Colorado graduate school and became the university’s first Japanese teaching assistant.") },
+  { year: '2024', title: t("ヨガと瞑想", "Yoga & Meditation"), body: t("Isha Foundationで1,750時間超のトレーニングを修了し、ハタヨガ講師資格を取得。", "Completed more than 1,750 hours of training at Isha Foundation and qualified as a Hatha Yoga teacher.") },
+  { year: '2026', title: t("日本へ", "Home to Japan"), body: t("活動拠点を日本へ。東京で新たなステージへ。", "Moved her base to Japan, beginning a new chapter in Tokyo.") },
 ];
 ---
 
 <Layout
-  title="音楽 | 秦 節子 Setsuko Hata — ジャズシンガー"
-  description="ジャズシンガー・作曲家・編曲家 秦節子（Setsuko Hata）。ニューヨーク・コロラド・ロサンゼルスで13年間活動し、2026年より東京を拠点に。歌声と歩みを紹介します。"
+  locale={locale}
+  title={t("音楽 | 秦 節子 Setsuko Hata — ジャズシンガー", "Music | Setsuko Hata — Jazz Singer")}
+  description={t("ジャズシンガー・作曲家・編曲家 秦節子（Setsuko Hata）。ニューヨーク・コロラド・ロサンゼルスで13年間活動し、2026年より東京を拠点に。歌声と歩みを紹介します。", "Discover the voice and journey of jazz singer, composer, and arranger Setsuko Hata. After 13 years in New York, Colorado, and Los Angeles, she is based in Tokyo from 2026.")}
   active="music"
   footer="none"
 >
@@ -37,11 +43,11 @@ const journey = [
   <div class="jazz">
     <section class="jazz-hero">
       <div class="jazz-hero__inner">
-        <p class="jazz-hero__eyebrow" lang="en">Jazz Vocalist · Composer · Arranger</p>
-        <h1 class="jazz-hero__title" lang="en">Setsuko <em>Hata</em></h1>
-        <p class="jazz-hero__sub">秦 節子 ─ ジャズシンガー</p>
+        <p class="jazz-hero__eyebrow" lang={locale}>{t("ジャズ歌手・作曲家・編曲家", "Jazz Vocalist · Composer · Arranger")}</p>
+        <h1 class="jazz-hero__title" lang={locale}>Setsuko <em>Hata</em></h1>
+        <p class="jazz-hero__sub">{t("秦 節子 ─ ジャズシンガー", "Setsuko Hata — Jazz Singer")}</p>
         <div class="jazz-hero__actions">
-          <a class="jazz-btn" href="#listen" lang="en">Listen</a>
+          <a class="jazz-btn" href="#listen" lang={locale}>{t("聴く", "Listen")}</a>
         </div>
       </div>
     </section>
@@ -51,15 +57,15 @@ const journey = [
         <img
           class="jazz-artist__photo"
           src="/assets/jazz-headshot.jpg"
-          alt="Setsuko Hata singing"
+          alt={t("歌う秦 節子", "Setsuko Hata singing")}
           width="1090"
           height="1030"
           loading="lazy"
           decoding="async"
         />
         <div class="jazz-artist__text" data-reveal>
-          <p class="jazz-label" lang="en">The Artist</p>
-          <h2 class="jazz-lead" lang="en">A song for life <em>itself</em>.</h2>
+          <p class="jazz-label" lang={locale}>{t("アーティストについて", "The Artist")}</p>
+          <h2 class="jazz-lead" lang={locale}>{t("生命", "A song for life ")}<em>{t("そのもの", "itself")}</em>{t("への歌。", ".")}</h2>
           <div class="jazz-artist__bio">
             {bio.map((para) => <p>{para}</p>)}
           </div>
@@ -71,14 +77,14 @@ const journey = [
 
     <section class="jazz-section">
       <div data-reveal>
-        <p class="jazz-label" lang="en">The Journey</p>
+        <p class="jazz-label" lang={locale}>{t("これまでの歩み", "The Journey")}</p>
         <ol class="jazz-journey">
           {
             journey.map((j) => (
               <li class="jazz-journey__item">
-                <div class="jazz-journey__year" lang="en">{j.year}</div>
+                <div class="jazz-journey__year" lang={locale}>{j.year}</div>
                 <div>
-                  <div class="jazz-journey__title" lang="en">{j.title}</div>
+                  <div class="jazz-journey__title" lang={locale}>{j.title}</div>
                   <div class="jazz-journey__body">{j.body}</div>
                 </div>
               </li>
@@ -90,39 +96,39 @@ const journey = [
 
     <section id="listen" class="jazz-section">
       <div class="jazz-listen" data-reveal>
-        <p class="jazz-label" lang="en">Listen</p>
-        <h2 class="jazz-lead jazz-lead--spaced" lang="en">Hear the <em>voice</em>.</h2>
+        <p class="jazz-label" lang={locale}>{t("聴く", "Listen")}</p>
+        <h2 class="jazz-lead jazz-lead--spaced" lang={locale}>{t("歌声", "Hear the ")}<em>{t("を聴く", "voice")}</em>{t("。", ".")}</h2>
         <a class="jazz-video" href={videoUrl} target="_blank" rel="noopener">
           <div class="jazz-video__thumb">
             <img
               src="https://img.youtube.com/vi/vX_uhpmGQmQ/hqdefault.jpg"
-              alt="Setsuko Hata performance video"
+              alt={t("秦 節子の演奏動画", "Setsuko Hata performance video")}
               loading="lazy"
               decoding="async"
             />
             <div class="jazz-video__play" aria-hidden="true"><span>▶</span></div>
           </div>
-          <div class="jazz-video__cap" lang="en">Watch on YouTube ↗</div>
+          <div class="jazz-video__cap" lang={locale}>{t("YouTubeで見る ↗", "Watch on YouTube ↗")}</div>
         </a>
       </div>
     </section>
 
     <section id="connect" class="jazz-connect">
       <div data-reveal>
-        <h2 class="jazz-connect__title" lang="en">Stay close to the <em>sound</em>.</h2>
-        <p class="jazz-connect__jp">最新情報はInstagramで。</p>
+        <h2 class="jazz-connect__title" lang={locale}>{t("音楽と", "Stay close to the ")}<em>{t("つながる", "sound")}</em>{t("。", ".")}</h2>
+        <p class="jazz-connect__jp">{t("最新情報はInstagramで。", "Follow the latest news on Instagram.")}</p>
         <div class="jazz-connect__links">
-          <a class="jazz-btn jazz-btn--solid" href={instagramUrl} target="_blank" rel="noopener" lang="en">@setsuko_hata ↗</a>
-          <a class="jazz-textlink" href={videoUrl} target="_blank" rel="noopener" lang="en">YouTube ↗</a>
+          <a class="jazz-btn jazz-btn--solid" href={instagramUrl} target="_blank" rel="noopener" lang={locale}>@setsuko_hata ↗</a>
+          <a class="jazz-textlink" href={videoUrl} target="_blank" rel="noopener" lang={locale}>YouTube ↗</a>
         </div>
       </div>
     </section>
 
-    <div class="jazz-signoff" lang="en">
+    <div class="jazz-signoff" lang={locale}>
       <div class="jazz-signoff__name">SETSUKO HATA</div>
-      <div class="jazz-signoff__tag">Jazz Vocalist · Tokyo</div>
+      <div class="jazz-signoff__tag">{t("ジャズ歌手・東京", "Jazz Vocalist · Tokyo")}</div>
     </div>
   </div>
 
-  <ExploreCards reveal show={['yoga', 'home']} />
+  <ExploreCards locale={locale} reveal show={['yoga', 'home']} />
 </Layout>

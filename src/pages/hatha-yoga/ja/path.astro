@@ -1,4 +1,8 @@
 ---
+interface Props { locale?: 'ja' | 'en'; }
+const { locale = 'ja' } = Astro.props;
+const t = (ja: string, en: string) => locale === 'en' ? en : ja;
+
 // The path into Hatha Yoga: starting-point quiz on top, the course flow (ヨガ講座・研修の流れ) below.
 // Two starting points side by side: ウパヨガ1 (対面・オンライン) and スーリヤ・クリヤ.
 // ウパヨガ1 → 2 → 3 → 4 → スーリヤ・クリヤ → アンガマルダナ or ヨガアーサナ.
@@ -10,66 +14,66 @@ import { SURYA_KRIYA_FORM_URL, SATORIN_PAGE_URL, yogaHref } from '../../../data/
 import '../../../styles/yoga/pages/classes.css';
 import '../../../styles/yoga/pages/path.css';
 
-const offerings = yogaHref('ja', 'offerings');
-const types = (hash: string) => yogaHref('ja', 'hatha-types', hash);
-const contact = yogaHref('ja', 'contact');
+const offerings = yogaHref(locale, 'offerings');
+const types = (hash: string) => yogaHref(locale, 'hatha-types', hash);
+const contact = yogaHref(locale, 'contact');
 
 const upaSteps = [
-  { id: 'fl-upa2', name: 'ウパヨガ 2', next: 'fl-upa3' },
-  { id: 'fl-upa3', name: 'ウパヨガ 3', next: 'fl-upa4' },
-  { id: 'fl-upa4', name: 'ウパヨガ 4', next: 'fl-surya' },
+  { id: 'fl-upa2', name: t("ウパヨガ 2", "Upa Yoga 2"), next: 'fl-upa3' },
+  { id: 'fl-upa3', name: t("ウパヨガ 3", "Upa Yoga 3"), next: 'fl-upa4' },
+  { id: 'fl-upa4', name: t("ウパヨガ 4", "Upa Yoga 4"), next: 'fl-surya' },
 ];
 const advanced = [
-  { id: 'fl-angamardana', name: 'アンガマルダナ', hash: 'anga', price: '70,000' },
-  { id: 'fl-yogasana', name: 'ヨガアーサナ', hash: 'asana', price: '80,000' },
+  { id: 'fl-angamardana', name: t("アンガマルダナ", "Angamardana"), hash: 'anga', price: '70,000' },
+  { id: 'fl-yogasana', name: t("ヨガアーサナ", "Yogasanas"), hash: 'asana', price: '80,000' },
 ];
 ---
-<YogaLayout title="本格ハタヨガへの道 | Setsuko Hata Yoga"
-  description="対面・オンラインのウパヨガ1〜4から、スーリヤ・クリヤ、アンガマルダナ・ヨガアーサナへ。秦 節子と歩む本格ハタヨガの道のり。"
-  locale="ja"
+<YogaLayout title={t("本格ハタヨガへの道 | Setsuko Hata Yoga", "Your Path into Classical Hatha Yoga | Setsuko Hata Yoga")}
+  description={t("対面・オンラインのウパヨガ1〜4から、スーリヤ・クリヤ、アンガマルダナ・ヨガアーサナへ。秦 節子と歩む本格ハタヨガの道のり。", "From Upa Yoga 1–4, in person or online, to Surya Kriya, Angamardana, and Yogasanas. Explore your path into classical Hatha Yoga with Setsuko Hata.")}
+  locale={locale}
   active="hatha"
   bodyClass="page-offerings page-path"
 >
   <section class="cl-hero" data-screen-label="Hero">
     <div class="cl-wrap">
       <p class="cl-hero__en">The path of Hatha Yoga</p>
-      <h1>本格ハタヨガへの道</h1>
-      <p class="cl-hero__lead">無料の体験から、あなたのペースで。進む道は、あなたが選べます。</p>
+      <h1>{t("本格ハタヨガへの道", "Your Path into Classical Hatha Yoga")}</h1>
+      <p class="cl-hero__lead">{t("無料の体験から、あなたのペースで。進む道は、あなたが選べます。", "Begin with a free trial and go at your own pace. The path is yours to choose.")}</p>
     </div>
     <svg class="cl-wave cl-wave--bottom" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true"><path class="w1" d="M0 90 C120 110 190 190 340 215 C420 228 480 250 520 300 L0 300 Z"/><path class="w2" d="M0 170 C90 180 150 235 250 255 C300 265 340 280 370 300 L0 300 Z"/><path class="w3" d="M300 300 C430 210 600 270 780 215 C900 180 990 225 1060 215 L1060 300 Z"/><path class="w4" d="M560 300 C680 262 810 296 940 258 L940 300 Z"/><path class="w5" d="M860 300 C960 255 1080 235 1200 160 L1200 300 Z"/></svg>
   </section>
 
-  <PathQuiz />
+  <PathQuiz locale={locale} />
 
-  <section id="path-map" class="cl-section fl-section" data-screen-label="道のり" aria-labelledby="fl-title">
+  <section id="path-map" class="cl-section fl-section" data-screen-label={t("道のり", "Your journey")} aria-labelledby="fl-title">
     <div class="cl-wrap">
       <div class="fl-head">
         <p class="fl-head__en">The flow</p>
-        <h2 id="fl-title" class="fl-head__title">ヨガ講座・研修の流れ</h2>
-        <p class="fl-head__lead">はじまりは、ウパヨガ1（対面・オンライン）かスーリヤ・クリヤ。ウパヨガは2・3・4を経てスーリヤ・クリヤへ、その先はアンガマルダナまたはヨガアーサナへと進みます。各講座をタップすると、詳しい説明をご覧いただけます。</p>
+        <h2 id="fl-title" class="fl-head__title">{t("ヨガ講座・研修の流れ", "The course and training journey")}</h2>
+        <p class="fl-head__lead">{t("はじまりは、ウパヨガ1（対面・オンライン）かスーリヤ・クリヤ。ウパヨガは2・3・4を経てスーリヤ・クリヤへ、その先はアンガマルダナまたはヨガアーサナへと進みます。各講座をタップすると、詳しい説明をご覧いただけます。", "Begin with Upa Yoga 1, in person or online, or with Surya Kriya. Upa Yoga continues through levels 2, 3, and 4 to Surya Kriya, then on to Angamardana or Yogasanas. Tap any course for more details.")}</p>
       </div>
 
       <div class="fl" data-flow>
         <svg class="fl-lines" data-flow-lines aria-hidden="true"></svg>
-        <p class="fl-start-note">どちらからでも始められます</p>
+        <p class="fl-start-note">{t("どちらからでも始められます", "You can begin with either")}</p>
 
         <div class="fl-col fl-col--upa">
           <article id="fl-upa1" class="fl-card fl-card--start" tabindex="-1" data-next="fl-upa2">
             <span class="fl-start">START</span>
-            <p class="fl-card__mode">対面・オンライン</p>
-            <h3 class="fl-card__name"><a class="fl-card__link" href={types('upa')}>ウパヨガ 1</a></h3>
-            <p class="fl-card__meta">対面：75分</p>
-            <p class="fl-card__meta">オンライン朝ヨガ（SATORIN）</p>
+            <p class="fl-card__mode">{t("対面・オンライン", "In person & online")}</p>
+            <h3 class="fl-card__name"><a class="fl-card__link" href={types('upa')}>{t("ウパヨガ 1", "Upa Yoga 1")}</a></h3>
+            <p class="fl-card__meta">{t("対面：75分", "In person: 75 minutes")}</p>
+            <p class="fl-card__meta">{t("オンライン朝ヨガ（SATORIN）", "Online morning yoga (SATORIN)")}</p>
             <div class="fl-card__actions">
-              <a class="cl-btn fl-btn" href={offerings}>対面クラスを見る</a>
-              <a class="cl-btn cl-btn--ghost fl-btn" href={SATORIN_PAGE_URL}>SATORINを見る</a>
+              <a class="cl-btn fl-btn" href={offerings}>{t("対面クラスを見る", "Explore in-person classes")}</a>
+              <a class="cl-btn cl-btn--ghost fl-btn" href={locale === 'en' ? '/satorin/en/' : SATORIN_PAGE_URL}>{t("SATORINを見る", "Explore SATORIN")}</a>
             </div>
           </article>
           {upaSteps.map((s) => (
             <article id={s.id} class="fl-card fl-card--step" data-next={s.next}>
-              <p class="fl-card__mode">対面</p>
+              <p class="fl-card__mode">{t("対面", "In person")}</p>
               <h3 class="fl-card__name"><a class="fl-card__link" href={types('upa')}>{s.name}</a></h3>
-              <p class="fl-card__meta">75分</p>
+              <p class="fl-card__meta">{t("75分", "75 minutes")}</p>
             </article>
           ))}
         </div>
@@ -77,25 +81,25 @@ const advanced = [
         <div class="fl-col fl-col--surya">
           <article id="fl-surya" class="fl-card fl-card--start fl-card--surya" tabindex="-1" data-next="fl-angamardana fl-yogasana">
             <span class="fl-start">START</span>
-            <p class="fl-card__mode">対面</p>
-            <h3 class="fl-card__name"><a class="fl-card__link" href={types('surya')}>スーリヤ・クリヤ</a></h3>
-            <p class="fl-card__meta">7時間・伝授：2日間</p>
-            <p class="fl-card__price">60,000<small>円</small></p>
-            <p class="fl-card__support">受講後1年間、年2回の個別復習・修正を無料でサポート</p>
+            <p class="fl-card__mode">{t("対面", "In person")}</p>
+            <h3 class="fl-card__name"><a class="fl-card__link" href={types('surya')}>{t("スーリヤ・クリヤ", "Surya Kriya")}</a></h3>
+            <p class="fl-card__meta">{t("7時間・伝授：2日間", "7 hours, taught over 2 days")}</p>
+            <p class="fl-card__price">60,000<small>{t("円", " JPY")}</small></p>
+            <p class="fl-card__support">{t("受講後1年間、年2回の個別復習・修正を無料でサポート", "Two complimentary individual review and correction sessions during the year after your course")}</p>
             <div class="fl-card__actions">
-              <a class="cl-btn fl-btn" href={SURYA_KRIYA_FORM_URL} target="_blank" rel="noreferrer">予約する</a>
+              <a class="cl-btn fl-btn" href={SURYA_KRIYA_FORM_URL} target="_blank" rel="noreferrer">{t("予約する", "Book now")}</a>
             </div>
           </article>
           <div class="fl-pair">
             {advanced.map((c) => (
               <article id={c.id} class="fl-card">
-                <p class="fl-card__mode">対面</p>
+                <p class="fl-card__mode">{t("対面", "In person")}</p>
                 <h3 class="fl-card__name"><a class="fl-card__link" href={types(c.hash)}>{c.name}</a></h3>
-                <p class="fl-card__meta">12時間・伝授：4日間</p>
-                <p class="fl-card__price">{c.price}<small>円</small></p>
-                <p class="fl-card__support">受講後1年間、年2回の個別復習・修正を無料でサポート</p>
+                <p class="fl-card__meta">{t("12時間・伝授：4日間", "12 hours, taught over 4 days")}</p>
+                <p class="fl-card__price">{c.price}<small>{t("円", " JPY")}</small></p>
+                <p class="fl-card__support">{t("受講後1年間、年2回の個別復習・修正を無料でサポート", "Two complimentary individual review and correction sessions during the year after your course")}</p>
                 <div class="fl-card__actions">
-                  <a class="cl-btn cl-btn--ghost fl-btn" href={contact}>お問い合わせ</a>
+                  <a class="cl-btn cl-btn--ghost fl-btn" href={contact}>{t("お問い合わせ", "Contact")}</a>
                 </div>
               </article>
             ))}
@@ -105,8 +109,8 @@ const advanced = [
 
       <div class="pt-support">
         <p class="pt-support__en">Support</p>
-        <p class="pt-support__title">一度の伝授から、一生涯の実践へ</p>
-        <p>その後も一生涯、実践をサポートします。</p>
+        <p class="pt-support__title">{t("一度の伝授から、一生涯の実践へ", "One transmission, a lifelong practice")}</p>
+        <p>{t("その後も一生涯、実践をサポートします。", "Support for your practice continues throughout your life.")}</p>
       </div>
     </div>
   </section>

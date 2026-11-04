@@ -3,8 +3,11 @@ import Header from '../components/Header.astro';
 import FooterHome from '../components/FooterHome.astro';
 import FooterAbout from '../components/FooterAbout.astro';
 import '../styles/global.css';
+import '../styles/personal-locale.css';
+import { alternatePaths, translator, type Locale } from '../data/personal-i18n';
 
 interface Props {
+  locale?: Locale;
   title: string;
   description: string;
   active: 'home' | 'about' | 'music';
@@ -13,22 +16,27 @@ interface Props {
   jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, active, footer, image = '/assets/og-image.jpg', jsonLd } = Astro.props;
+const { title, description, active, footer, image = '/assets/og-image.jpg', jsonLd, locale = 'ja' } = Astro.props;
 
 // GitHub Pages serves /about as /about/, so canonical URLs always end in a slash.
 const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonical = new URL(path, Astro.site).href;
 const imageUrl = new URL(image, Astro.site).href;
+const alternatives = alternatePaths(path);
+const t = translator(locale);
 ---
 
 <!DOCTYPE html>
-<html lang="ja">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="ja" href={new URL(alternatives.ja, Astro.site).href} />
+    <link rel="alternate" hreflang="en" href={new URL(alternatives.en, Astro.site).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(alternatives.ja, Astro.site).href} />
     <meta name="theme-color" content="#FAF7F2" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap.xml" />
@@ -40,12 +48,13 @@ const imageUrl = new URL(image, Astro.site).href;
       rel="stylesheet"
     />
 
-    <meta property="og:site_name" content="秦 節子 | Setsuko Hata" />
+    <meta property="og:site_name" content={t('秦 節子 | Setsuko Hata', 'Setsuko Hata')} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale" content={locale === 'ja' ? 'ja_JP' : 'en_US'} />
+    <meta property="og:locale:alternate" content={locale === 'ja' ? 'en_US' : 'ja_JP'} />
     <meta property="og:image" content={imageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={imageUrl} />
@@ -53,13 +62,14 @@ const imageUrl = new URL(image, Astro.site).href;
     <slot name="head" />
   </head>
   <body>
-    <a href="#top" class="skip-link">Skip to content</a>
-    <Header active={active} />
+    <a href="#top" class="skip-link">{t('本文へ移動', 'Skip to content')}</a>
+    <Header active={active} locale={locale} />
     <main id="top">
       <slot />
     </main>
-    {footer === 'home' && <FooterHome />}
-    {footer === 'about' && <FooterAbout />}
+    {footer === 'home' && <FooterHome locale={locale} />}
+    {footer === 'about' && <FooterAbout locale={locale} />}
     <script src="../scripts/reveal.ts"></script>
+    <script is:inline src="/scripts/language.js"></script>
   </body>
 </html>

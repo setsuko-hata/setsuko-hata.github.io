@@ -47,20 +47,12 @@ const publicPageFallback = () => ({
 export default defineConfig({
   site: "https://setsukohata.com",
   redirects: {
-    "/hatha-yoga": "/hatha-yoga/ja/",
-    // The English pages are unpublished (source kept in src/pages/hatha-yoga/_en;
-    // rename the folder back to `en` to restore them and drop these redirects).
-    // Old English URLs, including the .html ones from the static export, go to
-    // the matching Japanese page.
-    "/hatha-yoga/en": "/hatha-yoga/ja/",
-    "/hatha-yoga/en/about": "/hatha-yoga/ja/about/",
-    "/hatha-yoga/en/offerings": "/hatha-yoga/ja/offerings/",
-    "/hatha-yoga/en/membership": "/hatha-yoga/ja/offerings/",
-    "/hatha-yoga/en/contact": "/hatha-yoga/ja/contact/",
-    "/hatha-yoga/en/about.html": "/hatha-yoga/ja/about/",
-    "/hatha-yoga/en/offerings.html": "/hatha-yoga/ja/offerings/",
-    "/hatha-yoga/en/membership.html": "/hatha-yoga/ja/offerings/",
-    "/hatha-yoga/en/contact.html": "/hatha-yoga/ja/contact/",
+    // Legacy English URLs retain their language and matching section.
+    "/hatha-yoga/en/membership": "/hatha-yoga/en/offerings/#online",
+    "/hatha-yoga/en/about.html": "/hatha-yoga/en/about/",
+    "/hatha-yoga/en/offerings.html": "/hatha-yoga/en/offerings/",
+    "/hatha-yoga/en/membership.html": "/hatha-yoga/en/offerings/#online",
+    "/hatha-yoga/en/contact.html": "/hatha-yoga/en/contact/",
   },
   server: { port: Number(process.env.PORT) || 4321 },
   vite: { plugins: [publicPageFallback()] },

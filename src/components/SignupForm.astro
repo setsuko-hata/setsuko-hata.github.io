@@ -1,11 +1,15 @@
 ---
+import { translator, type Locale } from '../data/personal-i18n';
+interface Props { locale?: Locale; }
+const { locale = 'ja' } = Astro.props;
+const t = translator(locale);
 ---
 
 <section class="signup">
   <div class="signup__inner">
     <div class="signup-card" data-reveal>
       <div class="signup-card__inner">
-        <h2 class="signup-card__title">Stay Connected</h2>
+        <h2 class="signup-card__title">{t('最新情報をお届け', 'Stay Connected')}</h2>
         <span class="signup-card__rule" aria-hidden="true">
           <svg viewBox="0 0 132 14" width="132" height="14" fill="none" stroke="#A8802F" stroke-width="1">
             <path d="M0 7h44" stroke-opacity="0.55"></path>
@@ -16,29 +20,29 @@
             <path d="M66 11.8c1.6-1.6 1.6-3.2 0-4.8-1.6 1.6-1.6 3.2 0 4.8z" stroke-opacity="0.75"></path>
           </svg>
         </span>
-        <p class="signup-card__text" lang="ja">最新のクラス・音楽・イベント情報をお届けします。</p>
+        <p class="signup-card__text" lang={locale}>{t('最新のクラス・音楽・イベント情報をお届けします。', 'Receive the latest class, music, and event news.')}</p>
       </div>
     </div>
 
-    <form class="signup-form" data-signup data-reveal>
+    <form class="signup-form" data-signup data-locale={locale} data-reveal>
       <label class="field">
-        <span class="field__label">First name *</span>
-        <input type="text" name="firstName" required autocomplete="given-name" placeholder="First name" class="field__input" />
+        <span class="field__label">{t('名（必須）', 'First name *')}</span>
+        <input type="text" name="firstName" required autocomplete="given-name" placeholder={t('名', 'First name')} class="field__input" />
       </label>
       <label class="field">
-        <span class="field__label">Last name *</span>
-        <input type="text" name="lastName" required autocomplete="family-name" placeholder="Last name" class="field__input" />
+        <span class="field__label">{t('姓（必須）', 'Last name *')}</span>
+        <input type="text" name="lastName" required autocomplete="family-name" placeholder={t('姓', 'Last name')} class="field__input" />
       </label>
       <label class="field field--full">
-        <span class="field__label">Email *</span>
+        <span class="field__label">{t('メールアドレス（必須）', 'Email *')}</span>
         <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" class="field__input" />
       </label>
       <div class="signup-hp" aria-hidden="true">
-        <label>Leave this field empty
+        <label>{t('この欄には入力しないでください', 'Leave this field empty')}
           <input type="text" name="website" tabindex="-1" autocomplete="off" />
         </label>
       </div>
-      <button type="submit" class="signup-submit">Subscribe</button>
+      <button type="submit" class="signup-submit">{t('登録する', 'Subscribe')}</button>
       <div data-signup-msg role="status" aria-live="polite" class="signup-msg"></div>
     </form>
   </div>
@@ -51,6 +55,23 @@
   const button = form?.querySelector<HTMLButtonElement>('.signup-submit');
   const msg = form?.querySelector<HTMLElement>('[data-signup-msg]');
   const loadedAt = Date.now();
+  const isEnglish = form?.dataset.locale === 'en';
+  const thankYou = (name: string) => isEnglish
+    ? `Thank you for signing up${name ? ', ' + name : ''}.`
+    : `${name ? name + '様、' : ''}ご登録ありがとうございます。`;
+
+  // Native validation messages otherwise follow the browser's language, not the page.
+  form?.querySelectorAll<HTMLInputElement>('input[required]').forEach((input) => {
+    input.addEventListener('invalid', () => {
+      input.setCustomValidity('');
+      if (input.validity.valueMissing) {
+        input.setCustomValidity(isEnglish ? 'Please fill out this field.' : 'この項目を入力してください。');
+      } else if (input.validity.typeMismatch) {
+        input.setCustomValidity(isEnglish ? 'Please enter a valid email address.' : '有効なメールアドレスを入力してください。');
+      }
+    });
+    input.addEventListener('input', () => input.setCustomValidity(''));
+  });
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -66,13 +87,13 @@
     const email = (form.querySelector<HTMLInputElement>('[name="email"]')?.value ?? '').trim();
 
     if (honeypot || elapsed < 2000) {
-      msg.textContent = `Thank you${firstName ? ', ' + firstName : ''} — ご登録ありがとうございます。`;
+      msg.textContent = thankYou(firstName);
       return;
     }
 
     if (!endpoint) {
       console.warn('PUBLIC_SIGNUP_ENDPOINT is not set — signup was not recorded anywhere.');
-      msg.textContent = `Thank you${firstName ? ', ' + firstName : ''} — ご登録ありがとうございます。`;
+      msg.textContent = thankYou(firstName);
       form.querySelectorAll<HTMLInputElement>('input').forEach((input) => { input.value = ''; });
       return;
     }
@@ -89,11 +110,13 @@
         mode: 'no-cors',
         body: JSON.stringify({ firstName, lastName, email, website: honeypot, elapsed }),
       });
-      msg.textContent = `Thank you${firstName ? ', ' + firstName : ''} — ご登録ありがとうございます。`;
+      msg.textContent = thankYou(firstName);
       form.querySelectorAll<HTMLInputElement>('input').forEach((input) => { input.value = ''; });
     } catch (err) {
       console.error('Signup submission failed', err);
-      msg.textContent = 'Something went wrong — please try again, or email info@setsukohata.com.';
+      msg.textContent = isEnglish
+        ? 'Something went wrong. Please try again, or email info@setsukohata.com.'
+        : '送信できませんでした。もう一度お試しいただくか、info@setsukohata.com までご連絡ください。';
     } finally {
       button.disabled = false;
     }

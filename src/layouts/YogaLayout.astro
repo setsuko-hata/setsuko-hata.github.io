@@ -51,7 +51,7 @@ const {
   image = '/hatha-yoga/assets/og-image.jpg',
   jsonLd,
   themeColor = '#FDF7EA',
-  alternateHref,
+  alternateHref: providedAlternateHref,
   preloadHero = false,
   heroImage = 'hero',
   noindex = false,
@@ -60,6 +60,7 @@ const {
 const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonical = new URL(path, Astro.site).href;
 const imageUrl = new URL(image, Astro.site).href;
+const alternateHref = providedAlternateHref || path.replace(/\/(ja|en)(?=\/)/, locale === 'ja' ? '/en' : '/ja');
 const alternate = alternateHref ? new URL(alternateHref, Astro.site).href : undefined;
 // hreflang only when a translation exists; both pages must then point at each other.
 const jaUrl = alternate && (locale === 'ja' ? canonical : alternate);
@@ -105,6 +106,7 @@ const enUrl = alternate && (locale === 'en' ? canonical : alternate);
     <slot name="head" />
   </head>
   <body class:list={['yoga-site', 'ja-sunlit', bodyClass]}>
+    <script is:inline src="/scripts/language.js" defer></script>
     <Sprite />
     <a class="satori-skip" href="#main-content">{locale === 'ja' ? '本文へスキップ' : 'Skip to content'}</a>
     <div class="flex min-h-dvh flex-col">

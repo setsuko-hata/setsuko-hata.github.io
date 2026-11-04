@@ -1,11 +1,16 @@
 ---
 /** The shared class popups (opened by any [data-dialog] button; see scripts/yoga/class-dialogs.js). */
-import { CLASS_DIALOGS } from '../../../data/classes';
+import { classText, getClassContent } from '../../../data/classes';
+
+interface Props { locale?: 'ja' | 'en'; }
+const { locale = 'ja' } = Astro.props;
+const t = (text: string) => classText(locale, text);
+const { CLASS_DIALOGS } = getClassContent(locale);
 ---
 {CLASS_DIALOGS.map((d) => (
   <dialog id={d.id} class="cl-dialog" aria-labelledby={`${d.id}-title`}>
     <div class="cl-dialog__inner">
-      <button type="button" class="cl-dialog__close" data-dialog-close aria-label="閉じる">×</button>
+      <button type="button" class="cl-dialog__close" data-dialog-close aria-label={t("閉じる")}>×</button>
       <h2 id={`${d.id}-title`} class="cl-dialog__title">{d.title}</h2>
       <p class="cl-dialog__tag">{d.tagline}</p>
       {d.body.map((p) => <p class="cl-dialog__p">{p}</p>)}

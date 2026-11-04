@@ -2,34 +2,37 @@
 /** SATORIN online membership. `full` = the オンライン tab (everything);
  *  otherwise a short card for the 大阪 / 東京 tabs that links to the full version. */
 import { SATORIN_BOOKING_URL, SATORIN_PAGE_URL } from '../../../data/yoga';
-import { SATORIN_MORNING, SATORIN_EVENING, SATORIN_COACHING_RATES, SATORIN_PLANS } from '../../../data/classes';
+import { classText, getClassContent } from '../../../data/classes';
 
 const yes = '✓';
 
-interface Props { id: string; full?: boolean; tone?: string; fullHref?: string; }
-const { id, full = false, tone = '', fullHref = '#online-satorin' } = Astro.props;
+interface Props { locale?: 'ja' | 'en'; id: string; full?: boolean; tone?: string; fullHref?: string; }
+const { locale = 'ja', id, full = false, tone = '', fullHref = '#online-satorin' } = Astro.props;
+const t = (text: string) => classText(locale, text);
+const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_COACHING_RATES, SATORIN_PLANS } = getClassContent(locale);
+
 ---
 {full ? (
 <section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
   <div class="cl-wrap">
     <div class="cl-head">
-      <p class="cl-eyebrow">オンライン会員</p>
-      <h2>SATORIN メンバーシップ</h2>
+      <p class="cl-eyebrow">{t("オンライン会員")}</p>
+      <h2>{t("SATORIN メンバーシップ")}</h2>
       <span class="cl-head__rule" aria-hidden="true"></span>
     </div>
-    <p class="cl-lead">オンラインクラスはすべて SATORIN メンバーシップで開催しています。平日朝のヨガ、夜の健康セミナーと瞑想会を、全国・海外どこからでもご自宅から。仲間と一緒に実践しながら、ヨガを毎日の習慣にしていきます。</p>
+    <p class="cl-lead">{t("オンラインクラスはすべて SATORIN メンバーシップで開催しています。平日朝のヨガ、夜の健康セミナーと瞑想会を、全国・海外どこからでもご自宅から。仲間と一緒に実践しながら、ヨガを毎日の習慣にしていきます。")}</p>
 
     <div class="cl-feats">
       <article class="cl-feat cl-feat--olive">
         <header class="cl-feat__head">
           <p class="cl-feat__no"><span>01</span>Included</p>
-          <h3 class="cl-feat__title">朝ヨガ</h3>
+          <h3 class="cl-feat__title">{t("朝ヨガ")}</h3>
           <p class="cl-feat__en">Morning practice</p>
-          <p class="cl-feat__when">月曜日〜金曜日｜6:00〜6:45<br />(土・日・祝休み)</p>
+          <p class="cl-feat__when">{t("月曜日〜金曜日｜6:00〜6:45")}<br />{t("(土・日・祝休み)")}</p>
         </header>
         <div class="cl-feat__body">
-          <p class="cl-feat__lead">平日毎朝6時、オンラインで待ち合わせ。</p>
-          <p class="cl-feat__p">初心者の方も、すでに本格ハタヨガを学んでいる方も、ご自身に合った形で参加できます。難しいポーズを競うのではなく、身体の動き、呼吸、音、内側の感覚へ意識を向ける時間です。</p>
+          <p class="cl-feat__lead">{t("平日毎朝6時、オンラインで待ち合わせ。")}</p>
+          <p class="cl-feat__p">{t("初心者の方も、すでに本格ハタヨガを学んでいる方も、ご自身に合った形で参加できます。難しいポーズを競うのではなく、身体の動き、呼吸、音、内側の感覚へ意識を向ける時間です。")}</p>
           <ul class="cl-tiles">{SATORIN_MORNING.practices.map((t) => <li>{t}</li>)}</ul>
         </div>
       </article>
@@ -37,12 +40,12 @@ const { id, full = false, tone = '', fullHref = '#online-satorin' } = Astro.prop
       <article class="cl-feat cl-feat--gold">
         <header class="cl-feat__head">
           <p class="cl-feat__no"><span>02</span>Included</p>
-          <h3 class="cl-feat__title">学び・瞑想・交流</h3>
+          <h3 class="cl-feat__title">{t("学び・瞑想・交流")}</h3>
           <p class="cl-feat__en">Learn · Meditate · Connect</p>
-          <p class="cl-feat__when">毎週月曜夜の2クラス＋月1回の交流会</p>
+          <p class="cl-feat__when">{t("毎週月曜夜の2クラス＋月1回の交流会")}</p>
         </header>
         <div class="cl-feat__body">
-          <p class="cl-feat__lead">身体を整え、毎日の選択を変えていく。</p>
+          <p class="cl-feat__lead">{t("身体を整え、毎日の選択を変えていく。")}</p>
           <ul class="cl-evening">
             {SATORIN_EVENING.map((e) => (
               <li class="cl-evening__item">
@@ -58,105 +61,105 @@ const { id, full = false, tone = '', fullHref = '#online-satorin' } = Astro.prop
       <article class="cl-feat cl-feat--clay">
         <header class="cl-feat__head">
           <p class="cl-feat__no"><span>03</span>Included</p>
-          <h3 class="cl-feat__title">節子と 1:1 コーチング</h3>
+          <h3 class="cl-feat__title">{t("節子と 1:1 コーチング")}</h3>
           <p class="cl-feat__en">Personal support</p>
-          <p class="cl-feat__when">パーソナル・プレミアムプラン｜60分</p>
+          <p class="cl-feat__when">{t("パーソナル・プレミアムプラン｜60分")}</p>
         </header>
         <div class="cl-feat__body">
-          <p class="cl-feat__lead">自分だけの課題と未来に向き合う。</p>
-          <p class="cl-feat__p">身体の状態、食生活、仕事、人間関係、生活のリズム、望む未来は一人ひとり異なります。最初に現在の状況を丁寧にヒアリングし、あなたのライフスタイルに合った方法を一緒に見つけます。</p>
-          <p class="cl-feat__p">伝統的なヨガの科学、栄養士としての専門知識、心身の不調を乗り越えてきた経験を生かし、食生活から日々の選択、生き方まで総合的にサポートします。答えを一方的に与えるのではなく、対話を通して自分の内側から答えを見つけていくコーチングです。</p>
+          <p class="cl-feat__lead">{t("自分だけの課題と未来に向き合う。")}</p>
+          <p class="cl-feat__p">{t("身体の状態、食生活、仕事、人間関係、生活のリズム、望む未来は一人ひとり異なります。最初に現在の状況を丁寧にヒアリングし、あなたのライフスタイルに合った方法を一緒に見つけます。")}</p>
+          <p class="cl-feat__p">{t("伝統的なヨガの科学、栄養士としての専門知識、心身の不調を乗り越えてきた経験を生かし、食生活から日々の選択、生き方まで総合的にサポートします。答えを一方的に与えるのではなく、対話を通して自分の内側から答えを見つけていくコーチングです。")}</p>
           <dl class="cl-feat__sched">
-            {SATORIN_COACHING_RATES.map((r) => <div><dt>{r.label}</dt><dd><span class="rate-amount">{r.price}</span>円（税込）</dd></div>)}
+            {SATORIN_COACHING_RATES.map((r) => <div><dt>{r.label}</dt><dd><span class="rate-amount">{r.price}</span>{t("円（税込）")}</dd></div>)}
           </dl>
         </div>
       </article>
     </div>
 
     <div class="cl-panel">
-      <div class="cl-panel__head"><span class="cl-ring"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#moon" /></svg></span><h3>プランと料金</h3></div>
-      <p class="cl-lead">5つのプランからお選びいただけます。迷ったら「整う」がおすすめです。</p>
+      <div class="cl-panel__head"><span class="cl-ring"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#moon" /></svg></span><h3>{t("プランと料金")}</h3></div>
+      <p class="cl-lead">{t("5つのプランからお選びいただけます。迷ったら「整う」がおすすめです。")}</p>
       <div class="cl-plans" data-plan-gallery>
-        <div class="cl-plans__track" id={`${id}-plans`} role="region" aria-label="メンバーシッププラン" tabindex="0">
+        <div class="cl-plans__track" id={`${id}-plans`} role="region" aria-label={t("メンバーシッププラン")} tabindex="0">
           {SATORIN_PLANS.map((p) => (
             <article class={`cl-plancard${p.pick ? ' is-pick' : ''}`}>
-              {p.pick && <span class="cl-badge cl-plancard__badge">おすすめ</span>}
+              {p.pick && <span class="cl-badge cl-plancard__badge">{t("おすすめ")}</span>}
               <p class="cl-plancard__no">Membership {p.no}</p>
               <p class="cl-plancard__type">{p.type}</p>
               <h4 class="cl-plancard__name">{p.name}</h4>
               <p class="cl-plancard__tag">{p.tagline}</p>
               <ul class="cl-plancard__list">{p.features.map((f) => <li>{f}</li>)}</ul>
-              <p class="cl-plancard__price"><span class="cl-plancard__unit">月額</span><span class="rate-amount">{p.price}</span>円<small>（税込）</small></p>
-              <a class="cl-btn cl-plancard__btn" href={p.url} target="_blank" rel="noreferrer">予約する</a>
+              <p class="cl-plancard__price"><span class="cl-plancard__unit">{t("月額")}</span><span class="rate-amount">{p.price}</span>{t("円")}<small>{t("（税込）")}</small></p>
+              <a class="cl-btn cl-plancard__btn" href={p.url} target="_blank" rel="noreferrer">{t("予約する")}</a>
             </article>
           ))}
         </div>
         <div class="cl-plans__nav">
-          <button type="button" class="cl-plans__arrow" data-plan-step="-1" aria-controls={`${id}-plans`} aria-label="前のプラン">←</button>
+          <button type="button" class="cl-plans__arrow" data-plan-step="-1" aria-controls={`${id}-plans`} aria-label={t("前のプラン")}>←</button>
           <div class="cl-plans__dots">
-            {SATORIN_PLANS.map((p, i) => <button type="button" class="cl-plans__dot" data-plan-dot={i} aria-controls={`${id}-plans`} aria-label={`${p.name}プランを表示`} aria-current={i === 0 ? 'true' : undefined}></button>)}
+            {SATORIN_PLANS.map((p, i) => <button type="button" class="cl-plans__dot" data-plan-dot={i} aria-controls={`${id}-plans`} aria-label={locale === 'en' ? `Show ${p.name} plan` : `${p.name}プランを表示`} aria-current={i === 0 ? 'true' : undefined}></button>)}
           </div>
-          <button type="button" class="cl-plans__arrow" data-plan-step="1" aria-controls={`${id}-plans`} aria-label="次のプラン">→</button>
+          <button type="button" class="cl-plans__arrow" data-plan-step="1" aria-controls={`${id}-plans`} aria-label={t("次のプラン")}>→</button>
         </div>
       </div>
 
       <div class="cl-subpart">
-        <h4 class="cl-subpart__title">健康セミナー・瞑想の単発参加</h4>
-        <p class="cl-lead">メンバーでない方も、月曜夜の健康セミナー（19:30〜20:10）・瞑想（20:20〜21:00）に1回から参加いただけます（朝ヨガは含まれません）。</p>
+        <h4 class="cl-subpart__title">{t("健康セミナー・瞑想の単発参加")}</h4>
+        <p class="cl-lead">{t("メンバーでない方も、月曜夜の健康セミナー（19:30〜20:10）・瞑想（20:20〜21:00）に1回から参加いただけます（朝ヨガは含まれません）。")}</p>
         <div class="rate-duo">
-          <div class="rate-duo__cell"><p class="rate-duo__label">通常料金（1回・40分）</p><p class="rate-duo__price"><span class="rate-amount">2,000</span>円</p></div>
-          <div class="rate-duo__cell rate-duo__cell--member"><p class="rate-duo__label">SATORIN メンバー料金</p><p class="rate-duo__price"><span class="rate-amount">1,500</span>円</p></div>
+          <div class="rate-duo__cell"><p class="rate-duo__label">{t("通常料金（1回・40分）")}</p><p class="rate-duo__price"><span class="rate-amount">2,000</span>{t("円")}</p></div>
+          <div class="rate-duo__cell rate-duo__cell--member"><p class="rate-duo__label">{t("SATORIN メンバー料金")}</p><p class="rate-duo__price"><span class="rate-amount">1,500</span>{t("円")}</p></div>
         </div>
       </div>
 
-      <p class="cl-minihead cl-subpart__head">プランの比較</p>
+      <p class="cl-minihead cl-subpart__head">{t("プランの比較")}</p>
       <div class="cl-tablewrap">
         <table class="cl-table">
-          <caption class="cl-sr">SATORIN メンバーシップのプラン比較（月額・税込）</caption>
+          <caption class="cl-sr">{t("SATORIN メンバーシップのプラン比較（月額・税込）")}</caption>
           <thead>
-            <tr><th scope="col">プラン</th><th scope="col">月額（税込）</th><th scope="col">朝ヨガ<small>月〜金 6:00〜6:45</small><small>(土・日・祝休み)</small></th><th scope="col">健康セミナー<small>月曜 19:30〜20:10</small><small>月4回</small></th><th scope="col">瞑想<small>月曜 20:20〜21:00</small><small>月4回</small></th><th scope="col">交流会<small>月1回</small></th><th scope="col">1:1 コーチング<small>60分</small></th></tr>
+            <tr><th scope="col">{t("プラン")}</th><th scope="col">{t("月額（税込）")}</th><th scope="col">{t("朝ヨガ")}<small>{t("月〜金 6:00〜6:45")}</small><small>{t("(土・日・祝休み)")}</small></th><th scope="col">{t("健康セミナー")}<small>{t("月曜 19:30〜20:10")}</small><small>{t("月4回")}</small></th><th scope="col">{t("瞑想")}<small>{t("月曜 20:20〜21:00")}</small><small>{t("月4回")}</small></th><th scope="col">{t("交流会")}<small>{t("月1回")}</small></th><th scope="col">{t("1:1 コーチング")}<small>{t("60分")}</small></th></tr>
           </thead>
           <tbody>
             {SATORIN_PLANS.map((p) => (
               <tr class={p.pick ? 'is-pick' : undefined}>
-                <th scope="row"><span class="cl-table__name">{p.name}</span><span class="cl-table__type">{p.type}</span>{p.pick && <span class="cl-badge">おすすめ</span>}</th>
-                <td data-label="月額（税込）"><span><span class="rate-amount">{p.price}</span>円</span></td>
-                <td class="cl-table__morning" data-label="朝ヨガ&#10;月〜金 6:00〜6:45&#10;(土・日・祝休み)">{p.morning ? <span class="cl-yes" aria-label="あり">✓</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
-                <td data-label="健康セミナー 月曜19:30〜 月4回">{p.evening ? <span class="cl-yes" aria-label="あり">{yes}</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
-                <td data-label="瞑想 月曜20:20〜 月4回">{p.evening ? <span class="cl-yes" aria-label="あり">{yes}</span> : <span class="cl-no" aria-label="なし">―</span>}</td>
-                <td data-label="交流会 月1回"><span class="cl-yes" aria-label="あり">✓</span></td>
-                <td data-label="1:1 コーチング">{p.coaching ?? <span class="cl-no" aria-label="なし">―</span>}</td>
+                <th scope="row"><span class="cl-table__name">{p.name}</span><span class="cl-table__type">{p.type}</span>{p.pick && <span class="cl-badge">{t("おすすめ")}</span>}</th>
+                <td data-label={t("月額（税込）")}><span><span class="rate-amount">{p.price}</span>{t("円")}</span></td>
+                <td class="cl-table__morning" data-label={t("朝ヨガ\n月〜金 6:00〜6:45\n(土・日・祝休み)")}>{p.morning ? <span class="cl-yes" aria-label={t("あり")}>✓</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
+                <td data-label={t("健康セミナー 月曜19:30〜 月4回")}>{p.evening ? <span class="cl-yes" aria-label={t("あり")}>{yes}</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
+                <td data-label={t("瞑想 月曜20:20〜 月4回")}>{p.evening ? <span class="cl-yes" aria-label={t("あり")}>{yes}</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
+                <td data-label={t("交流会 月1回")}><span class="cl-yes" aria-label={t("あり")}>✓</span></td>
+                <td data-label={t("1:1 コーチング")}>{p.coaching ?? <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <div class="cl-callout">
-        <p class="cl-callout__title">無料体験について</p>
-        <p>SATORIN では、期間を決めて無料体験を実施しています。次回の無料体験の日程は、<a class="cl-link" href="#calendar" data-cal-filter="online">開催スケジュール</a>または <a class="cl-link" href={SATORIN_PAGE_URL}>SATORIN のページ</a>でご確認ください。</p>
+        <p class="cl-callout__title">{t("無料体験について")}</p>
+        <p>{t("SATORIN では、期間を決めて無料体験を実施しています。次回の無料体験の日程は、")}<a class="cl-link" href="#calendar" data-cal-filter="online">{t("開催スケジュール")}</a>{t("または")} <a class="cl-link" href={locale === 'en' ? '/satorin/en/' : SATORIN_PAGE_URL}>{t("SATORIN のページ")}</a>{t("でご確認ください。")}</p>
       </div>
     </div>
 
     <div class="cl-actions">
-      <a href={SATORIN_BOOKING_URL} target="_blank" rel="noreferrer" class="cl-btn">予約する</a>
-      <a href={SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">SATORIN のページで詳しく見る</a>
-      <a href="#calendar" data-cal-filter="online" class="cl-btn cl-btn--ghost">開催スケジュール</a>
+      <a href={SATORIN_BOOKING_URL} target="_blank" rel="noreferrer" class="cl-btn">{t("予約する")}</a>
+      <a href={locale === 'en' ? '/satorin/en/' : SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">{t("SATORIN のページで詳しく見る")}</a>
+      <a href="#calendar" data-cal-filter="online" class="cl-btn cl-btn--ghost">{t("開催スケジュール")}</a>
     </div>
-    <p class="cl-fine">※ メンバーシップのお支払い・解約・休止は、STORES の予約ページからお手続きいただけます。</p>
+    <p class="cl-fine">{t("※ メンバーシップのお支払い・解約・休止は、STORES の予約ページからお手続きいただけます。")}</p>
   </div>
 </section>
 ) : (
 <section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
   <div class="cl-wrap">
     <div class="cl-head">
-      <p class="cl-eyebrow">ご自宅でも</p>
-      <h2>オンライン健康セミナーと瞑想会</h2>
+      <p class="cl-eyebrow">{t("ご自宅でも")}</p>
+      <h2>{t("オンライン健康セミナーと瞑想会")}</h2>
       <span class="cl-head__rule" aria-hidden="true"></span>
     </div>
     <div class="cl-panel cl-satori-mini">
-      <p class="cl-lead">平日朝のヨガと、月曜夜の健康セミナー・瞑想を、ご自宅からオンラインで。<br />対面クラスと合わせて、毎日の実践を続けられるメンバーシップです。</p>
+      <p class="cl-lead">{t("平日朝のヨガと、月曜夜の健康セミナー・瞑想を、ご自宅からオンラインで。")}<br />{t("対面クラスと合わせて、毎日の実践を続けられるメンバーシップです。")}</p>
       <div class="cl-actions">
-        <a href={fullHref} class="cl-btn">オンラインのクラスを見る</a>
+        <a href={fullHref} class="cl-btn">{t("オンラインのクラスを見る")}</a>
       </div>
     </div>
   </div>

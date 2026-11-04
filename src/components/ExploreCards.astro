@@ -1,42 +1,45 @@
 ---
+import { translator, localizedPath, type Locale } from '../data/personal-i18n';
 type CardId = 'yoga' | 'music' | 'home';
 
 interface Props {
+  locale?: Locale;
   reveal?: boolean;
   /** Which cards to show, in order. Home and About show yoga + music; the music page shows yoga + home. */
   show?: CardId[];
 }
 
-const { reveal = false, show = ['yoga', 'music'] } = Astro.props;
+const { reveal = false, show = ['yoga', 'music'], locale = 'ja' } = Astro.props;
+const t = translator(locale);
 const revealAttr = reveal ? { 'data-reveal': true } : {};
 
 const cards: Record<CardId, { href: string; img: string; alt: string; position: string; title: string; desc: string; cta: string }> = {
   yoga: {
     href: '/hatha-yoga/',
     img: '/assets/card-yoga-new.jpg',
-    alt: 'Setsuko Hata practising hatha yoga',
+    alt: t('ハタヨガを実践する秦 節子', 'Setsuko Hata practising hatha yoga'),
     position: 'center 55%',
-    title: 'Explore<br />Yoga',
-    desc: 'Practices for<br />a more conscious life',
-    cta: 'Discover',
+    title: t('ヨガを<br />知る', 'Explore<br />Yoga'),
+    desc: t('より意識的に生きるための<br />実践', 'Practices for<br />a more conscious life'),
+    cta: t('詳しく見る', 'Discover'),
   },
   music: {
-    href: '/music',
+    href: '/music/',
     img: '/assets/card-music-new.jpg',
-    alt: 'Setsuko Hata singing with her band',
+    alt: t('バンドとともに歌う秦 節子', 'Setsuko Hata singing with her band'),
     position: 'center 40%',
-    title: 'Explore<br />Music',
-    desc: 'Sound for<br />a brighter tomorrow',
-    cta: 'Listen',
+    title: t('音楽を<br />聴く', 'Explore<br />Music'),
+    desc: t('より輝く明日へ<br />音を届ける', 'Sound for<br />a brighter tomorrow'),
+    cta: t('聴く', 'Listen'),
   },
   home: {
     href: '/',
     img: '/assets/hero-stream.jpg',
-    alt: 'Setsuko Hata beside a mountain stream',
+    alt: t('渓流のほとりに佇む秦 節子', 'Setsuko Hata beside a mountain stream'),
     position: 'center 40%',
-    title: 'Setsuko<br />Hata',
-    desc: 'Yoga · Music<br />Conscious living',
-    cta: 'Home',
+    title: t('秦<br />節子', 'Setsuko<br />Hata'),
+    desc: t('ヨガ・音楽<br />意識的な暮らし', 'Yoga · Music<br />Conscious living'),
+    cta: t('ホームへ', 'Home'),
   },
 };
 ---
@@ -46,7 +49,7 @@ const cards: Record<CardId, { href: string; img: string; alt: string; position: 
     show.map((id) => {
       const card = cards[id];
       return (
-        <a href={card.href} class="explore-card" {...revealAttr}>
+        <a href={localizedPath(card.href, locale)} class="explore-card" {...revealAttr}>
           <img
             loading="lazy"
             decoding="async"

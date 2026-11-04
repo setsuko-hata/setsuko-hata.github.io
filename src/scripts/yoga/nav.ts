@@ -1,6 +1,6 @@
 /** Header behaviour for the /hatha-yoga/ pages: desktop dropdowns and the mobile menu. */
 
-const OPEN_DESKTOP_MIN = 768;
+const OPEN_DESKTOP_MIN = 1280;
 const FADE_MS = 340;
 
 function initDropdowns() {

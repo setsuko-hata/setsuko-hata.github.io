@@ -1,19 +1,22 @@
 ---
 /** 料金 as its own section under a city's classes: 単発参加, plus 月額会員 for 大阪. */
-import { IN_PERSON_RATES } from '../../../data/classes';
+import { classText, getClassContent } from '../../../data/classes';
 import OsakaMembership from './OsakaMembership.astro';
 
-interface Props { id: string; eyebrow: string; membership?: boolean; tone?: string; }
-const { id, eyebrow, membership = false, tone = '' } = Astro.props;
+interface Props { locale?: 'ja' | 'en'; id: string; eyebrow: string; membership?: boolean; tone?: string; }
+const { locale = 'ja', id, eyebrow, membership = false, tone = '' } = Astro.props;
+const t = (text: string) => classText(locale, text);
+const { IN_PERSON_RATES } = getClassContent(locale);
+
 ---
 <section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
   <div class="cl-wrap">
     <div class="cl-head">
       <p class="cl-eyebrow">{eyebrow}</p>
-      <h2>料金</h2>
+      <h2>{t("料金")}</h2>
       <span class="cl-head__rule" aria-hidden="true"></span>
     </div>
-    <p class="cl-lead cl-singleprice">単発参加　　<span class="rate-amount">{IN_PERSON_RATES[0].price}</span>円</p>
-    {membership && <OsakaMembership id="osaka-membership" />}
+    <p class="cl-lead cl-singleprice">{t("単発参加")}　　<span class="rate-amount">{IN_PERSON_RATES[0].price}</span>{t("円")}</p>
+    {membership && <OsakaMembership locale={locale} id="osaka-membership" />}
   </div>
 </section>

@@ -7,6 +7,7 @@
   var root = document.querySelector('[data-quiz]');
   if (!root) return;
   root.hidden = false;
+  var isEn = root.dataset.locale === 'en';
 
   var SURYA_SCORE = 3;
   var questions = Array.prototype.slice.call(root.querySelectorAll('[data-quiz-q]'));
@@ -28,7 +29,7 @@
 
   function showQuestion(i, focus) {
     questions.forEach(function (q, n) { q.hidden = n !== i; });
-    progress.textContent = '質問 ' + (i + 1);
+    progress.textContent = (isEn ? 'Question ' : '質問 ') + (i + 1);
     back.hidden = history.length === 0;
     if (focus) questions[i].querySelector('h3').focus();
   }
@@ -54,7 +55,7 @@
     card.classList.add('is-recommended');
     var tag = document.createElement('span');
     tag.className = 'pt-rec';
-    tag.textContent = 'あなたの始まり';
+    tag.textContent = isEn ? 'Your starting point' : 'あなたの始まり';
     card.insertBefore(tag, card.firstChild);
   }
 
