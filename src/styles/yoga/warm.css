@@ -424,23 +424,6 @@ header > div > div:last-of-type {
   }
 }
 
-/* Header: one breakpoint for both locales; keep in sync with OPEN_DESKTOP_MIN in nav.ts. */
-header .yoga-primary-nav {
-  display: none !important;
-}
-#yoga-menu-btn {
-  display: flex !important;
-}
-@media (min-width: 1280px) {
-  header .yoga-primary-nav {
-    display: flex !important;
-  }
-  #yoga-menu-btn,
-  #yoga-mobile-nav {
-    display: none !important;
-  }
-}
-
 /* keep header row above the menu scrim */
 header > div:first-child {
   position: relative;
