@@ -56,17 +56,53 @@ for (const lang of ['ja','en']) {
   field.events.input();assert.equal(field.message,'');
 }
 
-// Menu can reopen during a pending close animation and closes on Escape/resize.
-const navScript = ts.transpile(readFileSync('src/scripts/yoga/nav.ts','utf8'));
-const events = {}, windowEvents = {}, buttonEvents = {}, listEvents = {}, timers = [];
-const attributes = {}, classes = new Set();
-const button = {dataset:{labelOpen:'Open menu',labelClose:'Close menu'},setAttribute:(k,v)=>attributes[k]=v,addEventListener:(k,v)=>buttonEvents[k]=v};
-const wrap = {hidden:true,classList:{add:k=>classes.add(k),remove:k=>classes.delete(k)},querySelector:s=>s==='nav'?{addEventListener:(k,v)=>listEvents[k]=v}:{addEventListener(){}}};
-const documentStub={documentElement:{style:{}},querySelectorAll:()=>[],getElementById:id=>id==='yoga-menu-btn'?button:wrap,querySelector:()=>({classList:{toggle(){}}}),addEventListener:(k,v)=>events[k]=v};
-const windowStub={innerWidth:390,setTimeout:fn=>timers.push(fn),addEventListener:(k,v)=>windowEvents[k]=v};
-vm.runInNewContext(navScript,{document:documentStub,window:windowStub,requestAnimationFrame:fn=>fn()});
-buttonEvents.click();assert.equal(attributes['aria-expanded'],'true');assert.equal(wrap.hidden,false);
-buttonEvents.click();buttonEvents.click();timers.splice(0).forEach(fn=>fn());assert.equal(wrap.hidden,false);
-events.keydown({key:'Escape'});timers.splice(0).forEach(fn=>fn());assert.equal(wrap.hidden,true);
-buttonEvents.click();windowStub.innerWidth=1440;windowEvents.resize();timers.splice(0).forEach(fn=>fn());assert.equal(wrap.hidden,true);
-console.log('PASS: localized contact validation and repeated mobile menu/Escape/resize behavior.');
+// Guard the shared CSS/JS breakpoint. This is source-level coverage, not a browser layout test.
+const header = readFileSync('src/components/yoga/Header.astro', 'utf8');
+const warm = readFileSync('src/styles/yoga/warm.css', 'utf8');
+const navSource = readFileSync('src/scripts/yoga/nav.ts', 'utf8');
+const desktopMin = Number(navSource.match(/const OPEN_DESKTOP_MIN = (\d+);/)[1]);
+assert.equal(desktopMin, 1280);
+assert.match(header, /<nav class="yoga-primary-nav /, 'Use a locale-independent navigation hook');
+assert.ok(!header.includes('md:flex') && !header.includes('md:hidden'), 'Do not reintroduce a second navigation breakpoint');
+assert.ok(!header.includes('display:'), 'Navigation visibility belongs in the shared stylesheet');
+assert.ok(!warm.includes('nav[aria-label="Primary"]'), 'Translated accessible labels must not control styling');
+assert.match(warm, /header \.yoga-primary-nav\s*\{\s*display: none !important;\s*\}\s*#yoga-menu-btn\s*\{\s*display: flex !important;\s*\}/);
+assert.match(warm, new RegExp(`@media \\(min-width: ${desktopMin}px\\)\\s*\\{\\s*header \\.yoga-primary-nav\\s*\\{\\s*display: flex !important;\\s*\\}\\s*#yoga-menu-btn,\\s*#yoga-mobile-nav\\s*\\{\\s*display: none !important;\\s*\\}\\s*\\}`));
+console.log('PASS: JA/EN navigation uses one locale-independent 1280px CSS/JS breakpoint.');
+
+// Exercise the real menu script in both languages, including the former dead zone.
+const navScript = ts.transpile(navSource);
+for (const lang of ['ja', 'en']) {
+  const events = {}, windowEvents = {}, buttonEvents = {}, listEvents = {}, scrimEvents = {}, timers = [];
+  const attributes = {}, classes = new Set();
+  const labels = lang === 'ja' ? ['メニューを開く', 'メニューを閉じる'] : ['Open menu', 'Close menu'];
+  let headerOpen = false;
+  const button = {dataset:{labelOpen:labels[0],labelClose:labels[1]},setAttribute:(k,v)=>attributes[k]=v,addEventListener:(k,v)=>buttonEvents[k]=v};
+  const wrap = {hidden:true,classList:{add:k=>classes.add(k),remove:k=>classes.delete(k)},querySelector:s=>({addEventListener:(k,v)=>(s==='nav'?listEvents:scrimEvents)[k]=v})};
+  const documentStub={documentElement:{style:{}},querySelectorAll:()=>[],getElementById:id=>id==='yoga-menu-btn'?button:wrap,querySelector:()=>({classList:{toggle:(_,value)=>{headerOpen=value;}}}),addEventListener:(k,v)=>events[k]=v};
+  const windowStub={innerWidth:390,setTimeout:fn=>timers.push(fn),addEventListener:(k,v)=>windowEvents[k]=v};
+  vm.runInNewContext(navScript,{document:documentStub,window:windowStub,requestAnimationFrame:fn=>fn()});
+  const flush = () => timers.splice(0).forEach(fn=>fn());
+  const expectOpen = value => {
+    assert.equal(attributes['aria-expanded'], String(value));
+    assert.equal(attributes['aria-label'], labels[value ? 1 : 0]);
+    assert.equal(wrap.hidden, !value);
+    assert.equal(classes.has('is-open'), value);
+    assert.equal(headerOpen, value);
+    assert.equal(documentStub.documentElement.style.overflow, value ? 'hidden' : '');
+  };
+  for (const width of [390, 1023, 1024, 1279]) {
+    windowStub.innerWidth=width;
+    buttonEvents.click(); windowEvents.resize(); flush(); expectOpen(true);
+    buttonEvents.click(); buttonEvents.click(); flush(); expectOpen(true);
+    events.keydown({key:'Escape'}); flush(); expectOpen(false);
+    buttonEvents.click(); scrimEvents.click(); flush(); expectOpen(false);
+    buttonEvents.click(); listEvents.click({target:{closest:()=>({})}}); flush(); expectOpen(false);
+    for (const desktopWidth of [1280, 1440]) {
+      buttonEvents.click();
+      windowStub.innerWidth=desktopWidth; windowEvents.resize(); flush(); expectOpen(false);
+      windowStub.innerWidth=width; windowEvents.resize(); expectOpen(false);
+    }
+  }
+}
+console.log('PASS: localized menu open/close, repeated clicks, Escape, scrim/link dismissal, scroll restoration and resize across 1023/1024/1279/1280px.');

@@ -424,24 +424,15 @@ header > div > div:last-of-type {
   }
 }
 
-/* Header: switch to hamburger below 1024px (prebuilt CSS has no lg: variants) */
-@media (max-width: 1023px) {
-  header nav[aria-label="Primary"],
-  header nav[aria-label="Primary"] + div {
-    display: none !important;
-  }
-  #yoga-menu-btn {
-    display: flex !important;
-  }
-  #yoga-mobile-nav:not([hidden]) {
-    display: block !important;
-  }
+/* Header: one breakpoint for both locales; keep in sync with OPEN_DESKTOP_MIN in nav.ts. */
+header .yoga-primary-nav {
+  display: none !important;
 }
-@media (min-width: 1024px) {
-  header nav[aria-label="Primary"] {
-    display: flex !important;
-  }
-  header nav[aria-label="Primary"] + div {
+#yoga-menu-btn {
+  display: flex !important;
+}
+@media (min-width: 1280px) {
+  header .yoga-primary-nav {
     display: flex !important;
   }
   #yoga-menu-btn,
@@ -685,30 +676,6 @@ main li.text-sm,
 main span.text-sm,
 main dd.text-sm {
   font-size: 15px !important;
-}
-
-/* Header: keep the primary nav on a single line (desktop) */
-@media (min-width: 768px) {
-  header nav[aria-label="Primary"] {
-    flex-wrap: nowrap;
-    gap: 22px;
-  }
-  header nav[aria-label="Primary"] > a,
-  header nav[aria-label="Primary"] .ja-navtrigger {
-    white-space: nowrap;
-    font-size: 13.5px;
-    letter-spacing: 0.04em;
-  }
-}
-@media (min-width: 768px) and (max-width: 1240px) {
-  header nav[aria-label="Primary"] {
-    gap: 14px;
-  }
-  header nav[aria-label="Primary"] > a,
-  header nav[aria-label="Primary"] .ja-navtrigger {
-    font-size: 12.5px;
-    letter-spacing: 0;
-  }
 }
 
 /* ── About hero: portrait stays beside the intro text ─────────────────── */

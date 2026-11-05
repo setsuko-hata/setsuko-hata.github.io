@@ -36,7 +36,7 @@ const menuId = (id: string) => `yoga-menu-${id}`;
         </a>
       )
     }
-    <nav class="hidden items-center gap-9 md:flex" aria-label={isJa ? 'メインメニュー' : 'Primary navigation'}>
+    <nav class="yoga-primary-nav items-center gap-9" aria-label={isJa ? 'メインメニュー' : 'Primary navigation'}>
       {
         items.map((item) =>
           item.items ? (
@@ -73,7 +73,7 @@ const menuId = (id: string) => `yoga-menu-${id}`;
     <button
       id="yoga-menu-btn"
       type="button"
-      class="flex h-10 w-10 items-center justify-center md:hidden"
+      class="flex h-10 w-10 items-center justify-center"
       aria-expanded="false"
       aria-controls="yoga-mobile-nav"
       aria-label={isJa ? 'メニューを開く' : 'Open menu'}
@@ -119,5 +119,4 @@ const menuId = (id: string) => `yoga-menu-${id}`;
 <style>
   .yoga-language-switch { flex-shrink: 0; font: 600 13px/1.4 Inter, sans-serif; padding: 8px 10px; border: 1px solid currentColor; margin-left: auto; margin-right: 12px; }
   @media (min-width: 1280px) { .yoga-language-switch { margin-left: 18px; margin-right: 0; } }
-  @media (max-width: 1279px) { header nav { display: none !important; } #yoga-menu-btn { display: flex !important; } }
 </style>
