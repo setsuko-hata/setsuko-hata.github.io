@@ -1,3 +1,72 @@
+/* Loaded only by YogaLayout: menu scroll locking must not change the measured header width. */
+:root { scrollbar-gutter: stable; }
+
+/* ---------- Content-fit header: spend spare space before using the mobile menu ---------- */
+body.yoga-site .yoga-header > .yoga-header__row {
+  flex-wrap: nowrap;
+  max-width: 1360px;
+  column-gap: 20px;
+  padding-inline: clamp(16px, 3vw, 40px);
+}
+/* Compact the brand's decorative spacing, not its text size, on narrow phones. */
+body.yoga-site .yoga-header .yoga-header__brand {
+  gap: 6px;
+  letter-spacing: .03em !important;
+}
+body.yoga-site .yoga-header .yoga-header__brand svg { width: 16px; height: 16px; }
+body.yoga-site .yoga-header > .yoga-header__row > .yoga-primary-nav {
+  display: flex !important;
+  flex: none;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: 22px !important;
+}
+body.yoga-site .yoga-header .yoga-primary-nav > a,
+body.yoga-site .yoga-header .yoga-primary-nav .ja-navtrigger {
+  font-size: 15px !important;
+  white-space: nowrap;
+}
+body.yoga-site .yoga-header[data-nav-density="compact"] > .yoga-header__row {
+  padding-inline: 16px;
+  column-gap: 10px;
+}
+body.yoga-site .yoga-header[data-nav-density="compact"] > .yoga-header__row > .yoga-primary-nav {
+  gap: 12px !important;
+}
+/* Keep the real nav measurable while mobile, without duplicate IDs, tab stops or overflow. */
+.yoga-header:not([data-nav-layout="desktop"]) .yoga-primary-nav {
+  position: fixed;
+  left: -10000px;
+  visibility: hidden;
+  pointer-events: none;
+}
+.yoga-header[data-nav-layout="mobile"] .yoga-language-switch { margin-left: auto; }
+#yoga-menu-btn { flex: none; }
+.yoga-header[data-nav-layout="desktop"] #yoga-menu-btn,
+.yoga-header[data-nav-layout="desktop"] ~ #yoga-mobile-nav { display: none !important; }
+/* Progressive fallback only: JavaScript replaces this with the measured content fit. */
+@media (min-width: 1280px) {
+  .yoga-header:not([data-nav-layout]) .yoga-primary-nav {
+    position: static;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .yoga-header:not([data-nav-layout]) #yoga-menu-btn { display: none !important; }
+}
+@media (min-width: 768px) {
+  body.yoga-site .yoga-header > .yoga-header__row > a {
+    flex: none;
+    white-space: nowrap;
+    gap: 6px;
+    font-family: inherit;
+    font-size: 15px !important;
+    letter-spacing: .03em !important;
+    text-transform: none;
+  }
+  body.yoga-site .yoga-header .yoga-header__brand span { font-size: inherit !important; }
+  body.yoga-site .yoga-header .yoga-header__brand svg { width: 16px; height: 16px; }
+}
+
 /* ---------- Mobile menu (rendered by components/yoga/Header.astro) ---------- */
 .yoga-mobile-nav { position: fixed; top: 0; left: 0; width: 0; height: 0; z-index: 45; }
 .yoga-mobile-nav__scrim {

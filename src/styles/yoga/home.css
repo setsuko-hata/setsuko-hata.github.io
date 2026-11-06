@@ -596,19 +596,6 @@ body.yoga-site main .sh-band .sh-band__title { color: #fff; text-shadow: 0 1px 8
 body.yoga-site main .sh-band .sh-band__title { font-weight: 900 !important; text-shadow: 0 1px 10px rgba(20, 16, 10, .85), 0 0 3px rgba(20, 16, 10, .7); }
 body.yoga-site main .sh-about .sh-label--section { font-weight: 900 !important; font-size: 20px; }
 
-/* round 6: header on one line; back link matches nav text */
-@media (min-width: 768px) {
-  body.yoga-site header > div:first-child { flex-wrap: nowrap; gap: 20px; max-width: 1360px; }
-  body.yoga-site header > div:first-child > a { flex: none; white-space: nowrap; gap: 6px; font-family: inherit; font-size: 15px !important; letter-spacing: .03em !important; text-transform: none; }
-  body.yoga-site header > div:first-child > a svg { width: 16px; height: 16px; }
-  body.yoga-site header > div:first-child > nav { flex: 0 1 auto; flex-wrap: nowrap; white-space: nowrap; gap: clamp(12px, 1.6vw, 28px) !important; }
-}
-@media (min-width: 768px) and (max-width: 1100px) {
-  body.yoga-site header > div:first-child { padding-inline: 16px; gap: 12px; }
-  body.yoga-site header > div:first-child > a, body.yoga-site header nav a, body.yoga-site header .ja-navtrigger { font-size: 12.5px !important; }
-  body.yoga-site header > div:first-child > nav { gap: 10px !important; }
-}
-
 /* 講師紹介: soft, full "blob" frame on every screen size; moon sits on the name's line, at the right */
 .sh-about .sh-curve { width: min(100%, 520px); max-width: none; aspect-ratio: 1 / 1.08; justify-self: center; margin-inline: auto; border-radius: 42% 58% 50% 50% / 36% 40% 60% 64%; box-shadow: 0 8px 20px rgba(58, 50, 40, .18); }
 .sh-about .sh-curve img { object-position: 50% 20%; }
