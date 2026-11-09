@@ -4,6 +4,7 @@ const { locale = 'ja' } = Astro.props;
 const t = (ja: string, en: string) => locale === 'en' ? en : ja;
 
 import YogaLayout from '../../../layouts/YogaLayout.astro';
+import { CORPORATE_INQUIRY_FORM_URL } from '../../../data/yoga';
 ---
 <YogaLayout title={t("健康経営 | Setsuko Hata Yoga", "Corporate Wellness | Setsuko Hata Yoga")}
   description={t("就業時間内のハタヨガで、離職・体調不良・生産性を変える健康経営プログラム。導入例・科学的根拠・講師プロフィール。", "A corporate wellness program using Hatha Yoga during working hours to improve retention, wellbeing, and productivity. Explore program examples, scientific evidence, and your teacher's profile.")}
@@ -20,7 +21,7 @@ import YogaLayout from '../../../layouts/YogaLayout.astro';
     <div style="position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:clamp(112px,11vw,138px) clamp(22px,4vw,40px) clamp(104px,10vw,132px)">
       <div style="max-width:620px">
         <h1 class="font-display" style="margin:0;font-size:clamp(34px,5.4vw,60px);line-height:1.18;color:var(--yl-text);word-break:keep-all;overflow-wrap:normal">{t("職場に、", "Bring authentic")}<br />{t("本格ハタヨガを。", "Hatha Yoga to work.")}</h1>
-        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(24px,3vw,32px)"><a href="#contact" style="display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:2px;background:var(--color-warm-brown);color:#FFFFFF;font-size:15px;letter-spacing:.06em;text-decoration:none;white-space:nowrap;box-shadow:0 14px 26px -14px rgba(35,26,16,.8)">{t("体験クラスに申し込む", "Request a trial class")}</a><a href="#program" style="display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:2px;border:1px solid rgba(89,96,68,.28);color:var(--yl-text);font-size:15px;letter-spacing:.06em;text-decoration:none;white-space:nowrap">{t("導入例を見る", "Explore program examples")}</a></div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(24px,3vw,32px)"><a href={CORPORATE_INQUIRY_FORM_URL} style="display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:2px;background:var(--color-warm-brown);color:#FFFFFF;font-size:15px;letter-spacing:.06em;text-decoration:none;white-space:nowrap;box-shadow:0 14px 26px -14px rgba(35,26,16,.8)">{t("体験クラスに申し込む", "Request a trial class")}</a><a href="#program" style="display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:2px;border:1px solid rgba(89,96,68,.28);color:var(--yl-text);font-size:15px;letter-spacing:.06em;text-decoration:none;white-space:nowrap">{t("導入例を見る", "Explore program examples")}</a></div>
       </div>
     </div>
   </section>
@@ -193,7 +194,7 @@ import YogaLayout from '../../../layouts/YogaLayout.astro';
           <p class="ja-eyebrow">{t("お問い合わせ", "Contact")}</p>
           <h2 class="font-display" style="margin:20px 0 0;font-size:clamp(30px,4vw,46px);line-height:1.3;color:var(--yl-text)">{t("まずは、体験クラスから。", "Start with a trial class.")}</h2>
           <p style="margin:24px 0 0;max-width:27em;font-size:16.5px;line-height:2.05;color:var(--yl-soft)">{t("御社の現場に合わせて、実施時間・頻度・料金をご提案します。1回のトライアルで、社員の表情の変化を実感いただけます。", "Session times, frequency, and pricing will be proposed to suit your workplace. A single trial offers a chance to see the change in your employees' expressions.")}</p>
-          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px"><a href={t("mailto:yoga@setsukohata.com?subject=健康経営プログラム%20体験クラスのお問い合わせ", "mailto:yoga@setsukohata.com?subject=Corporate%20Wellness%20Trial%20Class%20Inquiry")} style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:2px;background:var(--yl-text);color:#FAF6EA;font-size:15px;letter-spacing:.04em;text-decoration:none;white-space:nowrap">{t("体験クラスを申し込む", "Request a trial class")}</a></div>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px"><a href={CORPORATE_INQUIRY_FORM_URL} style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:2px;background:var(--yl-text);color:#FAF6EA;font-size:15px;letter-spacing:.04em;text-decoration:none;white-space:nowrap">{t("体験クラスを申し込む", "Request a trial class")}</a></div>
         </div>
         <div>
           <div style="padding:20px 0;border-top:1px solid rgba(208,138,94,.45)"><p class="font-mono" style="margin:0;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-warm-brown)">{t("担当", "Contact person")}</p><p style="margin:12px 0 0;font-size:17px;line-height:1.75;color:var(--yl-soft)">{t("秦 節子（Setsuko Hata）／ サドグル公認ハタヨガ講師", "Setsuko Hata / Sadhguru-certified Hatha Yoga teacher")}</p></div><div style="padding:20px 0;border-top:1px solid rgba(208,138,94,.45);border-bottom:1px solid rgba(208,138,94,.45)"><p class="font-mono" style="margin:0;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-warm-brown)">{t("メール", "Email")}</p><p style="margin:12px 0 0;font-size:21px;line-height:1.6;color:var(--yl-soft)"><a href="mailto:yoga@setsukohata.com" style="color:var(--color-warm-brown);text-decoration:none;border-bottom:1px solid rgba(150,86,44,.4)">yoga@setsukohata.com</a></p></div>
