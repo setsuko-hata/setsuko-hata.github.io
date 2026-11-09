@@ -1,7 +1,7 @@
 ---
 import { alternatePaths, translator, localizedPath, type Locale } from '../data/personal-i18n';
 interface Props {
-  active: 'home' | 'about' | 'music';
+  active: 'home' | 'about' | 'music' | 'volunteer';
   locale?: Locale;
 }
 const { active, locale = 'ja' } = Astro.props;
@@ -22,6 +22,7 @@ const alternatives = alternatePaths(Astro.url.pathname);
         <li><a href={link('/satorin/')} class="nav-link">{t('SATORIN メンバーシップ', 'SATORIN Membership')}</a></li>
         <li><a href={link('/hatha-yoga/')} class="nav-link nav-link--jp">{t('ハタヨガ', 'Hatha Yoga')}</a></li>
         <li><a href={link('/music/')} class="nav-link nav-link--jp" aria-current={active === 'music' ? 'page' : undefined}>{t('音楽', 'Music')}</a></li>
+        <li><a href={link('/volunteer/')} class="nav-link nav-link--jp" aria-current={active === 'volunteer' ? 'page' : undefined}>{t('ボランティア募集', 'Volunteer')}</a></li>
       </ul>
     </nav>
     <nav class="language-switch" aria-label={t('言語を選択', 'Select language')}>

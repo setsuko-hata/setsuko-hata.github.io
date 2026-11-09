@@ -15,7 +15,7 @@ const routes = [
   ['#paths', 'en', '#paths'], ['mailto:x@y.com', 'en', 'mailto:x@y.com'],
 ];
 for (const [path, locale, expected] of routes) assert.equal(localizedPath(path, locale), expected);
-for (const path of ['/', '/about/', '/music/', '/morning-yoga/']) {
+for (const path of ['/', '/about/', '/music/', '/morning-yoga/', '/volunteer/']) {
   assert.equal(alternatePaths(path).en, `/en${path}`);
   assert.equal(alternatePaths(`/en${path}`).ja, path);
 }

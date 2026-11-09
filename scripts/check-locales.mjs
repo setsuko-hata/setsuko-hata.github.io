@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 const yoga = ['', 'about/', 'contact/', 'hatha-types/', 'hatha-yoga/', 'offerings/', 'path/', 'schools/', 'wellness/'];
 const pairs = [
   ['/', '/en/'], ['/about/', '/en/about/'], ['/music/', '/en/music/'], ['/morning-yoga/', '/en/morning-yoga/'],
+  ['/volunteer/', '/en/volunteer/'],
   ['/satorin/', '/satorin/en/'], ['/shop/', '/shop/en/'],
   ...yoga.map(p => ['/hatha-yoga/ja/' + p, '/hatha-yoga/en/' + p]),
 ];

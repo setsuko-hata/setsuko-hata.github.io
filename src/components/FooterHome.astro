@@ -35,6 +35,7 @@ const link = (path: string) => localizedPath(path, locale);
           <li><a href={link('/')}>{t('ホーム', 'Home')}</a></li>
           <li><a href={link('/about/')}>{t('プロフィール', 'About')}</a></li>
           <li><a href={link('/hatha-yoga/')} class="jp" lang={locale}>{t('ハタヨガ', 'Hatha Yoga')}</a></li>
+          <li><a href={link('/volunteer/')}>{t('ボランティア募集', 'Volunteer')}</a></li>
           <li><a href="mailto:info@setsukohata.com">{t('お問い合わせ', 'Contact')}</a></li>
         </ul>
       </nav>

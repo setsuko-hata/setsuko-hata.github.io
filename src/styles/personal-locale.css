@@ -23,7 +23,10 @@
 html[lang='ja'] .nav-link { letter-spacing: 0.08em; }
 html[lang='en'] .jp-body,
 html[lang='en'] .intro__text { line-height: 1.9; }
-@media (max-width: 560px) {
+/* Keep the language switch beside the brand when the expanded navigation needs its own row. */
+@media (max-width: 1360px) {
   .site-header__inner > nav:first-of-type { order: 2; width: 100%; }
+}
+@media (max-width: 560px) {
   .site-header__inner { gap: 12px 16px; }
 }
