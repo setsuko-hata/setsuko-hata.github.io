@@ -26,6 +26,7 @@ export const SURYA_KRIYA_FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSeVjPhVjYziIatrZLVkluYZ4vvhXAZD64f9h8pjhA7ZhsgBSQ/viewform?usp=dialog';
 
 export const CORPORATE_INQUIRY_FORM_URL = 'https://forms.gle/43bFeedzY3vsR2fY6';
+export const SCHOOL_INQUIRY_FORM_URL = 'https://forms.gle/4rRn9uL2MdS1GWnM8';
 
 export const CONTACT_EMAIL = 'yoga@setsukohata.com';
 
