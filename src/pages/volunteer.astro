@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { translator, type Locale } from '../data/personal-i18n';
-import { volunteer } from '../data/volunteer';
+import { volunteer, VOLUNTEER_APPLICATION_URL } from '../data/volunteer';
 
 interface Props { locale?: Locale; }
 const { locale = 'ja' } = Astro.props;
@@ -105,9 +105,8 @@ const t = translator(locale);
         <p class="volunteer-eyebrow">JOIN OUR COMMUNITY</p>
         <h2 id="volunteer-join-title">{copy.joinTitle}</h2>
         <div class="volunteer-prose">{copy.join.map(paragraph => <p>{paragraph}</p>)}</div>
-        <!-- Keep this a disabled button until SATORIN supplies the final locale-specific application forms. -->
-        <button type="button" class="volunteer-apply" disabled aria-label={copy.applyLabel} aria-describedby="application-pending">{copy.apply} <span aria-hidden="true">→</span></button>
-        <p id="application-pending" class="volunteer-join__pending">{copy.pending}</p>
+        <a href={VOLUNTEER_APPLICATION_URL} class="volunteer-apply" target="_blank" rel="noopener noreferrer" aria-label={copy.applyLabel} aria-describedby="application-note">{copy.apply} <span aria-hidden="true">→</span></a>
+        <p id="application-note" class="volunteer-join__note">{copy.applicationNote}</p>
         <p class="volunteer-join__detail">{copy.participation}</p>
         <p class="volunteer-join__detail">{copy.volunteerNote}</p>
       </div>

@@ -1,4 +1,6 @@
 /** Japanese copy supplied by SATORIN; English is a faithful translation. */
+export const VOLUNTEER_APPLICATION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeg0ds7M_QH0v_KOzYwtqrFSaq09Ht9DYW863qo9NAYpjFo3Q/viewform?usp=send_form';
+
 export const volunteer = {
   ja: {
     title: 'ボランティア募集',
@@ -39,7 +41,7 @@ export const volunteer = {
     join: ['新しい仲間と出会い、新しいことを学び、自分自身の可能性をひらく。そして、その成長を誰かの幸せにつなげていく。', 'あなたの成長が、誰かの人生を変える。一緒に、より豊かな未来を創りませんか？'],
     apply: '申し込む',
     applyLabel: 'SATORINボランティアに応募する',
-    pending: '応募フォームは準備中です。公開までお待ちください。',
+    applicationNote: '日英共通の応募フォームが新しいタブで開きます。',
     participation: 'オンライン・対面で参加可能｜活動内容・頻度は応相談',
     volunteerNote: '※ボランティアとしての参加募集です。',
   },
@@ -82,7 +84,7 @@ export const volunteer = {
     join: ['Meet new people, learn new things and open up your own potential. Let that growth contribute to someone else’s happiness.', 'Your growth can change someone’s life. Will you join us in creating a richer future?'],
     apply: 'Apply Now',
     applyLabel: 'Apply to volunteer with SATORIN',
-    pending: 'The application form is being prepared. Please wait until it is available.',
+    applicationNote: 'The bilingual Japanese–English application form opens in a new tab.',
     participation: 'Join online or in person · Activities and frequency can be discussed',
     volunteerNote: 'This is a call for volunteer participation.',
   },

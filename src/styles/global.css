@@ -2484,8 +2484,9 @@ a.explore-card:hover .explore-card__overlay {
 .volunteer-join { text-align: center; }
 .volunteer-join h2 { max-width: 860px; margin-inline: auto; }
 .volunteer-join .volunteer-prose { max-width: 740px; margin: 0 auto 32px; }
-.volunteer-apply { display: inline-flex; align-items: center; justify-content: center; gap: 32px; min-height: 58px; padding: 14px 42px; font: 500 16px/1.6 var(--font-sans); border: 1px solid var(--volunteer-olive); border-radius: 3px; background: #D3D6BE; color: #4A5039; cursor: not-allowed; }
-.volunteer .volunteer-join__pending { margin: 16px auto 28px; color: var(--muted); font-size: 14px; }
+.volunteer-apply { display: inline-flex; align-items: center; justify-content: center; gap: 32px; min-height: 58px; padding: 14px 42px; font: 500 16px/1.6 var(--font-sans); border: 1px solid var(--volunteer-olive); border-radius: 3px; background: var(--volunteer-olive); color: #fff; transition: background 200ms ease; }
+.volunteer-apply:hover { background: #464D35; color: #fff; }
+.volunteer .volunteer-join__note { margin: 16px auto 28px; color: var(--muted); font-size: 14px; }
 .volunteer .volunteer-join__detail { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
 .volunteer section[id] { scroll-margin-top: 180px; }
 @media (max-width: 900px) {
