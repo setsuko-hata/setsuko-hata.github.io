@@ -8,7 +8,6 @@ const { active, locale = 'ja' } = Astro.props;
 const t = translator(locale);
 const link = (path: string) => localizedPath(path, locale);
 const alternatives = alternatePaths(Astro.url.pathname);
-const isHome = ['/', '/en', '/en/'].includes(Astro.url.pathname);
 ---
 
 <header class="site-header">
@@ -22,17 +21,14 @@ const isHome = ['/', '/en', '/en/'].includes(Astro.url.pathname);
         <li><a href={link('/about/')} class="nav-link" aria-current={active === 'about' ? 'page' : undefined}>{t('プロフィール', 'About')}</a></li>
         <li><a href={link('/satorin/')} class="nav-link">{t('SATORIN メンバーシップ', 'SATORIN Membership')}</a></li>
         <li><a href={link('/hatha-yoga/')} class="nav-link nav-link--jp">{t('ハタヨガ', 'Hatha Yoga')}</a></li>
+        <li><a href={link('/volunteer/')} class="nav-link nav-link--jp" aria-current={active === 'volunteer' ? 'page' : undefined}>{t('ボランティア募集', 'Volunteer')}</a></li>
         <li><a href={link('/music/')} class="nav-link nav-link--jp" aria-current={active === 'music' ? 'page' : undefined}>{t('音楽', 'Music')}</a></li>
-        {!isHome && <li><a href={link('/volunteer/')} class="nav-link nav-link--jp" aria-current={active === 'volunteer' ? 'page' : undefined}>{t('ボランティア募集', 'Volunteer')}</a></li>}
       </ul>
     </nav>
-    <div class:list={['site-header__actions', { 'site-header__actions--home': isHome }]}>
-      {isHome && <a href={link('/volunteer/')} class="nav-link nav-link--jp site-header__volunteer">{t('ボランティア募集', 'Volunteer')}</a>}
-      <nav class="language-switch" aria-label={t('言語を選択', 'Select language')}>
-        <a href={alternatives.ja} lang="ja" hreflang="ja" data-language-switch="ja" aria-label="日本語" aria-current={locale === 'ja' ? 'page' : undefined}>JA</a>
-        <span aria-hidden="true">/</span>
-        <a href={alternatives.en} lang="en" hreflang="en" data-language-switch="en" aria-label="English" aria-current={locale === 'en' ? 'page' : undefined}>EN</a>
-      </nav>
-    </div>
+    <nav class="language-switch" aria-label={t('言語を選択', 'Select language')}>
+      <a href={alternatives.ja} lang="ja" hreflang="ja" data-language-switch="ja" aria-label="日本語" aria-current={locale === 'ja' ? 'page' : undefined}>JA</a>
+      <span aria-hidden="true">/</span>
+      <a href={alternatives.en} lang="en" hreflang="en" data-language-switch="en" aria-label="English" aria-current={locale === 'en' ? 'page' : undefined}>EN</a>
+    </nav>
   </div>
 </header>

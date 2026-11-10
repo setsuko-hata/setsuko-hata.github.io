@@ -1,13 +1,7 @@
 /* Shared, keyboard-accessible language links. Preserve the existing header layout. */
-.site-header__actions {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  gap: 20px;
-}
-.site-header__actions--home { margin-left: auto; }
 .language-switch {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-sans);
@@ -40,16 +34,20 @@ html[lang='en'] .intro__text { line-height: 1.9; }
   .site-header .wordmark { font-size: 24px; letter-spacing: 0.14em; }
   .site-header .nav-list { gap: 18px; }
   .site-header .nav-link { font-size: 13px; letter-spacing: 0.06em; }
-  .site-header__actions { gap: 16px; }
 }
 @media (min-width: 901px) and (max-width: 1100px) {
   .site-header__inner { gap: 12px; padding-inline: 20px; }
   .site-header .wordmark { font-size: 22px; letter-spacing: 0.1em; }
-  .site-header .nav-list, .site-header__actions { gap: 12px; }
+  .site-header .nav-list { gap: 12px; }
   .site-header .nav-link { font-size: 12px; letter-spacing: 0.04em; }
 }
 @media (max-width: 900px) {
   .site-header__inner > nav:first-of-type { order: 2; width: 100%; }
+}
+@media (min-width: 561px) and (max-width: 900px) {
+  .site-header__inner { padding-inline: 16px; }
+  .site-header .nav-list { gap: clamp(12px, 2vw, 18px); }
+  .site-header .nav-link { font-size: clamp(12px, 1.7vw, 15px); letter-spacing: 0.04em; }
 }
 @media (max-width: 560px) {
   .site-header__inner { gap: 12px 16px; }

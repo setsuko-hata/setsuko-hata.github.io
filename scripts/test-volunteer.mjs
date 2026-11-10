@@ -33,13 +33,15 @@ for (const locale of ['ja', 'en']) {
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
   assert.match(html, new RegExp(`<a[^>]*href="${path}"[^>]*aria-current="page"`));
 
-  const home = readFileSync(`dist/${locale === 'en' ? 'en/' : ''}index.html`, 'utf8');
-  const header = home.match(/<header\b[\s\S]*?<\/header>/)[0];
-  const mainMenu = header.match(/<ul class="nav-list">[\s\S]*?<\/ul>/)[0];
-  assert.ok(!mainMenu.includes('/volunteer/'), 'Home must not repeat the volunteer link in its main menu');
-  assert.equal((header.match(new RegExp(`href="${path}"`, 'g')) || []).length, 1);
-  assert.match(header, /site-header__actions--home[\s\S]*site-header__volunteer[\s\S]*class="language-switch"/);
-  const morning = readFileSync(`dist/${locale === 'en' ? 'en/' : ''}morning-yoga/index.html`, 'utf8');
-  assert.ok(!morning.includes('site-header__actions--home'), 'Home-only relocation must not affect the morning-yoga page');
+  for (const page of ['', 'about/', 'music/', 'morning-yoga/', 'volunteer/']) {
+    const pageHtml = readFileSync(`dist/${locale === 'en' ? 'en/' : ''}${page}index.html`, 'utf8');
+    const header = pageHtml.match(/<header\b[\s\S]*?<\/header>/)[0];
+    const mainMenu = header.match(/<ul class="nav-list">[\s\S]*?<\/ul>/)[0];
+    const menuPaths = [...mainMenu.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
+    assert.ok(menuPaths.includes(path), 'Volunteer belongs in the main navigation');
+    assert.equal(menuPaths.indexOf(path) + 1, menuPaths.indexOf(`${locale === 'en' ? '/en' : ''}/music/`), 'Volunteer must directly precede Music');
+    assert.equal(menuPaths.filter(href => href === path).length, 1, 'Each menu has exactly one volunteer entrance');
+    assert.ok(!header.includes('site-header__actions'), 'Remove the former entrance beside the language switch');
+  }
 }
-console.log('PASS: JA/EN volunteer copy, five roles, six benefits, eligibility, one H1, active navigation, verified application URL, and one homepage entrance directly before the language switch.');
+console.log('PASS: JA/EN volunteer copy, five roles, six benefits, eligibility, one H1, active navigation, verified application URL, and one volunteer entrance directly before Music on every personal-site page.');
