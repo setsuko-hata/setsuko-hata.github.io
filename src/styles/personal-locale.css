@@ -1,4 +1,11 @@
 /* Shared, keyboard-accessible language links. Preserve the existing header layout. */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 20px;
+}
+.site-header__actions--home { margin-left: auto; }
 .language-switch {
   display: flex;
   align-items: center;
