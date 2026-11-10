@@ -9,4 +9,4 @@
 - Both application buttons link to the supplied bilingual Google Form using `VOLUNTEER_APPLICATION_URL`. The form opens in a new tab; no form is embedded and this website collects no application data.
 - Read-only form review on 2026-11-10: publicly accessible, with Japanese and English introductions, questions and options. Phone and WhatsApp are marked required and request country codes. The WhatsApp label says to enter “Not used” / “未利用” when unavailable, rather than the earlier email wording “Not available”. No field was filled, no response submitted, and server-side validation was not tested.
 - Verify with `npm run check`, `npm run build`, `npm run test:i18n`, and `npm run test:volunteer`. In environments without a writable Astro telemetry config, set `ASTRO_TELEMETRY_DISABLED=1` for the Astro commands.
-- This change is a local preview only. No push, pull request, merge or deployment is included.
+- Publish only with explicit approval, through the existing GitHub Pages workflow. Exclude temporary preview files from public before building the release.
