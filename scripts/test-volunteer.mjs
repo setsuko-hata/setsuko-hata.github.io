@@ -8,6 +8,9 @@ const scope = { exports: {} };
 vm.runInNewContext(ts.transpile(readFileSync('src/data/volunteer.ts', 'utf8'), { module: ts.ModuleKind.CommonJS }), scope);
 const strings = value => typeof value === 'string' ? [value] : Object.values(value).flatMap(strings);
 const decode = html => html.replace(/&amp;/g, '&').replace(/&#39;|&#x27;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+const headerCss = readFileSync('src/styles/personal-locale.css', 'utf8');
+assert.match(headerCss, /@media \(min-width: 901px\)\s*\{\s*\.site-header__inner, \.site-header \.nav-list \{ flex-wrap: nowrap; \}/, 'Desktop header and navigation must stay on one row');
+assert.match(headerCss, /@media \(max-width: 900px\)\s*\{\s*\.site-header__inner > nav:first-of-type \{ order: 2; width: 100%; \}/, 'Only the phone/tablet layout may move the menu to its own row');
 for (const locale of ['ja', 'en']) {
   const path = `${locale === 'en' ? '/en' : ''}/volunteer/`;
   const html = readFileSync(`dist${path}index.html`, 'utf8');

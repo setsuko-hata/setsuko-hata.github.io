@@ -30,8 +30,25 @@
 html[lang='ja'] .nav-link { letter-spacing: 0.08em; }
 html[lang='en'] .jp-body,
 html[lang='en'] .intro__text { line-height: 1.9; }
-/* Keep the language switch beside the brand when the expanded navigation needs its own row. */
-@media (max-width: 1360px) {
+/* Compact the desktop header before switching to the phone/tablet layout. */
+@media (min-width: 901px) {
+  .site-header__inner, .site-header .nav-list { flex-wrap: nowrap; }
+  .site-header .wordmark { white-space: nowrap; }
+}
+@media (min-width: 901px) and (max-width: 1360px) {
+  .site-header__inner { gap: 20px; padding-inline: 24px; }
+  .site-header .wordmark { font-size: 24px; letter-spacing: 0.14em; }
+  .site-header .nav-list { gap: 18px; }
+  .site-header .nav-link { font-size: 13px; letter-spacing: 0.06em; }
+  .site-header__actions { gap: 16px; }
+}
+@media (min-width: 901px) and (max-width: 1100px) {
+  .site-header__inner { gap: 12px; padding-inline: 20px; }
+  .site-header .wordmark { font-size: 22px; letter-spacing: 0.1em; }
+  .site-header .nav-list, .site-header__actions { gap: 12px; }
+  .site-header .nav-link { font-size: 12px; letter-spacing: 0.04em; }
+}
+@media (max-width: 900px) {
   .site-header__inner > nav:first-of-type { order: 2; width: 100%; }
 }
 @media (max-width: 560px) {
