@@ -183,6 +183,10 @@ img {
   text-transform: none;
 }
 
+html[lang='en'] .site-header .nav-link {
+  text-transform: uppercase;
+}
+
 /* ---------- Hero (Home) ---------- */
 /* Zoom-out once and settle; alternating would zoom back in. */
 @keyframes heroFloat {
