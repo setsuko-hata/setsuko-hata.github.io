@@ -187,6 +187,17 @@ html[lang='en'] .site-header .nav-link {
   text-transform: uppercase;
 }
 
+.nav-link--featured {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  padding: 7px 10px;
+}
+
+.nav-link--featured:hover,
+.nav-link--featured[aria-current='page'] {
+  border-color: var(--gold-deep);
+}
+
 /* ---------- Hero (Home) ---------- */
 /* Zoom-out once and settle; alternating would zoom back in. */
 @keyframes heroFloat {
