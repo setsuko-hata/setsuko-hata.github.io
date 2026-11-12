@@ -19,7 +19,7 @@ const alternatives = alternatePaths(Astro.url.pathname);
       <ul class="nav-list">
         <li><a href={link('/')} class="nav-link" aria-current={active === 'home' ? 'page' : undefined}>{t('ホーム', 'Home')}</a></li>
         <li><a href={link('/about/')} class="nav-link" aria-current={active === 'about' ? 'page' : undefined}>{t('プロフィール', 'About')}</a></li>
-        <li><a href={link('/satorin/')} class="nav-link">{t('オンラインヨガ', 'Online Yoga')}</a></li>
+        <li><a href={locale === 'en' ? '/satorin/en/global-live-online-yoga/' : link('/satorin/')} class="nav-link">{t('オンラインヨガ', 'Online Yoga')}</a></li>
         <li><a href={link('/volunteer/')} class="nav-link nav-link--jp" aria-current={active === 'volunteer' ? 'page' : undefined}><span class="nav-link__word">{t('ボランティア', 'Volunteer')}</span>{locale === 'ja' && <span class="nav-link__word">募集</span>}</a></li>
         <li><a href={link('/hatha-yoga/')} class="nav-link nav-link--jp nav-link--featured">{t('ハタヨガ', 'Hatha Yoga')}</a></li>
         <li><a href={link('/music/')} class="nav-link nav-link--jp nav-link--featured" aria-current={active === 'music' ? 'page' : undefined}>{t('音楽', 'Music')}</a></li>

@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "test:volunteer": "node scripts/test-volunteer.mjs",
-    "test:i18n": "node scripts/check-locales.mjs && node scripts/test-language-behavior.mjs && node scripts/test-personal-i18n.mjs && node scripts/test-class-interactions.mjs && node scripts/test-yoga-interactions.mjs && node scripts/test-static-locales.mjs"
+    "test:i18n": "node scripts/check-locales.mjs && node scripts/test-language-behavior.mjs && node scripts/test-personal-i18n.mjs && node scripts/test-class-interactions.mjs && node scripts/test-yoga-interactions.mjs && node scripts/test-static-locales.mjs",
+    "test:global-yoga": "node scripts/test-global-yoga.mjs"
   },
   "dependencies": {
     "astro": "^4.16.0",
