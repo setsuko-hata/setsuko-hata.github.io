@@ -11,10 +11,14 @@ const supplied = readFileSync('scripts/fixtures/global-yoga-copy.txt', 'utf8')
   .map(normalize);
 const actual = [...html.matchAll(/<([a-z0-9]+)\b[^>]*\bdata-copy(?:\s|>)[\s\S]*?<\/\1>/gi)]
   .map(match => normalize(match[0]));
-assert.equal(actual.length, 37, 'Keep all supplied content blocks');
-assert.deepEqual([...actual].sort(), [...supplied].sort(), 'Published copy must match the supplied English copy');
+assert.equal(actual.length, 37, 'Keep all approved content blocks');
+assert.deepEqual([...actual].sort(), [...supplied].sort(), 'Published copy must match the approved English copy');
 assert.match(html, /<html lang="en">/);
 assert.equal([...html.matchAll(/<h1\b/g)].length, 1);
+assert.ok(!/15[- ]minute|7:45[–-]8:00/i.test(html), 'Remove the superseded 15-minute schedule, including metadata');
+assert.equal([...html.matchAll(/7:45–8:30/g)].length, 3, 'Keep both visible schedules and the search description consistent');
+assert.match(html, /<h1[^>]*>Give yourself 45 minutes\.<\/h1>/);
+assert.ok(html.includes('a 45-minute practice'), 'State the agreed class duration');
 assert.match(html, new RegExp(`<link rel="canonical" href="https://setsukohata.com${route}">`));
 assert.ok(!/Preview only|<title>Preview|data-language-switch|<script\b|<form\b/.test(html));
 assert.ok(!/Registration link to be added|<button\b|aria-disabled/.test(html));
@@ -46,4 +50,4 @@ for (const page of ['', 'about/', 'music/', 'morning-yoga/', 'volunteer/']) {
 }
 assert.ok(!readFileSync('dist/satorin/index.html', 'utf8').includes(route), 'Do not add the English program to the Japanese membership page');
 assert.ok(readFileSync('dist/sitemap.xml', 'utf8').includes(`https://setsukohata.com${route}<`));
-console.log('PASS: all 37 supplied English copy blocks, both registration links, assets, links, sitemap, and separate Japanese/English navigation.');
+console.log('PASS: all 37 approved English copy blocks, both registration links, assets, links, sitemap, and separate Japanese/English navigation.');
