@@ -43,6 +43,7 @@ html[lang='en'] .intro__text { line-height: 1.9; }
 }
 @media (max-width: 900px) {
   .site-header__inner > nav:first-of-type { order: 2; width: 100%; }
+  .site-header .language-switch { order: 3; margin-left: auto; }
 }
 @media (min-width: 561px) and (max-width: 900px) {
   .site-header__inner { padding-inline: 16px; }
