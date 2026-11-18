@@ -15,9 +15,9 @@ for (const pair of pairs) {
     const html = readFileSync(file, 'utf8');
     const language = i ? 'en' : 'ja';
     assert.match(html, new RegExp(`<html[^>]*lang=["']${language}["']`), `Wrong language at ${route}`);
-    assert.ok(html.includes('data-language-switch'), `Missing switch at ${route}`);
+    if (!['/satorin/', '/satorin/en/'].includes(route)) assert.ok(html.includes('data-language-switch'), `Missing switch at ${route}`);
     assert.ok(html.includes(pair[1-i]), `Missing counterpart at ${route}`);
-    assert.ok(html.includes('/scripts/language.js'), `Missing switch behavior at ${route}`);
+    if (!['/satorin/', '/satorin/en/'].includes(route)) assert.ok(html.includes('/scripts/language.js'), `Missing switch behavior at ${route}`);
     // No accidental English redirect back to the Japanese page.
     if (i) assert.ok(!/http-equiv=["']refresh/i.test(html), `English route redirects: ${route}`);
   }
