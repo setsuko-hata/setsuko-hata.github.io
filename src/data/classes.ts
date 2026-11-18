@@ -112,7 +112,7 @@ export const SATORIN_PLANS = [
     "features": [
       "対面ヨガ：月2回"
     ],
-    "url": "/hatha-yoga/ja/offerings/#osaka-membership"
+    "url": "/hatha-yoga/ja/contact/"
   },
   {
     "no": "05",
@@ -130,7 +130,7 @@ export const SATORIN_PLANS = [
       "ナイトプラン（健康セミナー月2回＋瞑想会月2回）",
       "コミュニティ交流会"
     ],
-    "url": "/hatha-yoga/ja/offerings/#osaka-membership"
+    "url": "/hatha-yoga/ja/contact/"
   }
 ];
 
