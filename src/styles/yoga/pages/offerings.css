@@ -91,7 +91,7 @@ body.page-offerings .rate-chip { display: inline-block; padding: 2px 14px; font-
 /* Membership plans: one column on narrow containers, three side by side when there is room */
 body.page-offerings .plans { container-type: inline-size; }
 body.page-offerings .plans__grid { display: grid; gap: 16px; }
-@container (min-width: 600px) { body.page-offerings .plans__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; } body.page-offerings .plan__name { min-height: 3em; } }
+@container (min-width: 600px) { body.page-offerings .plans__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; } body.page-offerings .plan__name { min-height: 3em; } }
 body.page-offerings .plan { display: flex; flex-direction: column; padding: 26px 24px 8px; background: var(--tint-sage); border: 0; border-top: 4px solid var(--color-deep-olive); border-radius: 4px; }
 body.page-offerings .plan:nth-child(2) { border-top-color: var(--color-warm-brown); background: var(--tint-sand); }
 body.page-offerings .plan:nth-child(3) { border-top-color: var(--color-antique-gold); background: linear-gradient(168deg, var(--color-surface-terracotta), var(--color-warm-beige)); }
