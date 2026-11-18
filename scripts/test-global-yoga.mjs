@@ -14,6 +14,8 @@ const actual = [...html.matchAll(/<([a-z0-9]+)\b[^>]*\bdata-copy(?:\s|>)[\s\S]*?
 assert.equal(actual.length, 37, 'Keep all approved content blocks');
 assert.deepEqual([...actual].sort(), [...supplied].sort(), 'Published copy must match the approved English copy');
 assert.match(html, /<html lang="en">/);
+assert.ok(html.includes('<a class="back" href="/en/">← Back to Home</a>'), 'Header back link must target the English homepage');
+assert.ok(html.includes('<div class="brand">SATORIN<small>ONLINE MEMBERSHIP</small></div>'), 'Header brand stays non-interactive');
 assert.equal([...html.matchAll(/<h1\b/g)].length, 1);
 assert.ok(!/15[- ]minute|7:45[–-]8:00/i.test(html), 'Remove the superseded 15-minute schedule, including metadata');
 assert.equal([...html.matchAll(/7:45–8:30/g)].length, 3, 'Keep both visible schedules and the search description consistent');
