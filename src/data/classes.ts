@@ -280,6 +280,9 @@ export const CLASS_DIALOGS = [
 
 /** English copy shares the Japanese content structure, identifiers, rates, and booking URLs. */
 const ENGLISH_CLASS_TEXT: Record<string, string> = {
+  "オンライン会員の日程について": "Online membership schedule notice",
+  "オンライン会員のカレンダー更新中": "Online membership calendar update in progress",
+  "現在のカレンダーには、新しい会員プランに未対応の日程・時間が含まれています。実際の開催日・時間は、お申し込み前にお問い合わせください。": "The calendar still contains dates and times that have not been updated for the new membership plans. Please contact us to confirm the actual class dates and times before applying.",
   "予約準備中・お問い合わせ": "Booking coming soon · Contact us",
   "詳細・お申し込み": "Details and application",
   "朝ヨガ\n月・水・金 6:00〜6:45\n（祝日休み）": "Morning yoga\nMon, Wed, Fri 6:00\u20136:45\nExcept Japanese public holidays",

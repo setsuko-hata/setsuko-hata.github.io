@@ -169,3 +169,8 @@ body.page-offerings .plans__note { margin: 16px 0 0; font-size: 15px; line-heigh
   .cmp-table tbody td,.cmp-table tbody td+td{border-left:0;padding:12px 18px;text-align:left}
   .cmp-table tbody td::before{content:attr(data-label);display:block;font-size:12px;letter-spacing:.14em;color:var(--color-deep-olive)}
 }
+
+/* Keep the external calendar discrepancy visible until its source is updated. */
+body.page-offerings .membership-calendar-notice { margin: 24px 0; padding: 20px 24px; border: 1px solid #8A6A2C; border-left: 5px solid #8A6A2C; border-radius: 4px; background: #fff5db; color: #4A3F31; line-height: 1.8; }
+body.page-offerings .membership-calendar-notice strong { display: block; font-size: 1.1rem; }
+body.page-offerings .membership-calendar-notice p { margin: 8px 0; }
