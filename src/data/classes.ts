@@ -46,7 +46,7 @@ export const SATORIN_COACHING_RATES = [
   { label: 'プレミアムプラン（月3回）1回あたり', price: '8,000' },
 ];
 
-/** SATORIN plans, monthly, 税込. Each books its own STORES product. */
+/** SATORIN monthly plans. Online booking awaits updated STORES terms. */
 export const SATORIN_PLANS = [
   {
     "no": "01",
@@ -62,7 +62,7 @@ export const SATORIN_PLANS = [
     "features": [
       "朝ヨガ：月・水・金（祝日休み）"
     ],
-    "url": "https://setsuko-hata-yoga.stores.jp/reserve/honten-kf004n/products/151433"
+    "url": "/hatha-yoga/ja/contact/"
   },
   {
     "no": "02",
@@ -79,7 +79,7 @@ export const SATORIN_PLANS = [
       "健康セミナー：月2回",
       "瞑想会：月2回"
     ],
-    "url": "https://setsuko-hata-yoga.stores.jp/reserve/honten-kf004n/products/363296"
+    "url": "/hatha-yoga/ja/contact/"
   },
   {
     "no": "03",
@@ -96,7 +96,7 @@ export const SATORIN_PLANS = [
       "朝ヨガ：月・水・金（祝日休み）",
       "ナイトプラン（健康セミナー月2回＋瞑想会月2回）"
     ],
-    "url": "https://setsuko-hata-yoga.stores.jp/reserve/honten-kf004n/products/229802"
+    "url": "/hatha-yoga/ja/contact/"
   },
   {
     "no": "04",
@@ -280,6 +280,8 @@ export const CLASS_DIALOGS = [
 
 /** English copy shares the Japanese content structure, identifiers, rates, and booking URLs. */
 const ENGLISH_CLASS_TEXT: Record<string, string> = {
+  "予約準備中・お問い合わせ": "Booking coming soon · Contact us",
+  "詳細・お申し込み": "Details and application",
   "朝ヨガ\n月・水・金 6:00〜6:45\n（祝日休み）": "Morning yoga\nMon, Wed, Fri 6:00\u20136:45\nExcept Japanese public holidays",
   "メンバーでない方も、月2回の健康セミナー（19:30〜20:10）・瞑想（20:20〜21:00）に1回から参加いただけます（朝ヨガは含まれません）。": "Non-members can book a single health seminar (19:30\u201320:10) or meditation session (20:20\u201321:00), each held twice a month. Morning yoga is not included.",
   "メンバーでない方も、月2回ずつの健康セミナー・瞑想会に、ご自宅からオンラインで気軽に": "Non-members are welcome to join our twice-monthly health seminars and meditation sessions online from home. ",

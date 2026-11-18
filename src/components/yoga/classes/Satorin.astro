@@ -74,7 +74,7 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
               <p class="cl-plancard__tag">{p.tagline}</p>
               <ul class="cl-plancard__list">{p.features.map((f) => <li>{f}</li>)}</ul>
               <p class="cl-plancard__price"><span class="cl-plancard__unit">{t("月額")}</span><span class="rate-amount">{p.price}</span>{t("円")}<small>{t("（税込）")}</small></p>
-              <a class="cl-btn cl-plancard__btn" href={locale === 'en' ? p.url.replace('/ja/', '/en/') : p.url} target="_blank" rel="noreferrer">{t("予約する")}</a>
+              <a class="cl-btn cl-plancard__btn" href={locale === 'en' ? p.url.replace('/ja/', '/en/') : p.url} target="_blank" rel="noreferrer">{t(p.url.includes("contact") ? "予約準備中・お問い合わせ" : "詳細・お申し込み")}</a>
             </article>
           ))}
         </div>
@@ -125,7 +125,7 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
     </div>
 
     <div class="cl-actions">
-      <a href={SATORIN_BOOKING_URL} target="_blank" rel="noreferrer" class="cl-btn">{t("予約する")}</a>
+      <a href={SATORIN_BOOKING_URL} target="_blank" rel="noreferrer" class="cl-btn">{t(p.url.includes("contact") ? "予約準備中・お問い合わせ" : "詳細・お申し込み")}</a>
       <a href={locale === 'en' ? '/satorin/en/' : SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">{t("SATORIN のページで詳しく見る")}</a>
       <a href="#calendar" data-cal-filter="online" class="cl-btn cl-btn--ghost">{t("開催スケジュール")}</a>
     </div>
