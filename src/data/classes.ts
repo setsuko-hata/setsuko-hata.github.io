@@ -35,9 +35,9 @@ export const SATORIN_MORNING = {
 };
 
 export const SATORIN_EVENING = [
-  { name: '健康セミナー', when: '毎週月曜日　19:30〜20:10', text: 'ヨガ科学に基づき、心と身体をより健康に保つための方法を実践的に学びます。食生活や日常の過ごし方を見直し、その週から暮らしに取り入れられる、シンプルで実用的なヒントをお伝えします。' },
-  { name: '瞑想', when: '毎週月曜日　20:20〜21:00', text: '呼吸法と、Sadhguru によってつくられた瞑想を仲間と一緒に実践します。忙しい一日の終わりに、外側へ向いていた意識を自分の内側へ戻し、静かに自分自身とつながる時間です。' },
-  { name: 'コミュニティ交流会', when: '月1回', text: '毎月一つのテーマを持ち、その月に実践したこと、身体や心に感じた変化、難しかったこと、次の一か月で育てたいことを仲間と分かち合います。' },
+  { name: '健康セミナー', when: '月2回　19:30〜20:10', text: 'ヨガ科学に基づき、心と身体をより健康に保つための方法を実践的に学びます。食生活や日常の過ごし方を見直し、その週から暮らしに取り入れられる、シンプルで実用的なヒントをお伝えします。' },
+  { name: '瞑想', when: '月2回　20:20〜21:00', text: '呼吸法と、Sadhguru によってつくられた瞑想を仲間と一緒に実践します。忙しい一日の終わりに、外側へ向いていた意識を自分の内側へ戻し、静かに自分自身とつながる時間です。' },
+  { name: 'コミュニティ交流会', when: '大阪対面プレミアムに含まれます', text: '毎月一つのテーマを持ち、その月に実践したこと、身体や心に感じた変化、難しかったこと、次の一か月で育てたいことを仲間と分かち合います。' },
 ];
 
 export const SATORIN_COACHING_RATES = [
@@ -46,26 +46,98 @@ export const SATORIN_COACHING_RATES = [
   { label: 'プレミアムプラン（月3回）1回あたり', price: '8,000' },
 ];
 
-/** SATORIN plans, monthly, 税込. Each books its own STORES product. */
-const STORES = 'https://setsuko-hata-yoga.stores.jp/reserve/honten-kf004n/products/';
+/** SATORIN monthly plans. Online booking awaits updated STORES terms. */
 export const SATORIN_PLANS = [
-  { no: '01', name: '目覚め', type: '朝ヨガプラン', tagline: '毎朝の実践を、人生の土台に。', price: '6,000', morning: true, evening: false, coaching: null, pick: false,
-    features: ['朝ヨガ：月平均20回・受け放題', '月1回 コミュニティ交流会'], url: `${STORES}151433` },
-  { no: '02', name: '安らぎ', type: 'ナイトプラン', tagline: '一日の終わりに、心がほどける夜を。', price: '6,000', morning: false, evening: true, coaching: null, pick: false,
-    features: ['健康セミナー：月4回', '瞑想：月4回', '月1回 コミュニティ交流会'], url: `${STORES}363296` },
-  { no: '03', name: '整う', type: 'ヨガ＆瞑想プラン', tagline: '実践・学び・瞑想を、一つのリズムに。', price: '12,000', morning: true, evening: true, coaching: null, pick: true,
-    features: ['朝ヨガ：月平均20回・受け放題', '健康セミナー：月4回', '瞑想：月4回', '月1回 コミュニティ交流会'], url: `${STORES}229802` },
-  { no: '04', name: '花ひらく', type: 'パーソナルプラン', tagline: '個別の対話から、あなたらしい変化を。', price: '21,000', morning: true, evening: true, coaching: '月1回', pick: false,
-    features: ['整うプランのすべて', '1:1 コーチング：月1回（60分）'], url: `${STORES}430979` },
-  { no: '05', name: '輝く', type: 'プレミアムプラン', tagline: '細やかな伴走で、変化を加速する。', price: '36,000', morning: true, evening: true, coaching: '月3回', pick: false,
-    features: ['整うプランのすべて', '1:1 コーチング：月3回（60分）'], url: `${STORES}541723` },
+  {
+    "no": "01",
+    "name": "朝ヨガ",
+    "type": "オンライン",
+    "tagline": "週3回の実践を、人生の土台に。",
+    "price": "6,000",
+    "morning": true,
+    "evening": false,
+    "inperson": false,
+    "community": false,
+    "pick": false,
+    "features": [
+      "朝ヨガ：月・水・金（祝日休み）"
+    ],
+    "url": "/hatha-yoga/ja/contact/"
+  },
+  {
+    "no": "02",
+    "name": "ナイトプラン",
+    "type": "オンライン",
+    "tagline": "一日の終わりに、心がほどける夜を。",
+    "price": "4,000",
+    "morning": false,
+    "evening": true,
+    "inperson": false,
+    "community": false,
+    "pick": false,
+    "features": [
+      "健康セミナー：月2回",
+      "瞑想会：月2回"
+    ],
+    "url": "/hatha-yoga/ja/contact/"
+  },
+  {
+    "no": "03",
+    "name": "オンライン総合",
+    "type": "オンライン",
+    "tagline": "実践・学び・瞑想を、一つのリズムに。",
+    "price": "10,000",
+    "morning": true,
+    "evening": true,
+    "inperson": false,
+    "community": false,
+    "pick": true,
+    "features": [
+      "朝ヨガ：月・水・金（祝日休み）",
+      "ナイトプラン（健康セミナー月2回＋瞑想会月2回）"
+    ],
+    "url": "/hatha-yoga/ja/contact/"
+  },
+  {
+    "no": "04",
+    "name": "大阪対面ベーシック",
+    "type": "大阪・対面",
+    "tagline": "対面で学び、日々の実践へ。",
+    "price": "7,000",
+    "morning": false,
+    "evening": false,
+    "inperson": true,
+    "community": false,
+    "pick": false,
+    "features": [
+      "対面ヨガ：月2回"
+    ],
+    "url": "/hatha-yoga/ja/contact/"
+  },
+  {
+    "no": "05",
+    "name": "大阪対面プレミアム",
+    "type": "大阪・対面＋オンライン",
+    "tagline": "実践・学び・交流を、暮らしの中に。",
+    "price": "10,000",
+    "morning": false,
+    "evening": true,
+    "inperson": true,
+    "community": true,
+    "pick": false,
+    "features": [
+      "対面ヨガ：月2回",
+      "ナイトプラン（健康セミナー月2回＋瞑想会月2回）",
+      "コミュニティ交流会"
+    ],
+    "url": "/hatha-yoga/ja/contact/"
+  }
 ];
 
 /** Osaka monthly membership (in person). */
 export const OSAKA_PLANS = [
-  { no: '①', name: '対面のみ', price: '7,000', online: null },
-  { no: '②', name: '対面＋オンライン2回', price: '10,000', online: '月2回' },
-  { no: '③', name: '対面＋オンライン4回', price: '13,000', online: '月4回' },
+  { no: '①', name: '大阪対面ベーシック', price: '7,000', online: null },
+  { no: '②', name: '大阪対面プレミアム', price: '10,000', online: '月2回' },
 ];
 
 /** In-person drop-in rate (1回・約75分), Osaka and Tokyo. */
@@ -172,7 +244,7 @@ export const CLASS_DIALOGS = [
     listTitle: 'こんな方におすすめ',
     list: ['身体の疲れやこわばりを感じている方', '運動不足を感じている方', 'ヨガを初めて体験する方', '日常に無理なくヨガを取り入れたい方'],
     times: [
-      { label: 'オンライン（SATORIN 朝ヨガ）', value: '月〜金 6:00〜6:45' },
+      { label: 'オンライン（SATORIN 朝ヨガ）', value: '月・水・金 6:00〜6:45（祝日休み）' },
       { label: '対面', value: '約75分' },
     ],
   },
@@ -208,6 +280,48 @@ export const CLASS_DIALOGS = [
 
 /** English copy shares the Japanese content structure, identifiers, rates, and booking URLs. */
 const ENGLISH_CLASS_TEXT: Record<string, string> = {
+  "予約準備中・お問い合わせ": "Booking coming soon · Contact us",
+  "詳細・お申し込み": "Details and application",
+  "朝ヨガ\n月・水・金 6:00〜6:45\n（祝日休み）": "Morning yoga\nMon, Wed, Fri 6:00\u20136:45\nExcept Japanese public holidays",
+  "メンバーでない方も、月2回の健康セミナー（19:30〜20:10）・瞑想（20:20〜21:00）に1回から参加いただけます（朝ヨガは含まれません）。": "Non-members can book a single health seminar (19:30\u201320:10) or meditation session (20:20\u201321:00), each held twice a month. Morning yoga is not included.",
+  "メンバーでない方も、月2回ずつの健康セミナー・瞑想会に、ご自宅からオンラインで気軽に": "Non-members are welcome to join our twice-monthly health seminars and meditation sessions online from home. ",
+  "継続して参加するなら、オンライン会員へ": "For regular practice, explore online membership",
+  "19:30〜20:10": "19:30\u201320:10",
+  "20:20〜21:00": "20:20\u201321:00",
+
+  "週3回の実践を、人生の土台に。": "Build your foundation with practice three times a week.",
+  "朝ヨガ：月・水・金（祝日休み）": "Morning yoga: Mon, Wed, Fri (except Japanese public holidays)",
+  "健康セミナー：月2回": "Health seminars: twice a month",
+  "瞑想会：月2回": "Meditation: twice a month",
+  "オンライン総合": "Complete Online",
+  "ナイトプラン（健康セミナー月2回＋瞑想会月2回）": "Night Plan (two health seminars and two meditation sessions per month)",
+  "大阪対面ベーシック": "Osaka In-person Basic",
+  "大阪対面プレミアム": "Osaka In-person Premium",
+  "大阪・対面": "Osaka \u00b7 In person",
+  "大阪・対面＋オンライン": "Osaka \u00b7 In person + Online",
+  "対面で学び、日々の実践へ。": "Learn in person and take the practice into everyday life.",
+  "実践・学び・交流を、暮らしの中に。": "Bring practice, learning and connection into everyday life.",
+  "対面ヨガ：月2回": "In-person yoga: twice a month",
+  "月2回　19:30〜20:10": "Twice a month \u00b7 19:30\u201320:10",
+  "月2回　20:20〜21:00": "Twice a month \u00b7 20:20\u201321:00",
+  "大阪対面プレミアムに含まれます": "Included in Osaka In-person Premium",
+  "月・水・金 6:00〜6:45（祝日休み）": "Mon, Wed, Fri 6:00\u20136:45 (except Japanese public holidays)",
+  "月・水・金｜6:00〜6:45": "Mon, Wed, Fri | 6:00\u20136:45",
+  "（祝日休み）": "(Except Japanese public holidays)",
+  "週3回、朝6時にオンラインで待ち合わせ。": "Meet online at 6 a.m., three times a week.",
+  "健康セミナー月2回＋瞑想会月2回": "Two health seminars + two meditation sessions per month",
+  "5つのプランからお選びいただけます。": "Choose from five membership plans.",
+  "対面ヨガ": "In-person yoga",
+  "月・水・金 6:00〜6:45": "Mon, Wed, Fri 6:00\u20136:45",
+  "交流会（大阪対面プレミアム）": "Community gatherings (Osaka In-person Premium)",
+  "朝ヨガとナイトプランで、日々の実践を続ける。": "Keep up your practice with morning yoga and the Night Plan.",
+  "月・水・金の朝ヨガと、月2回ずつの健康セミナー・瞑想会をご自宅からオンラインで。": "Join morning yoga on Mon, Wed and Fri, plus two monthly health seminars and two meditation sessions, online from home.",
+  "朝ヨガ、ナイトプラン、大阪の対面ヨガから、ご自身に合うプランをお選びいただけます。": "Choose the right plan for you: morning yoga, the Night Plan, or in-person yoga in Osaka.",
+  "健康セミナー・瞑想会の開催日はカレンダーでご確認ください。": "Please check the calendar for health seminar and meditation dates.",
+  "健康セミナー 月2回": "Health seminars: twice a month",
+  "瞑想会 月2回": "Meditation: twice a month",
+  "大阪の月額会員プランを確認する": "View Osaka monthly memberships",
+
   "大阪": "Osaka",
   "東京": "Tokyo",
   "大阪市教育会館": "Osaka City Education Hall",
