@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 
 const signupUrl = 'https://forms.gle/ZoUkXQjCys8EH8K18';
-const route = '/satorin/en/global-live-online-yoga/';
+const route = '/satorin/en/';
 const html = readFileSync(`dist${route}index.html`, 'utf8');
 const normalize = text => text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 const supplied = readFileSync('scripts/fixtures/global-yoga-copy.txt', 'utf8')
@@ -22,7 +22,7 @@ assert.equal([...html.matchAll(/7:45–8:30/g)].length, 3, 'Keep both visible sc
 assert.match(html, /<h1[^>]*>Give yourself 45 minutes\.<\/h1>/);
 assert.ok(html.includes('a 45-minute practice'), 'State the agreed class duration');
 assert.match(html, new RegExp(`<link rel="canonical" href="https://setsukohata.com${route}">`));
-assert.ok(!/Preview only|<title>Preview|data-language-switch|<script\b|<form\b/.test(html));
+assert.ok(!/Preview only|<title>Preview|<form\b/.test(html));
 assert.ok(!/Registration link to be added|<button\b|aria-disabled/.test(html));
 assert.ok(html.includes('.trial .button:focus-visible{outline-color:var(--paper)}'), 'Keep the trial CTA focus ring visible on the dark section');
 const signupLinks = [...html.matchAll(/<a\b([^>]*class="button"[^>]*)>([^<]+)<\/a>/g)];
@@ -38,7 +38,7 @@ for (const [, src] of html.matchAll(/<img\b[^>]*src="([^"]+)"/g)) {
 }
 for (const [, href] of html.matchAll(/<a\b[^>]*href="([^"]+)"/g)) {
   if (href.startsWith('#') || href === signupUrl) continue;
-  assert.ok(['/satorin/en/', '/en/'].includes(href), `Unexpected page link ${href}`);
+  assert.ok(['/satorin/en/', '/satorin/', '/en/'].includes(href), `Unexpected page link ${href}`);
   assert.ok(existsSync(`dist${href}index.html`));
 }
 for (const page of ['', 'about/', 'music/', 'morning-yoga/', 'volunteer/']) {
@@ -50,6 +50,10 @@ for (const page of ['', 'about/', 'music/', 'morning-yoga/', 'volunteer/']) {
     if (locale === 'ja') assert.ok(!nav.includes(route), 'Japanese navigation must retain its Japanese program');
   }
 }
-assert.ok(!readFileSync('dist/satorin/index.html', 'utf8').includes(route), 'Do not add the English program to the Japanese membership page');
+assert.ok(readFileSync('dist/satorin/index.html', 'utf8').includes('data-language-switch="en"'), 'Keep the existing Japanese language switch');
+const legacy = readFileSync('dist/satorin/en/global-live-online-yoga/index.html', 'utf8');
+assert.ok(legacy.includes("location.replace('/satorin/en/' + location.search + location.hash)"));
+assert.ok(!html.includes('6 a.m.') && html.includes('$60 USD per month'));
+assert.ok(html.includes('href="/satorin/" lang="ja"'));
 assert.ok(readFileSync('dist/sitemap.xml', 'utf8').includes(`https://setsukohata.com${route}<`));
 console.log('PASS: all 37 approved English copy blocks, both registration links, assets, links, sitemap, and separate Japanese/English navigation.');

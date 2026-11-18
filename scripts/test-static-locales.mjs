@@ -179,6 +179,6 @@ function testShop(locale) {
 }
 
 for (const locale of ['ja', 'en']) {
-  testCarousel(locale);
+  if (locale === 'ja') testCarousel(locale); // English membership is now the separate global program.
   testShop(locale);
 }
