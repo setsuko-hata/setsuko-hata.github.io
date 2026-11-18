@@ -125,7 +125,7 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
     </div>
 
     <div class="cl-actions">
-      <a href={SATORIN_BOOKING_URL} target="_blank" rel="noreferrer" class="cl-btn">{t(p.url.includes("contact") ? "予約準備中・お問い合わせ" : "詳細・お申し込み")}</a>
+      <a href={`/hatha-yoga/${locale}/contact/`} class="cl-btn">{t("予約準備中・お問い合わせ")}</a>
       <a href={locale === 'en' ? '/satorin/en/' : SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">{t("SATORIN のページで詳しく見る")}</a>
       <a href="#calendar" data-cal-filter="online" class="cl-btn cl-btn--ghost">{t("開催スケジュール")}</a>
     </div>
