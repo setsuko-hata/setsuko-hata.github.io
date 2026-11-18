@@ -70,7 +70,11 @@ const menuId = (id: string) => `yoga-menu-${id}`;
         )
       }
     </nav>
-    {switchHref && <a href={switchHref} data-language-switch={isJa ? 'en' : 'ja'} class="yoga-language-switch" aria-label={isJa ? 'Switch to English' : '日本語に切り替える'} lang={isJa ? 'en' : 'ja'}>{isJa ? 'EN' : '日本語'}</a>}
+    {switchHref && <nav class="yoga-language-switch" aria-label={isJa ? '言語を選択' : 'Select language'}>
+      <a href={isJa ? Astro.url.pathname : switchHref} data-language-switch="ja" lang="ja" hreflang="ja" aria-label="日本語" aria-current={isJa ? 'page' : undefined}>JA</a>
+      <span aria-hidden="true">/</span>
+      <a href={isJa ? switchHref : Astro.url.pathname} data-language-switch="en" lang="en" hreflang="en" aria-label="English" aria-current={!isJa ? 'page' : undefined}>EN</a>
+    </nav>}
     <button
       id="yoga-menu-btn"
       type="button"
@@ -108,7 +112,7 @@ const menuId = (id: string) => `yoga-menu-${id}`;
           ),
         )
       }
-      {switchHref && <a data-language-switch={isJa ? 'en' : 'ja'} class="yoga-mobile-nav__link font-display text-xl" href={switchHref} lang={isJa ? 'en' : 'ja'}>{isJa ? 'English' : '日本語'}</a>}
+
     </nav>
   </div>
 </div>
@@ -118,5 +122,8 @@ const menuId = (id: string) => `yoga-menu-${id}`;
 </script>
 
 <style>
-  .yoga-language-switch { flex-shrink: 0; font: 600 13px/1.4 Inter, sans-serif; padding: 8px 10px; border: 1px solid currentColor; }
+  .yoga-language-switch { display: flex; flex-shrink: 0; align-items: center; gap: .5rem; font-family: Inter, sans-serif; font-size: 13px; letter-spacing: .08em; white-space: nowrap; }
+  .yoga-language-switch a { padding: .35rem .2rem; border-bottom: 1px solid transparent; }
+  .yoga-language-switch a[aria-current='page'] { border-bottom-color: #8A6A2C; font-weight: 600; }
+  .yoga-language-switch a:focus-visible { outline: 2px solid #8A6A2C; outline-offset: 3px; }
 </style>
