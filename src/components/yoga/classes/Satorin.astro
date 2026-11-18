@@ -9,7 +9,7 @@ const yes = '✓';
 interface Props { locale?: 'ja' | 'en'; id: string; full?: boolean; tone?: string; fullHref?: string; }
 const { locale = 'ja', id, full = false, tone = '', fullHref = '#online-satorin' } = Astro.props;
 const t = (text: string) => classText(locale, text);
-const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(locale);
+const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_COACHING_RATES, SATORIN_PLANS } = getClassContent(locale);
 
 ---
 {full ? (
@@ -20,18 +20,18 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
       <h2>{t("SATORIN メンバーシップ")}</h2>
       <span class="cl-head__rule" aria-hidden="true"></span>
     </div>
-    <p class="cl-lead">{t("朝ヨガ、ナイトプラン、大阪の対面ヨガから、ご自身に合うプランをお選びいただけます。")}</p>
+    <p class="cl-lead">{t("オンラインクラスはすべて SATORIN メンバーシップで開催しています。平日朝のヨガ、夜の健康セミナーと瞑想会を、全国・海外どこからでもご自宅から。仲間と一緒に実践しながら、ヨガを毎日の習慣にしていきます。")}</p>
 
-    <div class="cl-feats cl-feats--duo">
+    <div class="cl-feats">
       <article class="cl-feat cl-feat--olive">
         <header class="cl-feat__head">
           <p class="cl-feat__no"><span>01</span>Included</p>
           <h3 class="cl-feat__title">{t("朝ヨガ")}</h3>
           <p class="cl-feat__en">Morning practice</p>
-          <p class="cl-feat__when">{t("月・水・金｜6:00〜6:45")}<br />{t("（祝日休み）")}</p>
+          <p class="cl-feat__when">{t("月曜日〜金曜日｜6:00〜6:45")}<br />{t("(土・日・祝休み)")}</p>
         </header>
         <div class="cl-feat__body">
-          <p class="cl-feat__lead">{t("週3回、朝6時にオンラインで待ち合わせ。")}</p>
+          <p class="cl-feat__lead">{t("平日毎朝6時、オンラインで待ち合わせ。")}</p>
           <p class="cl-feat__p">{t("初心者の方も、すでに本格ハタヨガを学んでいる方も、ご自身に合った形で参加できます。難しいポーズを競うのではなく、身体の動き、呼吸、音、内側の感覚へ意識を向ける時間です。")}</p>
           <ul class="cl-tiles">{SATORIN_MORNING.practices.map((t) => <li>{t}</li>)}</ul>
         </div>
@@ -42,7 +42,7 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
           <p class="cl-feat__no"><span>02</span>Included</p>
           <h3 class="cl-feat__title">{t("学び・瞑想・交流")}</h3>
           <p class="cl-feat__en">Learn · Meditate · Connect</p>
-          <p class="cl-feat__when">{t("健康セミナー月2回＋瞑想会月2回")}</p>
+          <p class="cl-feat__when">{t("毎週月曜夜の2クラス＋月1回の交流会")}</p>
         </header>
         <div class="cl-feat__body">
           <p class="cl-feat__lead">{t("身体を整え、毎日の選択を変えていく。")}</p>
@@ -58,11 +58,27 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
         </div>
       </article>
 
+      <article class="cl-feat cl-feat--clay">
+        <header class="cl-feat__head">
+          <p class="cl-feat__no"><span>03</span>Included</p>
+          <h3 class="cl-feat__title">{t("節子と 1:1 コーチング")}</h3>
+          <p class="cl-feat__en">Personal support</p>
+          <p class="cl-feat__when">{t("パーソナル・プレミアムプラン｜60分")}</p>
+        </header>
+        <div class="cl-feat__body">
+          <p class="cl-feat__lead">{t("自分だけの課題と未来に向き合う。")}</p>
+          <p class="cl-feat__p">{t("身体の状態、食生活、仕事、人間関係、生活のリズム、望む未来は一人ひとり異なります。最初に現在の状況を丁寧にヒアリングし、あなたのライフスタイルに合った方法を一緒に見つけます。")}</p>
+          <p class="cl-feat__p">{t("伝統的なヨガの科学、栄養士としての専門知識、心身の不調を乗り越えてきた経験を生かし、食生活から日々の選択、生き方まで総合的にサポートします。答えを一方的に与えるのではなく、対話を通して自分の内側から答えを見つけていくコーチングです。")}</p>
+          <dl class="cl-feat__sched">
+            {SATORIN_COACHING_RATES.map((r) => <div><dt>{r.label}</dt><dd><span class="rate-amount">{r.price}</span>{t("円（税込）")}</dd></div>)}
+          </dl>
+        </div>
+      </article>
     </div>
 
     <div class="cl-panel">
       <div class="cl-panel__head"><span class="cl-ring"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#moon" /></svg></span><h3>{t("プランと料金")}</h3></div>
-      <p class="cl-lead">{t("5つのプランからお選びいただけます。")}</p>
+      <p class="cl-lead">{t("5つのプランからお選びいただけます。迷ったら「整う」がおすすめです。")}</p>
       <div class="cl-plans" data-plan-gallery>
         <div class="cl-plans__track" id={`${id}-plans`} role="region" aria-label={t("メンバーシッププラン")} tabindex="0">
           {SATORIN_PLANS.map((p) => (
@@ -74,7 +90,7 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
               <p class="cl-plancard__tag">{p.tagline}</p>
               <ul class="cl-plancard__list">{p.features.map((f) => <li>{f}</li>)}</ul>
               <p class="cl-plancard__price"><span class="cl-plancard__unit">{t("月額")}</span><span class="rate-amount">{p.price}</span>{t("円")}<small>{t("（税込）")}</small></p>
-              <a class="cl-btn cl-plancard__btn" href={locale === 'en' ? p.url.replace('/ja/', '/en/') : p.url} target="_blank" rel="noreferrer">{t(p.url.includes("contact") ? "予約準備中・お問い合わせ" : "詳細・お申し込み")}</a>
+              <a class="cl-btn cl-plancard__btn" href={p.url} target="_blank" rel="noreferrer">{t("予約する")}</a>
             </article>
           ))}
         </div>
@@ -89,7 +105,7 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
 
       <div class="cl-subpart">
         <h4 class="cl-subpart__title">{t("健康セミナー・瞑想の単発参加")}</h4>
-        <p class="cl-lead">{t("メンバーでない方も、月2回の健康セミナー（19:30〜20:10）・瞑想（20:20〜21:00）に1回から参加いただけます（朝ヨガは含まれません）。")}</p>
+        <p class="cl-lead">{t("メンバーでない方も、月曜夜の健康セミナー（19:30〜20:10）・瞑想（20:20〜21:00）に1回から参加いただけます（朝ヨガは含まれません）。")}</p>
         <div class="rate-duo">
           <div class="rate-duo__cell"><p class="rate-duo__label">{t("通常料金（1回・40分）")}</p><p class="rate-duo__price"><span class="rate-amount">2,000</span>{t("円")}</p></div>
           <div class="rate-duo__cell rate-duo__cell--member"><p class="rate-duo__label">{t("SATORIN メンバー料金")}</p><p class="rate-duo__price"><span class="rate-amount">1,500</span>{t("円")}</p></div>
@@ -101,18 +117,18 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
         <table class="cl-table">
           <caption class="cl-sr">{t("SATORIN メンバーシップのプラン比較（月額・税込）")}</caption>
           <thead>
-            <tr><th scope="col">{t("プラン")}</th><th scope="col">{t("月額（税込）")}</th><th scope="col">{t("朝ヨガ")}<small>{t("月・水・金 6:00〜6:45")}</small><small>{t("（祝日休み）")}</small></th><th scope="col">{t("健康セミナー")}<small>{t("19:30〜20:10")}</small><small>{t("月2回")}</small></th><th scope="col">{t("瞑想")}<small>{t("20:20〜21:00")}</small><small>{t("月2回")}</small></th><th scope="col">{t("対面ヨガ")}<small>{t("月2回")}</small></th><th scope="col">{t("交流会")}</th></tr>
+            <tr><th scope="col">{t("プラン")}</th><th scope="col">{t("月額（税込）")}</th><th scope="col">{t("朝ヨガ")}<small>{t("月〜金 6:00〜6:45")}</small><small>{t("(土・日・祝休み)")}</small></th><th scope="col">{t("健康セミナー")}<small>{t("月曜 19:30〜20:10")}</small><small>{t("月4回")}</small></th><th scope="col">{t("瞑想")}<small>{t("月曜 20:20〜21:00")}</small><small>{t("月4回")}</small></th><th scope="col">{t("交流会")}<small>{t("月1回")}</small></th><th scope="col">{t("1:1 コーチング")}<small>{t("60分")}</small></th></tr>
           </thead>
           <tbody>
             {SATORIN_PLANS.map((p) => (
               <tr class={p.pick ? 'is-pick' : undefined}>
                 <th scope="row"><span class="cl-table__name">{p.name}</span><span class="cl-table__type">{p.type}</span>{p.pick && <span class="cl-badge">{t("おすすめ")}</span>}</th>
                 <td data-label={t("月額（税込）")}><span><span class="rate-amount">{p.price}</span>{t("円")}</span></td>
-                <td class="cl-table__morning" data-label={t("朝ヨガ\n月・水・金 6:00〜6:45\n（祝日休み）")}>{p.morning ? <span class="cl-yes" aria-label={t("あり")}>✓</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
-                <td data-label={t("健康セミナー 月2回")}>{p.evening ? <span class="cl-yes" aria-label={t("あり")}>{yes}</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
-                <td data-label={t("瞑想会 月2回")}>{p.evening ? <span class="cl-yes" aria-label={t("あり")}>{yes}</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
-                <td data-label={t("対面ヨガ")}>{p.inperson ? <span class="cl-yes" aria-label={t("あり")}>✓</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
-                <td data-label={t("交流会")}>{p.community ? <span class="cl-yes" aria-label={t("あり")}>✓</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
+                <td class="cl-table__morning" data-label={t("朝ヨガ\n月〜金 6:00〜6:45\n(土・日・祝休み)")}>{p.morning ? <span class="cl-yes" aria-label={t("あり")}>✓</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
+                <td data-label={t("健康セミナー 月曜19:30〜 月4回")}>{p.evening ? <span class="cl-yes" aria-label={t("あり")}>{yes}</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
+                <td data-label={t("瞑想 月曜20:20〜 月4回")}>{p.evening ? <span class="cl-yes" aria-label={t("あり")}>{yes}</span> : <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
+                <td data-label={t("交流会 月1回")}><span class="cl-yes" aria-label={t("あり")}>✓</span></td>
+                <td data-label={t("1:1 コーチング")}>{p.coaching ?? <span class="cl-no" aria-label={t("なし")}>―</span>}</td>
               </tr>
             ))}
           </tbody>
@@ -125,7 +141,7 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
     </div>
 
     <div class="cl-actions">
-      <a href={`/hatha-yoga/${locale}/contact/`} class="cl-btn">{t("予約準備中・お問い合わせ")}</a>
+      <a href={SATORIN_BOOKING_URL} target="_blank" rel="noreferrer" class="cl-btn">{t("予約する")}</a>
       <a href={locale === 'en' ? '/satorin/en/' : SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">{t("SATORIN のページで詳しく見る")}</a>
       <a href="#calendar" data-cal-filter="online" class="cl-btn cl-btn--ghost">{t("開催スケジュール")}</a>
     </div>
@@ -141,7 +157,7 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_PLANS } = getClassContent(loca
       <span class="cl-head__rule" aria-hidden="true"></span>
     </div>
     <div class="cl-panel cl-satori-mini">
-      <p class="cl-lead">{t("月・水・金の朝ヨガと、月2回ずつの健康セミナー・瞑想会をご自宅からオンラインで。")}<br />{t("対面クラスと合わせて、毎日の実践を続けられるメンバーシップです。")}</p>
+      <p class="cl-lead">{t("平日朝のヨガと、月曜夜の健康セミナー・瞑想を、ご自宅からオンラインで。")}<br />{t("対面クラスと合わせて、毎日の実践を続けられるメンバーシップです。")}</p>
       <div class="cl-actions">
         <a href={fullHref} class="cl-btn">{t("オンラインのクラスを見る")}</a>
       </div>
