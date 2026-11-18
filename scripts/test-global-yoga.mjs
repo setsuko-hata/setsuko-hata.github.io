@@ -50,10 +50,10 @@ for (const page of ['', 'about/', 'music/', 'morning-yoga/', 'volunteer/']) {
     if (locale === 'ja') assert.ok(!nav.includes(route), 'Japanese navigation must retain its Japanese program');
   }
 }
-assert.ok(readFileSync('dist/satorin/index.html', 'utf8').includes('data-language-switch="en"'), 'Keep the existing Japanese language switch');
+assert.ok(!readFileSync('dist/satorin/index.html', 'utf8').includes('data-language-switch'), 'Japanese membership page must not show JA/EN controls');
 const legacy = readFileSync('dist/satorin/en/global-live-online-yoga/index.html', 'utf8');
 assert.ok(legacy.includes("location.replace('/satorin/en/' + location.search + location.hash)"));
 assert.ok(!html.includes('6 a.m.') && html.includes('$60 USD per month'));
-assert.ok(html.includes('href="/satorin/" lang="ja"'));
+assert.ok(!html.includes('data-language-switch') && !html.includes('class="language-switch"'), 'English global page must not show JA/EN controls');
 assert.ok(readFileSync('dist/sitemap.xml', 'utf8').includes(`https://setsukohata.com${route}<`));
 console.log('PASS: all 37 approved English copy blocks, both registration links, assets, links, sitemap, and separate Japanese/English navigation.');
