@@ -14,6 +14,7 @@ const meditation = SATORIN_EVENING[1];
 ---
 <section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
   <div class="cl-wrap">
+    {locale === 'en' && <p class="cl-callout">Japanese-language program · These seminars and meditation sessions are separate from Global Live Online Hatha Yoga. <a class="cl-link" href="/satorin/en/">Explore the English program →</a></p>}
     <div class="cl-head">
       <p class="cl-eyebrow">{t("オンライン単発")}</p>
       <h2>{t("ヨガ科学の健康セミナー・瞑想会")}</h2>
@@ -58,7 +59,7 @@ const meditation = SATORIN_EVENING[1];
     </div>
 
     <div class="cl-actions">
-      <a href={locale === 'en' ? '/satorin/en/' : SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">{t("毎週参加するなら、オンライン会員へ")}</a>
+      <a href={SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">{t("毎週参加するなら、オンライン会員へ")}</a>
     </div>
     <p class="cl-fine">{t("※ 朝ヨガは含まれません。SATORIN メンバーの方は1回 1,500円で参加いただけます。")}</p>
   </div>

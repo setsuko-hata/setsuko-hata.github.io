@@ -1,0 +1,50 @@
+---
+interface Props { id: string; full?: boolean; tone?: string; }
+const { id, full = false, tone = '' } = Astro.props;
+---
+<section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
+  <div class="cl-wrap">
+    <div class="cl-head">
+      <p class="cl-eyebrow">Live from Japan · Taught entirely in English</p>
+      <h2>Global Live Online Hatha Yoga</h2>
+      <span class="cl-head__rule" aria-hidden="true"></span>
+    </div>
+    <p class="cl-lead">Give yourself 45 minutes to move, breathe, and settle with Setsuko Hata. Beginners are welcome.</p>
+    {full ? (
+      <>
+        <div class="cl-feats">
+          <article class="cl-feat cl-feat--olive">
+            <header class="cl-feat__head">
+              <p class="cl-feat__no"><span>01</span>Live practice</p>
+              <h3 class="cl-feat__title">Your morning rhythm</h3>
+              <p class="cl-feat__when">Monday, Wednesday &amp; Friday<br />7:45–8:30 a.m. JST</p>
+            </header>
+            <div class="cl-feat__body">
+              <p class="cl-feat__lead">A 45-minute live class, guided step by step in English.</p>
+              <p class="cl-feat__p">Practice yoga movements, sound, breathing, and meditation. Your local class day and time may differ. Japanese public holidays are days off; holiday breaks will be announced in advance.</p>
+            </div>
+          </article>
+          <article id={`${id}-plans`} class="cl-feat cl-feat--gold scroll-mt-24">
+            <header class="cl-feat__head">
+              <p class="cl-feat__no"><span>02</span>Start with one week</p>
+              <h3 class="cl-feat__title">One-week free trial</h3>
+              <p class="cl-feat__when">Membership: $60 USD per month</p>
+            </header>
+            <div class="cl-feat__body">
+              <p class="cl-feat__lead">Includes all scheduled live classes.</p>
+              <p class="cl-feat__p">Try a week of live Hatha Yoga and see how regular practice fits into your day. This international program is separate from the Japanese SATORIN membership plans.</p>
+            </div>
+          </article>
+        </div>
+        <div class="cl-callout">
+          <p class="cl-callout__title">Looking for the Japanese program?</p>
+          <p>The Japanese membership has its own schedule, pricing, and activities. <a class="cl-link" href="/satorin/" >View Japanese Online Yoga →</a></p>
+        </div>
+      </>
+    ) : <p class="cl-lead">Monday, Wednesday &amp; Friday · 7:45–8:30 a.m. JST<br />One-week free trial · $60 USD per month</p>}
+    <div class="cl-actions">
+      <a href="/satorin/en/" class="cl-btn">Explore the English program</a>
+      {full && <a href="https://forms.gle/ZoUkXQjCys8EH8K18" class="cl-btn cl-btn--ghost" target="_blank" rel="noreferrer">Sign Up for Your Free Week</a>}
+    </div>
+  </div>
+</section>

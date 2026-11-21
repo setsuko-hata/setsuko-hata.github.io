@@ -62,7 +62,7 @@ test('JA defaults, English coverage, content shape, prices and operational link 
 
 test('Every class UI translation is present; locale props and internal links are wired', () => {
   const dir = 'src/components/yoga/classes';
-  const files = readdirSync(path.join(root, dir)).filter(name => name.endsWith('.astro')).map(name => `${dir}/${name}`);
+  const files = readdirSync(path.join(root, dir)).filter(name => name.endsWith('.astro') && name !== 'GlobalOnline.astro').map(name => `${dir}/${name}`);
   const page = 'src/pages/hatha-yoga/ja/offerings.astro';
   let labels = 0;
   for (const file of [...files, page]) {
@@ -91,9 +91,11 @@ test('Every class UI translation is present; locale props and internal links are
   assert.match(read('src/pages/hatha-yoga/en/offerings.astro'), /<Offerings locale="en"/);
   assert.match(source, /href=\{yogaHref\(locale, 'contact'\)\}/);
   assert.match(read(`${dir}/SuryaKriya.astro`), /yogaHref\(locale, 'path'\)/);
-  for (const name of ['Satorin', 'OnlineSingle']) {
-    assert.match(read(`${dir}/${name}.astro`), /locale === 'en' \? '\/satorin\/en\/' : SATORIN_PAGE_URL/);
-  }
+  // Global English membership and Japanese drop-ins are separate programs.
+  assert.ok(read(`${dir}/Satorin.astro`).includes("locale === 'en' ? <GlobalOnline"));
+  assert.ok(read(`${dir}/GlobalOnline.astro`).includes('href="/satorin/en/"'));
+  assert.ok(read(`${dir}/GlobalOnline.astro`).includes('href="/satorin/"'));
+  assert.ok(read(`${dir}/OnlineSingle.astro`).includes('href={SATORIN_PAGE_URL}'));
   for (const locale of ['ja', 'en']) {
     for (const pageName of ['offerings', 'contact', 'path']) {
       assert.equal(yoga.yogaHref(locale, pageName), `/hatha-yoga/${locale}/${pageName}/`);
