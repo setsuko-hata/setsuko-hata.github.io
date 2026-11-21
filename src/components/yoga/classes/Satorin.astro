@@ -1,6 +1,7 @@
 ---
 /** SATORIN online membership. `full` = the オンライン tab (everything);
  *  otherwise a short card for the 大阪 / 東京 tabs that links to the full version. */
+import GlobalOnline from './GlobalOnline.astro';
 import { SATORIN_BOOKING_URL, SATORIN_PAGE_URL } from '../../../data/yoga';
 import { classText, getClassContent } from '../../../data/classes';
 
@@ -12,7 +13,7 @@ const t = (text: string) => classText(locale, text);
 const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_COACHING_RATES, SATORIN_PLANS } = getClassContent(locale);
 
 ---
-{full ? (
+{locale === 'en' ? <GlobalOnline id={id} full={full} tone={tone} /> : full ? (
 <section id={id} class={`cl-section scroll-mt-24 ${tone}`}>
   <div class="cl-wrap">
     <div class="cl-head">
@@ -97,7 +98,7 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_COACHING_RATES, SATORIN_PLANS 
         <div class="cl-plans__nav">
           <button type="button" class="cl-plans__arrow" data-plan-step="-1" aria-controls={`${id}-plans`} aria-label={t("前のプラン")}>←</button>
           <div class="cl-plans__dots">
-            {SATORIN_PLANS.map((p, i) => <button type="button" class="cl-plans__dot" data-plan-dot={i} aria-controls={`${id}-plans`} aria-label={locale === 'en' ? `Show ${p.name} plan` : `${p.name}プランを表示`} aria-current={i === 0 ? 'true' : undefined}></button>)}
+            {SATORIN_PLANS.map((p, i) => <button type="button" class="cl-plans__dot" data-plan-dot={i} aria-controls={`${id}-plans`} aria-label={`${p.name}プランを表示`} aria-current={i === 0 ? 'true' : undefined}></button>)}
           </div>
           <button type="button" class="cl-plans__arrow" data-plan-step="1" aria-controls={`${id}-plans`} aria-label={t("次のプラン")}>→</button>
         </div>
@@ -136,13 +137,13 @@ const { SATORIN_MORNING, SATORIN_EVENING, SATORIN_COACHING_RATES, SATORIN_PLANS 
       </div>
       <div class="cl-callout">
         <p class="cl-callout__title">{t("無料体験について")}</p>
-        <p>{t("SATORIN では、期間を決めて無料体験を実施しています。次回の無料体験の日程は、")}<a class="cl-link" href="#calendar" data-cal-filter="online">{t("開催スケジュール")}</a>{t("または")} <a class="cl-link" href={locale === 'en' ? '/satorin/en/' : SATORIN_PAGE_URL}>{t("SATORIN のページ")}</a>{t("でご確認ください。")}</p>
+        <p>{t("SATORIN では、期間を決めて無料体験を実施しています。次回の無料体験の日程は、")}<a class="cl-link" href="#calendar" data-cal-filter="online">{t("開催スケジュール")}</a>{t("または")} <a class="cl-link" href={SATORIN_PAGE_URL}>{t("SATORIN のページ")}</a>{t("でご確認ください。")}</p>
       </div>
     </div>
 
     <div class="cl-actions">
       <a href={SATORIN_BOOKING_URL} target="_blank" rel="noreferrer" class="cl-btn">{t("予約する")}</a>
-      <a href={locale === 'en' ? '/satorin/en/' : SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">{t("SATORIN のページで詳しく見る")}</a>
+      <a href={SATORIN_PAGE_URL} class="cl-btn cl-btn--ghost">{t("SATORIN のページで詳しく見る")}</a>
       <a href="#calendar" data-cal-filter="online" class="cl-btn cl-btn--ghost">{t("開催スケジュール")}</a>
     </div>
     <p class="cl-fine">{t("※ メンバーシップのお支払い・解約・休止は、STORES の予約ページからお手続きいただけます。")}</p>

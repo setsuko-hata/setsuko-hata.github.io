@@ -57,3 +57,18 @@ assert.ok(!html.includes('6 a.m.') && html.includes('$60 USD per month'));
 assert.ok(!html.includes('data-language-switch') && !html.includes('class="language-switch"'), 'English global page must not show JA/EN controls');
 assert.ok(readFileSync('dist/sitemap.xml', 'utf8').includes(`https://setsukohata.com${route}<`));
 console.log('PASS: all 37 approved English copy blocks, both registration links, assets, links, sitemap, and separate Japanese/English navigation.');
+
+// International membership must not inherit the Japanese timetable or plans.
+const overview = readFileSync('dist/hatha-yoga/en/offerings/index.html', 'utf8');
+assert.equal((overview.match(/Global Live Online Hatha Yoga<\/h2>/g) || []).length, 3);
+assert.equal((overview.match(/Monday, Wednesday &amp; Friday/g) || []).length, 3);
+assert.ok(!overview.includes('Meet online at 6 a.m. every weekday.'));
+assert.ok(!overview.includes('an average of 20 sessions a month'));
+assert.ok(overview.includes(signupUrl));
+assert.ok(overview.includes('Japanese-language program'));
+assert.ok(overview.includes('not yet listed here'));
+assert.ok(overview.includes('data-hide-for="online online-single"'));
+const japaneseOverview = readFileSync('dist/hatha-yoga/ja/offerings/index.html', 'utf8');
+assert.ok(!japaneseOverview.includes('Global Live Online Hatha Yoga'));
+assert.ok(!japaneseOverview.includes('Japanese-language program'));
+console.log('PASS: English Global cards, Japanese-program labels, calendar disclosure and separated links.');

@@ -91,11 +91,12 @@ const cities = [
               <span class="cl-head__rule" aria-hidden="true"></span>
             </div>
             <p class="cl-lead">{t("オンライン・対面クラス・スーリヤ・クリヤの開催日を、ひとつのカレンダーでご覧いただけます。種類で絞り込むこともできます。")}</p>
+            {locale === 'en' && <p class="cl-callout">The calendar currently lists the Japanese program and local classes. The English Global Yoga schedule is not yet listed here. <a class="cl-link" href="/satorin/en/">View the English program →</a></p>}
             <div class="cl-calendar"><div class="mt-10"><div data-hy-cal data-locale={locale} data-label={t("開催スケジュール")} data-feed="https://script.google.com/macros/s/AKfycbwqXPOLnB8nzrbWNHWtcW-gKD5FG5I38xDpfoxLzVR-OQ0GM_D3w_RFjyIrIYKHDcbGIA/exec" data-keywords={JSON.stringify([{ key: 'kw-osaka', label: t('大阪'), kw: '大阪' }, { key: 'kw-tokyo', label: t('東京'), kw: '東京' }])} data-sources={JSON.stringify([{ key: 'online', label: `${t('オンライン')} (SATORIN)`, tone: 'sage' }, { key: 'inperson', label: t('対面クラス'), tone: 'clay' }, { key: 'special', label: t('スーリヤ・クリヤ'), tone: 'honey' }])}></div></div></div>
           </div>
         </section>
 
-        <section id="guide" class="cl-section cl-section--cream scroll-mt-24" data-screen-label={t("ご案内")} data-hide-for="online-single">
+        <section id="guide" class="cl-section cl-section--cream scroll-mt-24" data-screen-label={t("ご案内")} data-hide-for={locale === 'en' ? 'online online-single' : 'online-single'}>
           <div class="cl-wrap">
             <div class="cl-head">
               <p class="cl-eyebrow">{t("ご案内")}</p>
