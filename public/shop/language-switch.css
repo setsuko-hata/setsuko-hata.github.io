@@ -1,0 +1,37 @@
+/* Match the personal homepage switch without affecting the catalog links. */
+.bar .language-switch {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  align-items: center;
+  gap: .5rem;
+  font: 400 13px/normal Inter, 'Noto Sans JP', sans-serif;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+
+.bar .language-switch a {
+  display: inline;
+  min-height: 0;
+  padding: .35rem .2rem;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  color: var(--ink);
+  background: transparent;
+}
+
+.bar .language-switch a[aria-current='page'] {
+  border-bottom-color: var(--gold-deep);
+  font-weight: 600;
+}
+
+.bar .language-switch a:focus-visible {
+  outline: 2px solid var(--gold-deep);
+  outline-offset: 3px;
+}
+
+@media (max-width: 400px) {
+  .bar { flex-wrap: nowrap; }
+  .bar .back { white-space: nowrap; min-width: 0; padding-inline: clamp(6px, 3vw, 12px); }
+}

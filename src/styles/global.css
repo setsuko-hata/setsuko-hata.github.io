@@ -249,6 +249,30 @@ html[lang='en'] .site-header .nav-link {
   }
 }
 
+/* Keep the extra homepage link beside Hatha Yoga across header layouts. */
+.site-header.site-header--shop .nav-list { column-gap: clamp(10px, 1.4vw, 17px); }
+.site-header--shop .nav-list li { display: flex; align-items: center; }
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .site-header.site-header--shop .nav-list { column-gap: 11px; }
+}
+@media (min-width: 901px) and (max-width: 1020px) {
+  .site-header.site-header--shop .nav-list { column-gap: 7px; }
+  .site-header--shop .nav-link--featured { inline-size: 7.4em; }
+  .site-header--shop .site-header__inner { column-gap: 10px; }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  .site-header.site-header--shop .nav-list { column-gap: 10px; }
+}
+@media (max-width: 700px) {
+  .site-header.site-header--shop .nav-list {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 4px;
+  }
+  .site-header--shop .nav-list li { grid-column: span 3; }
+  .site-header--shop .nav-list li:nth-child(-n+3) { grid-column: span 4; }
+}
+
 /* ---------- Hero (Home) ---------- */
 /* Zoom-out once and settle; alternating would zoom back in. */
 @keyframes heroFloat {
