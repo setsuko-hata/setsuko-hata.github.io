@@ -41,7 +41,11 @@ for (const locale of ['ja', 'en']) {
     assert.ok(menuPaths.includes(path), 'Volunteer belongs in the main navigation');
     const yogaPath = `/hatha-yoga/${locale}/`;
     const musicPath = `${locale === 'en' ? '/en' : ''}/music/`;
-    assert.equal(menuPaths.indexOf(path) + 1, menuPaths.indexOf(yogaPath), 'Volunteer must directly precede the two framed links');
+    const shopPath = locale === 'en' ? '/shop/en/' : '/shop/';
+    const expectedBetween = page === '' ? [shopPath] : [];
+    assert.deepEqual(menuPaths.slice(menuPaths.indexOf(path) + 1, menuPaths.indexOf(yogaPath)), expectedBetween,
+      'Only the homepage inserts the localized Shop link between Volunteer and Hatha Yoga');
+    assert.equal(menuPaths.filter(href => href === shopPath).length, expectedBetween.length);
     assert.equal(menuPaths.indexOf(yogaPath) + 1, menuPaths.indexOf(musicPath), 'Hatha Yoga and Music must be adjacent at the end of the menu');
     assert.equal(menuPaths.at(-1), musicPath, 'Music is the final main-menu link');
     const framedPaths = [...mainMenu.matchAll(/<a[^>]*href="([^"]+)"[^>]*class="[^"]*nav-link--featured[^"]*"/g)].map(match => match[1]);
@@ -50,4 +54,4 @@ for (const locale of ['ja', 'en']) {
     assert.ok(!header.includes('site-header__actions'), 'Remove the former entrance beside the language switch');
   }
 }
-console.log('PASS: JA/EN volunteer copy, five roles, six benefits, eligibility, one H1, active navigation, verified application URL, and one volunteer entrance before the adjacent Hatha Yoga/Music gold frames on every personal-site page.');
+console.log('PASS: JA/EN volunteer copy, five roles, six benefits, eligibility, one H1, active navigation, verified application URL, and localized homepage Shop and one volunteer entrance before the adjacent Hatha Yoga/Music gold frames on every personal-site page.');
