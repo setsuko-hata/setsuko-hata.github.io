@@ -72,6 +72,7 @@ html[lang="en"] body{font-family:Inter,sans-serif;line-break:auto}
 html[lang="en"] .card .en,html[lang="en"] dialog .en{display:none}
 html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{letter-spacing:.02em}
 </style>
+<link rel="stylesheet" href="/shop/mat-gallery.css">
 <link rel="alternate" hreflang="ja" href="https://setsukohata.com/shop/">
 <link rel="alternate" hreflang="en" href="https://setsukohata.com/shop/en/">
 <link rel="alternate" hreflang="x-default" href="https://setsukohata.com/shop/">
@@ -83,7 +84,7 @@ html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{letter-spacing:.02em}
 <div class="pc"><b class="pn">02</b><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7" r="2.5"/><circle cx="16.5" cy="8" r="2"/><path d="M3.5 19c0-3.5 2-6 4.5-6s4.5 2.500 4.500 6"/><path d="M14 13.500c1-.8 1.800-1 2.500-1 2 0 3.500 2 3.500 5"/></svg></span><h3><span>Kind to people</span></h3><p>Respecting the lives and pride of the makers is what inspires these special, thoughtfully made products.</p></div>
 <div class="pc"><b class="pn">03</b><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12C12 8 9.500 6 5 6c0 4 2.500 6 7 6z"/><path d="M12 14c0-3 2-5 6-5 0 3-2 5-6 5z"/><path d="M8 21h8"/></svg></span><h3><span>Kind to the future</span></h3><p>All materials are 100% natural. Green Moon strives to minimize its impact on nature and create products that can return to the earth.</p></div>
 </div></section><div class="head"><h2 class="sub">Product shipping details</h2><nav><a href="#c0">Yoga mats</a><a href="#c1">Meditation mats &amp; cushions</a><a href="#c2">Copper water vessels</a></nav></div></header>
-<section class="cat" id="c0"><div class="tag">Yoga Mats</div><h2>Yoga mats</h2><div class="grid"><article class="card" role="button" tabindex="0" aria-haspopup="dialog"><div class="ph jpg"><img src="/shop/img/01.jpg" alt="" loading="lazy"></div><div class="body"><h3>Handwoven Organic Herbal Yoga Mat</h3><div class="en">Handwoven Organic Herbal Yoga Mat</div>
+<section class="cat" id="c0"><div class="tag">Yoga Mats</div><h2>Yoga mats</h2><div class="grid"><article class="card" data-mat-gallery role="button" tabindex="0" aria-haspopup="dialog"><div class="ph jpg"><img src="/shop/img/01.jpg" alt="" loading="lazy"></div><div class="body"><h3>Handwoven Organic Herbal Yoga Mat</h3><div class="en">Handwoven Organic Herbal Yoga Mat</div>
 <div class="price"><b>¥25,500</b><small>$170.00</small></div></div>
 <div class="more" hidden><p>Herbal plant-dyed in four colors</p><p>Available colors:</p><p>Navy, pink, orange, and grass green</p><p>Raised woven strips at both ends help prevent slipping.</p><p>Mat thickness: 6 mm</p><dl><dt>Materials</dt><dd>Handwoven organic herbal fibers / natural rubber anti-slip coating</dd></dl></div></article><article class="card" role="button" tabindex="0" aria-haspopup="dialog"><div class="ph png"><img src="/shop/img/02.png" alt="" loading="lazy"></div><div class="body"><h3>Organic Cotton Yoga Mat - Natural White</h3><div class="en">Organic Cotton Yoga Mat - Natural White</div>
 <div class="price"><b>¥14,250</b><small>$95.00</small></div></div>
@@ -122,11 +123,12 @@ html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{letter-spacing:.02em}
 <div class="more" hidden><p>Capacity: 800 mL</p><dl><dt>Materials</dt><dd>Pure copper / copper</dd></dl></div></article><article class="card" role="button" tabindex="0" aria-haspopup="dialog"><div class="ph jpg"><img src="/shop/img/19.jpg" alt="" loading="lazy"></div><div class="body"><h3>Chakra Copper Water Bottle</h3><div class="en">Chakra Copper Water Bottle</div>
 <div class="price"><b>¥12,000</b><small>$80.00</small></div></div>
 <div class="more" hidden><p>Capacity: 750 mL</p><dl><dt>Materials</dt><dd>Pure copper / copper</dd></dl></div></article></div></section>
-<footer>Setsuko Hata</footer><dialog id="dlg" aria-labelledby="dt"><button class="x" aria-label="Close">×</button><div class="ph"><img alt=""></div><div class="in"></div></dialog>
+<footer>Setsuko Hata</footer><dialog id="dlg" aria-labelledby="dt"><button class="x" aria-label="Close">×</button><div class="ph"><img alt=""></div><div class="mat-gallery" role="group" aria-label="Product photos" hidden></div><div class="in"></div></dialog>
+<script src="/shop/mat-gallery.js"></script>
 <script>
 var d=document.getElementById('dlg'),im=d.querySelector('img'),inn=d.querySelector('.in');
 function open(c){var s=c.querySelector('img');im.src=s.src;im.alt=c.querySelector('h3').textContent;d.querySelector('.ph').className='ph '+c.querySelector('.ph').className.split(' ')[1];
-var b=c.querySelector('.body');inn.innerHTML='<h3 id="dt">'+b.querySelector('h3').innerHTML+'</h3>'+b.querySelector('.en').outerHTML+c.querySelector('.more').innerHTML+b.querySelector('.price').outerHTML;d.showModal();d.scrollTop=0}
+var b=c.querySelector('.body');inn.innerHTML='<h3 id="dt">'+b.querySelector('h3').innerHTML+'</h3>'+b.querySelector('.en').outerHTML+c.querySelector('.more').innerHTML+b.querySelector('.price').outerHTML;d.showModal();if(typeof renderMatGallery==='function')renderMatGallery(c,d,im);d.scrollTop=0}
 document.querySelectorAll('.card').forEach(function(c){c.onclick=function(){open(c)};c.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(c)}}});
 d.querySelector('.x').onclick=function(){d.close()};
 d.onclick=function(e){if(e.target===d)d.close()};
