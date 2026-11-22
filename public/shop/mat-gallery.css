@@ -1,0 +1,12 @@
+dialog .ph.is-mat-gallery { background: #fff; }
+dialog .ph.is-mat-gallery img { object-fit: contain; padding: 0; }
+dialog:has(.is-mat-gallery) .x { z-index: 1; }
+.mat-gallery[hidden] { display: none; }
+.mat-gallery { padding: 12px clamp(16px, 4vw, 24px) 15px; border-block: 1px solid rgba(47, 42, 38, .14); background: var(--paper); }
+.mat-gallery__heading { margin-bottom: 8px; display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.mat-gallery__photos { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; }
+.mat-gallery__photos button { display: block; width: 100%; aspect-ratio: 1; min-height: 44px; padding: 2px; border: 1px solid #C5B8A1; border-radius: 3px; background: #fff; cursor: pointer; }
+.mat-gallery__photos button[aria-pressed="true"] { border: 2px solid var(--sage); padding: 1px; }
+.mat-gallery__photos button:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+.mat-gallery__photos img { display: block; width: 100%; height: 100%; object-fit: contain; }
+@media (max-width: 480px) { .mat-gallery__photos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
