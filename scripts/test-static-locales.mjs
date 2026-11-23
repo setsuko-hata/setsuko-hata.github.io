@@ -144,7 +144,19 @@ function testShop(locale) {
         : selector === '.body' ? body : selector === '.more' ? details : sourcePhoto,
     };
   });
-  assert.equal(cards.length, 19, 'All catalog products are available');
+  assert.equal(cards.length, 27, 'All catalog products are available');
+  const galleryCode = readFileSync(new URL('shop/mat-gallery.js', publicRoot), 'utf8');
+  const { MAT_GALLERY_PHOTOS, SHOP_GALLERIES } = vm.runInNewContext(
+    galleryCode + '\n({ MAT_GALLERY_PHOTOS, SHOP_GALLERIES });',
+  );
+  const handles = [...html.matchAll(/data-photo-gallery="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(handles.length, 23, '23 products use the supplier gallery');
+  assert.deepEqual([...handles].sort(), Object.keys(SHOP_GALLERIES).sort());
+  assert.equal((html.match(/data-mat-gallery\s/g) ?? []).length, 1, 'Ananda retains its existing gallery');
+  assert.equal(MAT_GALLERY_PHOTOS.length, 8);
+  const supplierPhotos = Object.values(SHOP_GALLERIES).flat();
+  assert.equal(new Set(supplierPhotos).size, supplierPhotos.length);
+  assert.equal(MAT_GALLERY_PHOTOS.length + supplierPhotos.length + cards.length - handles.length - 1, 152);
   assert.match(html, /<meta name="robots" content="noindex">/);
   assert.match(html, new RegExp(`aria-label="${locale === 'en' ? 'Close' : '閉じる'}"`));
   vm.runInNewContext(inlineScript(html), {
@@ -175,7 +187,7 @@ function testShop(locale) {
     card.onkeydown({ key: 'Tab', preventDefault() { assert.fail('Tab must retain native behavior'); } });
     assert.equal(dialog.open, false);
   }
-  console.log(`PASS: ${locale} shop, all 19 products: click, keyboard, localized content, images, prices, close and reopen.`);
+  console.log(`PASS: ${locale} shop, all 27 products: click, keyboard, localized content, images, prices, close and reopen.`);
 }
 
 for (const locale of ['ja', 'en']) {
