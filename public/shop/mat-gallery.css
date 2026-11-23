@@ -73,3 +73,29 @@ dialog .ph.is-mat-gallery img { object-fit: contain; padding: 0; }
 .photo-zoom-scale:focus-visible, .photo-zoom-frame:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: -3px; }
 .photo-zoom-scale[aria-pressed="true"] + .photo-zoom-frame img { max-width: none; max-height: none; }
 .photo-zoom-dialog > .x { z-index: 1; }
+
+.photo-hover-lens, .photo-hover-crop { pointer-events: none; box-sizing: border-box; }
+.photo-hover-lens[hidden], .photo-hover-crop[hidden] { display: none; }
+.photo-hover-lens {
+  position: absolute;
+  outline: 1px solid #8A6A2C;
+  box-shadow: 0 0 0 1px #fff;
+  background: rgba(232, 217, 194, .38);
+}
+.photo-hover-crop {
+  position: fixed;
+  overflow: hidden;
+  background: #fff;
+  outline: 1px solid #8A6A2C;
+  box-shadow: 0 12px 30px rgba(47, 42, 38, .2);
+  z-index: 2;
+}
+.photo-hover-crop img { position: absolute; display: block; max-width: none; max-height: none; }
+@media (hover: hover) and (pointer: fine) and (min-width: 740px) {
+  #dlg { width: min(640px, calc(100vw - 320px)); }
+}
+.photo-hover-hint { display: none; }
+@media (hover: hover) and (pointer: fine) and (min-width: 740px) {
+  .photo-hover-hint { display: inline; }
+  .photo-click-hint { display: none; }
+}

@@ -230,10 +230,97 @@ var SHOP_GALLERIES = {
     "https://cdn.shopify.com/s/files/1/0555/8602/9876/products/DSC07770.png?v=1669203761"
   ]
 };
+// Keep the lens in the displayed photo bounds (excluding letterbox areas).
+function setUpProductPhotoHover(dialog, trigger, main) {
+  var desktop = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 740px)');
+  var lens = document.createElement('span');
+  lens.className = 'photo-hover-lens';
+  lens.setAttribute('aria-hidden', 'true');
+  lens.hidden = true;
+  trigger.append(lens);
+  var crop = document.createElement('div');
+  crop.className = 'photo-hover-crop';
+  crop.setAttribute('aria-hidden', 'true');
+  crop.hidden = true;
+  var enlarged = document.createElement('img');
+  enlarged.alt = '';
+  crop.append(enlarged);
+  dialog.append(crop);
+  var pointer = null;
+
+  function hide() {
+    pointer = null;
+    lens.hidden = crop.hidden = true;
+  }
+  function render() {
+    lens.hidden = crop.hidden = true;
+    if (!pointer || !desktop.matches || !main.complete || !main.naturalWidth ||
+        main.src !== new URL(main.dataset.originalSrc, document.baseURI).href) return;
+    var image = main.getBoundingClientRect();
+    var button = trigger.getBoundingClientRect();
+    var style = getComputedStyle(main);
+    var right = image.right - parseFloat(style.paddingRight);
+    var bottom = image.bottom - parseFloat(style.paddingBottom);
+    var left = image.left + parseFloat(style.paddingLeft);
+    var top = image.top + parseFloat(style.paddingTop);
+    var width = right - left;
+    var height = bottom - top;
+    var mode = style.objectFit === 'contain' ? Math.min : Math.max;
+    var scale = mode(width / main.naturalWidth, height / main.naturalHeight);
+    var fullWidth = main.naturalWidth * scale;
+    var fullHeight = main.naturalHeight * scale;
+    var objectLeft = left + (width - fullWidth) / 2;
+    var objectTop = top + (height - fullHeight) / 2;
+    left = Math.max(left, objectLeft);
+    top = Math.max(top, objectTop);
+    right = Math.min(right, objectLeft + fullWidth);
+    bottom = Math.min(bottom, objectTop + fullHeight);
+    if (pointer.x < left || pointer.x > right || pointer.y < top || pointer.y > bottom) return;
+
+    var box = dialog.getBoundingClientRect();
+    var leftRoom = box.left - 24;
+    var rightRoom = innerWidth - box.right - 24;
+    var onRight = rightRoom >= leftRoom;
+    var size = Math.floor(Math.min(360, Math.max(leftRoom, rightRoom), innerHeight - 24));
+    if (size < 132) return;
+    var magnification = Math.max(2.5, size / (right - left), size / (bottom - top));
+    var windowSize = size / magnification;
+    var x = Math.max(left, Math.min(right - windowSize, pointer.x - windowSize / 2));
+    var y = Math.max(top, Math.min(bottom - windowSize, pointer.y - windowSize / 2));
+    Object.assign(lens.style, {
+      left: (x - button.left) + 'px', top: (y - button.top) + 'px',
+      width: windowSize + 'px', height: windowSize + 'px'
+    });
+    Object.assign(crop.style, {
+      left: (onRight ? box.right + 12 : box.left - size - 12) + 'px',
+      top: Math.max(12, Math.min(innerHeight - size - 12, image.top)) + 'px',
+      width: size + 'px', height: size + 'px'
+    });
+    if (enlarged.src !== main.src) enlarged.src = main.src;
+    Object.assign(enlarged.style, {
+      width: fullWidth * magnification + 'px', height: fullHeight * magnification + 'px',
+      left: (objectLeft - x) * magnification + 'px', top: (objectTop - y) * magnification + 'px'
+    });
+    lens.hidden = crop.hidden = false;
+  }
+  trigger.addEventListener('pointermove', function (event) {
+    if (event.pointerType !== 'mouse') return hide();
+    pointer = { x: event.clientX, y: event.clientY };
+    render();
+  });
+  trigger.addEventListener('pointerleave', hide);
+  trigger.addEventListener('click', hide);
+  dialog.addEventListener('scroll', hide);
+  dialog.addEventListener('close', hide);
+  main.addEventListener('load', render);
+  window.addEventListener('resize', hide);
+}
+
 function setUpProductPhotoZoom(dialog, main) {
   var trigger = dialog.querySelector('.photo-zoom-trigger');
   var zoom = document.querySelector('.photo-zoom-dialog');
   if (!trigger || !zoom || trigger.onclick) return;
+  setUpProductPhotoHover(dialog, trigger, main);
   var enlarged = zoom.querySelector('img');
   var frame = zoom.querySelector('.photo-zoom-frame');
   var scale = zoom.querySelector('.photo-zoom-scale');
