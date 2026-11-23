@@ -156,7 +156,8 @@ function testShop(locale) {
   assert.equal(MAT_GALLERY_PHOTOS.length, 8);
   const supplierPhotos = Object.values(SHOP_GALLERIES).flat();
   assert.equal(new Set(supplierPhotos).size, supplierPhotos.length);
-  assert.equal(MAT_GALLERY_PHOTOS.length + supplierPhotos.length + cards.length - handles.length - 1, 152);
+  assert.equal(MAT_GALLERY_PHOTOS.length + supplierPhotos.length + cards.length - handles.length - 1, 151);
+  assert.equal(SHOP_GALLERIES['chandra-organic-herbal-yoga-mat'].length, 9);
   assert.match(html, /<meta name="robots" content="noindex">/);
   assert.match(html, new RegExp(`aria-label="${locale === 'en' ? 'Close' : '閉じる'}"`));
   vm.runInNewContext(inlineScript(html), {

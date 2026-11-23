@@ -1,6 +1,5 @@
 dialog .ph.is-mat-gallery { background: #fff; }
 dialog .ph.is-mat-gallery img { object-fit: contain; padding: 0; }
-dialog:has(.is-mat-gallery) .x { z-index: 1; }
 .mat-gallery[hidden] { display: none; }
 .mat-gallery { padding: 12px clamp(16px, 4vw, 24px) 15px; border-block: 1px solid rgba(47, 42, 38, .14); background: var(--paper); }
 .mat-gallery__heading { margin-bottom: 8px; display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 13px; line-height: 1.5; }
@@ -10,3 +9,67 @@ dialog:has(.is-mat-gallery) .x { z-index: 1; }
 .mat-gallery__photos button:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
 .mat-gallery__photos img { display: block; width: 100%; height: 100%; object-fit: contain; }
 @media (max-width: 480px) { .mat-gallery__photos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+#dlg > .x { z-index: 1; }
+.photo-zoom-trigger {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  cursor: zoom-in;
+}
+.photo-zoom-trigger:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: -4px; }
+.photo-zoom-label {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 4px 10px;
+  border: 1px solid var(--gold-deep);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 500 13px/1.4 Inter, sans-serif;
+}
+.photo-zoom-dialog {
+  width: fit-content;
+  max-width: 94vw;
+  max-height: 94vh;
+  max-height: 94dvh;
+  background: #fff;
+}
+.photo-zoom-dialog::backdrop { background: rgba(24, 22, 19, .84); }
+.photo-zoom-frame {
+  overflow: auto;
+  max-width: 94vw;
+  max-height: calc(94vh - 3px);
+  max-height: calc(94dvh - 3px);
+}
+.photo-zoom-frame > img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 94vw;
+  max-height: calc(94vh - 3px);
+  max-height: calc(94dvh - 3px);
+}
+.photo-zoom-scale {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1px solid var(--gold-deep);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 600 14px/1.2 Inter, sans-serif;
+  cursor: zoom-in;
+}
+.photo-zoom-scale[aria-pressed="true"] { cursor: zoom-out; background: var(--gold-deep); color: #fff; }
+.photo-zoom-scale:focus-visible, .photo-zoom-frame:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: -3px; }
+.photo-zoom-scale[aria-pressed="true"] + .photo-zoom-frame img { max-width: none; max-height: none; }
+.photo-zoom-dialog > .x { z-index: 1; }

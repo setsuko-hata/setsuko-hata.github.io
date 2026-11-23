@@ -47,7 +47,6 @@ var SHOP_GALLERIES = {
     "https://cdn.shopify.com/s/files/1/0555/8602/9876/files/R0005948_d1420227-7ddd-4905-a54a-5f35f9971951.jpg?v=1775754627",
     "https://cdn.shopify.com/s/files/1/0555/8602/9876/files/R0001139.jpg?v=1775754629",
     "https://cdn.shopify.com/s/files/1/0555/8602/9876/files/R0005944.jpg?v=1775754627",
-    "https://cdn.shopify.com/s/files/1/0555/8602/9876/files/R0005948.jpg?v=1775754627",
     "https://cdn.shopify.com/s/files/1/0555/8602/9876/files/R0005810.jpg?v=1775754628",
     "https://cdn.shopify.com/s/files/1/0555/8602/9876/files/R0005805.jpg?v=1775754629",
     "https://cdn.shopify.com/s/files/1/0555/8602/9876/files/R0005913.jpg?v=1775754627",
@@ -231,6 +230,52 @@ var SHOP_GALLERIES = {
     "https://cdn.shopify.com/s/files/1/0555/8602/9876/products/DSC07770.png?v=1669203761"
   ]
 };
+function setUpProductPhotoZoom(dialog, main) {
+  var trigger = dialog.querySelector('.photo-zoom-trigger');
+  var zoom = document.querySelector('.photo-zoom-dialog');
+  if (!trigger || !zoom || trigger.onclick) return;
+  var enlarged = zoom.querySelector('img');
+  var frame = zoom.querySelector('.photo-zoom-frame');
+  var scale = zoom.querySelector('.photo-zoom-scale');
+  var scaleLabel = scale.getAttribute('aria-label');
+
+  function resetScale() {
+    frame.style.width = '';
+    frame.style.height = '';
+    enlarged.style.width = '';
+    scale.setAttribute('aria-pressed', 'false');
+    scale.setAttribute('aria-label', scaleLabel);
+  }
+
+  scale.onclick = function () {
+    if (scale.getAttribute('aria-pressed') === 'true') {
+      resetScale();
+    } else if (enlarged.complete && enlarged.naturalWidth) {
+      frame.style.width = frame.clientWidth + 'px';
+      frame.style.height = frame.clientHeight + 'px';
+      enlarged.style.width = enlarged.clientWidth * 2 + 'px';
+      scale.setAttribute('aria-pressed', 'true');
+      scale.setAttribute('aria-label', scale.getAttribute('data-fit-label'));
+    }
+  };
+  zoom.addEventListener('close', resetScale);
+  trigger.onclick = function () {
+    resetScale();
+    var fallback = main.src;
+    enlarged.alt = main.alt;
+    enlarged.onerror = function () {
+      enlarged.onerror = null;
+      if (enlarged.src !== fallback) enlarged.src = fallback;
+    };
+    enlarged.src = main.dataset.originalSrc;
+    zoom.showModal();
+  };
+  zoom.querySelector('.x').onclick = function () { zoom.close(); };
+  zoom.onclick = function (event) {
+    if (event.target === zoom) zoom.close();
+  };
+}
+
 function renderMatGallery(card, dialog, main) {
   var panel = dialog.querySelector('.mat-gallery');
   var ja = document.documentElement.lang === 'ja';
@@ -247,7 +292,9 @@ function renderMatGallery(card, dialog, main) {
 
   panel.hidden = photos.length < 2;
   panel.replaceChildren();
-  main.parentElement.classList.toggle('is-mat-gallery', !panel.hidden);
+  dialog.querySelector('.ph').classList.toggle('is-mat-gallery', !panel.hidden);
+  main.dataset.originalSrc = main.src;
+  setUpProductPhotoZoom(dialog, main);
   if (panel.hidden) return;
 
   var heading = document.createElement('div');
@@ -273,8 +320,18 @@ function renderMatGallery(card, dialog, main) {
     return button;
   });
   function select(i) {
-    main.src = photos[i].src;
-    main.alt = photos[i].alt;
+    var photo = photos[i];
+    main.dataset.originalSrc = photo.src;
+    main.src = photo.thumb;
+    main.alt = photo.alt;
+    if (photo.thumb !== photo.src) {
+      // Show the selected thumbnail right away, then replace it with the full-size photo.
+      var full = new Image();
+      full.onload = function () {
+        if (main.dataset.originalSrc === photo.src) main.src = photo.src;
+      };
+      full.src = photo.src;
+    }
     count.textContent = (i + 1) + ' / ' + photos.length;
     buttons.forEach(function (button, j) {
       button.setAttribute('aria-pressed', String(i === j));
