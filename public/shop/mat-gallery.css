@@ -93,9 +93,5 @@ dialog .ph.is-mat-gallery img { object-fit: contain; padding: 0; }
 .photo-hover-crop img { position: absolute; display: block; max-width: none; max-height: none; }
 @media (hover: hover) and (pointer: fine) and (min-width: 740px) {
   #dlg { width: min(640px, calc(100vw - 320px)); }
-}
-.photo-hover-hint { display: none; }
-@media (hover: hover) and (pointer: fine) and (min-width: 740px) {
-  .photo-hover-hint { display: inline; }
-  .photo-click-hint { display: none; }
+  .photo-zoom-label { display: none; }
 }
