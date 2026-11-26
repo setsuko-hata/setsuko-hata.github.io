@@ -150,6 +150,8 @@ function testShop(locale) {
     };
   });
   assert.equal(cards.length, 27, 'All catalog products are available');
+  assert.doesNotMatch(html, /参考価格|Reference price|<small>(?:US)?\$/i);
+  for (const card of cards) assert.match(card.price.outerHTML, /<b>¥[^<]+<\/b>/);
   assert.equal(cards[0].dataset.storesId, undefined, 'Existing Ananda is unchanged');
   const storesIds = cards.slice(1).map(card => card.dataset.storesId);
   assert.equal(new Set(storesIds).size, 26);
