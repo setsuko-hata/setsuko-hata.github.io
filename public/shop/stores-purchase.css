@@ -1,0 +1,18 @@
+.stores-purchase {
+  display: block;
+  margin-top: 1rem;
+  padding: .75rem 1rem;
+  border-radius: 3px;
+  background: #324538;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+}
+.stores-purchase:hover { background: #243428; }
+.stores-purchase:focus-visible {
+  outline: 2px solid var(--gold-deep);
+  outline-offset: 3px;
+}

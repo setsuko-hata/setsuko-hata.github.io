@@ -116,7 +116,11 @@ function testShop(locale) {
   const html = readPage('shop', locale);
   const image = { src: '', alt: '' };
   const photo = { className: '' };
-  const inner = { innerHTML: '' };
+  const inner = {
+    set innerHTML(value) { this.markup = value; this.buy = null; },
+    get innerHTML() { return this.markup; },
+    append(node) { this.buy = node; },
+  };
   const closeButton = {};
   const dialog = {
     open: false,
@@ -140,11 +144,16 @@ function testShop(locale) {
     const body = { querySelector: (selector) => selector === 'h3' ? heading : selector === '.en' ? subtitle : price };
     return {
       heading, sourceImage, sourcePhoto, details, price,
+      dataset: { storesId: match[0].split('>', 1)[0].match(/data-stores-id="([^"]+)"/)?.[1] },
       querySelector: (selector) => selector === 'img' ? sourceImage : selector === 'h3' ? heading
         : selector === '.body' ? body : selector === '.more' ? details : sourcePhoto,
     };
   });
   assert.equal(cards.length, 27, 'All catalog products are available');
+  assert.equal(cards[0].dataset.storesId, undefined, 'Existing Ananda is unchanged');
+  const storesIds = cards.slice(1).map(card => card.dataset.storesId);
+  assert.equal(new Set(storesIds).size, 26);
+  for (const id of storesIds) assert.match(id, /^[0-9a-f]{24}$/);
   const galleryCode = readFileSync(new URL('shop/mat-gallery.js', publicRoot), 'utf8');
   const { MAT_GALLERY_PHOTOS, SHOP_GALLERIES } = vm.runInNewContext(
     galleryCode + '\n({ MAT_GALLERY_PHOTOS, SHOP_GALLERIES });',
@@ -161,7 +170,7 @@ function testShop(locale) {
   assert.match(html, /<meta name="robots" content="noindex">/);
   assert.match(html, new RegExp(`aria-label="${locale === 'en' ? 'Close' : '閉じる'}"`));
   vm.runInNewContext(inlineScript(html), {
-    document: { getElementById: () => dialog, querySelectorAll: () => cards },
+    document: { getElementById: () => dialog, querySelectorAll: () => cards, createElement: (tag) => ({ tag }) },
   });
 
   for (const card of cards) {
@@ -173,6 +182,12 @@ function testShop(locale) {
     assert.equal(photo.className, card.sourcePhoto.className);
     assert.ok(inner.innerHTML.includes(card.details.innerHTML));
     assert.ok(inner.innerHTML.includes(card.price.outerHTML));
+    const itemId = card.dataset.storesId;
+    if (itemId) {
+      assert.equal(inner.buy?.tag, 'a');
+      assert.equal(inner.buy?.href, 'https://setsuko-hata-yoga.stores.jp/items/' + itemId);
+      assert.equal(inner.buy?.textContent, locale === 'en' ? 'Buy on STORES' : 'STORESで購入');
+    } else assert.equal(inner.buy, null);
     if (locale === 'en') assert.doesNotMatch(inner.innerHTML, /[\u3041-\u3096\u30a1-\u30fa\u4e00-\u9fff]/u);
     closeButton.onclick();
     assert.equal(dialog.open, false);
